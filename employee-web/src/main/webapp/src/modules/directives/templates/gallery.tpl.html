@@ -1,0 +1,26 @@
+<div class="col-sm-12">
+    <div ng-repeat="record in records">
+        <div class="col-md-4 col-sm-6 col-lg-3 well">
+            <div class="col-md-12">
+                <div class="img-thumbnail"  ng-repeat="(fieldName, field)  in fields" id="{{$parent.$index}}-{{fieldName}}" ng-if="field.type==='Imagen'">
+                    <a ng-href="{{record[fieldName]}}" target="_blank"><img class="img-responsive" style="height: 15vmax;"  ng-src="{{record[fieldName]}}" alt="{{record[fieldName]}}"></a>
+                </div>
+            </div>
+            <div class="caption" >
+                <div ng-repeat="(fieldName, field) in fields" ng-switch="field.type" id="{{$parent.$index}}-{{fieldName}}" ng-if="field.type!=='Imagen'">
+                    <p ng-switch-when="Computed"><strong>{{field.displayName}}:</strong> {{fieldName.fn(record)}}</p>
+                    <p ng-switch-when="Date"><strong>{{field.displayName}}:</strong> {{record[fieldName]| date}}</p>
+                    <p ng-switch-when="Reference"><strong>{{field.displayName}}:</strong> {{record[fieldName].name}}</p>
+                    <p ng-switch-when="Boolean"><strong>{{field.displayName}}:</strong> <span ng-if="record[fieldName] !== undefined" class="glyphicon" ng-class="{'glyphicon-check': record[fieldName], 'glyphicon-unchecked': !record[fieldName]}"></span></p>
+                    <p ng-switch-when="String"><strong>{{field.displayName}}:</strong> {{record[fieldName]}}</p>
+                    <p ng-switch-when="Currency"><strong>{{field.displayName}}:</strong> {{record[fieldName] | currency}}</p>
+                    <p ng-switch-default><strong>{{field.displayName}}:</strong> {{record[fieldName]}}</p>
+                </div>
+            </div>
+            <p ng-if="actions" class="text-center">
+                <button ng-repeat="(key, action) in actions" id="{{$parent.$index}}-{{key}}-btn" class="btn btn-default btn-sm" ng-class="action.class" ng-show="action.show(record)" ng-click="action.fn(record)"><span class="glyphicon glyphicon-{{action.icon}}"></span> {{action.displayName}}</button>
+            </p>
+        </div>
+    </div>
+</div>
+
