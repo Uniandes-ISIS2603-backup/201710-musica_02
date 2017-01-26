@@ -1,0 +1,10 @@
+insert into EmployeeEntity (id, name, salary, image, gender) values (2, 'Betty', '$4362970.81', 'http://dummyimage.com/145x180.bmp/dddddd/000000', 'Female');
+insert into EmployeeEntity (id, name, salary, image, gender) values (3, 'Sharon', '$3402764.33', 'http://dummyimage.com/237x112.jpg/cc0000/ffffff', 'Female');
+insert into EmployeeEntity (id, name, salary, image, gender) values (4, 'Margaret', '$3735493.67', 'http://dummyimage.com/130x190.bmp/cc0000/ffffff', 'Female');
+insert into EmployeeEntity (id, name, salary, image, gender) values (5, 'Nicole', '$1592758.31', 'http://dummyimage.com/193x148.bmp/5fa2dd/ffffff', 'Female');
+insert into EmployeeEntity (id, name, salary, image, gender) values (6, 'Joyce', '$4250566.21', 'http://dummyimage.com/116x154.png/cc0000/ffffff', 'Female');
+insert into EmployeeEntity (id, name, salary, image, gender) values (7, 'Phillip', '$2084178.01', 'http://dummyimage.com/127x202.png/5fa2dd/ffffff', 'Male');
+insert into EmployeeEntity (id, name, salary, image, gender) values (8, 'Wanda', '$4528149.57', 'http://dummyimage.com/120x177.jpg/cc0000/ffffff', 'Female');
+insert into EmployeeEntity (id, name, salary, image, gender) values (9, 'Bobby', '$3447474.61', 'http://dummyimage.com/187x240.png/5fa2dd/ffffff', 'Male');
+insert into EmployeeEntity (id, name, salary, image, gender) values (10, 'Gloria', '$3345463.76', 'http://dummyimage.com/138x233.png/cc0000/ffffff', 'Female');
+insert into EmployeeEntity (id, name, salary, image, gender) values (11, 'Daniel', '$2650784.18', 'http://dummyimage.com/179x101.png/5fa2dd/ffffff', 'Male');
