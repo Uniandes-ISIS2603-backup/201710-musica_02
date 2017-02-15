@@ -1,14 +1,14 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>co.edu.uniandes.csw.artesanias</groupId>
-    <artifactId>artesanias</artifactId>
-    <name>artesanias</name>
+    <groupId>co.edu.uniandes.csw.musica</groupId>
+    <artifactId>musica</artifactId>
+    <name>musica</name>
     <packaging>pom</packaging>
     <version>0.1.0</version>
     <modules>
-        <module>artesanias-logic</module>
-        <module>artesanias-web</module>
+        <module>musica-logic</module>
+        <module>musica-web</module>
     </modules>
     
     <properties>
