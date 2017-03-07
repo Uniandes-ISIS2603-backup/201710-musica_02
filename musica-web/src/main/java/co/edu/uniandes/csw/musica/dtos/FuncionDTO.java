@@ -1,5 +1,9 @@
-package model;
+package co.edu.uniandes.csw.musica.dtos;
+import co.edu.uniandes.csw.musica.entities.FuncionEntity;
+import java.io.Serializable;
 import java.util.Date;
+import javax.xml.bind.annotation.XmlRootElement;
+
 
 
 /**
@@ -7,62 +11,113 @@ import java.util.Date;
  * <!--  end-user-doc  -->
  * @generated
  */
-
-public class FuncionDTO
+@XmlRootElement
+public class FuncionDTO implements Serializable
 {
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
-	 */
-	
+
 	private Date fecha;
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
-	 */
-	
-	private int duracion;
+	private Integer duracion;
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
-	 */
-	
-	private boolean esPaga;
+	private Boolean esPaga;
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
-	 */
-	
-	private int entradasDisponibles;
+	private Integer entradasDisponibles;
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
-	 */
-	
-	private long idFuncion;
+	private Long id;
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 */
 	public FuncionDTO(){
-		super();
+            
 	}
+        public FuncionDTO(FuncionEntity enti)
+        {
+            if(enti != null)
+            {
+                id = enti.getId();
+                fecha = enti.getFecha();
+                entradasDisponibles = enti.getEntradasDisponibles();
+                esPaga = enti.getEsPaga();
+                duracion = enti.getDuracion();
+            }
+        }
+       public FuncionEntity toEntity()
+       {
+           FuncionEntity entity = new FuncionEntity();
+           entity.setId(this.id);
+           entity.setDuracion(this.duracion);
+           entity.setEsPaga(this.esPaga);
+           entity.setEntradasDisponibles(this.entradasDisponibles);
+           entity.setFecha(this.fecha);
+            return entity;
+       }
+    /**
+     * @return the fecha
+     */
+    public Date getFecha() {
+        return fecha;
+    }
+
+    /**
+     * @param fecha the fecha to set
+     */
+    public void setFecha(Date fecha) {
+        this.fecha = fecha;
+    }
+
+    /**
+     * @return the duracion
+     */
+    public Integer getDuracion() {
+        return duracion;
+    }
+
+    /**
+     * @param duracion the duracion to set
+     */
+    public void setDuracion(Integer duracion) {
+        this.duracion = duracion;
+    }
+
+    /**
+     * @return the esPaga
+     */
+    public Boolean getEsPaga() {
+        return esPaga;
+    }
+
+    /**
+     * @param esPaga the esPaga to set
+     */
+    public void setEsPaga(Boolean esPaga) {
+        this.esPaga = esPaga;
+    }
+
+    /**
+     * @return the entradasDisponibles
+     */
+    public Integer getEntradasDisponibles() {
+        return entradasDisponibles;
+    }
+
+    /**
+     * @param entradasDisponibles the entradasDisponibles to set
+     */
+    public void setEntradasDisponibles(Integer entradasDisponibles) {
+        this.entradasDisponibles = entradasDisponibles;
+    }
+
+    /**
+     * @return the id
+     */
+    public Long getId() {
+        return id;
+    }
+
+    /**
+     * @param id the id to set
+     */
+    public void setId(Long id) {
+        this.id = id;
+    }
 
 }
 

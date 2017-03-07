@@ -1,60 +1,33 @@
-package model;
+package co.edu.uniandes.csw.musica.dtos;
+
+
+
+import co.edu.uniandes.csw.musica.dtos.FuncionDTO;
+import co.edu.uniandes.csw.musica.entities.FuncionEntity;
 import java.util.HashSet;
 import java.util.Set;
 
-
 /**
  * <!-- begin-user-doc -->
- * <!--  end-user-doc  -->
- * @generated
+ * <!--  end-user-doc  --> @generated
  */
+public class FuncionDetailDTO extends FuncionDTO {
 
-public class FuncionDetailDTO extends FuncionDTO
-{
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
-	 */
-	
-	public VenueDTO venues;
+    /**
+     * @generated
+     */
+    public FuncionDetailDTO() {
+        super();
+    }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
-	 */
-	
-	public FestivalDTO festival;
+    public FuncionDetailDTO(FuncionEntity entity) {
+        super(entity);
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
-	 */
-	
-	public Set<EntradaDTO> entradas;
+    }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
-	 */
-	
-	public Set<ArtistaDTO> artistas;
+    @Override
+    public FuncionEntity toEntity() {
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 */
-	public FuncionDetailDTO(){
-		super();
-	}
-
+        return super.toEntity();
+    }
 }
-

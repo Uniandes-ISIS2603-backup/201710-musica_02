@@ -1,4 +1,4 @@
-package model;
+package co.edu.uniandes.csw.musica.dtos;
 import java.util.HashSet;
 import java.util.Set;
 

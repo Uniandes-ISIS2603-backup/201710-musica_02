@@ -1,4 +1,4 @@
-package model;
+package co.edu.uniandes.csw.musica.dtos;
 import java.util.Date;
 
 

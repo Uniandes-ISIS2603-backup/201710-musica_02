@@ -5,8 +5,12 @@
  */
 package co.edu.uniandes.csw.musica.ejbs;
 
+import co.edu.uniandes.csw.musica.entities.FuncionEntity;
+import co.edu.uniandes.csw.musica.persistence.FuncionPersistence;
 import java.util.Date;
+import java.util.List;
 import javax.ejb.Stateless;
+import javax.inject.Inject;
 
 /**
  *
@@ -14,6 +18,17 @@ import javax.ejb.Stateless;
  */
 @Stateless
 public class FuncionLogic {
-    private Date fecha;
+    
+   @Inject private FuncionPersistence persistence;
+   
+   public List<FuncionEntity> getFunciones()
+   {
+       return persistence.findAll();
+   }
+   public FuncionEntity createFuncion(FuncionEntity entity)
+   {
+       return persistence.create(entity);
+   }
+   
     
 }
