@@ -1,8 +1,6 @@
 package co.edu.uniandes.csw.musica.dtos;
 
 
-
-
 /**
  * <!-- begin-user-doc -->
  * <!--  end-user-doc  -->

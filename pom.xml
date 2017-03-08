@@ -2,13 +2,13 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>co.edu.uniandes.csw.musica</groupId>
-    <artifactId>musica</artifactId>
-    <name>musica</name>
+    <artifactId>musica-02</artifactId>
+    <name>musica-02</name>
     <packaging>pom</packaging>
     <version>0.1.0</version>
     <modules>
-        <module>musica-logic</module>
-        <module>musica-web</module>
+        <module>musica-02-logic</module>
+        <module>musica-02-web</module>
     </modules>
     
     <properties>
