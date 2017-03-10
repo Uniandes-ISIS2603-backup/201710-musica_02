@@ -50,8 +50,9 @@ public class FuncionResource {
 
     @GET
     public List<FuncionDetailDTO> getFunciones() {
-
+        System.out.println("hola");
         return listEntity2DTO(logic.getFunciones());
+          
     }
 
     @POST

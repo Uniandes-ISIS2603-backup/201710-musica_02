@@ -26,7 +26,7 @@ import javax.ws.rs.core.MediaType;
  *
  * @author jd.gonzaleza
  */
-@Path("/funciones/{id}/reviews")
+@Path("/funciones/reviews")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
 public class ReviewResource {
@@ -45,9 +45,11 @@ public class ReviewResource {
     }
 
     @GET
-    public List<ReviewDTO> getReviews() {
+    @Path("{id: \\d+}")
+    public List<ReviewDTO> getReviews(@PathParam("id") Long id , ReviewDTO dto ) {
+        System.out.println("co.edu.uniandes.csw.musica.resources.ReviewResource.getReviews()");
 
-        return listEntity2DTO(logic.getReviews());
+        return listEntity2DTO(logic.getReviewsParam(id));
     }
     
     

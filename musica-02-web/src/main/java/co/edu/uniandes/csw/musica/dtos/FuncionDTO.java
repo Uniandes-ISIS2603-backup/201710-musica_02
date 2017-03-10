@@ -26,8 +26,7 @@ public class FuncionDTO implements Serializable
 
 	private Long id;
         
-        private List<ReviewDTO> reviews;
-
+      
 	public FuncionDTO(){
             
 	}
@@ -125,16 +124,7 @@ public class FuncionDTO implements Serializable
     /**
      * @return the review
      */
-    public List<ReviewDTO> getReviews() {
-        return reviews;
-    }
 
-    /**
-     * @param review the review to set
-     */
-    public void setReview(List<ReviewDTO> review) {
-        this.reviews = review;
-    }
 
     
 }

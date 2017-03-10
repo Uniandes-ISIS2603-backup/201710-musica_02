@@ -33,9 +33,14 @@ public class ReviewPersistence {
     }
     public List<ReviewEntity> findAllparaFuncion(Long id)
     {
-        TypedQuery<ReviewEntity> q = em.createQuery("select * from ReviewEntity WHERE FUNCION_ID = '"+id+"'", ReviewEntity.class);
+        TypedQuery<ReviewEntity> q = em.createQuery("select u from ReviewEntity u where u.funcion = :id", ReviewEntity.class);
+        q = q.setParameter("id", id);
         List<ReviewEntity> revs = q.getResultList();
-        return revs;
+        if (revs.isEmpty() ) {
+            return null; 
+        } else {
+            return (List<ReviewEntity>) revs.get(0);
+        }
     }
 
     public ReviewEntity create(ReviewEntity entity) {

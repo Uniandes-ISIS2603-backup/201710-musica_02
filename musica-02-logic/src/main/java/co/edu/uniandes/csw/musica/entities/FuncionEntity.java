@@ -14,6 +14,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 
@@ -34,6 +35,8 @@ public class FuncionEntity implements Serializable {
     private Integer entradasDisponibles;
     @OneToMany(mappedBy = "funcion", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<ReviewEntity> reviews = new ArrayList<ReviewEntity>();
+    @ManyToOne
+    private FestivalEntity festivalEntity;
 
     /**
      *
@@ -145,6 +148,20 @@ public class FuncionEntity implements Serializable {
      */
     public void setReviews(List<ReviewEntity> reviews) {
         this.reviews = reviews;
+    }
+
+    /**
+     * @return the festival
+     */
+    public FestivalEntity getFestival() {
+        return festivalEntity;
+    }
+
+    /**
+     * @param festival the festival to set
+     */
+    public void setFestival(FestivalEntity festival) {
+        this.festivalEntity = festival;
     }
 
 }
