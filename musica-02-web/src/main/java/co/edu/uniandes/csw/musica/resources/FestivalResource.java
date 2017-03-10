@@ -1,0 +1,67 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package co.edu.uniandes.csw.musica.resources;
+
+import co.edu.uniandes.csw.musica.dtos.FestivalDTO;
+import co.edu.uniandes.csw.musica.dtos.FestivalDetailDTO;
+import co.edu.uniandes.csw.musica.ejbs.FestivalLogic;
+import co.edu.uniandes.csw.musica.entities.FestivalEntity;
+import co.edu.uniandes.csw.musica.exceptions.BusinessLogicException;
+import java.util.ArrayList;
+import java.util.List;
+import javax.inject.Inject;
+import javax.servlet.http.HttpServlet;
+import javax.ws.rs.Consumes;
+import javax.ws.rs.GET;
+import javax.ws.rs.POST;
+import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.Context;
+import javax.ws.rs.core.MediaType;
+
+/**
+ *
+ * @author af.olivares10
+ */
+@Path("/festivales")
+@Consumes(MediaType.APPLICATION_JSON)
+@Produces(MediaType.APPLICATION_JSON)
+public class FestivalResource {
+
+    @Inject
+    private FestivalLogic logic;
+    @Context
+    HttpServlet http;
+
+    private List<FestivalDTO> listEntity2DTO(List<FestivalEntity> entityList) {
+        List<FestivalDTO> listDTO = new ArrayList<>();
+        for (FestivalEntity c : entityList) {
+            FestivalDTO est = new FestivalDTO(c);
+            listDTO.add(est);
+        }
+        return listDTO;
+    }
+    
+    @GET
+    public  List<FestivalDTO> getFestivales()
+    {
+        return listEntity2DTO(logic.getFestivales());
+    }
+    
+    @GET
+    @Path("{id: \\d+}")
+    public FestivalDetailDTO getFestival (@PathParam("id") Long id) throws BusinessLogicException
+    {
+        return new FestivalDetailDTO(logic.getFestival(id));
+    }
+    @POST
+    public FestivalDetailDTO createFestival (FestivalDetailDTO festival) throws BusinessLogicException 
+    {
+        return new FestivalDetailDTO(logic.createFestival(festival.toEntity()));
+    }
+
+}
