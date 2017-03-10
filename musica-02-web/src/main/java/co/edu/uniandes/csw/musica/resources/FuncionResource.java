@@ -6,6 +6,7 @@
 package co.edu.uniandes.csw.musica.resources;
 
 import co.edu.uniandes.csw.musica.dtos.FuncionDTO;
+import co.edu.uniandes.csw.musica.dtos.FuncionDetailDTO;
 import co.edu.uniandes.csw.musica.ejbs.FuncionLogic;
 import co.edu.uniandes.csw.musica.entities.FuncionEntity;
 import co.edu.uniandes.csw.musica.exceptions.BusinessLogicException;
@@ -15,8 +16,11 @@ import javax.inject.Inject;
 import javax.servlet.http.HttpServlet;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
+import static javax.ws.rs.HttpMethod.PUT;
 import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
@@ -35,25 +39,40 @@ public class FuncionResource {
     @Context
     HttpServlet http;
 
-    private List<FuncionDTO> listEntity2DTO(List<FuncionEntity> entityList) {
-        List<FuncionDTO> listDTO = new ArrayList<>();
+    private List<FuncionDetailDTO> listEntity2DTO(List<FuncionEntity> entityList) {
+        List<FuncionDetailDTO> listDTO = new ArrayList<>();
         for (FuncionEntity c : entityList) {
-            FuncionDTO est = new FuncionDTO(c);
+            FuncionDetailDTO est = new FuncionDetailDTO(c);
             listDTO.add(est);
         }
         return listDTO;
     }
 
     @GET
-    public List<FuncionDTO> getEstudiantes() {
+    public List<FuncionDetailDTO> getFunciones() {
 
         return listEntity2DTO(logic.getFunciones());
     }
 
     @POST
-    public FuncionDTO createEstudiante(FuncionDTO dto) throws BusinessLogicException {
-        FuncionEntity estu = logic.createFuncion(dto.toEntity());
-        return new FuncionDTO(estu);
+    public FuncionDetailDTO createFuncion(FuncionDTO dto) throws BusinessLogicException {
+        FuncionEntity fun = logic.createFuncion(dto.toEntity());
+        return new FuncionDetailDTO(fun);
     }
+    @PUT
+   @Path("{id: \\d+}")
+    public FuncionDetailDTO updateFuncion(@PathParam("id") Long id, FuncionDTO dto)
+    {
+        FuncionEntity entity = dto.toEntity();
+        entity.setId(id);
+        return new FuncionDetailDTO(logic.updateFuncion(entity)); 
+    }
+    @GET 
+    @Path("{id: \\d+}")
+    public FuncionDetailDTO getFuncion(@PathParam("id") Long id)
+    {
+        return new FuncionDetailDTO(logic.getFuncion(id));
+    }
+    
 
 }

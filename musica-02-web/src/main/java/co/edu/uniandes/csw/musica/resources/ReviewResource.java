@@ -17,6 +17,7 @@ import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
@@ -25,7 +26,7 @@ import javax.ws.rs.core.MediaType;
  *
  * @author jd.gonzaleza
  */
-@Path("/reviews")
+@Path("/funciones/{id}/reviews")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
 public class ReviewResource {
@@ -44,15 +45,16 @@ public class ReviewResource {
     }
 
     @GET
-    public List<ReviewDTO> getEstudiantes() {
+    public List<ReviewDTO> getReviews() {
 
         return listEntity2DTO(logic.getReviews());
     }
-
+    
+    
     @POST
-    public ReviewDTO createEstudiante(ReviewDTO dto) throws BusinessLogicException {
-        ReviewEntity estu = logic.createReview(dto.toEntity());
-        return new ReviewDTO(estu);
+    public ReviewDTO createReview(ReviewDTO dto) throws BusinessLogicException {
+        ReviewEntity rev = logic.createReview(dto.toEntity());
+        return new ReviewDTO(rev);
     }
     
 }

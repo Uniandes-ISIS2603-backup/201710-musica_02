@@ -24,9 +24,21 @@ public class FuncionLogic {
    {
        return persistence.findAll();
    }
+   public FuncionEntity getFuncion(Long id)
+   {
+       return persistence.find(id);
+   }
    public FuncionEntity createFuncion(FuncionEntity entity)
    {
        return persistence.create(entity);
+   }
+   public FuncionEntity updateFuncion(FuncionEntity entity)
+   {
+       return persistence.update(entity);
+   }
+   public void deleteFuncion(Long id)
+   {
+       persistence.delete(id);
    }
    
     

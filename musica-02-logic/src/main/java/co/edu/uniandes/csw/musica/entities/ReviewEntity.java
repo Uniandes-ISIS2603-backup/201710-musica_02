@@ -12,7 +12,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
+import uk.co.jemos.podam.common.PodamExclude;
 
 /**
  *
@@ -20,14 +22,16 @@ import javax.persistence.Temporal;
  */
 @Entity
 public class ReviewEntity implements Serializable{
-     @Id
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date fecha;
     private String descripcion;
     private Integer calificacion;
-    
+    @PodamExclude
+    @ManyToOne 
+    private FuncionEntity funcion;
     
 
     /**
@@ -85,5 +89,20 @@ public class ReviewEntity implements Serializable{
     public void setCalificacion(Integer calificacion) {
         this.calificacion = calificacion;
     }
+
+    /**
+     * @return the funcion
+     */
+    public FuncionEntity getFuncion() {
+        return funcion;
+    }
+
+    /**
+     * @param funcion the funcion to set
+     */
+    public void setFuncion(FuncionEntity funcion) {
+        this.funcion = funcion;
+    }
+    
     
 }
