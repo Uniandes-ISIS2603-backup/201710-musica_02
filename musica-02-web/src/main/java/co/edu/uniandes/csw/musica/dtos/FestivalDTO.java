@@ -1,12 +1,14 @@
 package co.edu.uniandes.csw.musica.dtos;
 
+import co.edu.uniandes.csw.musica.entities.FestivalEntity;
+import java.io.Serializable;
 import java.util.Date;
 
 /**
  * <!-- begin-user-doc -->
  * <!--  end-user-doc  --> @generated
  */
-public class FestivalDTO {
+public class FestivalDTO implements Serializable{
 
     private String nombre;
 
@@ -17,7 +19,7 @@ public class FestivalDTO {
     private long id;
 
     public FestivalDTO() {
-        super();
+
     }
 
     public FestivalDTO(FestivalEntity entity) {

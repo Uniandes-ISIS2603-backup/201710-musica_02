@@ -10,11 +10,15 @@ package co.edu.uniandes.csw.musica.entities;
  * @author af.olivares10
  */
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 
 
@@ -29,6 +33,13 @@ public class FestivalEntity implements Serializable
     private Date fechaInicio;
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date fechaFin;
+    @ManyToOne
+    private CiudadEntity ciudadEnity;
+    // @ManyToOne
+    //private VenueEntity ciudadEnity;
+    @OneToMany(mappedBy = "festivalEntity", cascade = CascadeType.ALL, orphanRemoval = true)
+    private ArrayList <FuncionEntity> funcionesEntities;
+    
    
     /**
      * @return the id
@@ -84,6 +95,34 @@ public class FestivalEntity implements Serializable
      */
     public void setFechaFin(Date fechaFin) {
         this.fechaFin = fechaFin;
+    }
+
+    /**
+     * @return the ciudadEnity
+     */
+    public CiudadEntity getCiudadEnity() {
+        return ciudadEnity;
+    }
+
+    /**
+     * @param ciudadEnity the ciudadEnity to set
+     */
+    public void setCiudadEnity(CiudadEntity ciudadEnity) {
+        this.ciudadEnity = ciudadEnity;
+    }
+
+    /**
+     * @return the funcionesEntities
+     */
+    public ArrayList <FuncionEntity> getFuncionesEntities() {
+        return funcionesEntities;
+    }
+
+    /**
+     * @param funcionesEntities the funcionesEntities to set
+     */
+    public void setFuncionesEntities(ArrayList <FuncionEntity> funcionesEntities) {
+        this.funcionesEntities = funcionesEntities;
     }
     
     
