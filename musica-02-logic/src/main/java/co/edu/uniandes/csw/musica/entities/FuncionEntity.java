@@ -6,11 +6,16 @@
 package co.edu.uniandes.csw.musica.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 
 /**
@@ -18,7 +23,7 @@ import javax.persistence.Temporal;
  * @author jd.gonzaleza
  */
 @Entity
-public class FuncionEntity implements Serializable{
+public class FuncionEntity implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,6 +33,10 @@ public class FuncionEntity implements Serializable{
     private Integer duracion;
     private Boolean esPaga;
     private Integer entradasDisponibles;
+    @OneToMany(mappedBy = "funcion", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<ReviewEntity> reviews = new ArrayList<ReviewEntity>();
+    @ManyToOne
+    private FestivalEntity festivalEntity;
 
     /**
      *
@@ -112,12 +121,47 @@ public class FuncionEntity implements Serializable{
     public Integer getEntradasDisponibles() {
         return entradasDisponibles;
     }
+    /**
+     * Agregar review a la lista
+     */
+    public void agregarReviewaLista(ReviewEntity rev)
+    {
+        reviews.add(rev);
+    }
 
     /**
      * @param entradasDisponibles the entradasDisponibles to set
      */
     public void setEntradasDisponibles(Integer entradasDisponibles) {
         this.entradasDisponibles = entradasDisponibles;
+    }
+
+    /**
+     * @return the reviews
+     */
+    public List<ReviewEntity> getReviews() {
+        return reviews;
+    }
+
+    /**
+     * @param reviews the reviews to set
+     */
+    public void setReviews(List<ReviewEntity> reviews) {
+        this.reviews = reviews;
+    }
+
+    /**
+     * @return the festival
+     */
+    public FestivalEntity getFestival() {
+        return festivalEntity;
+    }
+
+    /**
+     * @param festival the festival to set
+     */
+    public void setFestival(FestivalEntity festival) {
+        this.festivalEntity = festival;
     }
 
 }

@@ -28,8 +28,19 @@ public class ReviewPersistence {
 
     public List<ReviewEntity> findAll() {
         TypedQuery<ReviewEntity> q = em.createQuery("select u from ReviewEntity u", ReviewEntity.class);
-        List<ReviewEntity> allFunciones = q.getResultList();
-        return allFunciones;
+        List<ReviewEntity> allReviews = q.getResultList();
+        return allReviews;
+    }
+    public List<ReviewEntity> findAllparaFuncion(Long id)
+    {
+        TypedQuery<ReviewEntity> q = em.createQuery("select u from ReviewEntity u where u.funcion = :id", ReviewEntity.class);
+        q = q.setParameter("id", id);
+        List<ReviewEntity> revs = q.getResultList();
+        if (revs.isEmpty() ) {
+            return null; 
+        } else {
+            return (List<ReviewEntity>) revs.get(0);
+        }
     }
 
     public ReviewEntity create(ReviewEntity entity) {

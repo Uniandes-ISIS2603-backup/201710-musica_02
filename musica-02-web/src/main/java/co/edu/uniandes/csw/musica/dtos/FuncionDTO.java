@@ -2,6 +2,7 @@ package co.edu.uniandes.csw.musica.dtos;
 import co.edu.uniandes.csw.musica.entities.FuncionEntity;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 import javax.xml.bind.annotation.XmlRootElement;
 
 
@@ -24,7 +25,8 @@ public class FuncionDTO implements Serializable
 	private Integer entradasDisponibles;
 
 	private Long id;
-
+        
+      
 	public FuncionDTO(){
             
 	}
@@ -118,6 +120,12 @@ public class FuncionDTO implements Serializable
     public void setId(Long id) {
         this.id = id;
     }
+    
+    /**
+     * @return the review
+     */
 
+
+    
 }
 

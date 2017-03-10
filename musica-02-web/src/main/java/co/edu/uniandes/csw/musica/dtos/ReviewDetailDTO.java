@@ -15,18 +15,22 @@ public class ReviewDetailDTO extends ReviewDTO{
      /**
      * @generated
      */
+    private FuncionDTO funcionDTO;
     public ReviewDetailDTO() {
         super();
     }
 
     public ReviewDetailDTO(ReviewEntity entity) {
         super(entity);
+        funcionDTO = new FuncionDTO();
 
     }
 
     @Override
     public ReviewEntity toEntity() {
-
-        return super.toEntity();
+        ReviewEntity enti = super.toEntity();
+        enti.setFuncion(funcionDTO.toEntity());
+        return enti;
+        
     }
 }

@@ -17,13 +17,19 @@ import javax.inject.Inject;
  */
 @Stateless
 public class ReviewLogic {
-    @Inject private ReviewPersistence persistence;
-     public List<ReviewEntity> getReviews()
-   {
-       return persistence.findAll();
-   }
-   public ReviewEntity createReview(ReviewEntity entity)
-   {
-       return persistence.create(entity);
-   }
+
+    @Inject
+    private ReviewPersistence persistence;
+
+    public List<ReviewEntity> getReviews() {
+        return persistence.findAll();
+    }
+
+    public ReviewEntity createReview(ReviewEntity entity) {
+        return persistence.create(entity);
+    }
+    public List<ReviewEntity> getReviewsParam(Long id)
+    {
+        return persistence.findAllparaFuncion(id);
+    }
 }
