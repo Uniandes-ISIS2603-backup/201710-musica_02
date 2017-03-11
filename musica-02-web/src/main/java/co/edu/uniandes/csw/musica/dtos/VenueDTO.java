@@ -1,58 +1,58 @@
 package co.edu.uniandes.csw.musica.dtos;
 
+import javax.xml.bind.annotation.XmlRootElement;
+import co.edu.uniandes.csw.musica.entities.VenueEntity;
+import java.io.Serializable;
 
 /**
- * <!-- begin-user-doc -->
- * <!--  end-user-doc  -->
- * @generated
+ *
+ * @author a.echeverrir
  */
-
-public class VenueDTO
+@XmlRootElement
+public class VenueDTO implements Serializable
 {
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
-	 */
 	
+    
 	private String nombre;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
-	 */
+        
+        private Long id;
 	
 	private String tipo;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
-	 */
 	
 	private int capacidadMax;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
-	 */
 	
 	private String direccion;
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 */
+	
 	public VenueDTO(){
-		super();
+		
 	}
+        
+        
+        public VenueDTO(VenueEntity entity)
+        {
+            if(entity != null)
+            {
+                id = entity.getId();
+                nombre = entity.getNombre();
+                tipo = entity.getTipo();
+                capacidadMax = entity.getCapacidadMax();
+                direccion = entity.getDireccion();
+            }
+        }
+       public VenueEntity toEntity()
+       {
+           VenueEntity entity = new VenueEntity();
+           
+           //sets
+           entity.setId(this.id);
+           entity.setNombre(this.nombre);
+           entity.setTipo(this.tipo);
+           entity.setCapacidadMax(this.capacidadMax);
+           entity.setDireccion(this.direccion);
+           
+           return entity;
+       }
 
 }
 

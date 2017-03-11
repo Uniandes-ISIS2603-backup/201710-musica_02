@@ -1,33 +1,34 @@
 package co.edu.uniandes.csw.musica.dtos;
-import java.util.HashSet;
-import java.util.Set;
 
-
+import co.edu.uniandes.csw.musica.entities.ArtistaEntity;
 /**
- * <!-- begin-user-doc -->
- * <!--  end-user-doc  -->
- * @generated
+ *
+ * @author a.echeverrir
  */
 
 public class ArtistaDetailDTO extends ArtistaDTO
 {
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
-	 */
 	
-	public Set<FuncionDTO> funciones;
+	public FuncionDTO funcionDTO;
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 */
-	public ArtistaDetailDTO(){
+	
+	public ArtistaDetailDTO()
+        {
 		super();
 	}
+        
+        public ArtistaDetailDTO(ArtistaEntity entity) 
+        {
+        super(entity);
+        funcionDTO = new FuncionDTO(entity.getFuncionEntity());
+        }
+
+    @Override
+    public ArtistaEntity toEntity() 
+            
+    {        
+        return super.toEntity();
+    }
 
 }
 

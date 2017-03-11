@@ -1,49 +1,39 @@
 package co.edu.uniandes.csw.musica.dtos;
 
 
-/**
- * <!-- begin-user-doc -->
- * <!--  end-user-doc  -->
- * @generated
- */
+import co.edu.uniandes.csw.musica.entities.VenueEntity;
 
+/**
+ *
+ * @author a.echeverrir
+ */
 public class VenueDetailDTO extends VenueDTO
 {
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
-	 */
 	
-	public CiudadDTO ciudad;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
-	 */
+	public CiudadDTO ciudadDTO;
 	
-	public FestivalDTO festival;
+	public FestivalDTO festivalDTO;
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
-	 */
-	
-	public FuncionDTO funcion;
+	public FuncionDTO funcionDTO;
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 */
-	public VenueDetailDTO(){
+	public VenueDetailDTO()
+        {
 		super();
 	}
+        
+        public VenueDetailDTO(VenueEntity entity) 
+        {
+        super(entity);
+        ciudadDTO = new CiudadDTO(entity.getCiudadEntity());
+        festivalDTO = new FestivalDTO(entity.getFestivalEntity());
+        funcionDTO = new FuncionDTO(entity.getFuncionEntity());
+        }
+
+    @Override
+    public VenueEntity toEntity() 
+    {        
+        return super.toEntity();
+    }
 
 }
 
