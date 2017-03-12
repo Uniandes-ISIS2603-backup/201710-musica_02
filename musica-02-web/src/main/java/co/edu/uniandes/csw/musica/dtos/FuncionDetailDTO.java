@@ -38,4 +38,40 @@ public class FuncionDetailDTO extends FuncionDTO {
     public FuncionEntity toEntity() {        
         return super.toEntity();
     }
+
+    /**
+     * @return the reviewsDTOs
+     */
+    public List<ReviewDTO> getReviewsDTOs() {
+        return reviewsDTOs;
+    }
+
+    /**
+     * @param reviewsDTOs the reviewsDTOs to set
+     */
+    public void setReviewsDTOs(List<ReviewDTO> reviewsDTOs) {
+        
+        this.reviewsDTOs = reviewsDTOs;
+    }
+    
+    
+    public List<ReviewDTO> addReviewsDTOs(ReviewDTO dto){
+        reviewsDTOs.add(dto);
+        
+        return reviewsDTOs;
+    }
+
+    /**
+     * @return the festivalDTO
+     */
+    public FestivalDTO getFestivalDTO() {
+        return festivalDTO;
+    }
+
+    /**
+     * @param festivalDTO the festivalDTO to set
+     */
+    public void setFestivalDTO(FestivalDTO festivalDTO) {
+        this.festivalDTO = festivalDTO;
+    }
 }

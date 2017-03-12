@@ -7,6 +7,7 @@ package co.edu.uniandes.csw.musica.ejbs;
 
 import co.edu.uniandes.csw.musica.entities.FuncionEntity;
 import co.edu.uniandes.csw.musica.persistence.FuncionPersistence;
+import java.util.Date;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
@@ -27,6 +28,15 @@ public class FuncionLogic {
    public FuncionEntity getFuncion(Long id)
    {
        return persistence.find(id);
+   }
+   
+   public List<FuncionEntity> getFuncionesFecha(Date fecha)
+   {
+       return persistence.findAllFecha(fecha);
+   }
+   public List<FuncionEntity> getFuncionesEsPaga(Boolean paga)
+   {
+       return persistence.findAllEsPaga(paga);
    }
    public FuncionEntity createFuncion(FuncionEntity entity)
    {
