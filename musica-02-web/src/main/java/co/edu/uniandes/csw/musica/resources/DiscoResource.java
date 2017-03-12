@@ -29,7 +29,7 @@ import javax.ws.rs.core.MediaType;
  *
  * @author a.echeverrir
  */
-@Path("/funciones")
+@Path("/discos")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
 public class DiscoResource 

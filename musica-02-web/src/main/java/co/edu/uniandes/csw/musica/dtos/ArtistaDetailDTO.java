@@ -9,7 +9,7 @@ import co.edu.uniandes.csw.musica.entities.ArtistaEntity;
 public class ArtistaDetailDTO extends ArtistaDTO
 {
 	
-	public FuncionDTO funcionDTO;
+	private FuncionDTO funcionDTO;
 
 	
 	public ArtistaDetailDTO()
@@ -28,6 +28,20 @@ public class ArtistaDetailDTO extends ArtistaDTO
             
     {        
         return super.toEntity();
+    }
+
+    /**
+     * @return the funcionDTO
+     */
+    public FuncionDTO getFuncionDTO() {
+        return funcionDTO;
+    }
+
+    /**
+     * @param funcionDTO the funcionDTO to set
+     */
+    public void setFuncionDTO(FuncionDTO funcionDTO) {
+        this.funcionDTO = funcionDTO;
     }
 
 }

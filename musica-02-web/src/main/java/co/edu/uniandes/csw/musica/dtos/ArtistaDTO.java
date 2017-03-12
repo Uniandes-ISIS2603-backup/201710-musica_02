@@ -3,13 +3,14 @@ package co.edu.uniandes.csw.musica.dtos;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import co.edu.uniandes.csw.musica.entities.ArtistaEntity;
+import java.io.Serializable;
 
 /**
  *
  * @author a.echeverrir
  */
 @XmlRootElement
-public class ArtistaDTO
+public class ArtistaDTO implements Serializable
 {
     
         private Long id;

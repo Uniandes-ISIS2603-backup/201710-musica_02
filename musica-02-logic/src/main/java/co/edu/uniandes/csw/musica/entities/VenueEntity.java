@@ -19,7 +19,7 @@ import javax.persistence.OneToOne;
  * @author a.echeverrir
  */
 @Entity
-public class VenueEntity
+public class VenueEntity implements Serializable
 {
     
     @Id

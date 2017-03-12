@@ -2,13 +2,11 @@ package co.edu.uniandes.csw.musica.dtos;
 
 
 
-import co.edu.uniandes.csw.musica.dtos.FuncionDTO;
+import co.edu.uniandes.csw.musica.entities.ArtistaEntity;
 import co.edu.uniandes.csw.musica.entities.FuncionEntity;
 import co.edu.uniandes.csw.musica.entities.ReviewEntity;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 /**
  * <!-- begin-user-doc -->
@@ -21,6 +19,8 @@ public class FuncionDetailDTO extends FuncionDTO {
      */
     private List<ReviewDTO> reviewsDTOs;
     private FestivalDTO festivalDTO;
+    private List<ArtistaDTO> artistasDTOs;
+    private VenueDTO venueDTO;
     public FuncionDetailDTO() {
         super();
         
@@ -29,9 +29,14 @@ public class FuncionDetailDTO extends FuncionDTO {
     public FuncionDetailDTO(FuncionEntity entity) {
         super(entity);
         reviewsDTOs = new ArrayList<ReviewDTO>();
-        festivalDTO = new FestivalDTO();
+        festivalDTO = new FestivalDTO(entity.getFestival());
+        artistasDTOs = new ArrayList<ArtistaDTO>();
+        venueDTO = new VenueDTO(entity.getVenueEntity());
+        
         for(ReviewEntity rev : entity.getReviews())
             reviewsDTOs.add(new ReviewDTO(rev));
+        for (ArtistaEntity c : entity.getArtistas())
+            artistasDTOs.add(new ArtistaDTO(c));
     }
 
     @Override
@@ -73,5 +78,33 @@ public class FuncionDetailDTO extends FuncionDTO {
      */
     public void setFestivalDTO(FestivalDTO festivalDTO) {
         this.festivalDTO = festivalDTO;
+    }
+
+    /**
+     * @return the artistasDTOs
+     */
+    public List<ArtistaDTO> getArtistasDTOs() {
+        return artistasDTOs;
+    }
+
+    /**
+     * @param artistasDTOs the artistasDTOs to set
+     */
+    public void setArtistasDTOs(List<ArtistaDTO> artistasDTOs) {
+        this.artistasDTOs = artistasDTOs;
+    }
+
+    /**
+     * @return the venueDTO
+     */
+    public VenueDTO getVenueDTO() {
+        return venueDTO;
+    }
+
+    /**
+     * @param venueDTO the venueDTO to set
+     */
+    public void setVenueDTO(VenueDTO venueDTO) {
+        this.venueDTO = venueDTO;
     }
 }
