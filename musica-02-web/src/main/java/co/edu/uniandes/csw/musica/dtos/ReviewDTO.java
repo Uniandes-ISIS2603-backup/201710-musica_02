@@ -21,7 +21,7 @@ public class ReviewDTO implements Serializable{
     private Date fecha;
     private String descripcion;
     private Integer calificacion;
-    private FuncionDTO funcion;
+ 
 
     public ReviewDTO() {
 
@@ -101,20 +101,5 @@ public class ReviewDTO implements Serializable{
     public void setCalificacion(Integer calificacion) {
         this.calificacion = calificacion;
     }
-
-    /**
-     * @return the funcion
-     */
-    public FuncionDTO getFuncion() {
-        return funcion;
-    }
-
-    /**
-     * @param funcion the funcion to set
-     */
-    public void setFuncion(FuncionDTO funcion) {
-        this.funcion = funcion;
-    }
-   
 
 }

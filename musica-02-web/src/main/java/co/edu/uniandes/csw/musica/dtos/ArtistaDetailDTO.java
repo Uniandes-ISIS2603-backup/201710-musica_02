@@ -3,32 +3,49 @@ import java.util.HashSet;
 import java.util.Set;
 import javax.xml.bind.annotation.XmlRootElement;
 
-
+import co.edu.uniandes.csw.musica.entities.ArtistaEntity;
 /**
- * <!-- begin-user-doc -->
- * <!--  end-user-doc  -->
- * @generated
+ *
+ * @author a.echeverrir
  */
 @XmlRootElement
 public class ArtistaDetailDTO extends ArtistaDTO
 {
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
-	 */
 	
-	public Set<FuncionDTO> funciones;
+	private FuncionDTO funcionDTO;
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 */
-	public ArtistaDetailDTO(){
+	
+	public ArtistaDetailDTO()
+        {
 		super();
 	}
+        
+        public ArtistaDetailDTO(ArtistaEntity entity) 
+        {
+        super(entity);
+        funcionDTO = new FuncionDTO(entity.getFuncionEntity());
+        }
+
+    @Override
+    public ArtistaEntity toEntity() 
+            
+    {        
+        return super.toEntity();
+    }
+
+    /**
+     * @return the funcionDTO
+     */
+    public FuncionDTO getFuncionDTO() {
+        return funcionDTO;
+    }
+
+    /**
+     * @param funcionDTO the funcionDTO to set
+     */
+    public void setFuncionDTO(FuncionDTO funcionDTO) {
+        this.funcionDTO = funcionDTO;
+    }
 
 }
 

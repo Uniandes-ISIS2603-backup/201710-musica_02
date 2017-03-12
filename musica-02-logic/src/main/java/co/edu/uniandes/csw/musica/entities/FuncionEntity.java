@@ -14,8 +14,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 
 /**
@@ -35,8 +37,12 @@ public class FuncionEntity implements Serializable {
     private Integer entradasDisponibles;
     @OneToMany(mappedBy = "funcion", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<ReviewEntity> reviews = new ArrayList<ReviewEntity>();
+    @OneToMany(mappedBy = "funcionEntity", cascade = CascadeType.ALL)
+    private List<ArtistaEntity> artistas = new ArrayList<ArtistaEntity>();
     @ManyToOne
     private FestivalEntity festivalEntity;
+    @OneToOne
+    private VenueEntity venueEntity;
 
     /**
      *
@@ -154,14 +160,56 @@ public class FuncionEntity implements Serializable {
      * @return the festival
      */
     public FestivalEntity getFestival() {
-        return festivalEntity;
+        return getFestivalEntity();
     }
 
     /**
      * @param festival the festival to set
      */
     public void setFestival(FestivalEntity festival) {
-        this.festivalEntity = festival;
+        this.setFestivalEntity(festival);
+    }
+
+    /**
+     * @return the artistas
+     */
+    public List<ArtistaEntity> getArtistas() {
+        return artistas;
+    }
+
+    /**
+     * @param artistas the artistas to set
+     */
+    public void setArtistas(List<ArtistaEntity> artistas) {
+        this.artistas = artistas;
+    }
+
+    /**
+     * @return the festivalEntity
+     */
+    public FestivalEntity getFestivalEntity() {
+        return festivalEntity;
+    }
+
+    /**
+     * @param festivalEntity the festivalEntity to set
+     */
+    public void setFestivalEntity(FestivalEntity festivalEntity) {
+        this.festivalEntity = festivalEntity;
+    }
+
+    /**
+     * @return the venueEntity
+     */
+    public VenueEntity getVenueEntity() {
+        return venueEntity;
+    }
+
+    /**
+     * @param venueEntity the venueEntity to set
+     */
+    public void setVenueEntity(VenueEntity venueEntity) {
+        this.venueEntity = venueEntity;
     }
 
 }
