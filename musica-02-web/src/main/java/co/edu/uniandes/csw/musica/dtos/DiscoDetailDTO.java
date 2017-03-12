@@ -35,5 +35,19 @@ public class DiscoDetailDTO extends DiscoDTO
         return super.toEntity();
     }
 
+    /**
+     * @return the artistaDTO
+     */
+    public ArtistaDTO getArtistaDTO() {
+        return artistaDTO;
+    }
+
+    /**
+     * @param artistaDTO the artistaDTO to set
+     */
+    public void setArtistaDTO(ArtistaDTO artistaDTO) {
+        this.artistaDTO = artistaDTO;
+    }
+
     
 }
