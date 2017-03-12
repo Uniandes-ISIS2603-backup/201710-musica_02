@@ -5,6 +5,7 @@
  */
 package co.edu.uniandes.csw.musica.entities;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Entity;
@@ -21,7 +22,7 @@ import javax.persistence.OneToOne;
  * @author a.echeverrir
  */
 @Entity
-public class ArtistaEntity 
+public class ArtistaEntity implements Serializable
 {
 
     //CONSTANTES DE GENERO
@@ -45,8 +46,8 @@ public class ArtistaEntity
     
     private List<DiscoEntity> discos = new ArrayList<DiscoEntity>();
     
-    @ManyToOne
-    private FuncionEntity funcionEntity;
+    @ManyToMany
+    private List<FuncionEntity> funciones = new ArrayList<FuncionEntity>();
 
     /**
      *
@@ -141,18 +142,19 @@ public class ArtistaEntity
     }
 
     /**
-     * @return the funcionEntity
+     * @return the funciones
      */
-    public FuncionEntity getFuncionEntity() {
-        return funcionEntity;
+    public List<FuncionEntity> getFunciones() {
+        return funciones;
     }
 
     /**
-     * @param funcionEntity the funcionEntity to set
+     * @param funciones the funciones to set
      */
-    public void setFuncionEntity(FuncionEntity funcionEntity) {
-        this.funcionEntity = funcionEntity;
+    public void setFunciones(List<FuncionEntity> funciones) {
+        this.funciones = funciones;
     }
+
     
     
 }

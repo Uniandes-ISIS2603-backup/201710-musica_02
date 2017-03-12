@@ -8,9 +8,11 @@ package co.edu.uniandes.csw.musica.resources;
 import co.edu.uniandes.csw.musica.dtos.FuncionDTO;
 import co.edu.uniandes.csw.musica.dtos.FuncionDetailDTO;
 import co.edu.uniandes.csw.musica.dtos.ReviewDTO;
+import co.edu.uniandes.csw.musica.dtos.VenueDTO;
 import co.edu.uniandes.csw.musica.ejbs.FuncionLogic;
 import co.edu.uniandes.csw.musica.entities.FuncionEntity;
 import co.edu.uniandes.csw.musica.entities.ReviewEntity;
+import co.edu.uniandes.csw.musica.entities.VenueEntity;
 import co.edu.uniandes.csw.musica.exceptions.BusinessLogicException;
 import java.util.ArrayList;
 import java.util.Date;
@@ -96,6 +98,12 @@ public class FuncionResource {
     @Path("{id: \\d+}/reviews")
     public List<ReviewDTO> getReviews(@PathParam("id") Long id) {
         return new FuncionDetailDTO(logic.getFuncion(id)).getReviewsDTOs();
+    }
+    
+    @Path("{id: \\d+}/venues")
+    public VenueResource getVenueResource( )
+    {
+      return new VenueResource();
     }
 
 }

@@ -5,6 +5,7 @@
  */
 package co.edu.uniandes.csw.musica.entities;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Entity;
@@ -18,14 +19,44 @@ import javax.persistence.ManyToOne;
  * @author a.echeverrir
  */
 @Entity
-public class DiscoEntity
+public class DiscoEntity implements Serializable
 {
     
     //clase cancion 
     public class Cancion
     {
             private String nombre;
-            private int duracion;
+            private Integer duracion;
+            
+        public Cancion (String nombreC, Integer duracionC)
+        {
+            nombre = nombreC;
+            duracion = duracionC;
+        }
+            
+    
+        public String getNombre() 
+        {
+        return nombre;
+        }
+
+        public void setNombre(String nombre) 
+        {
+        this.nombre = nombre;
+        }
+        
+        public Integer getDuracion() 
+        {
+        return duracion;
+        }
+
+        public void setDuracion(Integer duracion) 
+        {
+        this.duracion = duracion;
+        }
+    //termina clase cancion
+        
+            
     }
     
     @Id

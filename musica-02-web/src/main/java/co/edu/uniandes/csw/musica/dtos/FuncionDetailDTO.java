@@ -40,7 +40,22 @@ public class FuncionDetailDTO extends FuncionDTO {
     }
 
     @Override
-    public FuncionEntity toEntity() {        
+    public FuncionEntity toEntity() {  
+        FuncionEntity entity = super.toEntity();
+        entity.setFestival(festivalDTO.toEntity());
+        entity.setVenueEntity(venueDTO.toEntity());
+        List<ArtistaEntity> artistas = new ArrayList<>();
+        List<ReviewEntity> reviews = new ArrayList<>();
+        for(ArtistaDTO c: artistasDTOs)
+        {
+            artistas.add(c.toEntity());
+        }
+        for(ReviewDTO c: reviewsDTOs)
+        {
+            reviews.add(c.toEntity());
+        }
+        entity.setArtistas(artistas);
+        entity.setReviews(reviews);
         return super.toEntity();
     }
 

@@ -33,6 +33,7 @@ public class FestivalDetailDTO extends FestivalDTO
     {
         FestivalEntity entity = super.toEntity();
         entity.setCiudadEnity(getCiudadDTO().toEntity());
+        
         //entity.setVenueEntity (venueDTO.toEntity());
         return entity;
     }
