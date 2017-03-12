@@ -19,8 +19,9 @@ public class ArtistaDTO implements Serializable
 
 	private String trayectoria;
 
-	public ArtistaDTO(){
-		super();
+	public ArtistaDTO()
+        {
+            
 	}
         
         public ArtistaDTO(ArtistaEntity entity)
@@ -38,12 +39,56 @@ public class ArtistaDTO implements Serializable
            ArtistaEntity entity = new ArtistaEntity();
            
            //sets
-           entity.setId(this.id);
-           entity.setNombre(this.nombre);
-           entity.setTrayectoria(this.trayectoria);
+           entity.setId(this.getId());
+           entity.setNombre(this.getNombre());
+           entity.setTrayectoria(this.getTrayectoria());
            
            return entity;
        }
+
+    /**
+     * @return the id
+     */
+    public Long getId() {
+        return id;
+    }
+
+    /**
+     * @param id the id to set
+     */
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    /**
+     * @return the nombre
+     */
+    public String getNombre() {
+        return nombre;
+    }
+
+    /**
+     * @param nombre the nombre to set
+     */
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    /**
+     * @return the trayectoria
+     */
+    public String getTrayectoria() {
+        return trayectoria;
+    }
+
+    /**
+     * @param trayectoria the trayectoria to set
+     */
+    public void setTrayectoria(String trayectoria) {
+        this.trayectoria = trayectoria;
+    }
+       
+       
 
 }
 

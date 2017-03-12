@@ -47,7 +47,14 @@ public class VenuePersistence
         em.remove(entity);
     }
 
-
+    public VenueEntity agregarVenueFuncion(Long venID, Long funID)
+    {
+        TypedQuery<VenueEntity> q =  em.createQuery("UPDATE FuncionEntity u SET u.venueEntity = :venID WHERE u.id = : funId", VenueEntity.class);
+        q = q.setParameter("venID", venID).setParameter("funId", funID);
+        q.executeUpdate();
+        return q.getSingleResult();
+        
+    }
 
     
     

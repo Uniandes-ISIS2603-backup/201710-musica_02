@@ -60,5 +60,14 @@ public class FuncionPersistence {
         List<FuncionEntity> funEsPaga = q.getResultList();
         return funEsPaga;
     }
+    
+    public FuncionEntity agregarVenue(Long venID, Long funID)
+    {
+        TypedQuery<FuncionEntity> q =  em.createQuery("UPDATE FuncionEntity u SET u.venueEntity = :venID WHERE u.id = : funId", FuncionEntity.class);
+        q = q.setParameter("venID", venID).setParameter("funId", funID);
+        q.executeUpdate();
+        return q.getSingleResult();
+        
+    }
 
 }

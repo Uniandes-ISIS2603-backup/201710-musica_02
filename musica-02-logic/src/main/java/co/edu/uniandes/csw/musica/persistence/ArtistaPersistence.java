@@ -11,10 +11,12 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
+
 /**
  *
  * @author a.echeverrir
  */
+@Stateless
 public class ArtistaPersistence 
 {
     

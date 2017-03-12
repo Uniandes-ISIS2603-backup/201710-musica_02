@@ -4,6 +4,10 @@ import java.util.Set;
 import javax.xml.bind.annotation.XmlRootElement;
 
 import co.edu.uniandes.csw.musica.entities.ArtistaEntity;
+import co.edu.uniandes.csw.musica.entities.FuncionEntity;
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author a.echeverrir
@@ -11,41 +15,48 @@ import co.edu.uniandes.csw.musica.entities.ArtistaEntity;
 @XmlRootElement
 public class ArtistaDetailDTO extends ArtistaDTO
 {
+    
+    private List<FuncionDTO> funcionesDTOs;
+    
 	
-	private FuncionDTO funcionDTO;
-
-	
-	public ArtistaDetailDTO()
-        {
-		super();
-	}
+    public ArtistaDetailDTO()
+    {
+	super();
+    }
         
-        public ArtistaDetailDTO(ArtistaEntity entity) 
-        {
+    public ArtistaDetailDTO(ArtistaEntity entity) 
+    {
         super(entity);
-        funcionDTO = new FuncionDTO(entity.getFuncionEntity());
+        funcionesDTOs = new ArrayList<FuncionDTO>();
+        
+        for (FuncionEntity c : entity.getFunciones())
+        {
+            funcionesDTOs.add(new FuncionDTO(c));
         }
+    }
 
     @Override
-    public ArtistaEntity toEntity() 
-            
+    public ArtistaEntity toEntity()     
     {        
         return super.toEntity();
     }
 
     /**
-     * @return the funcionDTO
+     * @return the funcionesDTOs
      */
-    public FuncionDTO getFuncionDTO() {
-        return funcionDTO;
+    public List<FuncionDTO> getFuncionesDTOs() 
+    {
+        return funcionesDTOs;
     }
 
     /**
-     * @param funcionDTO the funcionDTO to set
+     * @param funcionesDTOs the funcionesDTOs to set
      */
-    public void setFuncionDTO(FuncionDTO funcionDTO) {
-        this.funcionDTO = funcionDTO;
+    public void setFuncionesDTOs(List<FuncionDTO> funcionesDTOs) {
+        this.funcionesDTOs = funcionesDTOs;
     }
+    
+    
 
 }
 
