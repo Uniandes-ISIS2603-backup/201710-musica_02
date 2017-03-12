@@ -7,6 +7,7 @@ import co.edu.uniandes.csw.musica.entities.ArtistaEntity;
 import co.edu.uniandes.csw.musica.entities.FuncionEntity;
 import java.util.ArrayList;
 import java.util.List;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
