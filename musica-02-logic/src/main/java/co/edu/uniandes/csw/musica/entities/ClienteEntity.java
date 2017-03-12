@@ -7,6 +7,7 @@ package co.edu.uniandes.csw.musica.entities;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -24,10 +25,10 @@ public class ClienteEntity implements Serializable{
     private Integer abono;
     private String documento;
     private String tipoDocumento;
-    private boolean registradoBlog;
+    private Boolean registradoBlog;
     private String nombre;
-      @OneToMany(mappedBy = "clienteEntity", cascade = CascadeType.ALL, orphanRemoval = true)
-    private ArrayList <EntradaEntity> entradas;
+    @OneToMany(mappedBy = "clienteEntity", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<EntradaEntity> entradas;
 
     public String getUsuario() {
         return Usuario;
@@ -61,7 +62,7 @@ public class ClienteEntity implements Serializable{
         this.tipoDocumento = tipoDocumento;
     }
 
-    public boolean isRegistradoBlog() {
+    public Boolean isRegistradoBlog() {
         return registradoBlog;
     }
 
@@ -77,7 +78,7 @@ public class ClienteEntity implements Serializable{
         this.nombre = nombre;
     }
 
-    public ArrayList<EntradaEntity> getEntradas() {
+    public List<EntradaEntity> getEntradas() {
         return entradas;
     }
 
