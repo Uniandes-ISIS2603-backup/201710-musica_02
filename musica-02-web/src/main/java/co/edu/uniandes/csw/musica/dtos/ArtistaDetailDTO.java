@@ -1,4 +1,7 @@
 package co.edu.uniandes.csw.musica.dtos;
+import java.util.HashSet;
+import java.util.Set;
+import javax.xml.bind.annotation.XmlRootElement;
 
 import co.edu.uniandes.csw.musica.entities.ArtistaEntity;
 import co.edu.uniandes.csw.musica.entities.FuncionEntity;
