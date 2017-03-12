@@ -16,6 +16,7 @@ import javax.persistence.TypedQuery;
  *
  * @author a.echeverrir
  */
+@Stateless
 public class DiscoPersistence 
 {
     

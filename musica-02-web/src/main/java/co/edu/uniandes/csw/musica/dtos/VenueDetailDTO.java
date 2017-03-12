@@ -10,15 +10,15 @@ import co.edu.uniandes.csw.musica.entities.VenueEntity;
 public class VenueDetailDTO extends VenueDTO
 {
 	
-	public CiudadDTO ciudadDTO;
+	private CiudadDTO ciudadDTO;
 	
-	public FestivalDTO festivalDTO;
+	private FestivalDTO festivalDTO;
 
-	public FuncionDTO funcionDTO;
+	private FuncionDTO funcionDTO;
 
 	public VenueDetailDTO()
         {
-		super();
+            super();
 	}
         
         public VenueDetailDTO(VenueEntity entity) 
@@ -34,6 +34,50 @@ public class VenueDetailDTO extends VenueDTO
     {        
         return super.toEntity();
     }
+
+    /**
+     * @return the ciudadDTO
+     */
+    public CiudadDTO getCiudadDTO() {
+        return ciudadDTO;
+    }
+
+    /**
+     * @param ciudadDTO the ciudadDTO to set
+     */
+    public void setCiudadDTO(CiudadDTO ciudadDTO) {
+        this.ciudadDTO = ciudadDTO;
+    }
+
+    /**
+     * @return the festivalDTO
+     */
+    public FestivalDTO getFestivalDTO() {
+        return festivalDTO;
+    }
+
+    /**
+     * @param festivalDTO the festivalDTO to set
+     */
+    public void setFestivalDTO(FestivalDTO festivalDTO) {
+        this.festivalDTO = festivalDTO;
+    }
+
+    /**
+     * @return the funcionDTO
+     */
+    public FuncionDTO getFuncionDTO() {
+        return funcionDTO;
+    }
+
+    /**
+     * @param funcionDTO the funcionDTO to set
+     */
+    public void setFuncionDTO(FuncionDTO funcionDTO) {
+        this.funcionDTO = funcionDTO;
+    }
+    
+    
 
 }
 
