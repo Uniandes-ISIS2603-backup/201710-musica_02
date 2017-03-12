@@ -21,7 +21,7 @@ public class ClienteEntity implements Serializable{
     
     @Id
     private String Usuario;
-    private int abono;
+    private Integer abono;
     private String documento;
     private String tipoDocumento;
     private boolean registradoBlog;
@@ -37,7 +37,7 @@ public class ClienteEntity implements Serializable{
         this.Usuario = Usuario;
     }
 
-    public int getAbono() {
+    public Integer getAbono() {
         return abono;
     }
 
