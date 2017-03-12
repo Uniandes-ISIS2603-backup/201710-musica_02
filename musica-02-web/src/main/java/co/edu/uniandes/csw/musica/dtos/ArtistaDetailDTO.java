@@ -1,6 +1,7 @@
 package co.edu.uniandes.csw.musica.dtos;
 import java.util.HashSet;
 import java.util.Set;
+import javax.xml.bind.annotation.XmlRootElement;
 
 
 /**
@@ -8,7 +9,7 @@ import java.util.Set;
  * <!--  end-user-doc  -->
  * @generated
  */
-
+@XmlRootElement
 public class ArtistaDetailDTO extends ArtistaDTO
 {
 	/**
