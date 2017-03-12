@@ -18,9 +18,8 @@ public class VenueDetailDTO extends VenueDTO
 
 	public VenueDetailDTO()
         {
-		super();
-	}
-        
+
+        }
         public VenueDetailDTO(VenueEntity entity) 
         {
         super(entity);
@@ -32,6 +31,10 @@ public class VenueDetailDTO extends VenueDTO
     @Override
     public VenueEntity toEntity() 
     {        
+        VenueEntity entity = super.toEntity();
+        entity.setFestivalEntity(festivalDTO.toEntity());
+        entity.setCiudadEntity(ciudadDTO.toEntity());
+        entity.setFuncionEntity(funcionDTO.toEntity());
         return super.toEntity();
     }
 

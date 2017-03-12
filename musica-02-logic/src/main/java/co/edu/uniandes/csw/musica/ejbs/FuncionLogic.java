@@ -50,6 +50,9 @@ public class FuncionLogic {
    {
        persistence.delete(id);
    }
-   
+   public FuncionEntity agregarVenueEntity(Long funID, Long venueID)
+   {
+       return persistence.agregarVenue(venueID, funID);
+   }
     
 }

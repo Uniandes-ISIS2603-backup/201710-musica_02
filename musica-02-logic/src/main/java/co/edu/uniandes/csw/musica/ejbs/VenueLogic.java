@@ -41,4 +41,8 @@ public class VenueLogic {
    {
        persistence.delete(id);
    }
+   public VenueEntity agregarVenueFuncion(Long venueID, Long funID)
+   {
+       return persistence.agregarVenueFuncion(venueID, funID);
+   }
 }
