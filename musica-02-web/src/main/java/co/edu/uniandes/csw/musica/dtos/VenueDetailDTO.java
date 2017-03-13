@@ -1,6 +1,5 @@
 package co.edu.uniandes.csw.musica.dtos;
 
-
 import co.edu.uniandes.csw.musica.entities.VenueEntity;
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -21,8 +20,7 @@ public class VenueDetailDTO extends VenueDTO {
         super();
     }
 
-    public VenueDetailDTO(VenueEntity entity)
-    {
+    public VenueDetailDTO(VenueEntity entity) {
         super(entity);
         ciudadDTO = new CiudadDTO(entity.getCiudadEntity());
         festivalDTO = new FestivalDTO(entity.getFestivalEntity());
@@ -32,7 +30,7 @@ public class VenueDetailDTO extends VenueDTO {
     @Override
     public VenueEntity toEntity() {
         VenueEntity entity = super.toEntity();
-
+        
         if (festivalDTO != null) {
             entity.setFestivalEntity(festivalDTO.toEntity());
         }
@@ -87,8 +85,5 @@ public class VenueDetailDTO extends VenueDTO {
     public void setFuncionDTO(FuncionDTO funcionDTO) {
         this.funcionDTO = funcionDTO;
     }
-    
-    
-    
-}
 
+}
