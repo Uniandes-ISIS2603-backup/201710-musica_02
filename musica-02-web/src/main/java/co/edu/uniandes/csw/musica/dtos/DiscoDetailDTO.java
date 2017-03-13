@@ -33,8 +33,16 @@ public class DiscoDetailDTO extends DiscoDTO
     }
 
     @Override
-    public DiscoEntity toEntity() {        
-        return super.toEntity();
+    public DiscoEntity toEntity() 
+    {
+        DiscoEntity entity = super.toEntity();
+        
+        if(artistaDTO != null)
+        {
+            entity.setArtistaEntity(artistaDTO.toEntity());
+        }
+        
+        return entity;
     }
 
     /**
