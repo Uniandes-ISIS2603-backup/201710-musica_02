@@ -1,7 +1,5 @@
 package co.edu.uniandes.csw.musica.dtos;
 
-
-
 import co.edu.uniandes.csw.musica.entities.ArtistaEntity;
 import co.edu.uniandes.csw.musica.entities.FuncionEntity;
 import co.edu.uniandes.csw.musica.entities.ReviewEntity;
@@ -23,9 +21,10 @@ public class FuncionDetailDTO extends FuncionDTO {
     private FestivalDTO festivalDTO;
     private List<ArtistaDTO> artistasDTOs;
     private VenueDTO venueDTO;
+
     public FuncionDetailDTO() {
         super();
-        
+
     }
 
     public FuncionDetailDTO(FuncionEntity entity) {
@@ -34,31 +33,39 @@ public class FuncionDetailDTO extends FuncionDTO {
         festivalDTO = new FestivalDTO(entity.getFestival());
         artistasDTOs = new ArrayList<ArtistaDTO>();
         venueDTO = new VenueDTO(entity.getVenueEntity());
-        
-        for(ReviewEntity rev : entity.getReviews())
+
+        for (ReviewEntity rev : entity.getReviews()) {
             reviewsDTOs.add(new ReviewDTO(rev));
-        for (ArtistaEntity c : entity.getArtistas())
+        }
+        for (ArtistaEntity c : entity.getArtistas()) {
             artistasDTOs.add(new ArtistaDTO(c));
+        }
     }
 
     @Override
-    public FuncionEntity toEntity() {  
-        
+    public FuncionEntity toEntity() {
+
         FuncionEntity entity = super.toEntity();
-        entity.setFestival(festivalDTO.toEntity());
-        entity.setVenueEntity(venueDTO.toEntity());
+        if (festivalDTO != null) {
+            entity.setFestival(festivalDTO.toEntity());
+        }
+        if (venueDTO != null) {
+            entity.setVenueEntity(venueDTO.toEntity());
+        }
         List<ArtistaEntity> artistas = new ArrayList<>();
         List<ReviewEntity> reviews = new ArrayList<>();
-        for(ArtistaDTO c: artistasDTOs)
-        {
+        if(artistasDTOs != null){
+        for (ArtistaDTO c : artistasDTOs) {
             artistas.add(c.toEntity());
         }
-        for(ReviewDTO c: reviewsDTOs)
-        {
+        entity.setArtistas(artistas);
+        }
+        if(reviewsDTOs != null){
+        for (ReviewDTO c : reviewsDTOs) {
             reviews.add(c.toEntity());
         }
-        entity.setArtistas(artistas);
         entity.setReviews(reviews);
+        }
         return entity;
     }
 
@@ -73,14 +80,13 @@ public class FuncionDetailDTO extends FuncionDTO {
      * @param reviewsDTOs the reviewsDTOs to set
      */
     public void setReviewsDTOs(List<ReviewDTO> reviewsDTOs) {
-        
+
         this.reviewsDTOs = reviewsDTOs;
     }
-    
-    
-    public List<ReviewDTO> addReviewsDTOs(ReviewDTO dto){
+
+    public List<ReviewDTO> addReviewsDTOs(ReviewDTO dto) {
         reviewsDTOs.add(dto);
-        
+
         return reviewsDTOs;
     }
 

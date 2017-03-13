@@ -28,7 +28,7 @@ public class VenueEntity implements Serializable
     private String nombre;
     private String tipo;
     private Integer capacidadMax;
-    private String Direccion;
+    private String direccion;
     
     @ManyToOne
     private CiudadEntity ciudadEntity;
@@ -121,21 +121,21 @@ public class VenueEntity implements Serializable
      * @return the Direccion
      */
     public String getDireccion() {
-        return Direccion;
+        return direccion;
     }
 
     /**
      * @param Direccion the Direccion to set
      */
     public void setDireccion(String Direccion) {
-        this.Direccion = Direccion;
+        this.direccion = Direccion;
     }
 
     /**
      * @return the ciudadEntity
      */
-    public CiudadEntity getCiudadEntity() {
-        return ciudadEntity;
+   public CiudadEntity getCiudadEntity() {
+       return ciudadEntity;
     }
 
     /**

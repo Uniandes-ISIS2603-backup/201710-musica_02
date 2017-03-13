@@ -1,46 +1,51 @@
+/**
+ * @author ca.anzola
+ */
 package co.edu.uniandes.csw.musica.dtos;
+
 import co.edu.uniandes.csw.musica.entities.CiudadEntity;
-import java.util.HashSet;
-import java.util.Set;
+import co.edu.uniandes.csw.musica.entities.FestivalEntity;
+import co.edu.uniandes.csw.musica.entities.VenueEntity;
+import java.util.List;
 import javax.xml.bind.annotation.XmlRootElement;
 
-/**
- * <!-- begin-user-doc -->
- * <!--  end-user-doc  -->
- * @generated
- */
-
 @XmlRootElement
-public class CiudadDetailDTO extends CiudadDTO
+public class CiudadDetailDTO extends CiudadDTO 
 {
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
-	 */
-	
-        
+    private List<FestivalDTO> festivales;
+    private List<VenueDTO> venues;
+    
+    public CiudadDetailDTO() 
+    {
+        super();
+    }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 */
-	public CiudadDetailDTO()
+    /*
+     * Crea un objeto CiudadDTO a partir de un objeto CiudadEntity
+     * @param entity Entidad CiudadEntity desde la cual se va a crear el nuevo objeto.
+     */
+    public CiudadDetailDTO(CiudadEntity entity) 
+    {
+        super(entity);
+        List<FestivalEntity> listaDeFestivales =  entity.getFestivales();
+        for(FestivalEntity festival : listaDeFestivales)
         {
-	   super();
-	}
-
-        public CiudadDetailDTO(CiudadEntity entity)
-        {
-	   super(entity);
-	}
-        
-        @Override
-        public CiudadEntity toEntity() 
-        {
-           CiudadEntity entity = super.toEntity();
-           return entity;
+            this.festivales.add(new FestivalDTO(festival));
         }
+        List<VenueEntity> listaDeVenues =  entity.getVenues();
+        for(VenueEntity venue : listaDeVenues)
+        {
+            this.venues.add(new VenueDTO(venue));
+        }
+    }
+
+   /*
+    * Convierte un objeto CiudadDetailDTO a CiudadEntity
+    * @return un objeto de tipo CiudadEntity.
+    */
+    @Override
+    public CiudadEntity toEntity() {
+        CiudadEntity entity = super.toEntity();
+        return entity;
+    }
 }

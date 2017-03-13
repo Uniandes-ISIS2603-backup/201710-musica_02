@@ -23,11 +23,11 @@ public class FestivalDetailDTO extends FestivalDTO
         funcionesDTOs = new ArrayList<>();
         for(FuncionEntity funcion: entity.getFuncionesEntities())
         {
-         funcionesDTOs.add(new FuncionDTO (funcion));
+        funcionesDTOs.add(new FuncionDTO (funcion));
         }
         venuesDTOs = new ArrayList<>();
         for(VenueEntity venue: entity.getVenuesEnities())
-        {
+       {
          venuesDTOs.add(new VenueDTO (venue));
         }
     }
@@ -37,18 +37,23 @@ public class FestivalDetailDTO extends FestivalDTO
         FestivalEntity entity = super.toEntity();
         if(ciudadDTO != null)
         entity.setCiudadEnity(ciudadDTO.toEntity());
+        if(funcionesDTOs !=null){
         ArrayList <FuncionEntity> funciones = new ArrayList<> ();
-        for(FuncionDTO funcion: getFuncionesDTOs())
+        for(FuncionDTO funcion: funcionesDTOs)
         {
          funciones.add(funcion.toEntity());
         }
         entity.setFuncionesEntities(funciones);
+        }
+        if(venuesDTOs!=null)
+        {
          ArrayList <VenueEntity> venues = new ArrayList<> ();
-        for(VenueDTO venue: getVenuesDTOs())
+        for(VenueDTO venue: venuesDTOs)
         {
          venues.add(venue.toEntity());
         }
-        entity.setFuncionesEntities(funciones);
+        entity.setVenuesEnities(venues);
+        }
         return entity;
     }
 
@@ -63,7 +68,7 @@ public class FestivalDetailDTO extends FestivalDTO
      * @param ciudadDTO the ciudadDTO to set
      */
     public void setCiudadDTO(CiudadDTO ciudadDTO) {
-        this.ciudadDTO = ciudadDTO;
+       this.ciudadDTO = ciudadDTO;
     }
 
     /**
