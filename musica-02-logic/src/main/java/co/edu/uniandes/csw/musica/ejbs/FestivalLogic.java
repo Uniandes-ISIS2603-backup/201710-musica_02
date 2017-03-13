@@ -34,10 +34,11 @@ public class FestivalLogic {
     }
     public FestivalEntity createFestival (FestivalEntity festival) throws BusinessLogicException
     {
-        //FestivalEntity entity = persistence.find(festival.getId());
+        FestivalEntity entity = persistence.find(festival.getId());
+        if(entity != null)
         return persistence.create(festival);
         // Puede que nunca la lance pues el Id es autogenerado
-        //else throw new BusinessLogicException ("Ya existe un festival con ese Id");
+        else throw new BusinessLogicException ("Ya existe un festival con ese Id");
     }
     
 }

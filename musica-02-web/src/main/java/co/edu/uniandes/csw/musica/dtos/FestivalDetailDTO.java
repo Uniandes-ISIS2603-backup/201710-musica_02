@@ -10,7 +10,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class FestivalDetailDTO extends FestivalDTO
 {
     private CiudadDTO ciudadDTO;
-   private ArrayList <VenueDTO> venuesDTOs;
+    private ArrayList <VenueDTO> venuesDTOs;
     private ArrayList<FuncionDTO> funcionesDTOs;
     public FestivalDetailDTO ()
     {
