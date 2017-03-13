@@ -51,4 +51,6 @@ public class EntradaResource {
     {
         return listEntity2DTO(logic.getEntradaParam(id));
     } 
+    
+    
 }

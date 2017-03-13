@@ -5,14 +5,17 @@
  */
 package co.edu.uniandes.csw.musica.resources;
 
+import co.edu.uniandes.csw.musica.dtos.ClienteDTO;
 import co.edu.uniandes.csw.musica.dtos.ClienteDetailDTO;
 import co.edu.uniandes.csw.musica.ejbs.ClienteLogic;
 import co.edu.uniandes.csw.musica.entities.ClienteEntity;
+import co.edu.uniandes.csw.musica.exceptions.BusinessLogicException;
 import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
@@ -42,4 +45,11 @@ public class ClienteResource {
     public List<ClienteDetailDTO> getClientes() {
         return listEntity2DTO(logic.getClientes());
     }
+    
+    @POST
+    public ClienteDetailDTO create(ClienteDetailDTO dto) throws BusinessLogicException {
+         return new ClienteDetailDTO(dto.toEntity());   
+    }
+    
+    
 }

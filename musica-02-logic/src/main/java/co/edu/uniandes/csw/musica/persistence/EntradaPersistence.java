@@ -34,7 +34,7 @@ public class EntradaPersistence {
         return allEntradas;
     }
     
-    public List<EntradaEntity> findAllParaCliente(String usuario) {
+    public List<EntradaEntity> findByCliente(String usuario) {
          TypedQuery<EntradaEntity> q = em.createQuery("select u from EntradaEntity u where u.cliente = :usuario", EntradaEntity.class);
         q = q.setParameter("usuario", usuario);
         List<EntradaEntity> entradas = q.getResultList();

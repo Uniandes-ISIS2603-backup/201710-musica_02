@@ -31,7 +31,7 @@ public class EntradaLogic {
     }
     
     public List<EntradaEntity> getEntradaParam(String usuario) {
-        return persistence.findAllParaCliente(usuario);
+        return persistence.findByCliente(usuario);
     }
     
     public ClienteEntity getCliente(Long id) {

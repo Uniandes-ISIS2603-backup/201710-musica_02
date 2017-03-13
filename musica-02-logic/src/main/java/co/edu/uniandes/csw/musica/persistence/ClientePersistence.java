@@ -47,5 +47,20 @@ public class ClientePersistence {
         em.remove(entity);
     }
     
+    public ClienteEntity findByUsuario(String usuario){
+        TypedQuery<ClienteEntity> q
+                = em.createQuery("select u from ClienteEntity u where u.usaurio = :usuario", ClienteEntity.class);
+        q = q.setParameter("usuario", usuario);
+        
+       List<ClienteEntity> sameUsuario = q.getResultList();
+        if (sameUsuario.isEmpty() ) {
+            return null; 
+        } else {
+            return sameUsuario.get(0);
+        }
+    }
+    
+    
+    
     
 }

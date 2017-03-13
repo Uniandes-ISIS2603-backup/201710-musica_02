@@ -4,8 +4,8 @@
  * and open the template in the editor.
  */
 package co.edu.uniandes.csw.musica.ejbs;
-
 import co.edu.uniandes.csw.musica.entities.ClienteEntity;
+import co.edu.uniandes.csw.musica.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.musica.persistence.ClientePersistence;
 import java.util.List;
 import javax.ejb.Stateless;
@@ -37,5 +37,15 @@ public class ClienteLogic {
    {
        persistence.delete(usuario);
    }
+   public ClienteEntity createCliente(ClienteEntity entity) throws BusinessLogicException{
+       if(persistence.findByUsuario(entity.getUsuario()) != null){
+           throw new BusinessLogicException("Ya hay un cliente con ese usuario");
+       }
+       else{
+           return persistence.create(entity);
+       }
+   } 
+   
+   
     
 }
