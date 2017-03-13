@@ -16,10 +16,12 @@ import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.PathParam;
+import javax.ws.rs.QueryParam;
 
 
 /**
@@ -59,12 +61,15 @@ public class ClienteResource {
     public ClienteDetailDTO getClienteByUser(@PathParam("usuario")String usuario)throws BusinessLogicException {
         return new ClienteDetailDTO(logic.getByUsuario(usuario));
     }
+    
     @POST
     public ClienteDetailDTO create(ClienteDetailDTO dto) throws BusinessLogicException {
-         return new ClienteDetailDTO(dto.toEntity());   
+         return new ClienteDetailDTO(logic.createCliente(dto.toEntity()));   
     }
-    
-    
-    
-    
+    @PUT
+    @Path("{usuario: \\d+}")
+    public ClienteDetailDTO alterarAbono(@PathParam("usuario")String usuario,@QueryParam("abono") int abono, ClienteDetailDTO dto){
+        dto.setAbono(abono);
+        return new ClienteDetailDTO(logic.updateCliente(dto.toEntity()));
+    }
 }
