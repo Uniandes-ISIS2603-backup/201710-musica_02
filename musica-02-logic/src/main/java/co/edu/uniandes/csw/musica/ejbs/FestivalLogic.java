@@ -34,6 +34,7 @@ public class FestivalLogic {
     }
     public FestivalEntity createFestival (FestivalEntity festival) throws BusinessLogicException
     {
+        
         return persistence.create(festival);
     }
     

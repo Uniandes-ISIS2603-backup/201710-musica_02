@@ -44,7 +44,8 @@ public class FestivalPersistence {
         return allFestivals;
     }
 
-    public FestivalEntity create(FestivalEntity entity) throws BusinessLogicException {
+    public FestivalEntity create(FestivalEntity entity)  {
+        System.out.println("co.edu.uniandes.csw.musica.persistence.FestivalPersistence.create() " +entity.getNombre()+entity.getFechaFin() );
         em.persist(entity); 
         return entity;
         
