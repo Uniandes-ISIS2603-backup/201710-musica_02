@@ -7,10 +7,15 @@ package co.edu.uniandes.csw.musica.resources;
 
 import co.edu.uniandes.csw.musica.dtos.FuncionDTO;
 import co.edu.uniandes.csw.musica.dtos.FuncionDetailDTO;
+import co.edu.uniandes.csw.musica.dtos.ReviewDTO;
+import co.edu.uniandes.csw.musica.dtos.VenueDTO;
 import co.edu.uniandes.csw.musica.ejbs.FuncionLogic;
 import co.edu.uniandes.csw.musica.entities.FuncionEntity;
+import co.edu.uniandes.csw.musica.entities.ReviewEntity;
+import co.edu.uniandes.csw.musica.entities.VenueEntity;
 import co.edu.uniandes.csw.musica.exceptions.BusinessLogicException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import javax.inject.Inject;
 import javax.servlet.http.HttpServlet;
@@ -22,6 +27,7 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 
@@ -52,28 +58,52 @@ public class FuncionResource {
     public List<FuncionDetailDTO> getFunciones() {
         System.out.println("hola");
         return listEntity2DTO(logic.getFunciones());
-          
     }
 
+    @GET
+    @Path("/fechas")
+    public List<FuncionDetailDTO> getFuncionesFecha(@QueryParam("fecha") Date fecha) {
+        System.out.println(fecha);
+        return listEntity2DTO(logic.getFuncionesFecha(fecha));
+    }
+   @GET
+     @Path("/pagas")
+    public List<FuncionDetailDTO> getFuncionesPagas(@QueryParam("esPaga") Boolean esPaga) {
+        System.out.println(esPaga);
+        return listEntity2DTO(logic.getFuncionesEsPaga(esPaga));
+    }
+
+   
     @POST
     public FuncionDetailDTO createFuncion(FuncionDTO dto) throws BusinessLogicException {
         FuncionEntity fun = logic.createFuncion(dto.toEntity());
         return new FuncionDetailDTO(fun);
     }
+
     @PUT
-   @Path("{id: \\d+}")
-    public FuncionDetailDTO updateFuncion(@PathParam("id") Long id, FuncionDTO dto)
-    {
+    @Path("{id: \\d+}")
+    public FuncionDetailDTO updateFuncion(@PathParam("id") Long id, FuncionDTO dto) {
         FuncionEntity entity = dto.toEntity();
         entity.setId(id);
-        return new FuncionDetailDTO(logic.updateFuncion(entity)); 
+        return new FuncionDetailDTO(logic.updateFuncion(entity));
     }
-    @GET 
+
+    @GET
     @Path("{id: \\d+}")
-    public FuncionDetailDTO getFuncion(@PathParam("id") Long id)
-    {
+    public FuncionDetailDTO getFuncion(@PathParam("id") Long id) {
         return new FuncionDetailDTO(logic.getFuncion(id));
     }
+
+    @GET
+    @Path("{id: \\d+}/reviews")
+    public List<ReviewDTO> getReviews(@PathParam("id") Long id) {
+        return new FuncionDetailDTO(logic.getFuncion(id)).getReviewsDTOs();
+    }
     
+    @Path("{id: \\d+}/venues")
+    public VenueResource getVenueResource( )
+    {
+      return new VenueResource();
+    }
 
 }

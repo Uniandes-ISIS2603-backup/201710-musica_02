@@ -6,6 +6,7 @@
 package co.edu.uniandes.csw.musica.persistence;
 
 import co.edu.uniandes.csw.musica.entities.FuncionEntity;
+import java.util.Date;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -19,7 +20,7 @@ import javax.persistence.TypedQuery;
 @Stateless
 public class FuncionPersistence {
 
-    @PersistenceContext(unitName ="musicaPU")
+    @PersistenceContext(unitName = "musicaPU")
     protected EntityManager em;
 
     public FuncionEntity find(Long id) {
@@ -45,4 +46,28 @@ public class FuncionPersistence {
         FuncionEntity entity = em.find(FuncionEntity.class, id);
         em.remove(entity);
     }
+
+    public List<FuncionEntity> findAllFecha(Date fecha) {
+        TypedQuery<FuncionEntity> q = em.createQuery("SELECT u FROM FuncionEntity u WHERE u.fecha LIKE :hola", FuncionEntity.class);
+        q = q.setParameter("hola", fecha);
+        List<FuncionEntity> funcFecha = q.getResultList();
+        return funcFecha;
+    }
+
+    public List<FuncionEntity> findAllEsPaga(Boolean esPaga) {
+        TypedQuery<FuncionEntity> q = em.createQuery("SELECT u FROM FuncionEntity u WHERE u.esPaga LIKE :hola", FuncionEntity.class);
+        q = q.setParameter("hola", esPaga);
+        List<FuncionEntity> funEsPaga = q.getResultList();
+        return funEsPaga;
+    }
+    
+    public FuncionEntity agregarVenue(Long venID, Long funID)
+    {
+        TypedQuery<FuncionEntity> q =  em.createQuery("UPDATE FuncionEntity u SET u.venueEntity = :venID WHERE u.id = : funId", FuncionEntity.class);
+        q = q.setParameter("venID", venID).setParameter("funId", funID);
+        q.executeUpdate();
+        return q.getSingleResult();
+        
+    }
+
 }

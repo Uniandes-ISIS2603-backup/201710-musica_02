@@ -20,7 +20,7 @@ import javax.persistence.TypedQuery;
 @Stateless
 public class FestivalPersistence {
 
-    @PersistenceContext(unitName = "musicaPU")
+    @PersistenceContext(unitName = "musica")
     protected EntityManager em;
 
     public FestivalEntity find(Long id) {

@@ -5,10 +5,41 @@
  */
 package co.edu.uniandes.csw.musica.ejbs;
 
+import co.edu.uniandes.csw.musica.entities.ArtistaEntity;
+import co.edu.uniandes.csw.musica.persistence.ArtistaPersistence;
+import java.util.List;
+import javax.ejb.Stateless;
+import javax.inject.Inject;
+
 /**
  *
- * @author p.salazar12
+ * @author a.echeverrir
  */
-public class ArtistaLogic {
+@Stateless
+public class ArtistaLogic 
+{
+    
+    @Inject private ArtistaPersistence persistence;
+   
+   public List<ArtistaEntity> getArtistas()
+   {
+       return persistence.findAll();
+   }
+   public ArtistaEntity getArtista(Long id)
+   {
+       return persistence.find(id);
+   }
+   public ArtistaEntity createArtista(ArtistaEntity entity)
+   {
+       return persistence.create(entity);
+   }
+   public ArtistaEntity updateArtista(ArtistaEntity entity)
+   {
+       return persistence.update(entity);
+   }
+   public void deleteArtista(Long id)
+   {
+       persistence.delete(id);
+   }
     
 }

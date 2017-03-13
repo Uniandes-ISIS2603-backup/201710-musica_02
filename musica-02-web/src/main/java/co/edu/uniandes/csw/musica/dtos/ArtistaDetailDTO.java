@@ -1,33 +1,63 @@
 package co.edu.uniandes.csw.musica.dtos;
 import java.util.HashSet;
 import java.util.Set;
+import javax.xml.bind.annotation.XmlRootElement;
 
+import co.edu.uniandes.csw.musica.entities.ArtistaEntity;
+import co.edu.uniandes.csw.musica.entities.FuncionEntity;
+import java.util.ArrayList;
+import java.util.List;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
- * <!-- begin-user-doc -->
- * <!--  end-user-doc  -->
- * @generated
+ *
+ * @author a.echeverrir
  */
-
+@XmlRootElement
 public class ArtistaDetailDTO extends ArtistaDTO
 {
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
-	 */
+    
+    private List<FuncionDTO> funcionesDTOs;
+    
 	
-	public Set<FuncionDTO> funciones;
+    public ArtistaDetailDTO()
+    {
+	super();
+    }
+        
+    public ArtistaDetailDTO(ArtistaEntity entity) 
+    {
+        super(entity);
+        funcionesDTOs = new ArrayList<FuncionDTO>();
+        
+        for (FuncionEntity c : entity.getFunciones())
+        {
+            funcionesDTOs.add(new FuncionDTO(c));
+        }
+    }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 */
-	public ArtistaDetailDTO(){
-		super();
-	}
+    @Override
+    public ArtistaEntity toEntity()     
+    {        
+        return super.toEntity();
+    }
+
+    /**
+     * @return the funcionesDTOs
+     */
+    public List<FuncionDTO> getFuncionesDTOs() 
+    {
+        return funcionesDTOs;
+    }
+
+    /**
+     * @param funcionesDTOs the funcionesDTOs to set
+     */
+    public void setFuncionesDTOs(List<FuncionDTO> funcionesDTOs) {
+        this.funcionesDTOs = funcionesDTOs;
+    }
+    
+    
 
 }
 

@@ -6,12 +6,28 @@
 package co.edu.uniandes.csw.musica.dtos;
 
 import co.edu.uniandes.csw.musica.entities.ReviewEntity;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
  * @author jd.gonzaleza
  */
+@XmlRootElement
 public class ReviewDetailDTO extends ReviewDTO{
+
+    /**
+     * @return the funcionDTO
+     */
+    public FuncionDTO getFuncionDTO() {
+        return funcionDTO;
+    }
+
+    /**
+     * @param funcionDTO the funcionDTO to set
+     */
+    public void setFuncionDTO(FuncionDTO funcionDTO) {
+        this.funcionDTO = funcionDTO;
+    }
      /**
      * @generated
      */
@@ -29,7 +45,7 @@ public class ReviewDetailDTO extends ReviewDTO{
     @Override
     public ReviewEntity toEntity() {
         ReviewEntity enti = super.toEntity();
-        enti.setFuncion(funcionDTO.toEntity());
+        enti.setFuncion(getFuncionDTO().toEntity());
         return enti;
         
     }

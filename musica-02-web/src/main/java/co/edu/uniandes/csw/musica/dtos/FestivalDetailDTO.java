@@ -10,8 +10,8 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 public class FestivalDetailDTO extends FestivalDTO
 {
-    //private CiudadDTO ciudadDTO;
-   //private VenueDTO venueDTO;
+    private CiudadDTO ciudadDTO;
+   private VenueDTO venueDTO;
     private ArrayList<FuncionDTO> funcionesDTOs;
     public FestivalDetailDTO ()
     {
@@ -32,9 +32,37 @@ public class FestivalDetailDTO extends FestivalDTO
     public FestivalEntity toEntity()
     {
         FestivalEntity entity = super.toEntity();
-      //  entity.setCiudadEnity(ciudadDTO.toEntity());
-        //entity.setVenueEntity (venueDTO.toEntity());
+        entity.setCiudadEnity(getCiudadDTO().toEntity());
+        entity.setVenueEntity (venueDTO.toEntity());
         return entity;
+    }
+
+    /**
+     * @return the ciudadDTO
+     */
+    public CiudadDTO getCiudadDTO() {
+        return ciudadDTO;
+    }
+
+    /**
+     * @param ciudadDTO the ciudadDTO to set
+     */
+    public void setCiudadDTO(CiudadDTO ciudadDTO) {
+        this.ciudadDTO = ciudadDTO;
+    }
+
+    /**
+     * @return the funcionesDTOs
+     */
+    public ArrayList<FuncionDTO> getFuncionesDTOs() {
+        return funcionesDTOs;
+    }
+
+    /**
+     * @param funcionesDTOs the funcionesDTOs to set
+     */
+    public void setFuncionesDTOs(ArrayList<FuncionDTO> funcionesDTOs) {
+        this.funcionesDTOs = funcionesDTOs;
     }
 }
 

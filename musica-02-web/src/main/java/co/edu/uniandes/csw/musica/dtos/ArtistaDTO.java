@@ -1,40 +1,94 @@
 package co.edu.uniandes.csw.musica.dtos;
 
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlRootElement;
+import co.edu.uniandes.csw.musica.entities.ArtistaEntity;
+import java.io.Serializable;
 
 /**
- * <!-- begin-user-doc -->
- * <!--  end-user-doc  -->
- * @generated
+ *
+ * @author a.echeverrir
  */
-
-public class ArtistaDTO
+@XmlRootElement
+public class ArtistaDTO implements Serializable
 {
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
-	 */
-	
+    
+        private Long id;
+    
 	private String nombre;
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
-	 */
-	
 	private String trayectoria;
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 */
-	public ArtistaDTO(){
-		super();
+	public ArtistaDTO()
+        {
+            
 	}
+        
+        public ArtistaDTO(ArtistaEntity entity)
+        {
+            if(entity != null)
+            {
+                id = entity.getId();
+                nombre = entity.getNombre();
+                trayectoria = entity.getTrayectoria();
+            }
+        }
+        
+       public ArtistaEntity toEntity()
+       {
+           ArtistaEntity entity = new ArtistaEntity();
+           
+           //sets
+           entity.setId(this.getId());
+           entity.setNombre(this.getNombre());
+           entity.setTrayectoria(this.getTrayectoria());
+           
+           return entity;
+       }
+
+    /**
+     * @return the id
+     */
+    public Long getId() {
+        return id;
+    }
+
+    /**
+     * @param id the id to set
+     */
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    /**
+     * @return the nombre
+     */
+    public String getNombre() {
+        return nombre;
+    }
+
+    /**
+     * @param nombre the nombre to set
+     */
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    /**
+     * @return the trayectoria
+     */
+    public String getTrayectoria() {
+        return trayectoria;
+    }
+
+    /**
+     * @param trayectoria the trayectoria to set
+     */
+    public void setTrayectoria(String trayectoria) {
+        this.trayectoria = trayectoria;
+    }
+       
+       
 
 }
 

@@ -5,6 +5,7 @@
  */
 package co.edu.uniandes.csw.musica.ejbs;
 
+import co.edu.uniandes.csw.musica.entities.FuncionEntity;
 import co.edu.uniandes.csw.musica.entities.ReviewEntity;
 import co.edu.uniandes.csw.musica.persistence.ReviewPersistence;
 import java.util.List;
@@ -31,5 +32,9 @@ public class ReviewLogic {
     public List<ReviewEntity> getReviewsParam(Long id)
     {
         return persistence.findAllparaFuncion(id);
+    }
+
+    public FuncionEntity getFuncion(Long id) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

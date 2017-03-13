@@ -33,10 +33,10 @@ public class FestivalEntity implements Serializable
     private Date fechaInicio;
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date fechaFin;
-   // @ManyToOne
-    //private CiudadEntity ciudadEnity;
-    // @ManyToOne
-    //private VenueEntity ciudadEnity;
+    @ManyToOne
+    private CiudadEntity ciudadEnity;
+     @ManyToOne
+    private VenueEntity venueEntity;
     @OneToMany(mappedBy = "festivalEntity", cascade = CascadeType.ALL, orphanRemoval = true)
     private ArrayList <FuncionEntity> funcionesEntities;
     
@@ -100,16 +100,16 @@ public class FestivalEntity implements Serializable
     /**
      * @return the ciudadEnity
      */
-  //  public CiudadEntity getCiudadEnity() {
- //       return ciudadEnity;
-  //  }
+    public CiudadEntity getCiudadEnity() {
+        return ciudadEnity;
+    }
 
     /**
      * @param ciudadEnity the ciudadEnity to set
      */
-  //  public void setCiudadEnity(CiudadEntity ciudadEnity) {
-  //      this.ciudadEnity = ciudadEnity;
-  //  }
+    public void setCiudadEnity(CiudadEntity ciudadEnity) {
+       this.ciudadEnity = ciudadEnity;
+    }
 
     /**
      * @return the funcionesEntities
@@ -123,6 +123,20 @@ public class FestivalEntity implements Serializable
      */
     public void setFuncionesEntities(ArrayList <FuncionEntity> funcionesEntities) {
         this.funcionesEntities = funcionesEntities;
+    }
+
+    /**
+     * @return the venueEntity
+     */
+    public VenueEntity getVenueEntity() {
+        return venueEntity;
+    }
+
+    /**
+     * @param venueEntity the venueEntity to set
+     */
+    public void setVenueEntity(VenueEntity venueEntity) {
+        this.venueEntity = venueEntity;
     }
     
     
