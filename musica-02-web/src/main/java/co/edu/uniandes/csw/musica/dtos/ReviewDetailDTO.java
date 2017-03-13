@@ -6,11 +6,13 @@
 package co.edu.uniandes.csw.musica.dtos;
 
 import co.edu.uniandes.csw.musica.entities.ReviewEntity;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
  * @author jd.gonzaleza
  */
+@XmlRootElement
 public class ReviewDetailDTO extends ReviewDTO{
 
     /**

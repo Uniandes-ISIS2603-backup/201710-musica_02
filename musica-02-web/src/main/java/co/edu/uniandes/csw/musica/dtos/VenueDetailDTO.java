@@ -2,11 +2,13 @@ package co.edu.uniandes.csw.musica.dtos;
 
 
 import co.edu.uniandes.csw.musica.entities.VenueEntity;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
  * @author a.echeverrir
  */
+@XmlRootElement
 public class VenueDetailDTO extends VenueDTO
 {
 	
@@ -18,7 +20,7 @@ public class VenueDetailDTO extends VenueDTO
 
 	public VenueDetailDTO()
         {
-
+            super();
         }
         public VenueDetailDTO(VenueEntity entity) 
         {

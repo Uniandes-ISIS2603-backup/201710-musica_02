@@ -6,11 +6,13 @@
 package co.edu.uniandes.csw.musica.dtos;
 
 import co.edu.uniandes.csw.musica.entities.DiscoEntity;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
  * @author a.echeverrir
  */
+@XmlRootElement
 public class DiscoDetailDTO extends DiscoDTO
 {
 
