@@ -41,7 +41,7 @@ public class FuncionEntity implements Serializable {
     private List<ArtistaEntity> artistas = new ArrayList<ArtistaEntity>();
     @ManyToOne
     private FestivalEntity festivalEntity;
-    @OneToOne(mappedBy = "funcionEntity",cascade = CascadeType.PERSIST)
+    @OneToOne(mappedBy = "funcionEntity")
     private VenueEntity venueEntity;
 
     /**

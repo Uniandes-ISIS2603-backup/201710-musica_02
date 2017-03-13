@@ -18,7 +18,7 @@ public class CiudadEntity implements Serializable
 {
     @Id
     private String name;
-    @OneToMany(mappedBy = "ciudadEntity", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "ciudadEntity")
     private List<FestivalEntity> festivales = new ArrayList<>();
     
     @OneToMany(mappedBy = "ciudadEntity")
