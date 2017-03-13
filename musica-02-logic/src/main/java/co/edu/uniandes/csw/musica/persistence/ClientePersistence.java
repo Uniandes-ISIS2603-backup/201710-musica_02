@@ -22,10 +22,6 @@ public class ClientePersistence {
     @PersistenceContext(unitName ="musicaPU")
     protected EntityManager em;
     
-    public ClienteEntity find(String id) {
-        return em.find(ClienteEntity.class, id);
-                
-    }
     
     public List<ClienteEntity> findAll() {
         TypedQuery<ClienteEntity> q = em.createQuery("select u from ClienteEntity u", ClienteEntity.class);
@@ -46,6 +42,27 @@ public class ClientePersistence {
         ClienteEntity entity = em.find(ClienteEntity.class, id);
         em.remove(entity);
     }
+    
+    public ClienteEntity findByUsuario(String usuario){
+        TypedQuery<ClienteEntity> q
+                = em.createQuery("select u from ClienteEntity u where u.usaurio = :usuario", ClienteEntity.class);
+        q = q.setParameter("usuario", usuario);
+        
+       List<ClienteEntity> sameUsuario = q.getResultList();
+        if (sameUsuario.isEmpty() ) {
+            return null; 
+        } else {
+            return sameUsuario.get(0);
+        }
+    }
+    
+    public List<ClienteEntity> findAllAbonados() {
+        TypedQuery<ClienteEntity> q = em.createQuery("SELECT u FROM ClienteEntity u WHERE u.abono > 0 ", ClienteEntity.class);
+        List<ClienteEntity> abonados = q.getResultList();
+        return abonados;
+    }
+    
+    
     
     
 }

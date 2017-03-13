@@ -54,7 +54,7 @@ public class ReviewDetailDTO extends ReviewDTO {
         if (funcionDTO != null) {
             enti.setFuncion(getFuncionDTO().toEntity());
         }
-        if (clienteDTO != null) {
+        if (getClienteDTO() != null) {
             enti.setCliente(getClietneDTO().toEntity());
         }
 
@@ -66,13 +66,27 @@ public class ReviewDetailDTO extends ReviewDTO {
      * @return the clietneDTO
      */
     public ClienteDTO getClietneDTO() {
-        return clienteDTO;
+        return getClienteDTO();
     }
 
     /**
      * @param clietneDTO the clietneDTO to set
      */
     public void setClietneDTO(ClienteDTO clietneDTO) {
-        this.clienteDTO = clietneDTO;
+        this.setClienteDTO(clietneDTO);
+    }
+
+    /**
+     * @return the clienteDTO
+     */
+    public ClienteDTO getClienteDTO() {
+        return clienteDTO;
+    }
+
+    /**
+     * @param clienteDTO the clienteDTO to set
+     */
+    public void setClienteDTO(ClienteDTO clienteDTO) {
+        this.clienteDTO = clienteDTO;
     }
 }

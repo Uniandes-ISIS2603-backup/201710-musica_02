@@ -30,11 +30,12 @@ public class ClienteDetailDTO extends ClienteDTO
 
     public ClienteDetailDTO(ClienteEntity entity) {
         super(entity);
-        dto = new ClienteDTO();
-        reviewDTOs = new ArrayList<ReviewDTO>();
-        entradas = new ArrayList<EntradaDTO>();
-        for(EntradaEntity entrada : entity.getEntradas()){
-            entradas.add(new EntradaDTO(entrada));
+        if(entity!=null){
+            dto = new ClienteDTO();
+            entradas = new ArrayList<EntradaDTO>();
+            for(EntradaEntity entrada : entity.getEntradas()){
+                entradas.add(new EntradaDTO(entrada));
+            }
         }
         for(ReviewEntity rev : entity.getReviews())
             reviewDTOs.add(new ReviewDTO(rev));

@@ -24,8 +24,10 @@ public class EntradaDetailDTO extends EntradaDTO
     
     public EntradaDetailDTO(EntradaEntity entity) {
         super(entity);
-        funcion  = new FuncionDTO();
-        cliente = new ClienteDTO();
+        if(entity != null){
+            funcion  = new FuncionDTO();
+            cliente = new ClienteDTO();
+        }
     }
     
     @Override

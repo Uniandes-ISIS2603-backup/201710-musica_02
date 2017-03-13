@@ -29,7 +29,7 @@ import javax.ws.rs.core.MediaType;
  *
  * @author jd.gonzaleza
  */
-@Path("/revs")
+@Path("/funciones/{id}/reviews")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
 public class ReviewResource {
@@ -49,10 +49,15 @@ public class ReviewResource {
     }
     
     @GET
-    @Path("{id}")
-    public List<ReviewDetailDTO> getReviews(@PathParam("id") Long id) 
+    public List<ReviewDetailDTO> getReviews() 
     {
         System.out.println("hola");
-        return listEntity2DTO(logic.getReviewsParam(id));
+        return listEntity2DTO(logic.getReviews());
     } 
+    @POST
+    public ReviewDetailDTO createReview(ReviewDetailDTO dto)
+    {
+        ReviewEntity rev = logic.createReview(dto.toEntity());
+        return new ReviewDetailDTO(rev);
+    }
 }

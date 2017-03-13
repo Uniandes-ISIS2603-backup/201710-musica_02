@@ -96,11 +96,6 @@ public class FuncionResource {
         return new FuncionDetailDTO(logic.getFuncion(id));
     }
 
-    @GET
-    @Path("{id: \\d+}/reviews")
-    public List<ReviewDTO> getReviews(@PathParam("id") Long id) {
-        return new FuncionDetailDTO(logic.getFuncion(id)).getReviewsDTOs();
-    }
     @DELETE
     @Path("{id: \\d+}")
     public void deleteFuncion (@PathParam("id") Long id)

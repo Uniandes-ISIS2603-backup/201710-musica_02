@@ -29,7 +29,6 @@ public class ReviewEntity implements Serializable{
     private Date fecha;
     private String descripcion;
     private Integer calificacion;
-    @PodamExclude
     @ManyToOne 
     private FuncionEntity funcion;
     @ManyToOne
