@@ -1,6 +1,5 @@
 package co.edu.uniandes.csw.musica.dtos;
 
-
 import co.edu.uniandes.csw.musica.entities.VenueEntity;
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -9,35 +8,40 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author a.echeverrir
  */
 @XmlRootElement
-public class VenueDetailDTO extends VenueDTO
-{
-	
-	private CiudadDTO ciudadDTO;
-	
-	private FestivalDTO festivalDTO;
+public class VenueDetailDTO extends VenueDTO {
 
-	private FuncionDTO funcionDTO;
+    private CiudadDTO ciudadDTO;
 
-	public VenueDetailDTO()
-        {
-            super();
-        }
-        public VenueDetailDTO(VenueEntity entity) 
-        {
+    private FestivalDTO festivalDTO;
+
+    private FuncionDTO funcionDTO;
+
+    public VenueDetailDTO() {
+        super();
+    }
+
+    public VenueDetailDTO(VenueEntity entity) {
         super(entity);
         ciudadDTO = new CiudadDTO(entity.getCiudadEntity());
         festivalDTO = new FestivalDTO(entity.getFestivalEntity());
         funcionDTO = new FuncionDTO(entity.getFuncionEntity());
-        }
+    }
 
     @Override
-    public VenueEntity toEntity() 
-    {        
+    public VenueEntity toEntity() {
         VenueEntity entity = super.toEntity();
-        entity.setFestivalEntity(festivalDTO.toEntity());
-        entity.setCiudadEntity(ciudadDTO.toEntity());
-        entity.setFuncionEntity(funcionDTO.toEntity());
-        return super.toEntity();
+        
+        if (festivalDTO != null) {
+            entity.setFestivalEntity(festivalDTO.toEntity());
+        }
+        if (ciudadDTO != null) {
+            entity.setCiudadEntity(ciudadDTO.toEntity());
+        }
+        if (funcionDTO != null) {
+            entity.setFuncionEntity(funcionDTO.toEntity());
+        }
+
+        return entity;
     }
 
     /**
@@ -81,8 +85,5 @@ public class VenueDetailDTO extends VenueDTO
     public void setFuncionDTO(FuncionDTO funcionDTO) {
         this.funcionDTO = funcionDTO;
     }
-    
-    
 
 }
-

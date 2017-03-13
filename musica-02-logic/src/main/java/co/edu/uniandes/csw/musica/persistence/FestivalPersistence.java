@@ -9,8 +9,8 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import co.edu.uniandes.csw.musica.entities.FestivalEntity;
+import co.edu.uniandes.csw.musica.exceptions.BusinessLogicException;
 import java.util.List;
-import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
 /**
@@ -44,11 +44,11 @@ public class FestivalPersistence {
         return allFestivals;
     }
 
-    public FestivalEntity create(FestivalEntity entity) {
-
-        em.persist(entity);
-
+    public FestivalEntity create(FestivalEntity entity)  {
+        System.out.println("co.edu.uniandes.csw.musica.persistence.FestivalPersistence.create() " +entity.getNombre()+entity.getFechaFin() );
+        em.persist(entity); 
         return entity;
+        
     }
 
 }

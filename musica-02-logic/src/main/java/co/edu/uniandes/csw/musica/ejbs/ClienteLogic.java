@@ -25,10 +25,6 @@ public class ClienteLogic {
        return persistence.findAll();
    }
    
-   public ClienteEntity getCliente(String usuario) {
-       return persistence.find(usuario);
-   }
-   
    public ClienteEntity updateCliente(ClienteEntity entity)
    {
        return persistence.update(entity);
@@ -45,6 +41,19 @@ public class ClienteLogic {
            return persistence.create(entity);
        }
    } 
+   
+   public List<ClienteEntity> getAbonados() {
+       return persistence.findAllAbonados();
+   }
+   
+   public ClienteEntity getByUsuario(String usuario) throws BusinessLogicException{
+       if(persistence.findByUsuario(usuario)== null){
+            throw new BusinessLogicException("No hay un cliente con ese usuario");
+       }
+       else {
+           return persistence.findByUsuario(usuario);
+       }
+   }
    
    
     

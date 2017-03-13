@@ -37,19 +37,19 @@ public class FestivalResource {
     @Context
     HttpServlet http;
 
-    private List<FestivalDTO> listEntity2DTO(List<FestivalEntity> entityList) {
-        List<FestivalDTO> listDTO = new ArrayList<>();
+    private List<FestivalDetailDTO> listEntity2DTODETAIL(List<FestivalEntity> entityList) {
+        List<FestivalDetailDTO> listDTO = new ArrayList<>();
         for (FestivalEntity c : entityList) {
-            FestivalDTO est = new FestivalDTO(c);
+            FestivalDetailDTO est = new FestivalDetailDTO(c);
             listDTO.add(est);
         }
         return listDTO;
     }
     
     @GET
-    public  List<FestivalDTO> getFestivales()
+    public  List<FestivalDetailDTO> getFestivales()
     {
-        return listEntity2DTO(logic.getFestivales());
+        return listEntity2DTODETAIL(logic.getFestivales());
     }
     
     @GET
@@ -61,7 +61,9 @@ public class FestivalResource {
     @POST
     public FestivalDetailDTO createFestival (FestivalDetailDTO festival) throws BusinessLogicException 
     {
+        if(festival != null )
         return new FestivalDetailDTO(logic.createFestival(festival.toEntity()));
+        throw new BusinessLogicException("Inserte el festival a agregar.");
     }
 
 }

@@ -13,7 +13,10 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author jd.gonzaleza
  */
 @XmlRootElement
-public class ReviewDetailDTO extends ReviewDTO{
+public class ReviewDetailDTO extends ReviewDTO {
+
+    private FuncionDTO funcionDTO;
+    private ClienteDTO clienteDTO;
 
     /**
      * @return the funcionDTO
@@ -28,25 +31,48 @@ public class ReviewDetailDTO extends ReviewDTO{
     public void setFuncionDTO(FuncionDTO funcionDTO) {
         this.funcionDTO = funcionDTO;
     }
-     /**
+
+    /**
      * @generated
      */
-    private FuncionDTO funcionDTO;
+
     public ReviewDetailDTO() {
         super();
     }
 
     public ReviewDetailDTO(ReviewEntity entity) {
         super(entity);
-        funcionDTO = new FuncionDTO();
+        funcionDTO = new FuncionDTO(entity.getFuncion());
+        clienteDTO = new ClienteDTO(entity.getCliente());
 
     }
 
     @Override
     public ReviewEntity toEntity() {
+
         ReviewEntity enti = super.toEntity();
-        enti.setFuncion(getFuncionDTO().toEntity());
+        if (funcionDTO != null) {
+            enti.setFuncion(getFuncionDTO().toEntity());
+        }
+        if (clienteDTO != null) {
+            enti.setCliente(getClietneDTO().toEntity());
+        }
+
         return enti;
-        
+
+    }
+
+    /**
+     * @return the clietneDTO
+     */
+    public ClienteDTO getClietneDTO() {
+        return clienteDTO;
+    }
+
+    /**
+     * @param clietneDTO the clietneDTO to set
+     */
+    public void setClietneDTO(ClienteDTO clietneDTO) {
+        this.clienteDTO = clietneDTO;
     }
 }

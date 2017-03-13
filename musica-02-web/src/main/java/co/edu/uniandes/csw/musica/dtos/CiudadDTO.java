@@ -1,29 +1,24 @@
+/**
+ * @author ca.anzola
+ */
 package co.edu.uniandes.csw.musica.dtos;
+
 import co.edu.uniandes.csw.musica.entities.CiudadEntity;
 import java.io.Serializable;
 import javax.xml.bind.annotation.XmlRootElement;
-
-/**
- * <!-- begin-user-doc -->
- * <!--  end-user-doc  -->
- * @generated
- */
 
 @XmlRootElement
 public class CiudadDTO implements Serializable
 {
 	private String nombre;
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 */
-	public CiudadDTO()
-        {
-            
+	public CiudadDTO(){
 	}
         
+        /*
+         * Crea un objeto CiudadDTO a partir de un objeto CiudadEntity que no sea null
+         * @params entity CiudadEntity a partir de la cual se va a crear la CiudadDTO
+         */
         public CiudadDTO(CiudadEntity entity)
         {
             if(entity != null)
@@ -32,6 +27,10 @@ public class CiudadDTO implements Serializable
             }
         }
         
+        /*
+         * Convierte un objeto CiudadDTO a un CiudadEntity
+         * @return nuevo objeto de tipo CiudadEntity 
+         */
         public CiudadEntity toEntity()
         {
             CiudadEntity entity = new CiudadEntity();

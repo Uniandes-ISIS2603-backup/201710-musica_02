@@ -31,6 +31,8 @@ public class ReviewEntity implements Serializable{
     private Integer calificacion;
     @ManyToOne 
     private FuncionEntity funcion;
+    @ManyToOne
+    private ClienteEntity cliente;
     
 
     /**
@@ -101,6 +103,20 @@ public class ReviewEntity implements Serializable{
      */
     public void setFuncion(FuncionEntity funcion) {
         this.funcion = funcion;
+    }
+
+    /**
+     * @return the cliente
+     */
+    public ClienteEntity getCliente() {
+        return cliente;
+    }
+
+    /**
+     * @param cliente the cliente to set
+     */
+    public void setCliente(ClienteEntity cliente) {
+        this.cliente = cliente;
     }
     
     

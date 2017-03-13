@@ -27,8 +27,10 @@ public class ClienteEntity implements Serializable{
     private String tipoDocumento;
     private Boolean registradoBlog;
     private String nombre;
-    @OneToMany(mappedBy = "clienteEntity", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "clienteEntity")
     private List<EntradaEntity> entradas;
+    @OneToMany(mappedBy = "cliente")
+    private List<ReviewEntity> reviews;
 
     public String getUsuario() {
         return Usuario;
@@ -83,7 +85,28 @@ public class ClienteEntity implements Serializable{
     }
 
     public void setEntradas(ArrayList<EntradaEntity> entradas) {
+        this.setEntradas(entradas);
+    }
+
+    /**
+     * @param entradas the entradas to set
+     */
+    public void setEntradas(List<EntradaEntity> entradas) {
         this.entradas = entradas;
+    }
+
+    /**
+     * @return the reviews
+     */
+    public List<ReviewEntity> getReviews() {
+        return reviews;
+    }
+
+    /**
+     * @param reviews the reviews to set
+     */
+    public void setReviews(List<ReviewEntity> reviews) {
+        this.reviews = reviews;
     }
   
     

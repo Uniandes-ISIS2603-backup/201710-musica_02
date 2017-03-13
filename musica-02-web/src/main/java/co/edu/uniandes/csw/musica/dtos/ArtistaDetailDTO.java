@@ -4,6 +4,7 @@ import java.util.Set;
 import javax.xml.bind.annotation.XmlRootElement;
 
 import co.edu.uniandes.csw.musica.entities.ArtistaEntity;
+import co.edu.uniandes.csw.musica.entities.DiscoEntity;
 import co.edu.uniandes.csw.musica.entities.FuncionEntity;
 import java.util.ArrayList;
 import java.util.List;
@@ -19,6 +20,8 @@ public class ArtistaDetailDTO extends ArtistaDTO
     
     private List<FuncionDTO> funcionesDTOs;
     
+    private List<DiscoDTO> discosDTOs;
+    
 	
     public ArtistaDetailDTO()
     {
@@ -29,17 +32,46 @@ public class ArtistaDetailDTO extends ArtistaDTO
     {
         super(entity);
         funcionesDTOs = new ArrayList<FuncionDTO>();
+        discosDTOs = new ArrayList<DiscoDTO>();
         
-        for (FuncionEntity c : entity.getFunciones())
+         for (FuncionEntity c : entity.getFunciones())
         {
             funcionesDTOs.add(new FuncionDTO(c));
         }
+         for (DiscoEntity c : entity.getDiscos())
+        {
+            discosDTOs.add(new DiscoDTO(c));
+        }
+        
     }
 
     @Override
     public ArtistaEntity toEntity()     
-    {        
-        return super.toEntity();
+    {  
+        ArtistaEntity entity = super.toEntity();
+        
+        List <FuncionEntity> funciones = new ArrayList<>();
+        if(funcionesDTOs != null)
+        {
+           for (FuncionDTO c : funcionesDTOs) 
+           {
+            funciones.add(c.toEntity());
+           }
+           entity.setFunciones(funciones);
+        }
+        
+        List <DiscoEntity> discos = new ArrayList<>();
+        if( discosDTOs != null )
+        {
+            for(DiscoDTO c : discosDTOs) 
+           {
+            discos.add(c.toEntity());
+           }
+           entity.setDiscos(discos);
+            
+        }
+        
+        return entity;
     }
 
     /**
