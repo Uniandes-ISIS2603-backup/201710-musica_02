@@ -27,9 +27,9 @@ public class ClienteEntity implements Serializable{
     private String tipoDocumento;
     private Boolean registradoBlog;
     private String nombre;
-    @OneToMany(mappedBy = "clienteEntity", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "clienteEntity")
     private List<EntradaEntity> entradas;
-    @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "cliente")
     private List<ReviewEntity> reviews;
 
     public String getUsuario() {

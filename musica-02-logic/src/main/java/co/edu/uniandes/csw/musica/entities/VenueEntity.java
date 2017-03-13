@@ -134,8 +134,8 @@ public class VenueEntity implements Serializable
     /**
      * @return the ciudadEntity
      */
-    public CiudadEntity getCiudadEntity() {
-        return ciudadEntity;
+   public CiudadEntity getCiudadEntity() {
+       return ciudadEntity;
     }
 
     /**

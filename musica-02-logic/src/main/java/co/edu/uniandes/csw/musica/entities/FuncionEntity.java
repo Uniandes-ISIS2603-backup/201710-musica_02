@@ -35,7 +35,7 @@ public class FuncionEntity implements Serializable {
     private Integer duracion;
     private Boolean esPaga;
     private Integer entradasDisponibles;
-    @OneToMany(mappedBy = "funcion", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "funcion")
     private List<ReviewEntity> reviews = new ArrayList<ReviewEntity>();
     @ManyToMany(mappedBy = "funciones")
     private List<ArtistaEntity> artistas = new ArrayList<ArtistaEntity>();
