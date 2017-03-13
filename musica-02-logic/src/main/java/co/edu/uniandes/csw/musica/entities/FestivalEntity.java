@@ -35,8 +35,8 @@ public class FestivalEntity implements Serializable
     private Date fechaFin;
     @ManyToOne
     private CiudadEntity ciudadEnity;
-     @ManyToOne
-    private VenueEntity venueEntity;
+    @OneToMany(mappedBy = "festivalEntity", cascade = CascadeType.ALL, orphanRemoval = true)
+    private ArrayList <VenueEntity> venuesEnities;
     @OneToMany(mappedBy = "festivalEntity", cascade = CascadeType.ALL, orphanRemoval = true)
     private ArrayList <FuncionEntity> funcionesEntities;
     
@@ -126,18 +126,20 @@ public class FestivalEntity implements Serializable
     }
 
     /**
-     * @return the venueEntity
+     * @return the venuesEnities
      */
-    public VenueEntity getVenueEntity() {
-        return venueEntity;
+    public ArrayList <VenueEntity> getVenuesEnities() {
+        return venuesEnities;
     }
 
     /**
-     * @param venueEntity the venueEntity to set
+     * @param venuesEnities the venuesEnities to set
      */
-    public void setVenueEntity(VenueEntity venueEntity) {
-        this.venueEntity = venueEntity;
+    public void setVenuesEnities(ArrayList <VenueEntity> venuesEnities) {
+        this.venuesEnities = venuesEnities;
     }
+
+  
     
     
 }
