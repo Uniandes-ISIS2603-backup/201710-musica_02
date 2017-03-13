@@ -47,6 +47,7 @@ public class ReviewDetailDTO extends ReviewDTO{
 
     @Override
     public ReviewEntity toEntity() {
+        
         ReviewEntity enti = super.toEntity();
         enti.setFuncion(getFuncionDTO().toEntity());
         enti.setCliente(getClietneDTO().toEntity());

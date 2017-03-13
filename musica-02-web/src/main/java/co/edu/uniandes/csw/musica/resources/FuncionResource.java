@@ -78,6 +78,7 @@ public class FuncionResource {
     @POST
     public FuncionDetailDTO createFuncion(FuncionDTO dto) throws BusinessLogicException {
         FuncionEntity fun = logic.createFuncion(dto.toEntity());           
+
         return new FuncionDetailDTO(fun);
     }
 

@@ -43,6 +43,7 @@ public class FuncionDetailDTO extends FuncionDTO {
 
     @Override
     public FuncionEntity toEntity() {  
+        
         FuncionEntity entity = super.toEntity();
         entity.setFestival(festivalDTO.toEntity());
         entity.setVenueEntity(venueDTO.toEntity());
@@ -58,7 +59,7 @@ public class FuncionDetailDTO extends FuncionDTO {
         }
         entity.setArtistas(artistas);
         entity.setReviews(reviews);
-        return super.toEntity();
+        return entity;
     }
 
     /**
