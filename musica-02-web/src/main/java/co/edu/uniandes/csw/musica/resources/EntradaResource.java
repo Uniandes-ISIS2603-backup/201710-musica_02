@@ -17,6 +17,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.servlet.http.HttpServlet;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.core.Context;
 
@@ -46,11 +47,27 @@ public class EntradaResource {
     }
     
     @GET
-    @Path("{usuario}")
-    public List<EntradaDetailDTO> getEntradas(@PathParam("usuario") String id) 
-    {
-        return listEntity2DTO(logic.getEntradaParam(id));
+    public List<EntradaDetailDTO> getEntradas() {
+        return listEntity2DTO(logic.getEntradas());
+    }
+    
+    @GET
+    @Path("12/{usuario}")
+    public List<EntradaDetailDTO> getByCliente(@PathParam("usuario") String id) {
+        return listEntity2DTO(logic.getByCliente(id));
     } 
+    
+    @GET
+    @Path("234/{funcion}")
+    public List<EntradaDetailDTO> getByFuncion(@PathParam("funcion") Integer id){
+        return listEntity2DTO(logic.getByFuncion(id));
+    }
+    
+    @POST
+    public EntradaDetailDTO create(EntradaDetailDTO dto){
+        return new EntradaDetailDTO(logic.createEntrada(dto.toEntity()));
+    }
+    
     
     
 }

@@ -35,8 +35,20 @@ public class EntradaPersistence {
     }
     
     public List<EntradaEntity> findByCliente(String usuario) {
-         TypedQuery<EntradaEntity> q = em.createQuery("select u from EntradaEntity u where u.cliente = :usuario", EntradaEntity.class);
+         TypedQuery<EntradaEntity> q = em.createQuery("select u from EntradaEntity u where u.clienteEntity = :usuario", EntradaEntity.class);
         q = q.setParameter("usuario", usuario);
+        List<EntradaEntity> entradas = q.getResultList();
+        if (entradas.isEmpty() ) {
+            return null; 
+        } else {
+            //return (List<EntradaEntity>) entradas.get(0);
+            return (List<EntradaEntity>) entradas;
+        }
+    }
+    
+    public List<EntradaEntity> findByFuncion(Integer id) {
+         TypedQuery<EntradaEntity> q = em.createQuery("select u from EntradaEntity u where u.funcionEntity = :id", EntradaEntity.class);
+        q = q.setParameter("id", id);
         List<EntradaEntity> entradas = q.getResultList();
         if (entradas.isEmpty() ) {
             return null; 

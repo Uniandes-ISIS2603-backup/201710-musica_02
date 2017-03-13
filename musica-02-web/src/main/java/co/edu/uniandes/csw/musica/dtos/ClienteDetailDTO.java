@@ -19,8 +19,8 @@ public class ClienteDetailDTO extends ClienteDTO
 {
 	
 	
-    private ArrayList<EntradaDTO> entradas;
-    private ClienteDTO dto;
+    private List<EntradaDTO> entradas;
+
     private List<ReviewDTO> reviewDTOs;
 
 
@@ -30,26 +30,47 @@ public class ClienteDetailDTO extends ClienteDTO
 
     public ClienteDetailDTO(ClienteEntity entity) {
         super(entity);
-        if(entity!=null){
-            dto = new ClienteDTO();
-            entradas = new ArrayList<EntradaDTO>();
-            for(EntradaEntity entrada : entity.getEntradas()){
-                entradas.add(new EntradaDTO(entrada));
-            }
+        entradas = new ArrayList<EntradaDTO>();
+        reviewDTOs = new ArrayList<ReviewDTO>();
+        for(ReviewEntity c : entity.getReviews())
+        {
+            reviewDTOs.add(new ReviewDTO(c));
         }
-        for(ReviewEntity rev : entity.getReviews())
-            reviewDTOs.add(new ReviewDTO(rev));
+        for(EntradaEntity e : entity.getEntradas())
+        {
+            entradas.add(new EntradaDTO(e));
+        }
+        
     }
 
     @Override
     public ClienteEntity toEntity() {
-        return super.toEntity();
+        
+        ClienteEntity entity = super.toEntity();
+        List<EntradaEntity> entradasEn = new  ArrayList<>();
+        List<ReviewEntity> revs = new  ArrayList<>();
+        if(entradas != null)
+        {
+             for (EntradaDTO c : entradas) {
+            entradasEn.add(c.toEntity());
+        }
+             entity.setEntradas(entradasEn);
+        }
+        if(reviewDTOs != null)
+        {
+            for(ReviewDTO f : reviewDTOs){
+               revs.add(f.toEntity());
+            }
+            entity.setReviews(revs);
+        }
+        return entity;
+        
     }
 
     /**
      * @return the entradas
      */
-    public ArrayList<EntradaDTO> getEntradas() {
+    public List<EntradaDTO> getEntradas() {
         return entradas;
     }
 
@@ -60,20 +81,7 @@ public class ClienteDetailDTO extends ClienteDTO
         this.entradas = entradas;
     }
 
-    /**
-     * @return the dto
-     */
-    public ClienteDTO getDto() {
-        return dto;
-    }
-
-    /**
-     * @param dto the dto to set
-     */
-    public void setDto(ClienteDTO dto) {
-        this.dto = dto;
-    }
-
+   
     /**
      * @return the reviewDTOs
      */

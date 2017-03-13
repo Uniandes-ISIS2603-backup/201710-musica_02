@@ -26,8 +26,9 @@ public class ReviewPersistence {
         return em.find(ReviewEntity.class, id);
     }
 
-    public List<ReviewEntity> findAll() {
-        TypedQuery<ReviewEntity> q = em.createQuery("select u from ReviewEntity u", ReviewEntity.class);
+    public List<ReviewEntity> findAll(Long id) {
+        TypedQuery<ReviewEntity> q = em.createQuery("select u from ReviewEntity u WHERE u.funcion = :hola", ReviewEntity.class);
+        q = q.setParameter("hola", id);
         List<ReviewEntity> allReviews = q.getResultList();
         return allReviews;
     }

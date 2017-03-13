@@ -22,8 +22,8 @@ public class ReviewLogic {
     @Inject
     private ReviewPersistence persistence;
 
-    public List<ReviewEntity> getReviews() {
-        return persistence.findAll();
+    public List<ReviewEntity> getReviews(Long id) {
+        return persistence.findAll(id);
     }
 
     public ReviewEntity createReview(ReviewEntity entity) {

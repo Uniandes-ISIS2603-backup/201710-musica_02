@@ -30,8 +30,12 @@ public class EntradaLogic {
         return persistence.create(entity);
     }
     
-    public List<EntradaEntity> getEntradaParam(String usuario) {
+    public List<EntradaEntity> getByCliente(String usuario) {
         return persistence.findByCliente(usuario);
+    }
+    
+    public List<EntradaEntity> getByFuncion(Integer id) {
+        return persistence.findByFuncion(id);
     }
     
     public ClienteEntity getCliente(Long id) {
