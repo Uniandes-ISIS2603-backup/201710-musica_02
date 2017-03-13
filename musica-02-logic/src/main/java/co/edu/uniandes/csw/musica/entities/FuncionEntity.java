@@ -37,11 +37,11 @@ public class FuncionEntity implements Serializable {
     private Integer entradasDisponibles;
     @OneToMany(mappedBy = "funcion", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<ReviewEntity> reviews = new ArrayList<ReviewEntity>();
-    @ManyToMany(mappedBy = "funciones", cascade = CascadeType.ALL)
+    @ManyToMany(mappedBy = "funciones")
     private List<ArtistaEntity> artistas = new ArrayList<ArtistaEntity>();
     @ManyToOne
     private FestivalEntity festivalEntity;
-    @OneToOne
+    @OneToOne(mappedBy = "funcionEntity")
     private VenueEntity venueEntity;
 
     /**
