@@ -35,7 +35,7 @@ public class FestivalEntity implements Serializable
     private Date fechaFin;
     @ManyToOne
     private CiudadEntity ciudadEnity;
-    @OneToMany(mappedBy = "festivalEntity", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "festivalEntity")
     private ArrayList <VenueEntity> venuesEnities;
     @OneToMany(mappedBy = "festivalEntity", cascade = CascadeType.ALL, orphanRemoval = true)
     private ArrayList <FuncionEntity> funcionesEntities;
