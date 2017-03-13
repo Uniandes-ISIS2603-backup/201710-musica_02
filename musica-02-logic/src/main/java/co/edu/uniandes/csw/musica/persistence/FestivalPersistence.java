@@ -44,7 +44,6 @@ public class FestivalPersistence {
     }
 
     public FestivalEntity create(FestivalEntity entity) {
-
         em.persist(entity); 
         return entity;
     }

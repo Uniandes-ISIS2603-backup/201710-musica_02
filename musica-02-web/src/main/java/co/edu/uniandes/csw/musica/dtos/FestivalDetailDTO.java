@@ -35,7 +35,8 @@ public class FestivalDetailDTO extends FestivalDTO
     public FestivalEntity toEntity()
     {
         FestivalEntity entity = super.toEntity();
-        entity.setCiudadEnity(getCiudadDTO().toEntity());
+        if(ciudadDTO != null)
+        entity.setCiudadEnity(ciudadDTO.toEntity());
         ArrayList <FuncionEntity> funciones = new ArrayList<> ();
         for(FuncionDTO funcion: getFuncionesDTOs())
         {
