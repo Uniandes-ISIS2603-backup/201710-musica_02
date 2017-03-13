@@ -9,6 +9,7 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import co.edu.uniandes.csw.musica.entities.FestivalEntity;
+import co.edu.uniandes.csw.musica.exceptions.BusinessLogicException;
 import java.util.List;
 import javax.persistence.TypedQuery;
 
@@ -43,9 +44,10 @@ public class FestivalPersistence {
         return allFestivals;
     }
 
-    public FestivalEntity create(FestivalEntity entity) {
+    public FestivalEntity create(FestivalEntity entity) throws BusinessLogicException {
         em.persist(entity); 
         return entity;
+        
     }
 
 }

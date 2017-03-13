@@ -23,11 +23,11 @@ public class FestivalDetailDTO extends FestivalDTO
         funcionesDTOs = new ArrayList<>();
         for(FuncionEntity funcion: entity.getFuncionesEntities())
         {
-         funcionesDTOs.add(new FuncionDTO (funcion));
+        funcionesDTOs.add(new FuncionDTO (funcion));
         }
         venuesDTOs = new ArrayList<>();
         for(VenueEntity venue: entity.getVenuesEnities())
-        {
+       {
          venuesDTOs.add(new VenueDTO (venue));
         }
     }
