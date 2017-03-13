@@ -20,7 +20,7 @@ public class CiudadDetailDTO extends CiudadDTO
 	 * @ordered
 	 */
 	
-	public Set<FestivalDTO> festival;
+        
 
 	/**
 	 * <!-- begin-user-doc -->

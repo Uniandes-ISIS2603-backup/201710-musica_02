@@ -2,6 +2,7 @@ package co.edu.uniandes.csw.musica.dtos;
 
 import co.edu.uniandes.csw.musica.entities.EntradaEntity;
 import co.edu.uniandes.csw.musica.entities.FuncionEntity;
+import javax.xml.bind.annotation.XmlRootElement;
 
 
 /**
@@ -9,7 +10,7 @@ import co.edu.uniandes.csw.musica.entities.FuncionEntity;
  * <!--  end-user-doc  -->
  * @generated
  */
-
+@XmlRootElement
 public class EntradaDetailDTO extends EntradaDTO
 {
 

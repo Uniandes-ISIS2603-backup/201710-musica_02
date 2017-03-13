@@ -100,10 +100,5 @@ public class FuncionResource {
         return new FuncionDetailDTO(logic.getFuncion(id)).getReviewsDTOs();
     }
     
-    @Path("{id: \\d+}/venues")
-    public VenueResource getVenueResource( )
-    {
-      return new VenueResource();
-    }
-
+   
 }

@@ -1,6 +1,7 @@
 package co.edu.uniandes.csw.musica.dtos;
 import co.edu.uniandes.csw.musica.entities.ClienteEntity;
 import co.edu.uniandes.csw.musica.entities.EntradaEntity;
+import co.edu.uniandes.csw.musica.entities.ReviewEntity;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -20,6 +21,7 @@ public class ClienteDetailDTO extends ClienteDTO
 	
     private ArrayList<EntradaDTO> entradas;
     private ClienteDTO dto;
+    private List<ReviewDTO> reviewDTOs;
 
 
     public ClienteDetailDTO(){
@@ -29,10 +31,13 @@ public class ClienteDetailDTO extends ClienteDTO
     public ClienteDetailDTO(ClienteEntity entity) {
         super(entity);
         dto = new ClienteDTO();
+        reviewDTOs = new ArrayList<ReviewDTO>();
         entradas = new ArrayList<EntradaDTO>();
         for(EntradaEntity entrada : entity.getEntradas()){
             entradas.add(new EntradaDTO(entrada));
         }
+        for(ReviewEntity rev : entity.getReviews())
+            reviewDTOs.add(new ReviewDTO(rev));
     }
 
     @Override
@@ -66,6 +71,20 @@ public class ClienteDetailDTO extends ClienteDTO
      */
     public void setDto(ClienteDTO dto) {
         this.dto = dto;
+    }
+
+    /**
+     * @return the reviewDTOs
+     */
+    public List<ReviewDTO> getReviewDTOs() {
+        return reviewDTOs;
+    }
+
+    /**
+     * @param reviewDTOs the reviewDTOs to set
+     */
+    public void setReviewDTOs(List<ReviewDTO> reviewDTOs) {
+        this.reviewDTOs = reviewDTOs;
     }
 
 }
