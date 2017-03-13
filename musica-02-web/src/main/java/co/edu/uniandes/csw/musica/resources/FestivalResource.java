@@ -61,7 +61,9 @@ public class FestivalResource {
     @POST
     public FestivalDetailDTO createFestival (FestivalDetailDTO festival) throws BusinessLogicException 
     {
+        if(festival != null )
         return new FestivalDetailDTO(logic.createFestival(festival.toEntity()));
+        throw new BusinessLogicException("Inserte el festival a agregar.");
     }
 
 }
