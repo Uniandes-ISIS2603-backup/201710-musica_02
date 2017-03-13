@@ -7,12 +7,13 @@ import co.edu.uniandes.csw.musica.entities.FuncionEntity;
 import co.edu.uniandes.csw.musica.entities.ReviewEntity;
 import java.util.ArrayList;
 import java.util.List;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  * <!-- begin-user-doc -->
  * <!--  end-user-doc  --> @generated
  */
-
+@XmlRootElement
 public class FuncionDetailDTO extends FuncionDTO {
 
     /**

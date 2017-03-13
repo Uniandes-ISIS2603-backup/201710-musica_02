@@ -5,6 +5,7 @@
  */
 package co.edu.uniandes.csw.musica.entities;
 
+import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -15,10 +16,11 @@ import javax.persistence.Id;
  * @author ca.anzola
  */
 @Entity
-public class CiudadEntity {
+public class CiudadEntity implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     private String name;
 
     public String getName() {
@@ -48,5 +50,19 @@ public class CiudadEntity {
             return this.getName().hashCode();
         }
         return super.hashCode();
+    }
+
+    /**
+     * @return the id
+     */
+    public Long getId() {
+        return id;
+    }
+
+    /**
+     * @param id the id to set
+     */
+    public void setId(Long id) {
+        this.id = id;
     }
 }

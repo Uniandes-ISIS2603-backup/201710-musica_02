@@ -57,7 +57,6 @@ public class VenueResource {
     @POST
     public VenueDetailDTO createVenue(VenueDTO dto) throws BusinessLogicException {        
         VenueEntity venue = logic.createVenue(dto.toEntity());
-        logic.agregarVenueFuncion(dto.toEntity().getId(), dto.toEntity().getFuncionEntity().getId());
         return new VenueDetailDTO(venue);
     }
     

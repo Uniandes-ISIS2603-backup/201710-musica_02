@@ -10,7 +10,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import co.edu.uniandes.csw.musica.entities.FestivalEntity;
 import java.util.List;
-import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
 /**
@@ -46,8 +45,7 @@ public class FestivalPersistence {
 
     public FestivalEntity create(FestivalEntity entity) {
 
-        em.persist(entity);
-
+        em.persist(entity); 
         return entity;
     }
 

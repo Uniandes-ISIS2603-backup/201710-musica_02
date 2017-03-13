@@ -3,11 +3,13 @@ package co.edu.uniandes.csw.musica.dtos;
 import co.edu.uniandes.csw.musica.entities.FestivalEntity;
 import java.io.Serializable;
 import java.util.Date;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  * <!-- begin-user-doc -->
  * <!--  end-user-doc  --> @generated
  */
+@XmlRootElement
 public class FestivalDTO implements Serializable{
 
     private String nombre;
