@@ -20,6 +20,7 @@ import java.util.List;
 import javax.inject.Inject;
 import javax.servlet.http.HttpServlet;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import static javax.ws.rs.HttpMethod.PUT;
 import javax.ws.rs.POST;
@@ -77,6 +78,10 @@ public class FuncionResource {
     @POST
     public FuncionDetailDTO createFuncion(FuncionDetailDTO dto) throws BusinessLogicException {
         FuncionEntity fun = logic.createFuncion(dto.toEntity());
+        System.out.println("nombree VENUEEEE: "+fun.getVenueEntity().getId());
+        System.out.println("ID VENUEEEE: "+fun.getVenueEntity().getId());
+
+                
         return new FuncionDetailDTO(fun);
     }
 
@@ -99,6 +104,10 @@ public class FuncionResource {
     public List<ReviewDTO> getReviews(@PathParam("id") Long id) {
         return new FuncionDetailDTO(logic.getFuncion(id)).getReviewsDTOs();
     }
-    
-   
+    @DELETE
+    @Path("{id: \\d+}")
+    public void deleteFuncion (@PathParam("id") Long id)
+    {
+         logic.deleteFuncion(id);
+    }
 }
