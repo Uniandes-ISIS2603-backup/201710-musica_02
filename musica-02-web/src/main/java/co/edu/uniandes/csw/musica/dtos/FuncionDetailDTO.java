@@ -12,6 +12,7 @@ import java.util.List;
  * <!-- begin-user-doc -->
  * <!--  end-user-doc  --> @generated
  */
+
 public class FuncionDetailDTO extends FuncionDTO {
 
     /**
