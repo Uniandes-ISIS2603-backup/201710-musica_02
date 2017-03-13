@@ -9,7 +9,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 public class FestivalDetailDTO extends FestivalDTO
 {
-    //private CiudadDTO ciudadDTO;
+    private CiudadDTO ciudadDTO;
     private ArrayList <VenueDTO> venuesDTOs;
     private ArrayList<FuncionDTO> funcionesDTOs;
     public FestivalDetailDTO ()
@@ -19,7 +19,7 @@ public class FestivalDetailDTO extends FestivalDTO
     public FestivalDetailDTO (FestivalEntity entity)
     {
         super(entity);
-       // ciudadDTO = new CiudadDTO (entity.getCiudadEnity());
+        ciudadDTO = new CiudadDTO (entity.getCiudadEnity());
         funcionesDTOs = new ArrayList<>();
         for(FuncionEntity funcion: entity.getFuncionesEntities())
         {
@@ -35,36 +35,41 @@ public class FestivalDetailDTO extends FestivalDTO
     public FestivalEntity toEntity()
     {
         FestivalEntity entity = super.toEntity();
-     //   if(ciudadDTO != null)
-       // entity.setCiudadEnity(ciudadDTO.toEntity());
+        if(ciudadDTO != null)
+        entity.setCiudadEnity(ciudadDTO.toEntity());
+        if(funcionesDTOs !=null){
         ArrayList <FuncionEntity> funciones = new ArrayList<> ();
-        for(FuncionDTO funcion: getFuncionesDTOs())
+        for(FuncionDTO funcion: funcionesDTOs)
         {
          funciones.add(funcion.toEntity());
         }
         entity.setFuncionesEntities(funciones);
+        }
+        if(venuesDTOs!=null)
+        {
          ArrayList <VenueEntity> venues = new ArrayList<> ();
-        for(VenueDTO venue: getVenuesDTOs())
+        for(VenueDTO venue: venuesDTOs)
         {
          venues.add(venue.toEntity());
         }
-        entity.setFuncionesEntities(funciones);
+        entity.setVenuesEnities(venues);
+        }
         return entity;
     }
 
     /**
      * @return the ciudadDTO
      */
-    //public CiudadDTO getCiudadDTO() {
-   //     return ciudadDTO;
-   // }
+    public CiudadDTO getCiudadDTO() {
+        return ciudadDTO;
+    }
 
     /**
      * @param ciudadDTO the ciudadDTO to set
      */
-  //  public void setCiudadDTO(CiudadDTO ciudadDTO) {
-   //     this.ciudadDTO = ciudadDTO;
-  //  }
+    public void setCiudadDTO(CiudadDTO ciudadDTO) {
+       this.ciudadDTO = ciudadDTO;
+    }
 
     /**
      * @return the funcionesDTOs
