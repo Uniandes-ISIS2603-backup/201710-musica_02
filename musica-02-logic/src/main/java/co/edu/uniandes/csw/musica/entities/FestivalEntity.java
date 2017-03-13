@@ -33,8 +33,8 @@ public class FestivalEntity implements Serializable
     private Date fechaInicio;
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date fechaFin;
-    //@ManyToOne
-    //private CiudadEntity ciudadEnity;
+    @ManyToOne
+    private CiudadEntity ciudadEntity;
     @OneToMany(mappedBy = "festivalEntity")
     private ArrayList <VenueEntity> venuesEnities;
     @OneToMany(mappedBy = "festivalEntity", cascade = CascadeType.PERSIST, orphanRemoval = true)
