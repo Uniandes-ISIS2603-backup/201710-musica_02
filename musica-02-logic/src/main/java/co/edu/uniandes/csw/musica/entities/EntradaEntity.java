@@ -128,6 +128,5 @@ public class EntradaEntity implements Serializable {
     public void setClienteEntity(ClienteEntity clienteEntity) {
         this.clienteEntity = clienteEntity;
     }
-    
-    
+
 }

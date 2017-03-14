@@ -19,7 +19,6 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
-import javax.ws.rs.QueryParam;
 import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
@@ -60,7 +59,7 @@ public class CiudadResource
     
     @GET
     @Path("name")
-    public CiudadDetailDTO getCityByName(@QueryParam("name")String name)
+    public CiudadDetailDTO getCityByName(@PathParam("name")String name)
     {
         CiudadEntity buscada = ciudadLogic.getCityByName(name);
         if(buscada == null)
@@ -89,8 +88,8 @@ public class CiudadResource
     }
     
     @DELETE  
-    @Path("name")
-    public void deleteCity(String name)
+    @Path("/{name}")
+    public void deleteCity(@PathParam("name")String name)
     {
         ciudadLogic.deleteCity(name);
     }

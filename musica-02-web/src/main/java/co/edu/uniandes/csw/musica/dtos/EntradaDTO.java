@@ -4,14 +4,13 @@ import co.edu.uniandes.csw.musica.entities.EntradaEntity;
 import java.io.Serializable;
 import javax.xml.bind.annotation.XmlRootElement;
 
-
 /**
  * <!-- begin-user-doc -->
- * <!--  end-user-doc  -->
- * @generated
+ * <!--  end-user-doc  --> @generated
  */
 @XmlRootElement
-public class EntradaDTO implements Serializable{
+public class EntradaDTO implements Serializable {
+
     private Long id;
 
     private Integer noEntrada;
@@ -22,11 +21,11 @@ public class EntradaDTO implements Serializable{
 
     private Boolean libre;
 
-    public EntradaDTO(){
+    public EntradaDTO() {
     }
 
-    public EntradaDTO(EntradaEntity entity){
-        if(entity != null){
+    public EntradaDTO(EntradaEntity entity) {
+        if (entity != null) {
             this.id = entity.getId();
             this.noEntrada = entity.getNoEntrada();
             this.silla = entity.getSilla();
@@ -34,7 +33,7 @@ public class EntradaDTO implements Serializable{
             this.libre = entity.getLibre();
         }
     }
-    
+
     public EntradaEntity toEntity() {
         EntradaEntity e = new EntradaEntity();
         e.setId(this.getId());
@@ -115,7 +114,4 @@ public class EntradaDTO implements Serializable{
         this.libre = libre;
     }
 
-        
-
 }
-

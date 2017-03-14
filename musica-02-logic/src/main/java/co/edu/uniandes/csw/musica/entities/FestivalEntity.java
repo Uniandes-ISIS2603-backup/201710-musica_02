@@ -12,6 +12,7 @@ package co.edu.uniandes.csw.musica.entities;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -35,9 +36,10 @@ public class FestivalEntity implements Serializable
     @ManyToOne
     private CiudadEntity ciudadEntity;
     @OneToMany(mappedBy = "festivalEntity")
-    private ArrayList <VenueEntity> venuesEntities;
+    private List <VenueEntity> venuesEntities;
     @OneToMany(mappedBy = "festivalEntity")
-    private ArrayList <FuncionEntity> funcionesEntities; 
+    private List <FuncionEntity> funcionesEntities; 
+    
     
    
     /**
@@ -113,28 +115,28 @@ public class FestivalEntity implements Serializable
     /**
      * @return the funcionesEntities
      */
-    public ArrayList <FuncionEntity> getFuncionesEntities() {
+    public List <FuncionEntity> getFuncionesEntities() {
         return funcionesEntities;
     }
 
     /**
      * @param funcionesEntities the funcionesEntities to set
      */
-    public void setFuncionesEntities(ArrayList <FuncionEntity> funcionesEntities) {
+    public void setFuncionesEntities(List <FuncionEntity> funcionesEntities) {
         this.funcionesEntities = funcionesEntities;
     }
 
     /**
      * @return the venuesEnities
      */
-    public ArrayList <VenueEntity> getVenuesEntities() {
+    public List <VenueEntity> getVenuesEntities() {
         return venuesEntities;
     }
 
     /**
      * @param venuesEnities the venuesEnities to set
      */
-    public void setVenuesEntities(ArrayList <VenueEntity> venuesEnities) {
+    public void setVenuesEntities(List <VenueEntity> venuesEnities) {
         this.venuesEntities = venuesEnities;
     }
 
