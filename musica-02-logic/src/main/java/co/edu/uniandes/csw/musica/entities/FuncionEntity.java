@@ -40,7 +40,7 @@ public class FuncionEntity implements Serializable {
     private List<ReviewEntity> reviews = new ArrayList<ReviewEntity>();
     @ManyToMany(fetch = FetchType.LAZY)
     private List<ArtistaEntity> artistas = new ArrayList<ArtistaEntity>();
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     private FestivalEntity festivalEntity;
     @ManyToOne
     private VenueEntity venueEntity;
