@@ -6,7 +6,6 @@
 package co.edu.uniandes.csw.musica.entities;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -17,8 +16,8 @@ import javax.persistence.OneToMany;
  * @author p.salazar12
  */
 @Entity
-public class ClienteEntity implements Serializable{
-    
+public class ClienteEntity implements Serializable {
+
     @Id
     private String Usuario;
     private Integer abono;
@@ -83,10 +82,6 @@ public class ClienteEntity implements Serializable{
         return entradas;
     }
 
-    public void setEntradas(ArrayList<EntradaEntity> entradas) {
-        this.setEntradas(entradas);
-    }
-
     /**
      * @param entradas the entradas to set
      */
@@ -107,6 +102,5 @@ public class ClienteEntity implements Serializable{
     public void setReviews(List<ReviewEntity> reviews) {
         this.reviews = reviews;
     }
-  
-    
+
 }

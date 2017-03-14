@@ -7,7 +7,9 @@ package co.edu.uniandes.csw.musica.resources;
 
 import co.edu.uniandes.csw.musica.dtos.EntradaDetailDTO;
 import co.edu.uniandes.csw.musica.ejbs.EntradaLogic;
+import co.edu.uniandes.csw.musica.ejbs.FuncionLogic;
 import co.edu.uniandes.csw.musica.entities.EntradaEntity;
+import co.edu.uniandes.csw.musica.exceptions.BusinessLogicException;
 import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Inject;
@@ -19,24 +21,25 @@ import javax.servlet.http.HttpServlet;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PathParam;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Context;
-
 
 /**
  *
  * @author p.salazar12
  */
-
 @Path("/entradas")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
 public class EntradaResource {
-   
+
     @Inject
-    private EntradaLogic logic;
+    private EntradaLogic entradaLogic;
+    @Inject 
+    private FuncionLogic funcionLogic;
     @Context
     HttpServlet http;
-    
+
     private List<EntradaDetailDTO> listEntity2DTO(List<EntradaEntity> entityList) {
         List<EntradaDetailDTO> listDTO = new ArrayList<>();
         for (EntradaEntity c : entityList) {
@@ -45,29 +48,28 @@ public class EntradaResource {
         }
         return listDTO;
     }
-    
+
     @GET
     public List<EntradaDetailDTO> getEntradas() {
-        return listEntity2DTO(logic.getEntradas());
+        return listEntity2DTO(entradaLogic.getEntradas());
     }
-    
+
     @GET
     @Path("usuario/{usuario}")
-    public List<EntradaDetailDTO> getByCliente(@PathParam("usuario") String id) {
-        return listEntity2DTO(logic.getByCliente(id));
-    } 
-    
+    public List<EntradaDetailDTO> getByCliente(@PathParam("usuario") String usuario) {
+        return listEntity2DTO(entradaLogic.getByCliente(usuario));
+    }
+
     @GET
     @Path("funcion/{funcion}")
-    public List<EntradaDetailDTO> getByFuncion(@PathParam("funcion") Long id){
-        return listEntity2DTO(logic.getByFuncion(id));
+    public List<EntradaDetailDTO> getByFuncion(@PathParam("funcion") Long id) {
+        return listEntity2DTO(entradaLogic.getByFuncion(id));
     }
-    
+
     @POST
-    public EntradaDetailDTO create(EntradaDetailDTO dto){
-        return new EntradaDetailDTO(logic.createEntrada(dto.toEntity()));
+    public EntradaDetailDTO create(EntradaDetailDTO dto) throws BusinessLogicException {
+        funcionLogic.agregarEntrada(dto.toEntity());
+        return new EntradaDetailDTO(entradaLogic.createEntrada(dto.toEntity()));
     }
-    
-    
-    
+
 }

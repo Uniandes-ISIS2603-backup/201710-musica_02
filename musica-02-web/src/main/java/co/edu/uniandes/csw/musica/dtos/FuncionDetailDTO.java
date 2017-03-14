@@ -1,6 +1,7 @@
 package co.edu.uniandes.csw.musica.dtos;
 
 import co.edu.uniandes.csw.musica.entities.ArtistaEntity;
+import co.edu.uniandes.csw.musica.entities.EntradaEntity;
 import co.edu.uniandes.csw.musica.entities.FuncionEntity;
 import co.edu.uniandes.csw.musica.entities.ReviewEntity;
 import java.util.ArrayList;
@@ -20,6 +21,7 @@ public class FuncionDetailDTO extends FuncionDTO {
     private List<ReviewDTO> reviewsDTOs;
     private FestivalDTO festivalDTO;
     private List<ArtistaDTO> artistasDTOs;
+    private List<EntradaDTO> entradaDTOs;
     private VenueDTO venueDTO;
 
     public FuncionDetailDTO() {
@@ -32,6 +34,7 @@ public class FuncionDetailDTO extends FuncionDTO {
         reviewsDTOs = new ArrayList<ReviewDTO>();
         festivalDTO = new FestivalDTO(entity.getFestival());
         artistasDTOs = new ArrayList<ArtistaDTO>();
+        entradaDTOs = new ArrayList<EntradaDTO>();
         venueDTO = new VenueDTO(entity.getVenueEntity());
 
         for (ReviewEntity rev : entity.getReviews()) {
@@ -69,6 +72,14 @@ public class FuncionDetailDTO extends FuncionDTO {
                 reviews.add(c.toEntity());
             }
             entity.setReviews(reviews);
+        }
+        
+        if (entradaDTOs != null) {
+            List<EntradaEntity> entradas = new ArrayList<EntradaEntity>();
+            for (EntradaDTO c : entradaDTOs) {
+                entradas.add(c.toEntity());
+            }
+            entity.setEntradas(entradas);
         }
         return entity;
     }

@@ -5,6 +5,7 @@
  */
 package co.edu.uniandes.csw.musica.persistence;
 
+import co.edu.uniandes.csw.musica.entities.EntradaEntity;
 import co.edu.uniandes.csw.musica.entities.FuncionEntity;
 import java.util.Date;
 import java.util.List;
@@ -68,6 +69,13 @@ public class FuncionPersistence {
         q.executeUpdate();
         return q.getSingleResult();
         
+    }
+    
+    public FuncionEntity agregarEntrada(Long entID, Long funID) {
+        TypedQuery<FuncionEntity> q =  em.createQuery("UPDATE FuncionEntity u SET u.entradaEntity = :venID WHERE u.id = : funId", FuncionEntity.class);
+        q = q.setParameter("entID", entID).setParameter("funId", funID);
+        q.executeUpdate();
+        return q.getSingleResult();
     }
 
 }
