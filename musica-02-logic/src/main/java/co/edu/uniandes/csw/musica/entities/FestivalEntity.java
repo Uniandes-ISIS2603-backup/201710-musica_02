@@ -36,12 +36,12 @@ public class FestivalEntity implements Serializable
     @ManyToOne
     private CiudadEntity ciudadEntity;
     @OneToMany(mappedBy = "festivalEntity")
-    private List <VenueEntity> venuesEntities;
+    private List <VenueEntity> venuesEntities = new ArrayList <VenueEntity>();
     @OneToMany(mappedBy = "festivalEntity")
-    private List <FuncionEntity> funcionesEntities; 
-    
+    private List <FuncionEntity> funcionesEntities = new ArrayList <FuncionEntity> (); 
     
    
+    
     /**
      * @return the id
      */
