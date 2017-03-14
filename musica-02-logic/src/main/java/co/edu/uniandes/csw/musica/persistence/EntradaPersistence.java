@@ -46,7 +46,7 @@ public class EntradaPersistence {
         }
     }
     
-    public List<EntradaEntity> findByFuncion(Integer id) {
+    public List<EntradaEntity> findByFuncion(Long id) {
          TypedQuery<EntradaEntity> q = em.createQuery("select u from EntradaEntity u where u.funcionEntity = :id", EntradaEntity.class);
         q = q.setParameter("id", id);
         List<EntradaEntity> entradas = q.getResultList();

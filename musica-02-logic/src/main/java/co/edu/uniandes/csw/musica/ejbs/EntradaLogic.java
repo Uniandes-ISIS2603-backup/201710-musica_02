@@ -34,7 +34,7 @@ public class EntradaLogic {
         return persistence.findByCliente(usuario);
     }
     
-    public List<EntradaEntity> getByFuncion(Integer id) {
+    public List<EntradaEntity> getByFuncion(Long id) {
         return persistence.findByFuncion(id);
     }
     

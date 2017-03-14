@@ -48,14 +48,14 @@ public class FuncionPersistence {
     }
 
     public List<FuncionEntity> findAllFecha(Date fecha) {
-        TypedQuery<FuncionEntity> q = em.createQuery("SELECT u FROM FuncionEntity u WHERE u.fecha LIKE :hola", FuncionEntity.class);
+        TypedQuery<FuncionEntity> q = em.createQuery("SELECT u FROM FuncionEntity u WHERE u.fecha = :hola", FuncionEntity.class);
         q = q.setParameter("hola", fecha);
         List<FuncionEntity> funcFecha = q.getResultList();
         return funcFecha;
     }
 
     public List<FuncionEntity> findAllEsPaga(Boolean esPaga) {
-        TypedQuery<FuncionEntity> q = em.createQuery("SELECT u FROM FuncionEntity u WHERE u.esPaga LIKE :hola", FuncionEntity.class);
+        TypedQuery<FuncionEntity> q = em.createQuery("SELECT u FROM FuncionEntity u WHERE u.esPaga = :hola", FuncionEntity.class);
         q = q.setParameter("hola", esPaga);
         List<FuncionEntity> funEsPaga = q.getResultList();
         return funEsPaga;

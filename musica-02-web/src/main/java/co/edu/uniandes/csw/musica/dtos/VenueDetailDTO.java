@@ -1,6 +1,9 @@
 package co.edu.uniandes.csw.musica.dtos;
 
+import co.edu.uniandes.csw.musica.entities.FuncionEntity;
 import co.edu.uniandes.csw.musica.entities.VenueEntity;
+import java.util.ArrayList;
+import java.util.List;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -25,20 +28,24 @@ public class VenueDetailDTO extends VenueDTO {
         ciudadDTO = new CiudadDTO(entity.getCiudadEntity());
         festivalDTO = new FestivalDTO(entity.getFestivalEntity());
         funcionDTO = new FuncionDTO(entity.getFuncionEntity());
+        
+        
     }
 
     @Override
     public VenueEntity toEntity() {
         VenueEntity entity = super.toEntity();
         
-        if (festivalDTO != null) {
-            entity.setFestivalEntity(festivalDTO.toEntity());
+        if (getFestivalDTO() != null) {
+            entity.setFestivalEntity(getFestivalDTO().toEntity());
         }
-        if (ciudadDTO != null) {
-            entity.setCiudadEntity(ciudadDTO.toEntity());
+        if (getCiudadDTO() != null) {
+            entity.setCiudadEntity(getCiudadDTO().toEntity());
         }
-        if (funcionDTO != null) {
-            entity.setFuncionEntity(funcionDTO.toEntity());
+        List<FuncionEntity> funcionesEnti = new ArrayList<FuncionEntity>();
+        if (getFuncionDTO() != null) {
+            
+            entity.setFuncionEntity(getFuncionDTO().toEntity());
         }
 
         return entity;
@@ -85,5 +92,8 @@ public class VenueDetailDTO extends VenueDTO {
     public void setFuncionDTO(FuncionDTO funcionDTO) {
         this.funcionDTO = funcionDTO;
     }
+
+   
+    
 
 }
