@@ -39,6 +39,7 @@ public class CiudadPersistence
 
     public void delete(String name) 
     {
+        System.out.println(name);
         CiudadEntity buscada = em.find(CiudadEntity.class, name);
         if(buscada != null)
         {
