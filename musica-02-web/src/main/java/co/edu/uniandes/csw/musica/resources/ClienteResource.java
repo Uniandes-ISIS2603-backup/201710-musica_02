@@ -23,7 +23,6 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.QueryParam;
 
-
 /**
  *
  * @author p.salazar12
@@ -32,10 +31,10 @@ import javax.ws.rs.QueryParam;
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
 public class ClienteResource {
-    
+
     @Inject
     private ClienteLogic logic;
-    
+
     private List<ClienteDetailDTO> listEntity2DTO(List<ClienteEntity> entityList) {
         List<ClienteDetailDTO> listDTO = new ArrayList<>();
         for (ClienteEntity c : entityList) {
@@ -44,31 +43,32 @@ public class ClienteResource {
         }
         return listDTO;
     }
-    
+
     @GET
     public List<ClienteDetailDTO> getClientes() {
         return listEntity2DTO(logic.getClientes());
     }
-    
+
     @GET
     @Path("/abonados")
     public List<ClienteDetailDTO> getAbonados() {
         return listEntity2DTO(logic.getAbonados());
     }
-    
+
     @GET
     @Path("{usuario: \\d+}")
-    public ClienteDetailDTO getClienteByUser(@PathParam("usuario")String usuario)throws BusinessLogicException {
+    public ClienteDetailDTO getClienteByUser(@PathParam("usuario") String usuario) throws BusinessLogicException {
         return new ClienteDetailDTO(logic.getByUsuario(usuario));
     }
-    
+
     @POST
     public ClienteDetailDTO create(ClienteDetailDTO dto) throws BusinessLogicException {
-         return new ClienteDetailDTO(logic.createCliente(dto.toEntity()));   
+        return new ClienteDetailDTO(logic.createCliente(dto.toEntity()));
     }
+
     @PUT
     @Path("abonos/{usuario: \\d+}")
-    public ClienteDetailDTO alterarAbono(@PathParam("usuario")String usuario,@QueryParam("abono") int abono, ClienteDetailDTO dto){
+    public ClienteDetailDTO alterarAbono(@PathParam("usuario") String usuario, @QueryParam("abono") int abono, ClienteDetailDTO dto) {
         dto.setAbono(abono);
         return new ClienteDetailDTO(logic.updateCliente(dto.toEntity()));
     }

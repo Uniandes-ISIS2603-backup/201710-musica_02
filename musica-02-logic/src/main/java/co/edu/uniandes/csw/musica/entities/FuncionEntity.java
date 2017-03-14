@@ -38,6 +38,8 @@ public class FuncionEntity implements Serializable {
     private Integer entradasDisponibles;
     @OneToMany(mappedBy = "funcion")
     private List<ReviewEntity> reviews = new ArrayList<ReviewEntity>();
+    @OneToMany(mappedBy ="entrada")
+    private List<EntradaEntity> entradas = new ArrayList<EntradaEntity>();
     @ManyToMany(fetch = FetchType.LAZY)
     private List<ArtistaEntity> artistas = new ArrayList<ArtistaEntity>();
     @ManyToOne(fetch = FetchType.LAZY)
@@ -128,11 +130,11 @@ public class FuncionEntity implements Serializable {
     public Integer getEntradasDisponibles() {
         return entradasDisponibles;
     }
+
     /**
      * Agregar review a la lista
      */
-    public void agregarReviewaLista(ReviewEntity rev)
-    {
+    public void agregarReviewaLista(ReviewEntity rev) {
         reviews.add(rev);
     }
 
@@ -211,6 +213,18 @@ public class FuncionEntity implements Serializable {
      */
     public void setVenueEntity(VenueEntity venueEntity) {
         this.venueEntity = venueEntity;
+    }
+    
+    public List<EntradaEntity> getEntradas() {
+        return entradas;
+    }
+    
+    public void setEntradas(List<EntradaEntity> entradas) {
+        this.entradas = entradas;
+    }
+    
+    public void addEntrada(EntradaEntity entrada) {
+        entradas.add(entrada);
     }
 
 }
