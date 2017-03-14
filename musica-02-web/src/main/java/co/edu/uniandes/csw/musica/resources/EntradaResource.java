@@ -67,8 +67,8 @@ public class EntradaResource {
     }
 
     @POST
-    public EntradaDetailDTO create(@QueryParam("funcion") Long funcion,EntradaDetailDTO dto) throws BusinessLogicException {
-        funcionLogic.agregarEntrada(dto.toEntity(), funcion);
+    public EntradaDetailDTO create(EntradaDetailDTO dto) throws BusinessLogicException {
+        funcionLogic.agregarEntrada(dto.toEntity());
         return new EntradaDetailDTO(entradaLogic.createEntrada(dto.toEntity()));
     }
 
