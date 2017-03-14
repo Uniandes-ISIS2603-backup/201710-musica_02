@@ -52,14 +52,14 @@ public class EntradaResource {
     }
     
     @GET
-    @Path("12/{usuario}")
+    @Path("usuario/{usuario}")
     public List<EntradaDetailDTO> getByCliente(@PathParam("usuario") String id) {
         return listEntity2DTO(logic.getByCliente(id));
     } 
     
     @GET
-    @Path("234/{funcion}")
-    public List<EntradaDetailDTO> getByFuncion(@PathParam("funcion") Integer id){
+    @Path("funcion/{funcion}")
+    public List<EntradaDetailDTO> getByFuncion(@PathParam("funcion") Long id){
         return listEntity2DTO(logic.getByFuncion(id));
     }
     

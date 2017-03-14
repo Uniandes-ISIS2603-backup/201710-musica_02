@@ -11,6 +11,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 
@@ -34,7 +35,7 @@ public class VenueEntity implements Serializable
     private CiudadEntity ciudadEntity;
     @ManyToOne
     private FestivalEntity festivalEntity;
-    @OneToOne
+    @OneToMany
     private FuncionEntity funcionEntity;
     
     
