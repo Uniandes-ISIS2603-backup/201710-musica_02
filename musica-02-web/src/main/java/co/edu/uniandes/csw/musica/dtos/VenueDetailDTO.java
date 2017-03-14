@@ -17,7 +17,7 @@ public class VenueDetailDTO extends VenueDTO {
 
     private FestivalDTO festivalDTO;
 
-    private FuncionDTO funcionDTO;
+    private List<FuncionDTO> funcionDTOs;
 
     public VenueDetailDTO() {
         super();
@@ -27,15 +27,17 @@ public class VenueDetailDTO extends VenueDTO {
         super(entity);
         ciudadDTO = new CiudadDTO(entity.getCiudadEntity());
         festivalDTO = new FestivalDTO(entity.getFestivalEntity());
-        funcionDTO = new FuncionDTO(entity.getFuncionEntity());
-        
-        
+        funcionDTOs = new ArrayList<FuncionDTO>();
+        for (FuncionEntity c : entity.getFuncionEntity()) {
+            funcionDTOs.add(new FuncionDTO(c));
+        }
+
     }
 
     @Override
     public VenueEntity toEntity() {
         VenueEntity entity = super.toEntity();
-        
+
         if (getFestivalDTO() != null) {
             entity.setFestivalEntity(getFestivalDTO().toEntity());
         }
@@ -43,9 +45,12 @@ public class VenueDetailDTO extends VenueDTO {
             entity.setCiudadEntity(getCiudadDTO().toEntity());
         }
         List<FuncionEntity> funcionesEnti = new ArrayList<FuncionEntity>();
-        if (getFuncionDTO() != null) {
-            
-            entity.setFuncionEntity(getFuncionDTO().toEntity());
+        if (funcionDTOs != null) {
+
+            for (FuncionDTO c : funcionDTOs) {
+                funcionesEnti.add(c.toEntity());
+            }
+            entity.setFuncionEntity(funcionesEnti);
         }
 
         return entity;
@@ -80,20 +85,17 @@ public class VenueDetailDTO extends VenueDTO {
     }
 
     /**
-     * @return the funcionDTO
+     * @return the funcionDTOs
      */
-    public FuncionDTO getFuncionDTO() {
-        return funcionDTO;
+    public List<FuncionDTO> getFuncionDTOs() {
+        return funcionDTOs;
     }
 
     /**
-     * @param funcionDTO the funcionDTO to set
+     * @param funcionDTOs the funcionDTOs to set
      */
-    public void setFuncionDTO(FuncionDTO funcionDTO) {
-        this.funcionDTO = funcionDTO;
+    public void setFuncionDTOs(List<FuncionDTO> funcionDTOs) {
+        this.funcionDTOs = funcionDTOs;
     }
-
-   
-    
 
 }

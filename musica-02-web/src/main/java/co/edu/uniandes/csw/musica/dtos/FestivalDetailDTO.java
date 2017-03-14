@@ -19,26 +19,26 @@ public class FestivalDetailDTO extends FestivalDTO
     public FestivalDetailDTO (FestivalEntity entity)
     {
         super(entity);
-        ciudadDTO = new CiudadDTO (entity.getCiudadEnity());
-        funcionesDTOs = new ArrayList<>();
+        ciudadDTO = new CiudadDTO (entity.getCiudadEntity());
+        funcionesDTOs = new ArrayList<FuncionDTO>();
         for(FuncionEntity funcion: entity.getFuncionesEntities())
         {
         funcionesDTOs.add(new FuncionDTO (funcion));
         }
-        venuesDTOs = new ArrayList<>();
-        for(VenueEntity venue: entity.getVenuesEnities())
+        venuesDTOs = new ArrayList<VenueDTO>();
+        for(VenueEntity venue: entity.getVenuesEntities())
        {
          venuesDTOs.add(new VenueDTO (venue));
         }
     }
     @Override
-    public FestivalEntity toEntity()
+    public FestivalEntity toEntity() 
     {
         FestivalEntity entity = super.toEntity();
         if(ciudadDTO != null)
-        entity.setCiudadEnity(ciudadDTO.toEntity());
-        if(funcionesDTOs !=null){
-        ArrayList <FuncionEntity> funciones = new ArrayList<> ();
+        entity.setCiudadEntity(ciudadDTO.toEntity());
+        if(funcionesDTOs != null){
+        ArrayList <FuncionEntity> funciones = new ArrayList<FuncionEntity> ();
         for(FuncionDTO funcion: funcionesDTOs)
         {
          funciones.add(funcion.toEntity());
@@ -47,15 +47,17 @@ public class FestivalDetailDTO extends FestivalDTO
         }
         if(venuesDTOs!=null)
         {
-         ArrayList <VenueEntity> venues = new ArrayList<> ();
+         ArrayList <VenueEntity> venues = new ArrayList<VenueEntity> ();
         for(VenueDTO venue: venuesDTOs)
         {
          venues.add(venue.toEntity());
         }
-        entity.setVenuesEnities(venues);
+        entity.setVenuesEntities(venues);
         }
         return entity;
     }
+    
+   
 
     /**
      * @return the ciudadDTO

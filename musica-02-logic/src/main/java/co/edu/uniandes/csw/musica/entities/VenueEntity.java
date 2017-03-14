@@ -33,12 +33,12 @@ public class VenueEntity implements Serializable
     private Integer capacidadMax;
     private String direccion;
     
-    @ManyToOne
+    @ManyToOne 
     private CiudadEntity ciudadEntity;
-    @ManyToOne
+    @ManyToOne (fetch = FetchType.LAZY)
     private FestivalEntity festivalEntity;
-     @OneToOne(fetch = FetchType.LAZY)
-    private FuncionEntity funcionEntity;
+     @OneToMany(mappedBy = "venueEntity",fetch = FetchType.LAZY)
+    private List<FuncionEntity> funcionEntity;
     
     
     
@@ -165,16 +165,17 @@ public class VenueEntity implements Serializable
     /**
      * @return the funcionEntity
      */
-    public FuncionEntity getFuncionEntity() {
+    public List<FuncionEntity> getFuncionEntity() {
         return funcionEntity;
     }
 
     /**
      * @param funcionEntity the funcionEntity to set
      */
-    public void setFuncionEntity(FuncionEntity funcionEntity) {
+    public void setFuncionEntity(List<FuncionEntity> funcionEntity) {
         this.funcionEntity = funcionEntity;
     }
+
 
   
    

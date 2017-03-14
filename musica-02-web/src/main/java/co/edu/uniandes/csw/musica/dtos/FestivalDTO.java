@@ -18,7 +18,7 @@ public class FestivalDTO implements Serializable{
 
     private Date fechaFin;
 
-    private long id;
+    private Long id;
 
     public FestivalDTO() {
 
