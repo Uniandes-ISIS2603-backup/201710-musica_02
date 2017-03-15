@@ -37,7 +37,7 @@ public class VenueEntity implements Serializable
     private CiudadEntity ciudadEntity;
     @ManyToOne (fetch = FetchType.LAZY)
     private FestivalEntity festivalEntity;
-     @OneToMany(mappedBy = "venueEntity",fetch = FetchType.LAZY)
+    @OneToMany (mappedBy = "venueEntity",fetch = FetchType.LAZY)
     private List<FuncionEntity> funcionEntity;
     
     

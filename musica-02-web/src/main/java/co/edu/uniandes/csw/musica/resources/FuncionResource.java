@@ -67,17 +67,17 @@ public class FuncionResource {
         System.out.println(fecha);
         return listEntity2DTO(logic.getFuncionesFecha(fecha));
     }
-   @GET
-     @Path("/pagas")
+
+    @GET
+    @Path("/pagas")
     public List<FuncionDetailDTO> getFuncionesPagas(@QueryParam("esPaga") Boolean esPaga) {
         System.out.println(esPaga);
         return listEntity2DTO(logic.getFuncionesEsPaga(esPaga));
     }
 
-   
     @POST
     public FuncionDetailDTO createFuncion(FuncionDetailDTO dto) throws BusinessLogicException {
-        FuncionEntity fun = logic.createFuncion(dto.toEntity());           
+        FuncionEntity fun = logic.createFuncion(dto.toEntity());
 
         return new FuncionDetailDTO(fun);
     }
@@ -98,8 +98,7 @@ public class FuncionResource {
 
     @DELETE
     @Path("{id: \\d+}")
-    public void deleteFuncion (@PathParam("id") Long id)
-    {
-         logic.deleteFuncion(id);
+    public void deleteFuncion(@PathParam("id") Long id) {
+        logic.deleteFuncion(id);
     }
 }
