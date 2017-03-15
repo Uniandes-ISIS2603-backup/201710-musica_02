@@ -20,14 +20,19 @@ public class EntradaDetailDTO extends EntradaDTO {
     public EntradaDetailDTO(EntradaEntity entity) {
         super(entity);
         if (entity != null) {
-            funcion = new FuncionDTO();
-            cliente = new ClienteDTO();
+            if(entity.getFuncionEntity() != null)
+            funcion = new FuncionDTO(entity.getFuncionEntity());
+            if(entity.getClienteEntity() != null)
+            cliente = new ClienteDTO(entity.getClienteEntity());
         }
     }
 
     @Override
     public EntradaEntity toEntity() {
-        return super.toEntity();
+        EntradaEntity e = super.toEntity();
+        if(cliente != null) e.setClienteEntity(cliente.toEntity());
+        if (funcion != null)e.setFuncionEntity(funcion.toEntity());
+        return e;
     }
 
     /**

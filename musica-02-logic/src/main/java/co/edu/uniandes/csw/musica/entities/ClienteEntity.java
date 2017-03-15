@@ -6,6 +6,7 @@
 package co.edu.uniandes.csw.musica.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -47,9 +48,9 @@ public class ClienteEntity implements Serializable {
     private Boolean registradoBlog;
     private String nombre;
     @OneToMany(mappedBy = "clienteEntity")
-    private List<EntradaEntity> entradas;
+    private List<EntradaEntity> entradas = new ArrayList<>();
     @OneToMany(mappedBy = "cliente")
-    private List<ReviewEntity> reviews;
+    private List<ReviewEntity> reviews = new ArrayList <> ();
 
     public String getUsuario() {
         return Usuario;

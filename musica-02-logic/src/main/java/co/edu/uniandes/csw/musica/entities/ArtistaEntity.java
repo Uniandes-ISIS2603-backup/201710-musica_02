@@ -44,9 +44,7 @@ public class ArtistaEntity implements Serializable
     private String trayectoria;
     
     //viene de las constantes
-    private String Genero;
-    
-    private List<DiscoEntity> discos = new ArrayList<DiscoEntity>();
+    private String genero;
     
     @ManyToMany(fetch = FetchType.LAZY, mappedBy = "artistas")
     private List<FuncionEntity> funciones = new ArrayList<FuncionEntity>();
@@ -119,28 +117,14 @@ public class ArtistaEntity implements Serializable
      * @return the Genero
      */
     public String getGenero() {
-        return Genero;
+        return genero;
     }
 
     /**
      * @param Genero the Genero to set
      */
     public void setGenero(String Genero) {
-        this.Genero = Genero;
-    }
-
-    /**
-     * @return the discos
-     */
-    public List<DiscoEntity> getDiscos() {
-        return discos;
-    }
-
-    /**
-     * @param discos the discos to set
-     */
-    public void setDiscos(List<DiscoEntity> discos) {
-        this.discos = discos;
+        this.genero = Genero;
     }
 
     /**

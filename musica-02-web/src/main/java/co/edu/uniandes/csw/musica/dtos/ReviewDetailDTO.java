@@ -42,7 +42,9 @@ public class ReviewDetailDTO extends ReviewDTO {
 
     public ReviewDetailDTO(ReviewEntity entity) {
         super(entity);
+        if(entity.getFuncion() != null)
         funcionDTO = new FuncionDTO(entity.getFuncion());
+        if(entity.getCliente() != null)
         clienteDTO = new ClienteDTO(entity.getCliente());
 
     }

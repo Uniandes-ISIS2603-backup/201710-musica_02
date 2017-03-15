@@ -25,7 +25,9 @@ public class VenueDetailDTO extends VenueDTO {
 
     public VenueDetailDTO(VenueEntity entity) {
         super(entity);
+        if(entity.getCiudadEntity() != null)
         ciudadDTO = new CiudadDTO(entity.getCiudadEntity());
+        if(entity.getFestivalEntity() != null)
         festivalDTO = new FestivalDTO(entity.getFestivalEntity());
         funcionDTOs = new ArrayList<FuncionDTO>();
         for (FuncionEntity c : entity.getFuncionEntity()) {

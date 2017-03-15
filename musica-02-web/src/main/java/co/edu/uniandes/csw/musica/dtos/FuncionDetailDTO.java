@@ -33,10 +33,14 @@ public class FuncionDetailDTO extends FuncionDTO {
         super(entity);
         if (entity != null) {
             reviewsDTOs = new ArrayList<ReviewDTO>();
-            festivalDTO = new FestivalDTO(entity.getFestivalEntity());
+            if (entity.getFestivalEntity() != null) {
+                festivalDTO = new FestivalDTO(entity.getFestivalEntity());
+            }
             artistasDTOs = new ArrayList<ArtistaDTO>();
             entradaDTOs = new ArrayList<EntradaDTO>();
-            venueDTO = new VenueDTO(entity.getVenueEntity());
+            if (entity.getVenueEntity() != null) {
+                venueDTO = new VenueDTO(entity.getVenueEntity());
+            }
 
             for (ReviewEntity rev : entity.getReviews()) {
                 reviewsDTOs.add(new ReviewDTO(rev));

@@ -129,4 +129,18 @@ public class EntradaEntity implements Serializable {
         this.clienteEntity = clienteEntity;
     }
 
+    /**
+     * @return the funcionEntity
+     */
+    public FuncionEntity getFuncionEntity() {
+        return funcionEntity;
+    }
+
+    /**
+     * @param funcionEntity the funcionEntity to set
+     */
+    public void setFuncionEntity(FuncionEntity funcionEntity) {
+        this.funcionEntity = funcionEntity;
+    }
+
 }

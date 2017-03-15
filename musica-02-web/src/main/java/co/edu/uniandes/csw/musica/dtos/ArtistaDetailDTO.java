@@ -1,10 +1,6 @@
 package co.edu.uniandes.csw.musica.dtos;
-import java.util.HashSet;
-import java.util.Set;
-import javax.xml.bind.annotation.XmlRootElement;
 
 import co.edu.uniandes.csw.musica.entities.ArtistaEntity;
-import co.edu.uniandes.csw.musica.entities.DiscoEntity;
 import co.edu.uniandes.csw.musica.entities.FuncionEntity;
 import java.util.ArrayList;
 import java.util.List;
@@ -20,8 +16,6 @@ public class ArtistaDetailDTO extends ArtistaDTO
     
     private List<FuncionDTO> funcionesDTOs;
     
-    private List<DiscoDTO> discosDTOs;
-    
 	
     public ArtistaDetailDTO()
     {
@@ -32,16 +26,12 @@ public class ArtistaDetailDTO extends ArtistaDTO
     {
         super(entity);
         funcionesDTOs = new ArrayList<FuncionDTO>();
-        discosDTOs = new ArrayList<DiscoDTO>();
         
          for (FuncionEntity c : entity.getFunciones())
         {
             funcionesDTOs.add(new FuncionDTO(c));
         }
-         for (DiscoEntity c : entity.getDiscos())
-        {
-            discosDTOs.add(new DiscoDTO(c));
-        }
+         
         
     }
 
@@ -58,17 +48,6 @@ public class ArtistaDetailDTO extends ArtistaDTO
             funciones.add(c.toEntity());
            }
            entity.setFunciones(funciones);
-        }
-        
-        List <DiscoEntity> discos = new ArrayList<>();
-        if( discosDTOs != null )
-        {
-            for(DiscoDTO c : discosDTOs) 
-           {
-            discos.add(c.toEntity());
-           }
-           entity.setDiscos(discos);
-            
         }
         
         return entity;
