@@ -18,6 +18,27 @@ import javax.persistence.OneToMany;
 @Entity
 public class ClienteEntity implements Serializable {
 
+    /**
+     * @param abono the abono to set
+     */
+    public void setAbono(Integer abono) {
+        this.abono = abono;
+    }
+
+    /**
+     * @return the registradoBlog
+     */
+    public Boolean getRegistradoBlog() {
+        return registradoBlog;
+    }
+
+    /**
+     * @param registradoBlog the registradoBlog to set
+     */
+    public void setRegistradoBlog(Boolean registradoBlog) {
+        this.registradoBlog = registradoBlog;
+    }
+
     @Id
     private String Usuario;
     private Integer abono;
@@ -43,7 +64,7 @@ public class ClienteEntity implements Serializable {
     }
 
     public void setAbono(int abono) {
-        this.abono = abono;
+        this.setAbono((Integer) abono);
     }
 
     public String getDocumento() {
@@ -63,11 +84,11 @@ public class ClienteEntity implements Serializable {
     }
 
     public Boolean isRegistradoBlog() {
-        return registradoBlog;
+        return getRegistradoBlog();
     }
 
     public void setRegistradoBlog(boolean registradoBlog) {
-        this.registradoBlog = registradoBlog;
+        this.setRegistradoBlog((Boolean) registradoBlog);
     }
 
     public String getNombre() {

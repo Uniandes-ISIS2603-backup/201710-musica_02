@@ -26,8 +26,8 @@ public class EntradaEntity implements Serializable {
     private String silla;
     private Double precio;
     private Boolean libre;
-    @ManyToOne
-    private FuncionEntity funcionEntity;
+    //@ManyToOne
+    //private FuncionEntity funcionEntity;
     @ManyToOne
     private ClienteEntity clienteEntity;
 
@@ -104,16 +104,16 @@ public class EntradaEntity implements Serializable {
     /**
      * @return the funcionEntity
      */
-    public FuncionEntity getFuncionEntity() {
-        return funcionEntity;
-    }
+   // public FuncionEntity getFuncionEntity() {
+     //   return funcionEntity;
+ //   }
 
     /**
      * @param funcionEntity the funcionEntity to set
      */
-    public void setFuncionEntity(FuncionEntity funcionEntity) {
-        this.funcionEntity = funcionEntity;
-    }
+   // public void setFuncionEntity(FuncionEntity funcionEntity) {
+     //   this.funcionEntity = funcionEntity;
+   // }
 
     /**
      * @return the clienteEntity
