@@ -27,7 +27,10 @@ public class EntradaDetailDTO extends EntradaDTO {
 
     @Override
     public EntradaEntity toEntity() {
-        return super.toEntity();
+        EntradaEntity e = super.toEntity();
+        if(cliente != null) e.setClienteEntity(cliente.toEntity());
+        if (funcion != null)e.setFuncionEntity(funcion.toEntity());
+        return e;
     }
 
     /**
