@@ -31,20 +31,22 @@ public class FuncionDetailDTO extends FuncionDTO {
 
     public FuncionDetailDTO(FuncionEntity entity) {
         super(entity);
-        reviewsDTOs = new ArrayList<ReviewDTO>();
-        festivalDTO = new FestivalDTO(entity.getFestival());
-        artistasDTOs = new ArrayList<ArtistaDTO>();
-        entradaDTOs = new ArrayList<EntradaDTO>();
-        venueDTO = new VenueDTO(entity.getVenueEntity());
+        if (entity != null) {
+            reviewsDTOs = new ArrayList<ReviewDTO>();
+            festivalDTO = new FestivalDTO(entity.getFestivalEntity());
+            artistasDTOs = new ArrayList<ArtistaDTO>();
+            entradaDTOs = new ArrayList<EntradaDTO>();
+            venueDTO = new VenueDTO(entity.getVenueEntity());
 
-        for (ReviewEntity rev : entity.getReviews()) {
-            reviewsDTOs.add(new ReviewDTO(rev));
-        }
-        for (EntradaEntity rev : entity.getEntradas()) {
-            entradaDTOs.add(new EntradaDTO(rev));
-        }
-        for (ArtistaEntity c : entity.getArtistas()) {
-            artistasDTOs.add(new ArtistaDTO(c));
+            for (ReviewEntity rev : entity.getReviews()) {
+                reviewsDTOs.add(new ReviewDTO(rev));
+            }
+            for (EntradaEntity rev : entity.getEntradas()) {
+                entradaDTOs.add(new EntradaDTO(rev));
+            }
+            for (ArtistaEntity c : entity.getArtistas()) {
+                artistasDTOs.add(new ArtistaDTO(c));
+            }
         }
     }
 
@@ -54,7 +56,7 @@ public class FuncionDetailDTO extends FuncionDTO {
         FuncionEntity entity = super.toEntity();
 
         if (festivalDTO != null) {
-            entity.setFestival(festivalDTO.toEntity());
+            entity.setFestivalEntity(festivalDTO.toEntity());
         }
         if (venueDTO != null) {
             entity.setVenueEntity(venueDTO.toEntity());

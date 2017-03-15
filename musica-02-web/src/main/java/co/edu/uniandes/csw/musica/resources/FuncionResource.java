@@ -17,6 +17,8 @@ import co.edu.uniandes.csw.musica.exceptions.BusinessLogicException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.inject.Inject;
 import javax.servlet.http.HttpServlet;
 import javax.ws.rs.Consumes;
@@ -67,17 +69,17 @@ public class FuncionResource {
         System.out.println(fecha);
         return listEntity2DTO(logic.getFuncionesFecha(fecha));
     }
-   @GET
-     @Path("/pagas")
+
+    @GET
+    @Path("/pagas")
     public List<FuncionDetailDTO> getFuncionesPagas(@QueryParam("esPaga") Boolean esPaga) {
         System.out.println(esPaga);
         return listEntity2DTO(logic.getFuncionesEsPaga(esPaga));
     }
 
-   
     @POST
     public FuncionDetailDTO createFuncion(FuncionDetailDTO dto) throws BusinessLogicException {
-        FuncionEntity fun = logic.createFuncion(dto.toEntity());           
+        FuncionEntity fun = logic.createFuncion(dto.toEntity());
 
         return new FuncionDetailDTO(fun);
     }
@@ -92,14 +94,13 @@ public class FuncionResource {
 
     @GET
     @Path("{id: \\d+}")
-    public FuncionDetailDTO getFuncion(@PathParam("id") Long id) {
-        return new FuncionDetailDTO(logic.getFuncion(id));
+    public FuncionDetailDTO getFuncion(@PathParam("id") Long id) throws Exception {
+            return new FuncionDetailDTO(logic.getFuncion(id));
     }
 
     @DELETE
     @Path("{id: \\d+}")
-    public void deleteFuncion (@PathParam("id") Long id)
-    {
-         logic.deleteFuncion(id);
+    public void deleteFuncion(@PathParam("id") Long id) {
+        logic.deleteFuncion(id);
     }
 }

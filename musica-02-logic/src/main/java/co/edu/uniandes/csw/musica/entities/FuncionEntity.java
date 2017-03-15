@@ -41,9 +41,9 @@ public class FuncionEntity implements Serializable {
     private List<ReviewEntity> reviews = new ArrayList<ReviewEntity>();
     @OneToMany(mappedBy ="funcionEntity")
     private List<EntradaEntity> entradas = new ArrayList<EntradaEntity>();
-    @ManyToMany(fetch = FetchType.LAZY)
+    @ManyToMany
     private List<ArtistaEntity> artistas = new ArrayList<ArtistaEntity>();
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     private FestivalEntity festivalEntity;
     @ManyToOne
     private VenueEntity venueEntity;
@@ -161,19 +161,7 @@ public class FuncionEntity implements Serializable {
         this.reviews = reviews;
     }
 
-    /**
-     * @return the festival
-     */
-    public FestivalEntity getFestival() {
-        return getFestivalEntity();
-    }
 
-    /**
-     * @param festival the festival to set
-     */
-    public void setFestival(FestivalEntity festival) {
-        this.setFestivalEntity(festival);
-    }
 
     /**
      * @return the artistas

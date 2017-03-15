@@ -31,8 +31,11 @@ public class FuncionLogic {
         return funcionPersistence.findAll();
     }
 
-    public FuncionEntity getFuncion(Long id) {
+    public FuncionEntity getFuncion(Long id) throws Exception {
+        FuncionEntity funcion = funcionPersistence.find(id);
+        if(funcion != null )
         return funcionPersistence.find(id);
+        throw new Exception ("No existe una funcion con dicho id");
     }
 
     public List<FuncionEntity> getFuncionesFecha(Date fecha) {

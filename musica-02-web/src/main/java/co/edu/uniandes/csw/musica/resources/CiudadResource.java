@@ -53,14 +53,29 @@ public class CiudadResource
     @GET
     public List<CiudadDetailDTO> getCities()
     {
-        System.out.println("co.edu.uniandes.csw.musica.resources.CiudadResource.getCities()");
         return listEntity2DTO(ciudadLogic.getCities());
     }
     
     @GET
-    @Path("name")
+    @Path("{Id: \\d+}")
+    public CiudadDetailDTO getCity(@PathParam("Id")Long id)
+    {
+        CiudadEntity buscada = ciudadLogic.getCity(id);
+        if(buscada == null)
+        {
+            throw new WebApplicationException("La ciudad con ese id no existe", 404);
+        }
+        else
+        {
+             return new CiudadDetailDTO(buscada);
+        }
+    }
+    
+    @GET
+    @Path("{name}")
     public CiudadDetailDTO getCityByName(@PathParam("name")String name)
     {
+        System.out.println(name);
         CiudadEntity buscada = ciudadLogic.getCityByName(name);
         if(buscada == null)
         {
