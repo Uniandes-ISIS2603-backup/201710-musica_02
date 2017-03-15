@@ -12,7 +12,7 @@ package co.edu.uniandes.csw.musica.entities;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
-import javax.persistence.CascadeType;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -36,11 +36,12 @@ public class FestivalEntity implements Serializable
     @ManyToOne
     private CiudadEntity ciudadEntity;
     @OneToMany(mappedBy = "festivalEntity")
-    private ArrayList <VenueEntity> venuesEnities;
+    private List <VenueEntity> venuesEntities = new ArrayList <VenueEntity>();
     @OneToMany(mappedBy = "festivalEntity")
-    private ArrayList <FuncionEntity> funcionesEntities;
+    private List <FuncionEntity> funcionesEntities = new ArrayList <FuncionEntity> (); 
     
    
+    
     /**
      * @return the id
      */
@@ -100,43 +101,43 @@ public class FestivalEntity implements Serializable
     /**
      * @return the ciudadEnity
      */
-    public CiudadEntity getCiudadEnity() {
+    public CiudadEntity getCiudadEntity() {
        return ciudadEntity;
     }
 
     /**
      * @param ciudadEnity the ciudadEnity to set
      */
-    public void setCiudadEnity(CiudadEntity ciudadEnity) {
+    public void setCiudadEntity(CiudadEntity ciudadEnity) {
        this.ciudadEntity = ciudadEnity;
     }
 
     /**
      * @return the funcionesEntities
      */
-    public ArrayList <FuncionEntity> getFuncionesEntities() {
+    public List <FuncionEntity> getFuncionesEntities() {
         return funcionesEntities;
     }
 
     /**
      * @param funcionesEntities the funcionesEntities to set
      */
-    public void setFuncionesEntities(ArrayList <FuncionEntity> funcionesEntities) {
+    public void setFuncionesEntities(List <FuncionEntity> funcionesEntities) {
         this.funcionesEntities = funcionesEntities;
     }
 
     /**
      * @return the venuesEnities
      */
-    public ArrayList <VenueEntity> getVenuesEnities() {
-        return venuesEnities;
+    public List <VenueEntity> getVenuesEntities() {
+        return venuesEntities;
     }
 
     /**
      * @param venuesEnities the venuesEnities to set
      */
-    public void setVenuesEnities(ArrayList <VenueEntity> venuesEnities) {
-        this.venuesEnities = venuesEnities;
+    public void setVenuesEntities(List <VenueEntity> venuesEnities) {
+        this.venuesEntities = venuesEnities;
     }
 
   

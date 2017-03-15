@@ -39,7 +39,7 @@ public class FuncionEntity implements Serializable {
     
     @OneToMany(mappedBy = "funcion")
     private List<ReviewEntity> reviews = new ArrayList<ReviewEntity>();
-    @OneToMany(mappedBy ="entrada")
+    @OneToMany(mappedBy ="funcionEntity")
     private List<EntradaEntity> entradas = new ArrayList<EntradaEntity>();
     @ManyToMany(fetch = FetchType.LAZY)
     private List<ArtistaEntity> artistas = new ArrayList<ArtistaEntity>();

@@ -45,10 +45,12 @@ public class FestivalPersistence {
     }
 
     public FestivalEntity create(FestivalEntity entity)  {
-        System.out.println("co.edu.uniandes.csw.musica.persistence.FestivalPersistence.create() " +entity.getNombre()+entity.getFechaFin() );
         em.persist(entity); 
         return entity;
-        
+    }
+        public FestivalEntity update(FestivalEntity entity)  {
+        em.merge(entity); 
+        return entity;
     }
 
 }

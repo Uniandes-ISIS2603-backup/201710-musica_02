@@ -32,10 +32,13 @@ public class FestivalLogic {
         return persistence.find(id);
         else throw new BusinessLogicException ("No se ha encontrado un festival con dicho Id");
     }
-    public FestivalEntity createFestival (FestivalEntity festival) throws BusinessLogicException
+    public FestivalEntity createFestival (FestivalEntity festival) 
     {
-        
         return persistence.create(festival);
+    }
+    public FestivalEntity updateFestival (FestivalEntity festival)
+    {
+        return persistence.update(festival);
     }
     
 }
