@@ -50,9 +50,8 @@ public class ReviewResource {
     }
     
     @GET
-    public List<ReviewDetailDTO> getReviews(@QueryParam("id") Long id) 
+    public List<ReviewDetailDTO> getReviews(@PathParam("id") Long id) 
     {
-        System.out.println("hola");
         return listEntity2DTO(logic.getReviews(id));
     } 
     @POST
