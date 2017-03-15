@@ -11,6 +11,27 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 public class ClienteDTO implements Serializable {
 
+    /**
+     * @param abono the abono to set
+     */
+    public void setAbono(Integer abono) {
+        this.abono = abono;
+    }
+
+    /**
+     * @return the registradoBlog
+     */
+    public Boolean getRegistradoBlog() {
+        return registradoBlog;
+    }
+
+    /**
+     * @param registradoBlog the registradoBlog to set
+     */
+    public void setRegistradoBlog(Boolean registradoBlog) {
+        this.registradoBlog = registradoBlog;
+    }
+
     private String nombre;
     private Integer abono;
     private String documento;
@@ -72,7 +93,7 @@ public class ClienteDTO implements Serializable {
      * @param abono the abono to set
      */
     public void setAbono(int abono) {
-        this.abono = abono;
+        this.setAbono((Integer) abono);
     }
 
     /**
@@ -107,14 +128,14 @@ public class ClienteDTO implements Serializable {
      * @return the registradoBlog
      */
     public Boolean isRegistradoBlog() {
-        return registradoBlog;
+        return getRegistradoBlog();
     }
 
     /**
      * @param registradoBlog the registradoBlog to set
      */
     public void setRegistradoBlog(boolean registradoBlog) {
-        this.registradoBlog = registradoBlog;
+        this.setRegistradoBlog((Boolean) registradoBlog);
     }
 
     /**

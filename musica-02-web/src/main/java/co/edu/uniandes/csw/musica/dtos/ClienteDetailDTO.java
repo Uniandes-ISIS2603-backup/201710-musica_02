@@ -17,6 +17,13 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 public class ClienteDetailDTO extends ClienteDTO
 {
+
+    /**
+     * @param entradas the entradas to set
+     */
+    public void setEntradas(List<EntradaDTO> entradas) {
+        this.entradas = entradas;
+    }
 	
 	
     private List<EntradaDTO> entradas;
@@ -30,15 +37,17 @@ public class ClienteDetailDTO extends ClienteDTO
 
     public ClienteDetailDTO(ClienteEntity entity) {
         super(entity);
-        entradas = new ArrayList<EntradaDTO>();
-        reviewDTOs = new ArrayList<ReviewDTO>();
-        for(ReviewEntity c : entity.getReviews())
-        {
-            reviewDTOs.add(new ReviewDTO(c));
-        }
-        for(EntradaEntity e : entity.getEntradas())
-        {
-            entradas.add(new EntradaDTO(e));
+        if(entity != null){
+            entradas = new ArrayList<EntradaDTO>();
+            reviewDTOs = new ArrayList<ReviewDTO>();
+            for(ReviewEntity c : entity.getReviews())
+            {
+                reviewDTOs.add(new ReviewDTO(c));
+            }
+            for(EntradaEntity e : entity.getEntradas())
+            {
+                entradas.add(new EntradaDTO(e));
+            }
         }
         
     }
@@ -49,16 +58,16 @@ public class ClienteDetailDTO extends ClienteDTO
         ClienteEntity entity = super.toEntity();
         List<EntradaEntity> entradasEn = new  ArrayList<>();
         List<ReviewEntity> revs = new  ArrayList<>();
-        if(entradas != null)
+        if(getEntradas() != null)
         {
-             for (EntradaDTO c : entradas) {
+             for (EntradaDTO c : getEntradas()) {
             entradasEn.add(c.toEntity());
         }
              entity.setEntradas(entradasEn);
         }
-        if(reviewDTOs != null)
+        if(getReviewDTOs() != null)
         {
-            for(ReviewDTO f : reviewDTOs){
+            for(ReviewDTO f : getReviewDTOs()){
                revs.add(f.toEntity());
             }
             entity.setReviews(revs);
@@ -78,7 +87,7 @@ public class ClienteDetailDTO extends ClienteDTO
      * @param entradas the entradas to set
      */
     public void setEntradas(ArrayList<EntradaDTO> entradas) {
-        this.entradas = entradas;
+        this.setEntradas(entradas);
     }
 
    
