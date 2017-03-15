@@ -6,7 +6,6 @@ package co.edu.uniandes.csw.musica.entities;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -17,6 +16,8 @@ import javax.persistence.OneToMany;
 public class CiudadEntity implements Serializable
 {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     private String name;
     @OneToMany(mappedBy = "ciudadEntity")
     private List<FestivalEntity> festivales = new ArrayList<>();
@@ -32,6 +33,16 @@ public class CiudadEntity implements Serializable
     public void setName(String newName) 
     {
         this.name = newName;
+    }
+    
+    public Long getId()
+    {
+        return id;
+    }
+    
+    public void setId(Long newId)
+    {
+        this.id = newId;
     }
     
     public List<FestivalEntity> getFestivales()
