@@ -24,17 +24,22 @@ public class CiudadLogic
         return persistence.finAll();
     }
     
+    public CiudadEntity getCity(Long id)
+    {
+        return persistence.find(id);
+    }
+    
     public CiudadEntity getCityByName(String nameOfCity)
     {
-        return persistence.find(nameOfCity);
+        return persistence.findByName(nameOfCity);
     }
 
     public CiudadEntity createCity(CiudadEntity ciudadEntity) throws BusinessLogicException 
     {
-        CiudadEntity ciudadBuscada = persistence.find(ciudadEntity.getName());
+        CiudadEntity ciudadBuscada = persistence.find(ciudadEntity.getId());
         if(ciudadBuscada != null)
         {
-            throw new BusinessLogicException("Ya existe una ciudad con el nombre " + ciudadBuscada.getName());
+            throw new BusinessLogicException("Ya existe una ciudad con el id " + ciudadBuscada.getId());
         }
         else
         {

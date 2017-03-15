@@ -47,7 +47,10 @@ public class FestivalPersistence {
     public FestivalEntity create(FestivalEntity entity)  {
         em.persist(entity); 
         return entity;
-        
+    }
+        public FestivalEntity update(FestivalEntity entity)  {
+        em.merge(entity); 
+        return entity;
     }
 
 }

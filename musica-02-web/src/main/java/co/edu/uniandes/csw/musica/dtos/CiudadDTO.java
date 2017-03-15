@@ -11,6 +11,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class CiudadDTO implements Serializable
 {
 	private String nombre;
+        private Long id;
 
 	public CiudadDTO(){
 	}
@@ -24,6 +25,7 @@ public class CiudadDTO implements Serializable
             if(entity != null)
             {
                 this.nombre = entity.getName();
+                this.id = entity.getId();
             }
         }
         
@@ -35,6 +37,7 @@ public class CiudadDTO implements Serializable
         {
             CiudadEntity entity = new CiudadEntity();
             entity.setName(this.nombre);
+            entity.setId(this.id);
             return entity;
         }
         
@@ -48,4 +51,13 @@ public class CiudadDTO implements Serializable
             this.nombre = pNombre;
         }
 
+        public Long getId()
+        {
+            return this.id;
+        }
+        
+        public void setId(Long newId)
+        {
+            this.id = newId;
+        }
 }

@@ -41,6 +41,7 @@ public class FestivalEntity implements Serializable
     private List <FuncionEntity> funcionesEntities = new ArrayList <FuncionEntity> (); 
     
    
+    
     /**
      * @return the id
      */

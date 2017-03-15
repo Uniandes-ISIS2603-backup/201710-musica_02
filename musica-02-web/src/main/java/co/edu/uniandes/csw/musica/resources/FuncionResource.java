@@ -52,6 +52,7 @@ public class FuncionResource {
             FuncionDetailDTO est = new FuncionDetailDTO(c);
             listDTO.add(est);
         }
+        //System.out.println("co.edu.uniandes.csw.musica.resources.FuncionResource.listEntity2DTO()"+ listDTO.get(0).getId() );
         return listDTO;
     }
 

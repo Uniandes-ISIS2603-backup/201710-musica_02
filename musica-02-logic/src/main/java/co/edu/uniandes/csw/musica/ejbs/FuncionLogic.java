@@ -59,15 +59,15 @@ public class FuncionLogic {
         return funcionPersistence.agregarVenue(venueID, funID);
     }
 
-    public FuncionEntity agregarEntrada(EntradaEntity entity) throws BusinessLogicException {
-        FuncionEntity fun = funcionPersistence.find(entity.getFuncionEntity().getId());
-        int ent = fun.getEntradasDisponibles();
-        if(ent > 0){
-            fun.setEntradasDisponibles(ent--);
-            return funcionPersistence.agregarEntrada(entity.getId(),entity.getFuncionEntity().getId());
-        } 
-        else {
-            throw new BusinessLogicException("No hay mas entradas disponibles para esta funcion");
-        }
-    }
+   //public FuncionEntity agregarEntrada(EntradaEntity entity) throws BusinessLogicException {
+      //  FuncionEntity fun = funcionPersistence.find(entity.getFuncionEntity().getId());
+       // int ent = fun.getEntradasDisponibles();
+      //  if(ent > 0){
+        //    fun.setEntradasDisponibles(ent--);
+          //  return funcionPersistence.agregarEntrada(entity.getId(),entity.getFuncionEntity().getId());
+      //  } 
+       // else {
+        //    throw new BusinessLogicException("No hay mas entradas disponibles para esta funcion");
+       // }
+    
 }

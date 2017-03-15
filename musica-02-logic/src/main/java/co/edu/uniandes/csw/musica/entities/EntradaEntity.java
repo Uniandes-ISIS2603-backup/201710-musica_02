@@ -104,16 +104,16 @@ public class EntradaEntity implements Serializable {
     /**
      * @return the funcionEntity
      */
-    public FuncionEntity getFuncionEntity() {
-        return funcionEntity;
-    }
+   // public FuncionEntity getFuncionEntity() {
+     //   return funcionEntity;
+ //   }
 
     /**
      * @param funcionEntity the funcionEntity to set
      */
-    public void setFuncionEntity(FuncionEntity funcionEntity) {
-        this.funcionEntity = funcionEntity;
-    }
+   // public void setFuncionEntity(FuncionEntity funcionEntity) {
+     //   this.funcionEntity = funcionEntity;
+   // }
 
     /**
      * @return the clienteEntity

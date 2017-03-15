@@ -40,6 +40,9 @@ public class FuncionDetailDTO extends FuncionDTO {
         for (ReviewEntity rev : entity.getReviews()) {
             reviewsDTOs.add(new ReviewDTO(rev));
         }
+        for (EntradaEntity rev : entity.getEntradas()) {
+            entradaDTOs.add(new EntradaDTO(rev));
+        }
         for (ArtistaEntity c : entity.getArtistas()) {
             artistasDTOs.add(new ArtistaDTO(c));
         }
@@ -56,10 +59,9 @@ public class FuncionDetailDTO extends FuncionDTO {
         if (venueDTO != null) {
             entity.setVenueEntity(venueDTO.toEntity());
         }
-     
 
         if (artistasDTOs != null) {
-               List<ArtistaEntity> artistas = new ArrayList<ArtistaEntity>();
+            List<ArtistaEntity> artistas = new ArrayList<ArtistaEntity>();
             for (ArtistaDTO c : artistasDTOs) {
                 artistas.add(c.toEntity());
             }
@@ -73,10 +75,10 @@ public class FuncionDetailDTO extends FuncionDTO {
             }
             entity.setReviews(reviews);
         }
-        
-        if (entradaDTOs != null) {
+
+        if (getEntradaDTOs() != null) {
             List<EntradaEntity> entradas = new ArrayList<EntradaEntity>();
-            for (EntradaDTO c : entradaDTOs) {
+            for (EntradaDTO c : getEntradaDTOs()) {
                 entradas.add(c.toEntity());
             }
             entity.setEntradas(entradas);
@@ -145,5 +147,19 @@ public class FuncionDetailDTO extends FuncionDTO {
      */
     public void setVenueDTO(VenueDTO venueDTO) {
         this.venueDTO = venueDTO;
+    }
+
+    /**
+     * @return the entradaDTOs
+     */
+    public List<EntradaDTO> getEntradaDTOs() {
+        return entradaDTOs;
+    }
+
+    /**
+     * @param entradaDTOs the entradaDTOs to set
+     */
+    public void setEntradaDTOs(List<EntradaDTO> entradaDTOs) {
+        this.entradaDTOs = entradaDTOs;
     }
 }

@@ -36,6 +36,7 @@ public class FuncionEntity implements Serializable {
     private Integer duracion;
     private Boolean esPaga;
     private Integer entradasDisponibles;
+    
     @OneToMany(mappedBy = "funcion")
     private List<ReviewEntity> reviews = new ArrayList<ReviewEntity>();
     @OneToMany(mappedBy ="funcionEntity")
@@ -46,6 +47,7 @@ public class FuncionEntity implements Serializable {
     private FestivalEntity festivalEntity;
     @ManyToOne
     private VenueEntity venueEntity;
+    
 
     /**
      *

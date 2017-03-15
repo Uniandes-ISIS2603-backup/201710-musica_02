@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package co.edu.uniandes.csw.musica.ejbs;
+
 import co.edu.uniandes.csw.musica.entities.ClienteEntity;
 import co.edu.uniandes.csw.musica.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.musica.persistence.ClientePersistence;
@@ -17,44 +18,43 @@ import javax.inject.Inject;
  */
 @Stateless
 public class ClienteLogic {
-    
-   @Inject
-   private ClientePersistence persistence;
-   
-   public List<ClienteEntity> getClientes() {
-       return persistence.findAll();
-   }
-   
-   public ClienteEntity updateCliente(ClienteEntity entity)
-   {
-       return persistence.update(entity);
-   }
-   public void deleteCliente(String usuario)
-   {
-       persistence.delete(usuario);
-   }
-   public ClienteEntity createCliente(ClienteEntity entity) throws BusinessLogicException{
-       if(persistence.findByUsuario(entity.getUsuario()) != null){
-           throw new BusinessLogicException("Ya hay un cliente con ese usuario");
-       }
-       else{
-           return persistence.create(entity);
-       }
-   } 
-   
-   public List<ClienteEntity> getAbonados() {
-       return persistence.findAllAbonados();
-   }
-   
-   public ClienteEntity getByUsuario(String usuario) throws BusinessLogicException{
-       if(persistence.findByUsuario(usuario)== null){
+
+    @Inject
+    private ClientePersistence persistence;
+
+    public List<ClienteEntity> getClientes() {
+        return persistence.findAll();
+    }
+
+    public ClienteEntity updateCliente(ClienteEntity entity) {
+        return persistence.update(entity);
+    }
+
+    public void deleteCliente(String usuario) {
+        persistence.delete(usuario);
+    }
+
+    public ClienteEntity createCliente(ClienteEntity entity) throws BusinessLogicException {
+        return persistence.create(entity);
+
+        //   if(persistence.findByUsuario(entity.getUsuario()) != null){
+        //       throw new BusinessLogicException("Ya hay un cliente con ese usuario");
+        //   }
+        //   else{
+        //       return persistence.create(entity);
+        //   }
+    }
+
+    public List<ClienteEntity> getAbonados() {
+        return persistence.findAllAbonados();
+    }
+
+    public ClienteEntity getByUsuario(String usuario) throws BusinessLogicException {
+        if (persistence.findByUsuario(usuario) == null) {
             throw new BusinessLogicException("No hay un cliente con ese usuario");
-       }
-       else {
-           return persistence.findByUsuario(usuario);
-       }
-   }
-   
-   
-    
+        } else {
+            return persistence.findByUsuario(usuario);
+        }
+    }
+
 }

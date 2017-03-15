@@ -10,8 +10,8 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 public class EntradaDetailDTO extends EntradaDTO {
 
-    public FuncionDTO funcion;
-    public ClienteDTO cliente;
+    private FuncionDTO funcion;
+    private ClienteDTO cliente;
 
     public EntradaDetailDTO() {
         super();
@@ -28,6 +28,34 @@ public class EntradaDetailDTO extends EntradaDTO {
     @Override
     public EntradaEntity toEntity() {
         return super.toEntity();
+    }
+
+    /**
+     * @return the funcion
+     */
+    public FuncionDTO getFuncion() {
+        return funcion;
+    }
+
+    /**
+     * @param funcion the funcion to set
+     */
+    public void setFuncion(FuncionDTO funcion) {
+        this.funcion = funcion;
+    }
+
+    /**
+     * @return the cliente
+     */
+    public ClienteDTO getCliente() {
+        return cliente;
+    }
+
+    /**
+     * @param cliente the cliente to set
+     */
+    public void setCliente(ClienteDTO cliente) {
+        this.cliente = cliente;
     }
 
 }

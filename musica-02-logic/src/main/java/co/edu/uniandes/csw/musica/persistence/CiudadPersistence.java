@@ -20,8 +20,13 @@ public class CiudadPersistence
         List<CiudadEntity> allCities = q.getResultList();
         return allCities;
     }
+    
+    public CiudadEntity find(Long id)
+    {
+        return em.find(CiudadEntity.class, id);
+    }
 
-    public CiudadEntity find(String nameOfCity) 
+    public CiudadEntity findByName(String nameOfCity) 
     {
         return em.find(CiudadEntity.class, nameOfCity);
     }
