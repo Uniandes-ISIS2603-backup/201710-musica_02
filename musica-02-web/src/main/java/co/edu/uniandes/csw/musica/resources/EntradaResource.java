@@ -66,6 +66,10 @@ public class EntradaResource {
         return listEntity2DTO(entradaLogic.getByFuncion(id));
     }
 
+    @POST
+    public EntradaDetailDTO create(EntradaDetailDTO dto) {
+        return new EntradaDetailDTO(entradaLogic.createEntrada(dto.toEntity()));
+    }
    // @POST
    // public EntradaDetailDTO create(EntradaDetailDTO dto) throws BusinessLogicException {
     //    funcionLogic.agregarEntrada(dto.toEntity());

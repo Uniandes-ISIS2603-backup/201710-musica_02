@@ -26,8 +26,8 @@ public class EntradaEntity implements Serializable {
     private String silla;
     private Double precio;
     private Boolean libre;
-    //@ManyToOne
-    //private FuncionEntity funcionEntity;
+    @ManyToOne
+    private FuncionEntity funcionEntity;
     @ManyToOne
     private ClienteEntity clienteEntity;
 
