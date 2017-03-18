@@ -41,6 +41,8 @@ import javax.ws.rs.core.MediaType;
 @Path("/funciones")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
+//TODO los métodos que reciben el id de la función deben verificar que exista y si no, disparar un WebApplication Exception 404
+
 public class FuncionResource {
 
     @Inject

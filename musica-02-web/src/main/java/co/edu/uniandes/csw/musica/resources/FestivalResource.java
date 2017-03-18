@@ -31,6 +31,8 @@ import javax.ws.rs.core.MediaType;
 @Path("/festivales")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
+
+//TODO los métodos que reciben el id del festival deben verificar que exista y si no, disparar un WebApplication Exception 404
 public class FestivalResource {
 
     @Inject

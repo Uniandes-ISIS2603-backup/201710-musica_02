@@ -16,6 +16,9 @@ import javax.inject.Inject;
  *
  * @author p.salazar12
  */
+
+// TODO falta implementar las reglas de negocio. 
+// TODO Por ejemplo crear una entrada debe verificar que la función si existe y que hay disoonibilidad.
 @Stateless
 public class EntradaLogic {
     

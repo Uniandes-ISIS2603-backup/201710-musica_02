@@ -16,6 +16,9 @@ import javax.inject.Inject;
  *
  * @author jd.gonzaleza
  */
+
+//TODO completar los métodos que faltan.
+// TODO los reviews son subrecursos de función.
 @Stateless
 public class ReviewLogic {
 

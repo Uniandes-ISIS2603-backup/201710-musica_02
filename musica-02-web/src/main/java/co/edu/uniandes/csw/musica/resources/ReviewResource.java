@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package co.edu.uniandes.csw.musica.resources;
-
+//TODO quitar los imports qu eno se necesitan
 import co.edu.uniandes.csw.musica.dtos.FuncionDTO;
 import co.edu.uniandes.csw.musica.dtos.FuncionDetailDTO;
 import co.edu.uniandes.csw.musica.dtos.ReviewDTO;
@@ -30,7 +30,9 @@ import javax.ws.rs.core.MediaType;
  *
  * @author jd.gonzaleza
  */
-@Path("/funciones/{id}/reviews")
+@Path("/funciones/{id}/reviews") 
+// TODO arreglar el path "/funciones/{idFuncion\\+d}/reviews" 
+// TODO como está se confunde con el del review
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
 public class ReviewResource {

@@ -64,6 +64,7 @@ public class VenueResource {
     @Path("{id: \\d+}")
     public VenueDetailDTO updateVenue(@PathParam("id") Long id, VenueDTO dto)
     {
+         // TODO verficar que exista el venue y si no, disparar WebApplicationException con 404
         VenueEntity entity = dto.toEntity();
         entity.setId(id);
         return new VenueDetailDTO(logic.updateVenue(entity)); 
@@ -72,6 +73,8 @@ public class VenueResource {
     @Path("{id: \\d+}")
     public VenueDetailDTO getVenue(@PathParam("id") Long id)
     {
+        // TODO verficar que exista el venue y si no, disparar WebApplicationException con 404
+       
         return new VenueDetailDTO(logic.getVenue(id));
     }
     

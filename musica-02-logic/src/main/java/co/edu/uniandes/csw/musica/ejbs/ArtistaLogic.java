@@ -16,6 +16,7 @@ import javax.inject.Inject;
  * @author a.echeverrir
  */
 @Stateless
+
 public class ArtistaLogic 
 {
     

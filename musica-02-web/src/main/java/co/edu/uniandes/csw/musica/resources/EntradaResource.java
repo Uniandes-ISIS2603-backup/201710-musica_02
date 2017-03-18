@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package co.edu.uniandes.csw.musica.resources;
-
+//TODO quitar los imports qu eno se necesitan
 import co.edu.uniandes.csw.musica.dtos.EntradaDetailDTO;
 import co.edu.uniandes.csw.musica.ejbs.EntradaLogic;
 import co.edu.uniandes.csw.musica.ejbs.FuncionLogic;
@@ -28,6 +28,9 @@ import javax.ws.rs.core.Context;
  *
  * @author p.salazar12
  */
+// TODO según el diagrama de clases, entrada es un subrecurso de cliente. 
+// TODO sería el path "/clientes/{idCliente\\+d}/entradas" 
+// TODO Cada método tendría el idCliente como PathParam
 @Path("/entradas")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
@@ -36,7 +39,7 @@ public class EntradaResource {
     @Inject
     private EntradaLogic entradaLogic;
     @Inject 
-    private FuncionLogic funcionLogic;
+    private FuncionLogic funcionLogic; //TODO quitar esto que no se usa
     @Context
     HttpServlet http;
 
@@ -56,17 +59,25 @@ public class EntradaResource {
 
     @GET
     @Path("usuario/{usuario}")
+    // TODO Revisar con los TODOs del principio
+    // TODO: documentar lo que retorna el método. Las entradas de un usuario sin importar la feria ni la función  ?
+    // TODO si el recurso no existe se debe disparar WebApplication Exception 404
     public List<EntradaDetailDTO> getByCliente(@PathParam("usuario") String usuario) {
         return listEntity2DTO(entradaLogic.getByCliente(usuario));
     }
 
     @GET
     @Path("funcion/{funcion}")
+    // TODO funciones/{funcion}  es la convención navegar sobre las colecciones (es decir en plural) 
+    // TODO si el recurso no existe se debe disparar WebApplication Exception 404
+   
     public List<EntradaDetailDTO> getByFuncion(@PathParam("funcion") Long id) {
         return listEntity2DTO(entradaLogic.getByFuncion(id));
     }
 
     @POST
+    // TODO documentar qué hace el método. Crea una entrada para qué función? 
+    // de qué feria....?
     public EntradaDetailDTO create(EntradaDetailDTO dto) {
         return new EntradaDetailDTO(entradaLogic.createEntrada(dto.toEntity()));
     }

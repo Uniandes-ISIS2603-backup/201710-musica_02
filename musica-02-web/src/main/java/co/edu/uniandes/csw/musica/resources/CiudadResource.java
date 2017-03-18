@@ -97,6 +97,7 @@ public class CiudadResource
     @Path("name")
     public CiudadDetailDTO updateCity(@PathParam("name") String name, CiudadDetailDTO ciudadDto)
     {
+        // TODO verficar que exista la ciudad 
         CiudadEntity entity = ciudadDto.toEntity();
         entity.setName(name);
         return new CiudadDetailDTO(ciudadLogic.updateCity(entity));
@@ -106,6 +107,7 @@ public class CiudadResource
     @Path("/{name}")
     public void deleteCity(@PathParam("name")String name)
     {
+        // TODO verficar que exista la ciudad 
         ciudadLogic.deleteCity(name);
     }
     

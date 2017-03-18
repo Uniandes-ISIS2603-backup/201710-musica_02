@@ -15,6 +15,9 @@ import javax.inject.Inject;
  *
  * @author a.echeverrir
  */
+
+// TODO falta implementar las reglas de negocio. POr ejemplo la creación de 
+//    venue debe traer el festival y la ciudad y estos debe ser válidos.
 @Stateless
 public class VenueLogic {
    
@@ -41,6 +44,8 @@ public class VenueLogic {
    {
        persistence.delete(id);
    }
+   
+   //TODO quién llama este método?
    public VenueEntity agregarVenueFuncion(Long venueID, Long funID)
    {
        return persistence.agregarVenueFuncion(venueID, funID);
