@@ -66,7 +66,7 @@ public class FestivalDTO implements Serializable{
         this.fechaFin = fechaFin;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 

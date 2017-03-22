@@ -5,13 +5,9 @@
  */
 package co.edu.uniandes.csw.musica.resources;
 //TODO quitar los imports qu eno se necesitan
-import co.edu.uniandes.csw.musica.dtos.FuncionDTO;
-import co.edu.uniandes.csw.musica.dtos.FuncionDetailDTO;
-import co.edu.uniandes.csw.musica.dtos.ReviewDTO;
 import co.edu.uniandes.csw.musica.dtos.ReviewDetailDTO;
 import co.edu.uniandes.csw.musica.ejbs.ReviewLogic;
 import co.edu.uniandes.csw.musica.entities.ReviewEntity;
-import co.edu.uniandes.csw.musica.exceptions.BusinessLogicException;
 import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Inject;
@@ -22,7 +18,6 @@ import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
-import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 
@@ -30,9 +25,7 @@ import javax.ws.rs.core.MediaType;
  *
  * @author jd.gonzaleza
  */
-@Path("/funciones/{id}/reviews") 
-// TODO arreglar el path "/funciones/{idFuncion\\+d}/reviews" 
-// TODO como está se confunde con el del review
+@Path("/funciones/{idFuncion}/reviews") 
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
 public class ReviewResource {
