@@ -22,6 +22,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 
 /**
  * URI: ciudades/
@@ -29,87 +30,90 @@ import javax.ws.rs.core.MediaType;
 @Path("/ciudades")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
-public class CiudadResource 
-{
-    @Inject private CiudadLogic ciudadLogic;
-    @Context private HttpServletResponse http;
-    
+public class CiudadResource {
+
+    @Inject
+    private CiudadLogic ciudadLogic;
+    @Context
+    private HttpServletResponse http;
+
     /**
      * Convierte una lista de CiudadEntity a una lista de CiudadDetailDTO.
      *
      * @param entityList Lista de CiudadEntity a convertir.
      * @return Lista de CiudadDetailDTO convertida.
      */
-    private List<CiudadDetailDTO> listEntity2DTO(List<CiudadEntity> entityList)
-    {
+    private List<CiudadDetailDTO> listEntity2DTO(List<CiudadEntity> entityList) {
         List<CiudadDetailDTO> list = new ArrayList<>();
-        for (CiudadEntity entityCity : entityList) 
-        {
+        for (CiudadEntity entityCity : entityList) {
             list.add(new CiudadDetailDTO(entityCity));
         }
         return list;
     }
-    
+
     @GET
-    public List<CiudadDetailDTO> getCities()
-    {
+    public List<CiudadDetailDTO> getCities() {
         return listEntity2DTO(ciudadLogic.getCities());
     }
-    
+
     @GET
     @Path("{Id: \\d+}")
-    public CiudadDetailDTO getCity(@PathParam("Id")Long id)
-    {
+    public CiudadDetailDTO getCity(@PathParam("Id") Long id) {
         CiudadEntity buscada = ciudadLogic.getCity(id);
-        if(buscada == null)
-        {
+        if (buscada == null) {
             throw new WebApplicationException("La ciudad con ese id no existe", 404);
-        }
-        else
-        {
-             return new CiudadDetailDTO(buscada);
+        } else {
+            return new CiudadDetailDTO(buscada);
         }
     }
-    
+
     @GET
     @Path("{name}")
-    public CiudadDetailDTO getCityByName(@PathParam("name")String name)
-    {
+    public CiudadDetailDTO getCityByName(@PathParam("name") String name) {
         System.out.println(name);
         CiudadEntity buscada = ciudadLogic.getCityByName(name);
-        if(buscada == null)
-        {
+        if (buscada == null) {
             throw new WebApplicationException("La ciudad con ese nombre no existe", 404);
-        }
-        else
-        {
-             return new CiudadDetailDTO(buscada);
+        } else {
+            return new CiudadDetailDTO(buscada);
         }
     }
-    
+
     @POST
-    public CiudadDetailDTO createCity(CiudadDetailDTO ciudadDto) throws BusinessLogicException
-    {
+    public CiudadDetailDTO createCity(CiudadDetailDTO ciudadDto) throws BusinessLogicException {
         return new CiudadDetailDTO(ciudadLogic.createCity(ciudadDto.toEntity()));
     }
-    
+
     @PUT
     @Path("name")
     public CiudadDetailDTO updateCity(@PathParam("name") String name, CiudadDetailDTO ciudadDto)
-    {
-        // TODO verficar que exista la ciudad 
-        CiudadEntity entity = ciudadDto.toEntity();
-        entity.setName(name);
-        return new CiudadDetailDTO(ciudadLogic.updateCity(entity));
+    { 
+        CiudadDetailDTO ciudad = getCity(ciudadDto.getId());
+        if (ciudad != null) 
+        {
+            CiudadEntity entity = ciudadDto.toEntity();
+            entity.setName(name);
+            return new CiudadDetailDTO(ciudadLogic.updateCity(entity));
+        }
+        else
+        {
+            throw new WebApplicationException("La ciudad con id <" + ciudadDto.getId() + "> y nombre <" + ciudadDto.getNombre() + "> no existe.", Response.Status.CONFLICT);
+        }
     }
-    
-    @DELETE  
+
+    @DELETE
     @Path("/{name}")
-    public void deleteCity(@PathParam("name")String name)
+    public void deleteCity(@PathParam("name") String name) 
     {
-        // TODO verficar que exista la ciudad 
-        ciudadLogic.deleteCity(name);
+        CiudadDetailDTO ciudad = getCityByName(name);
+        if (ciudad != null) 
+        {
+           ciudadLogic.deleteCity(name);
+        }
+        else
+        {
+            throw new WebApplicationException("La ciudad con nombre <" + name + "> no existe.", Response.Status.CONFLICT);
+        }
     }
-    
-    
+
 }
