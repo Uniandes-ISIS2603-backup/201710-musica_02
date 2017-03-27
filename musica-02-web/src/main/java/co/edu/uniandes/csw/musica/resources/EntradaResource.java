@@ -7,9 +7,7 @@ package co.edu.uniandes.csw.musica.resources;
 //TODO quitar los imports qu eno se necesitan
 import co.edu.uniandes.csw.musica.dtos.EntradaDetailDTO;
 import co.edu.uniandes.csw.musica.ejbs.EntradaLogic;
-import co.edu.uniandes.csw.musica.ejbs.FuncionLogic;
 import co.edu.uniandes.csw.musica.entities.EntradaEntity;
-import co.edu.uniandes.csw.musica.exceptions.BusinessLogicException;
 import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Inject;
@@ -21,7 +19,6 @@ import javax.servlet.http.HttpServlet;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PathParam;
-import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Context;
 
 /**
@@ -31,15 +28,13 @@ import javax.ws.rs.core.Context;
 // TODO según el diagrama de clases, entrada es un subrecurso de cliente. 
 // TODO sería el path "/clientes/{idCliente\\+d}/entradas" 
 // TODO Cada método tendría el idCliente como PathParam
-@Path("/entradas")
+@Path("/clientes/{idCliente}/entradas")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
 public class EntradaResource {
 
     @Inject
     private EntradaLogic entradaLogic;
-    @Inject 
-    private FuncionLogic funcionLogic; //TODO quitar esto que no se usa
     @Context
     HttpServlet http;
 
@@ -75,12 +70,12 @@ public class EntradaResource {
         return listEntity2DTO(entradaLogic.getByFuncion(id));
     }
 
-    @POST
+    //@POST
     // TODO documentar qué hace el método. Crea una entrada para qué función? 
     // de qué feria....?
-    public EntradaDetailDTO create(EntradaDetailDTO dto) {
-        return new EntradaDetailDTO(entradaLogic.createEntrada(dto.toEntity()));
-    }
+    //public EntradaDetailDTO create(EntradaDetailDTO dto) {
+    //    return new EntradaDetailDTO(entradaLogic.createEntrada(dto.toEntity()));
+    //}
    // @POST
    // public EntradaDetailDTO create(EntradaDetailDTO dto) throws BusinessLogicException {
     //    funcionLogic.agregarEntrada(dto.toEntity());

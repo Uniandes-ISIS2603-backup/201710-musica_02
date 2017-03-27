@@ -5,7 +5,6 @@
  */
 package co.edu.uniandes.csw.musica.persistence;
 
-import co.edu.uniandes.csw.musica.entities.EntradaEntity;
 import co.edu.uniandes.csw.musica.entities.FuncionEntity;
 import java.util.Date;
 import java.util.List;

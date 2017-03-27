@@ -11,6 +11,7 @@ import co.edu.uniandes.csw.musica.persistence.ClientePersistence;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
+import javax.ws.rs.WebApplicationException;
 
 /**
  *
@@ -35,14 +36,13 @@ public class ClienteLogic {
     }
 
     public ClienteEntity createCliente(ClienteEntity entity) throws BusinessLogicException {
-        return persistence.create(entity);
 
-        //   if(persistence.findByUsuario(entity.getUsuario()) != null){
-        //       throw new BusinessLogicException("Ya hay un cliente con ese usuario");
-        //   }
-        //   else{
-        //       return persistence.create(entity);
-        //   }
+           if(persistence.findByUsuario(entity.getUsuario()) != null){
+               throw new BusinessLogicException("Ya hay un cliente con ese usuario");
+           }
+           else{
+               return persistence.create(entity);
+           }
     }
 
     public List<ClienteEntity> getAbonados() {
@@ -51,7 +51,7 @@ public class ClienteLogic {
 
     public ClienteEntity getByUsuario(String usuario) throws BusinessLogicException {
         if (persistence.findByUsuario(usuario) == null) {
-            throw new BusinessLogicException("No hay un cliente con ese usuario");
+            throw new WebApplicationException(404);
         } else {
             return persistence.findByUsuario(usuario);
         }
