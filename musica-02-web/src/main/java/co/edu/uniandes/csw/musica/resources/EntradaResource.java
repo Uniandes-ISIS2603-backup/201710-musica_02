@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package co.edu.uniandes.csw.musica.resources;
-//TODO quitar los imports qu eno se necesitan
+//TODO  YA quitar los imports qu eno se necesitan
 import co.edu.uniandes.csw.musica.dtos.EntradaDetailDTO;
 import co.edu.uniandes.csw.musica.ejbs.EntradaLogic;
 import co.edu.uniandes.csw.musica.entities.EntradaEntity;
@@ -53,16 +53,16 @@ public class EntradaResource {
     }
 
     @GET
-    @Path("usuario/{usuario}")
+    @Path("{idCliente}")
     // TODO Revisar con los TODOs del principio
     // TODO: documentar lo que retorna el método. Las entradas de un usuario sin importar la feria ni la función  ?
     // TODO si el recurso no existe se debe disparar WebApplication Exception 404
-    public List<EntradaDetailDTO> getByCliente(@PathParam("usuario") String usuario) {
+    public List<EntradaDetailDTO> getByCliente(@PathParam("idCliente") String usuario) {
         return listEntity2DTO(entradaLogic.getByCliente(usuario));
     }
 
     @GET
-    @Path("funcion/{funcion}")
+    @Path("{idCliente}/funcion/{funcion}")
     // TODO funciones/{funcion}  es la convención navegar sobre las colecciones (es decir en plural) 
     // TODO si el recurso no existe se debe disparar WebApplication Exception 404
    
