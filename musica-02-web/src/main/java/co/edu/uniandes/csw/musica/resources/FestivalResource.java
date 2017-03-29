@@ -21,6 +21,7 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 
@@ -32,7 +33,6 @@ import javax.ws.rs.core.MediaType;
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
 
-//TODO los métodos que reciben el id del festival deben verificar que exista y si no, disparar un WebApplication Exception 404
 public class FestivalResource {
 
     @Inject
@@ -59,7 +59,10 @@ public class FestivalResource {
     @Path("{id: \\d+}")
     public FestivalDetailDTO getFestival (@PathParam("id") Long id) throws BusinessLogicException
     {
+        FestivalEntity fest = logic.getFestival(id);
+        if (fest == null)
         return new FestivalDetailDTO(logic.getFestival(id));
+        throw new WebApplicationException("No se encontró un festival con ese id", 404);
     }
     @POST
     public FestivalDetailDTO createFestival (FestivalDetailDTO festival) 

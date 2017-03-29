@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-2 col-md-2" ng-repeat="funcion in funcionesRecords">
+            <div class="thumbnail">
+                <img class="img-responsive" ng-src ='{{funcion.image}}' alt = "{{funcion.id}}"/>
+                <div class ="caption text-center"> <b>Artista invitado</b>: 
+                    <p> {{funcion.artistasDTOs.nombre}}</p>
+                </div>
+                <div class="caption text-center"> <b>Lugar</b>: 
+                    <p>{{funcion.venueDTO.nombre}}</p>
+                </div>
+                <div class="caption text-center"> <b>fecha</b>: 
+                    <p> {{funcion.fecha}}</p>
+                </div>
+            </div>
+        </div> 
+
+    </div>
+</div>

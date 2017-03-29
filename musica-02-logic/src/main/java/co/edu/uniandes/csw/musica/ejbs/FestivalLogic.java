@@ -27,10 +27,7 @@ public class FestivalLogic {
     }
      public FestivalEntity getFestival (Long id) throws BusinessLogicException
     {
-        FestivalEntity entity = persistence.find(id);
-        if(entity != null)
         return persistence.find(id);
-        else throw new BusinessLogicException ("No se ha encontrado un festival con dicho Id");
     }
     public FestivalEntity createFestival (FestivalEntity festival) 
     {
