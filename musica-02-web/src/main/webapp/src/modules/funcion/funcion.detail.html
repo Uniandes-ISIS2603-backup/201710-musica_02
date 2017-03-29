@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<div class ="panel panel-default">
+    <div class ="panel-body">
+        <div class ="row">
+            <div class="col-md-3">
+                <div class="thumb">
+                    <img class="img-responsive" ng-src ="{{currentFuncion.image}}"/>
+                </div>
+                <div class ="col-md-3">
+                    <dl>
+                        <dt> <b>Fecha</b></dt>
+                        <dd>{{currentFuncion.fecha}}</dd>
+                        <dt><b>Artistas</b></dt>
+                        <dd>{{currentFuncion.artistasDTOs.nombre}}</dd>
+                        <dt><b> Venue</b></dt>
+                        <dd>{{currentFuncion.venueDTO.nombre}}</dd>
+                        <hr>
+                        <dt><b>¿Es paga?</b></dt>
+                        <dd>{{currentFuncion.esPaga}}</dd>
+                        <hr>
+                        <dt><b>Festival</b></dt>
+                        <dd>{{currentFuncion.festivalDTO.nombre}}</dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

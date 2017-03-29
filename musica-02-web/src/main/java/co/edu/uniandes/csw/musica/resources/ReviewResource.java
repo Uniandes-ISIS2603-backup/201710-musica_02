@@ -45,7 +45,7 @@ public class ReviewResource {
     }
     
     @GET
-    public List<ReviewDetailDTO> getReviews(@PathParam("id") Long id) 
+    public List<ReviewDetailDTO> getReviews(@PathParam("idFuncion") Long id) 
     {
         return listEntity2DTO(logic.getReviews(id));
     } 

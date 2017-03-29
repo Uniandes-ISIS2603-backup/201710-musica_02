@@ -6,9 +6,11 @@ and open the template in the editor.
 -->
 <div class="container-fluid">
     <div class="row">
-        <div class="col-sm-2 col-md-2" ng-repeat="funcion in funcionesRecords">
+        <div class="col-sm-12 col-md-2" ng-repeat="funcion in funcionesRecords">
             <div class="thumbnail">
-                <img class="img-responsive" ng-src ='{{funcion.image}}' alt = "{{funcion.id}}"/>
+                <a ui-sref ="funcionDetail({funcionID: funcion.id})">
+                    <img class="img-responsive" ng-src ='{{funcion.image}}' alt = "{{funcion.fecha}}"/>
+                </a>
                 <div class ="caption text-center"> <b>Artista invitado</b>: 
                     <p> {{funcion.artistasDTOs.nombre}}</p>
                 </div>
