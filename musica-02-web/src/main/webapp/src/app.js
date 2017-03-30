@@ -10,9 +10,10 @@ er, choose License Headers in Project Properties.
         // External dependencies
         'ui.router',
         'funcionModule',
-        'festivalModule'
+        'festivalModule',
+       'artistaModule'
 
-    ]);
+    ]); 
     // Resuelve problemas de las promesas
     app.config(['$qProvider', function ($qProvider) {
             $qProvider.errorOnUnhandledRejections(false);

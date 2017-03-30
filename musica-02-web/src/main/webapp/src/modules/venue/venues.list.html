@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-2 col-md-2" ng-repeat="venue in venuesRecords">
+            <div class="thumbnail">
+                <img class="img-responsive" ng-src ='{{venue.image}}' alt = "{{venue.nombre}}"/>
+                <div class ="caption text-center"> <b>{{venue.nombre}}</b>: 
+                </div>
+               
+            </div>
+        </div> 
+
+    </div>
+</div>
