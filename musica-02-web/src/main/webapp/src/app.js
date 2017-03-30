@@ -9,7 +9,10 @@
         // External dependencies
         'ui.router',
         // Internal modules dependencies       
-        'funcionModule'
+        'funcionModule',
+        'reviewModule'
+        
+        
 
     ]);
     // Resuelve problemas de las promesas

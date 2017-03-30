@@ -28,7 +28,7 @@
 
             }).state('funcionList',{
                 url : '/list',
-                parent:'funcion',
+                parent:'funciones',
                 views:{
                     listView:{
                        templateUrl: basePath + 'funcion.list.html' 
@@ -47,7 +47,7 @@
                     detailView:{
                         templateUrl: basePath + 'funcion.detail.html',
                         controller: ['$scope', '$stateParams', function ($scope, $params) {
-                                $scope.currentFuncion = $scope.funcionRecords[$params.funcionId-1];
+                                $scope.currentFuncion = $scope.funcionesRecords[$params.funcionId-1];
                             }]
                     }
                 }
