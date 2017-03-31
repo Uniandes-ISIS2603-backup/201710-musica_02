@@ -12,7 +12,7 @@ er, choose License Headers in Project Properties.
 
         // Internal modules dependencies       
         'funcionModule',
-        'reviewModule'
+        'reviewModule',
         'festivalModule',
        'artistaModule'
 
