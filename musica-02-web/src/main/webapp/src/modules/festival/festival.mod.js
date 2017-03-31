@@ -3,36 +3,53 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
-
 (function (ng) {
-    // Definición del módulo
     var mod = ng.module("festivalModule", ['ui.router']);
- 
-   // Configuración de los estados del módulo
     mod.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
-            // En basePath se encuentran los templates y controladores de módulo
             var basePath = 'src/modules/festival/';
-            // Mostrar la lista de libros será el estado por defecto del módulo
             $urlRouterProvider.otherwise("/festivalesList");
-            // Definición del estado 'festivalesList' donde se listan los festivales
-            $stateProvider.state('festivalesList', {
-                // Url que aparecerá en el browser
-                url: '/festivales/list',
-                // Se define una variable festivales (del estado) que toma por valor 
-                // la colección de festivales que obtiene utilizando $http.get 
-                 resolve: {
+            $stateProvider.state('festivales', {
+                url: '/festivales',
+                abstract: true,
+                resolve: {
                     festivales: ['$http', function ($http) {
-                            return $http.get('data/festivales.json'); // $http retorna un apromesa que aquí no se está manejando si viene con error.
+                            return $http.get('data/festivales.json'); 
                         }]
                 },
-                // Template que se utilizara para ejecutar el estado
-                templateUrl: basePath + 'festival.list.html',
-                // El controlador guarda en el scope en la variable festivalesRecords los datos que trajo el resolve
-                // festivalesRecords será visible en el template
-                controller: ['$scope', 'festivales', function ($scope, festivales) {
-                        $scope.festivalesRecords = festivales.data;
-                    }]              
+                views: {
+                    mainView: {
+
+                        templateUrl: basePath + 'festival.html',
+                        controller: ['$scope', 'festivales', function ($scope, festivales) {
+                                $scope.festivalesRecords = festivales.data;
+                            }]
+                    }
+                }
+            }).state('festivalesList', {
+                url: '/list',
+                parent: 'festivales',
+                views: {
+                    listView: {
+                        templateUrl: basePath + 'festival.list.html'
+                    }
+                }
+            }).state('festivalDetail',{
+                url:'/{festivalId:int}/detail',
+                parent: 'festivales',
+                param:{
+                    festivalId: null
+                },
+                views:{
+                    listView:{
+                      templateUrl: basePath + 'festival.list.html'  
+                    },
+                    detailView:{
+                        templateUrl: basePath + 'festival.detail.html',
+                        controller: ['$scope', '$stateParams', function ($scope, $params) {
+                                $scope.currentFestival = $scope.festivalesRecords[$params.festivalId-1];
+                            }]
+                    }
+                }
             });
         }
     ]);
