@@ -36,8 +36,13 @@ SOFTWARE.
         
         <!----------Funcion-------->
          <script src="src/modules/funcion/funcion.mod.js" type="text/javascript"></script>
+
+        <script src ="src/modules/review/review.mod.js" type="text/javascript"></script>
+        
+
          <script src="src/modules/festival/festival.mod.js" type="text/javascript"></script>
          <script src="src/modules/artistas/artistas.mod.js" type="text/javascript"></script>
+
 
 
          
@@ -45,8 +50,10 @@ SOFTWARE.
 
       
     </head>
+
     
     <body class="span4">
+
         <div class =" container-fluid">
             <div class="row">
                 <div class="col-lg-12">
@@ -57,7 +64,10 @@ SOFTWARE.
                     </ol>                   
                 </div>
             </div>
+            <div class="span4"ui-view ="mainView"></div>
         </div>
+
             <div class="span4" ui-view="mainView"></div> 
+
     </body>
 </html>

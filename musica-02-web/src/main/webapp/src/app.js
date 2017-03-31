@@ -9,7 +9,10 @@ er, choose License Headers in Project Properties.
     var app = angular.module('mainApp', [
         // External dependencies
         'ui.router',
+
+        // Internal modules dependencies       
         'funcionModule',
+        'reviewModule'
         'festivalModule',
        'artistaModule'
 
