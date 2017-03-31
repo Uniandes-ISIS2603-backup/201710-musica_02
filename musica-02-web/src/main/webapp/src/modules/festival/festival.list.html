@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<div class="container-fluid">
+    <div class="row">
+        <!-- festivalesRecords fue inicializada en el controlador del estado festivalList -->
+        <!-- Itera sobre cada uno de los libros en la colección festivalesRecords -->
+        <div class="col-sm-2 col-md-2" ng-repeat="festival in festivalesRecords">
+             <!--Despliega la imagen  -->
+            <div class="thumbnail">
+                <img class="img-responsive" ng-src="{{festival.image}}" alt="{{festival.name}}" />  
+                 <!-- Despliega en el caption de la imagen el nombre del libro -->
+                 <div class="caption text-center"><b>{{festival.name}}</b></div>
+            </div>
+        </div>
+    </div>
+</div>

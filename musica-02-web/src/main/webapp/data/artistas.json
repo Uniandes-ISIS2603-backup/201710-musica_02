@@ -1,0 +1,30 @@
+[
+    {
+        "id":1,
+        "nombre":"Rawayana",
+        "image":"https://lh5.googleusercontent.com/-47dq5DZRFLc/AAAAAAAAAAI/AAAAAAAAA4g/EbOuLiyhLMQ/s0-c-k-no-ns/photo.jpg",
+        "trayectoria":" Metallica es una banda de thrash metal estadounidense originaria de Los Ángeles, pero con base en San Francisco desde febrero de 1983. ",
+        "genero":"Rock",
+        "funciones":
+        [  
+            {
+            "idFuncion": "4"
+            }
+        ]
+      
+    }
+    ,
+    {
+        "id":2,
+        "nombre":"Pink Floyd",
+        "image":"https://lh5.googleusercontent.com/-47dq5DZRFLc/AAAAAAAAAAI/AAAAAAAAA4g/EbOuLiyhLMQ/s0-c-k-no-ns/photo.jpg",
+        "trayectoria":"Pink Floyd es una banda de rock británica, considerada un icono cultural del siglo xx y una de las bandas más influyentes en la historia de la música, que obtuvo gran popularidad gracias a su música .",
+        "genero":"Rock",
+        "funciones":
+        [  
+            {
+            "idFuncion1": "1"
+            }
+        ]
+    }
+]

@@ -73,7 +73,7 @@ public class ArtistaResource
     }
     @GET 
     @Path("{id: \\d+}")
-    public ArtistaDetailDTO getArtista(@PathParam("id") Long id)
+    public ArtistaDetailDTO getArtista(@PathParam("id") Long id) throws BusinessLogicException
     {
         return new ArtistaDetailDTO(logic.getArtista(id));
     }

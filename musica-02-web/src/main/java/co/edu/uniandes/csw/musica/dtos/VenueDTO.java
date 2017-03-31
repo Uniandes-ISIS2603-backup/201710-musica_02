@@ -24,10 +24,10 @@ public class VenueDTO implements Serializable
 	private String direccion;
 
 	
-	public VenueDTO(){
+	public VenueDTO()
+        {
 		
 	}
-        
         
         public VenueDTO(VenueEntity entity)
         {

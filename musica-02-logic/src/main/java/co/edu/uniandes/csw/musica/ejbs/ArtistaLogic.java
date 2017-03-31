@@ -7,6 +7,7 @@ package co.edu.uniandes.csw.musica.ejbs;
 
 import co.edu.uniandes.csw.musica.entities.ArtistaEntity;
 import co.edu.uniandes.csw.musica.persistence.ArtistaPersistence;
+import co.edu.uniandes.csw.musica.exceptions.BusinessLogicException;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
@@ -26,9 +27,12 @@ public class ArtistaLogic
    {
        return persistence.findAll();
    }
-   public ArtistaEntity getArtista(Long id)
+   public ArtistaEntity getArtista(Long id) throws BusinessLogicException
    {
-       return persistence.find(id);
+      ArtistaEntity entity = persistence.find(id);
+        if(entity != null)
+        return persistence.find(id);
+        else throw new BusinessLogicException ("No se ha encontrado un artista con dicho Id");
    }
    public ArtistaEntity createArtista(ArtistaEntity entity)
    {
