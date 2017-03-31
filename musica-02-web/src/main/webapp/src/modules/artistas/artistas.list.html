@@ -2,15 +2,20 @@
     
     <div class="row">
         
-        <div class="col-sm-2 col-md-2" ng-repeat="artista in artistasRecords">
+        <div class="col-md-2" ng-repeat="artista in artistasRecords |filter:currentFuncion.id">
             
             <div class="thumbnail">
                  <a ui-sref="artistaDetail({artistaId: artista.id})"> 
                     <img class="img-responsive" ng-src ='{{artista.image}}' alt = "{{artista.id}}"/>
                  </a>
-                    <div 
-                        class ="caption text-center"> <b>{{artista.nombre}}</b>: 
+                    <div class ="caption text-center"> 
+                        <p>{{artista.nombre}}</p>
+                        <p ng-repeat="funcion in artista.funciones">
+                            <a ui-sref="funcionDetail{{funcionId= funcion.id}}"class="thumb">{{funcion.id}}</a>
+                        </p>
+                       
                     </div>
+               
                 
             </div>
             
