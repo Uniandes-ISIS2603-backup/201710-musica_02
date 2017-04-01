@@ -41,11 +41,18 @@
                 },
                 views:{
                     listView:{
+                        
                       templateUrl: basePath + 'festival.list.html'  
                     },
                     detailView:{
+                        resolve: {
+                            funciones: ['$http', function ($http) {
+                                    return $http.get('data/funciones.json');
+                                }]
+                        },
                         templateUrl: basePath + 'festival.detail.html',
-                        controller: ['$scope', '$stateParams', function ($scope, $params) {
+                        controller: ['$scope','funciones', '$stateParams', function ($scope, funciones,$params) {
+                                $scope.funcionesRecords = funciones.data;
                                 $scope.currentFestival = $scope.festivalesRecords[$params.festivalId-1];
                             }]
                     }
