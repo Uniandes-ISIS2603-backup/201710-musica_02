@@ -37,7 +37,16 @@
                 },
                 views: {
                     'listView': {
-                        templateUrl: basePath + 'artistas.list.html'
+                       resolve: {
+                    discos: ['$http', function ($http) {
+                            return $http.get('data/discos.json');
+                        }]
+                },
+                        templateUrl: 'src/modules/disco/discos.list.html',
+                        controller: ['$scope', '$stateParams','discos', function ($scope, $params,discos) {
+                                $scope.currentArtista = $scope.artistasRecords[$params.artistaId-1];
+                                $scope.discosRecords = discos.data;
+                            }]
                     },
                     'detailView': {
                         templateUrl: basePath + 'artistas.detail.html',

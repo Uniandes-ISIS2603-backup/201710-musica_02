@@ -82,21 +82,5 @@
                         }
                     }
                 ]
-    },
-    {
-        "id": 6,
-        "nombre": "Gory",
-        "image": "http://k42.kn3.net/taringa/7/3/3/1/9/6/7/maxi141516/71B.jpg?1131",
-        "trayectoria": "YO",
-        "genero": "Pop Rock, Blues Rock",
-        "funciones":
-                [  
-                    {
-                        "id": 1,
-                        "venueDTO": {
-                            "nombre": "Service center"
-                        }
-                    }
-                ]
     }
 ]

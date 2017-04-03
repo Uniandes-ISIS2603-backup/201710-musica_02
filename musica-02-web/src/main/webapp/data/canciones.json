@@ -1,3 +1,313 @@
-{
-    "name": "a.echeverrir"
-}
+[
+    {
+        "id": 1,
+        "name": "Waiting on the world to Change",
+        "duracion": "3:21",
+        "discoDTO": 
+            {
+                "id":11,
+                "nombre":"Continuum (2006)"
+            }
+
+       
+    }
+    , 
+    {
+        "id": 2,
+        "name": "I Don't Trust Myself(With Loving You)",
+        "duracion": "4:52",
+        "discoDTO": 
+        {
+                "id":11,
+                "nombre":"Continuum (2006)"
+        }
+    }
+    , 
+    {
+        "id": 3,
+        "name": "My Big Mouth",
+        "duracion": "5:03",
+        "discoDTO": 
+        {
+                "id":10,
+                "nombre":"Be Here Now (1997)"
+        }
+    }
+    , 
+    {
+        "id": 4,
+        "name": "Magic Pie",
+        "duracion": "7:20",
+        "discoDTO": 
+        {
+                "id":10,
+                "nombre":"Be Here Now (1997)"
+        }
+    }
+    , 
+    {
+        "id": 5,
+        "name": "Rock 'N' Roll Star",
+        "duracion": "5:23",
+        "discoDTO": 
+        {
+                "id":9,
+                "nombre":"Definitely Maybe (1994)"
+        }
+    }
+    , 
+    {
+        "id": 6,
+        "name": "Shakermaker",
+        "duracion": "5:09",
+        "discoDTO": 
+        {
+                "id":9,
+                "nombre":"Definitely Maybe (1994)"
+        }
+    }
+    , 
+    {
+        "id": 7,
+        "name": "Live Forever",
+        "duracion": "4:30",
+        "discoDTO": 
+        {
+                "id":9,
+                "nombre":"Definitely Maybe (1994)"
+        }
+    }
+    , 
+    {
+        "id": 8,
+        "name": "Shine On You Crazy Diamond",
+        "duracion": "13:19",
+        "discoDTO": 
+        {
+                "id":8,
+                "nombre":"Wish You Were Here (1975)"
+        }
+    }
+    , 
+    {
+        "id": 9,
+        "name": "Welcome to the Machine",
+        "duracion": "7:27",
+        "discoDTO": 
+        {
+                "id":8,
+                "nombre":"Wish You Were Here (1975)"
+        }
+    }
+    , 
+    {
+        "id": 10,
+        "name": "Have a Cigar",
+        "duracion": "5:08",
+        "discoDTO": 
+        {
+                "id":8,
+                "nombre":"Wish You Were Here (1975)"
+        }
+    }
+    , 
+    {
+        "id": 11,
+        "name": "Speak to Me/ Breathe",
+        "duracion": "3:58",
+        "discoDTO": 
+        {
+                "id":7,
+                "nombre":"The Dark Side of the Moon (1973)"
+        }
+    }
+    , 
+    {
+        "id": 12,
+        "name": "On the Run",
+        "duracion": "3:35",
+        "discoDTO": 
+        {
+                "id":7,
+                "nombre":"The Dark Side of the Moon (1973)"
+        }
+    }
+    , 
+    {
+        "id": 13,
+        "name": "Time",
+        "duracion": "7:05",
+        "discoDTO": 
+        {
+                "id":7,
+                "nombre":"The Dark Side of the Moon (1973)"
+        }
+    }
+    , 
+    {
+        "id": 14,
+        "name": "In the Flesh?",
+        "duracion": "3:20",
+        "discoDTO": 
+        {
+                "id":6,
+                "nombre":"The Wall (1979)"
+        }
+    }
+    , 
+    {
+        "id": 15,
+        "name": "The Thin Ice",
+        "duracion": "2:50",
+        "discoDTO": 
+        {
+                "id":6,
+                "nombre":"The Wall (1979)"
+        }
+    }
+    , 
+    {
+        "id": 16,
+        "name": "Another Brick in the Wall",
+        "duracion": "3:11",
+        "discoDTO": 
+        {
+                "id":6,
+                "nombre":"The Wall (1979)"
+        }
+    }
+    , 
+    {
+        "id": 17,
+        "name": "Fuego Azul",
+        "duracion": "5:00",
+        "discoDTO": 
+        {
+                "id":5,
+                "nombre":"Licencia Para Ser Libre (2011)"
+        }
+    }
+    , 
+    {
+        "id": 18,
+        "name": "Betonada",
+        "duracion": "2:20",
+        "discoDTO": 
+        {
+                "id":5,
+                "nombre":"Licencia Para Ser Libre (2011)"
+        }
+    }
+    , 
+    {
+        "id": 19,
+        "name": "Algo Distinto",
+        "duracion": "3:37",
+        "discoDTO": 
+        {
+                "id":5,
+                "nombre":"Licencia Para Ser Libre (2011)"
+        }
+    }
+    , 
+    {
+        "id": 20,
+        "name": "High",
+        "duracion": "4:40",
+        "discoDTO": 
+        {
+                "id":4,
+                "nombre":"Trippy Caribbean (2016)"
+        }
+    }
+    , 
+    {
+        "id": 21,
+        "name": "Tucacas",
+        "duracion": "2:38",
+        "discoDTO": 
+        {
+                "id":4,
+                "nombre":"Trippy Caribbean (2016)"
+        }
+    }
+    , 
+    {
+        "id": 22,
+        "name": "Funky fiesta",
+        "duracion": "4:22",
+        "discoDTO": 
+        {
+                "id":4,
+                "nombre":"Trippy Caribbean (2016)"
+        }
+    }
+    , 
+    {
+        "id": 23,
+        "name": "7",
+        "duracion": "4:16",
+        "discoDTO": 
+        {
+                "id":2,
+                "nombre":"The Ride (2016)"
+        }
+    }
+    , 
+    {
+        "id": 24,
+        "name": "Twice",
+        "duracion": "3:17",
+        "discoDTO": 
+        {
+                "id":2,
+                "nombre":"The Ride (2016)"
+        }
+    }
+    , 
+    {
+        "id": 25,
+        "name": "Soundcheck",
+        "duracion": "4:22",
+        "discoDTO": 
+        {
+                "id":2,
+                "nombre":"The Ride (2016)"
+        }
+    }
+    , 
+    {
+        "id": 26,
+        "name": "Homesick",
+        "duracion": "2:29",
+        "discoDTO": 
+        {
+                "id":1,
+                "nombre":"The balcony (2014)"
+        }
+    }
+    , 
+    {
+        "id": 27,
+        "name": "Kathleen",
+        "duracion": "2:41",
+        "discoDTO": 
+        {
+                "id":1,
+                "nombre":"The balcony (2014)"
+        }
+        
+    }
+    , 
+    {
+        "id": 28,
+        "name": "Cocoon",
+        "duracion": "3:59",
+        "discoDTO": 
+        {
+                "id":1,
+                "nombre":"The balcony (2014)"
+        }
+    }
+    
+]
