@@ -38,6 +38,7 @@ public class ArtistaEntity implements Serializable
     private Long id;
     private String nombre;
     private String trayectoria;
+    private String imagen;
     
     //viene de las constantes
     private String genero;
@@ -135,6 +136,20 @@ public class ArtistaEntity implements Serializable
      */
     public void setFunciones(List<FuncionEntity> funciones) {
         this.funciones = funciones;
+    }
+
+    /**
+     * @return the imagen
+     */
+    public String getImagen() {
+        return imagen;
+    }
+
+    /**
+     * @param imagen the imagen to set
+     */
+    public void setImagen(String imagen) {
+        this.imagen = imagen;
     }
 
     

@@ -19,7 +19,8 @@ public class DiscoDTO implements Serializable
     
         private String nombre;
 
-	private Long id;        
+	private Long id;  
+        private String imagen;
       
 	public DiscoDTO(){
             
@@ -69,6 +70,20 @@ public class DiscoDTO implements Serializable
      */
     public void setId(Long id) {
         this.id = id;
+    }
+
+    /**
+     * @return the imagen
+     */
+    public String getImagen() {
+        return imagen;
+    }
+
+    /**
+     * @param imagen the imagen to set
+     */
+    public void setImagen(String imagen) {
+        this.imagen = imagen;
     }
     
     

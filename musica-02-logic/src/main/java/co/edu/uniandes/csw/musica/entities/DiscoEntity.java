@@ -28,6 +28,7 @@ public class DiscoEntity implements Serializable
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nombre;
+    private String imagen;
     
     @ManyToOne
     private ArtistaEntity artistaEntity;
@@ -105,6 +106,20 @@ public class DiscoEntity implements Serializable
      */
     public void setCanciones(List<CancionEntity> canciones) {
         this.canciones = canciones;
+    }
+
+    /**
+     * @return the imagen
+     */
+    public String getImagen() {
+        return imagen;
+    }
+
+    /**
+     * @param imagen the imagen to set
+     */
+    public void setImagen(String imagen) {
+        this.imagen = imagen;
     }
 
     

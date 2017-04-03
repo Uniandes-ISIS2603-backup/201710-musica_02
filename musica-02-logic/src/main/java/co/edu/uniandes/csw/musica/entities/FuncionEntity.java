@@ -33,7 +33,7 @@ public class FuncionEntity implements Serializable {
     private Integer duracion;
     private Boolean esPaga;
     private Integer entradasDisponibles;
-    
+    private String imagen;
     @OneToMany(mappedBy = "funcion")
     private List<ReviewEntity> reviews = new ArrayList<ReviewEntity>();
     @OneToMany(mappedBy ="funcionEntity")
@@ -134,7 +134,7 @@ public class FuncionEntity implements Serializable {
      * Agregar review a la lista
      */
     public void agregarReviewaLista(ReviewEntity rev) {
-        reviews.add(rev);
+        getReviews().add(rev);
     }
 
     /**
@@ -211,7 +211,21 @@ public class FuncionEntity implements Serializable {
     }
     
     public void addEntrada(EntradaEntity entrada) {
-        entradas.add(entrada);
+        getEntradas().add(entrada);
+    }
+
+    /**
+     * @return the imagen
+     */
+    public String getImagen() {
+        return imagen;
+    }
+
+    /**
+     * @param imagen the imagen to set
+     */
+    public void setImagen(String imagen) {
+        this.imagen = imagen;
     }
 
 }
