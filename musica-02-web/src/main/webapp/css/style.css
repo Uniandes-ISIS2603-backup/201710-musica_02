@@ -1,0 +1,18 @@
+.bordeGris {
+    border-style: groove ;
+      border-radius: 12px;
+}
+.bordeNaranja {
+    border-style: groove ;
+      border-radius: 12px;
+      border-color:#e69138;
+      
+}
+.fondoAzul{
+    background-color:#073763;
+        color:white;
+    
+}
+.fondoNaranja{
+    background-color:#e69138;
+}

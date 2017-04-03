@@ -4,9 +4,11 @@
         "fecha": "12/25/2016",
         "esPaga": false,
         "entradasDisponibles": 942,
+                    "nombre": "Lollapalooza",
+
         "festivalDTO": {
             "id": 1,
-            "nombre": "Batz Group"
+            "nombre": "Lollapalooza"
         },
         "artistas": [{
                 "id": 2,
