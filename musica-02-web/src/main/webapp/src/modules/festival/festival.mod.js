@@ -5,15 +5,18 @@
  */
 (function (ng) {
     var mod = ng.module("festivalModule", ['ui.router']);
+    mod.constant("festivalesContext", "api/festivales");
+    mod.constant("funcionesContext", "api/funciones");
     mod.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
             var basePath = 'src/modules/festival/';
             $urlRouterProvider.otherwise("/festivalesList");
             $stateProvider.state('festivales', {
                 url: '/festivales',
                 abstract: true,
+                
                 resolve: {
-                    festivales: ['$http', function ($http) {
-                            return $http.get('data/festivales.json'); 
+                    festivales: ['$http','festivalesContext' ,function ($http,festivalesContext) {
+                            return $http.get(festivalesContext); 
                         }]
                 },
                 views: {
@@ -46,14 +49,14 @@
                     },
                     detailView:{
                         resolve: {
-                            funciones: ['$http', function ($http) {
-                                    return $http.get('data/funciones.json');
+                            funciones: ['$http','funcionesContext', function ($http,funcionesContext) {
+                                    return $http.get(funcionesContext);
                                 }]
                         },
                         templateUrl: basePath + 'festival.detail.html',
                         controller: ['$scope','funciones', '$stateParams', function ($scope, funciones,$params) {
                                 $scope.funcionesRecords = funciones.data;
-                                $scope.currentFestival = $scope.festivalesRecords[$params.festivalId-1];
+                                $scope.currentFestival = $scope.festivalesRecords[$params.festivalId-1001];
                             }]
                     }
                 }
