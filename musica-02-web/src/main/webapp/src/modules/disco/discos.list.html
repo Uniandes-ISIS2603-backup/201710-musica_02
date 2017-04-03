@@ -2,7 +2,7 @@
     <b>Discos<b>    
     <div class="row">
         
-        <div class="col-md-2" ng-repeat="disco in discosRecords |filter:currentArtista.artistaID.id">
+        <div class="col-md-2" ng-repeat="disco in discosRecords |filter:currentArtista.artistaDTO.nombre">
             
             <div class="thumbnail">
                  <a ui-sref="discoDetail({discoId: disco.id})"> 
