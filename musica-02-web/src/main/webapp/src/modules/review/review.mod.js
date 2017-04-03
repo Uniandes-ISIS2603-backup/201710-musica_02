@@ -3,44 +3,40 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-(function (ng) {
-    var mod = ng.module("reviewModule", ['ui.router']);
-    mod.constant("reviewsContext", "api/reviews");
-    mod.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
-            var basePath = 'src/modules/review/';
-            $urlRouterProvider.otherwise("/reviewsList");
-
-            $stateProvider.state('reviews', {
-                url: '/reviews',
-                abstract: true,
-                parent: 'funcionDetail',
-                views: {
-                    childrenView: {
-                        resolve: {
-                            funciones: ['$http', function ($http) {
-                                    return $http.get('data/funciones.json');
-                                }],
-                            reviews: ['$http', function ($http) {
-                                    return $http.get('data/reviews.json');
-                                }]
-                        },
-                        templateUrl: basePath + 'review.html',
-                        controller: ['$scope', 'funciones', 'reviews', '$stateParams', function ($scope, funciones, reviews, $params) {
-                                $scope.currentFuncion = funciones.data[$params.funcionId - 1];
-                                $scope.reviewsRecords = reviews.data;
-                            }]
-                    }
-                }
-            }).state('reviewsList', {
-                url: '/list',
-                parent: 'reviews',
-                views: {
-                    'listView': {
-                        templateUrl: basePath + 'review.list.html'
-                    }
-                }
-            });
-        }]);
+(function(ng){
+    var mod = ng.module("reviewModule",['ui.router']);
+    mod.constant("funcionesContext","api/funciones");
+    mod.constant("reviewsContext","reviews");
+    
+    mod.config(['$stateProvider','$urlRouterProvider',function($stateProvider, $urlRouterProvider){
+         var basePath = 'src/modules/review/';
+         $urlRouterProvider.otherwise("/reviewsList");
+         
+         $stateProvider.state('reviews',{
+             url: '/reviews',
+             abstract: true,
+             parent:'funcionDetail',
+             resolve:{
+                 reviews: ['$http','funcionesContext','reviewsContext','$stateParams',function($http,funcionesContext,reviewsContext,$params){
+                         return $http.get(funcionesContext +  '/' + $params.funcionId + '/'+ reviewsContext);
+                 }]
+             },
+             views:{
+                 childrenView:{
+                     templateUrl: basePath+'review.html'
+                 }
+             },
+         }).state('reviewsList',{
+             url:'/list',
+             parent:'reviews',
+             views:{
+                 listView:{
+                     templateUrl: basePath + 'review.list.html',
+                     controller:['$scope','reviews',function($scope,reviews){
+                             $scope.reviewsRecord = reviews.data;
+                     }]
+                 }
+             }
+         });
+    }]);
 })(window.angular);
-
-

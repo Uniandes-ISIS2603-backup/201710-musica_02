@@ -57,26 +57,16 @@ public class ReviewDetailDTO extends ReviewDTO {
             enti.setFuncion(getFuncionDTO().toEntity());
         }
         if (clienteDTO != null) {
-            enti.setCliente(getClietneDTO().toEntity());
+            enti.setCliente(getClienteDTO().toEntity());
         }
 
         return enti;
 
     }
 
-    /**
-     * @return the clietneDTO
-     */
-    public ClienteDTO getClietneDTO() {
-        return getClienteDTO();
-    }
+   
 
-    /**
-     * @param clietneDTO the clietneDTO to set
-     */
-    public void setClietneDTO(ClienteDTO clietneDTO) {
-        this.setClienteDTO(clietneDTO);
-    }
+  
 
     /**
      * @return the clienteDTO

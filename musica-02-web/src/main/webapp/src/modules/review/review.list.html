@@ -13,9 +13,9 @@ and open the template in the editor.
                 </tr>
             </thead>
             <tbody>
-                <tr ng-repeat="review in reviewsRecords|filter:currentFuncion.id">
-                    <td id="{{$index}}-id"><b>{{review.usuario.login+": "}}</b>
-                        {{review.description}}
+                <tr ng-repeat="review in reviewsRecords">
+                    <td id="{{$index}}-id"><b>{{review.descripcion}}</b>
+                      
                     </td>
                 </tr>
             </tbody>
