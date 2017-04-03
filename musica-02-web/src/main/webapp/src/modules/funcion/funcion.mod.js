@@ -46,20 +46,19 @@
                 },
                 views: {
                     listView: {
+                       
+                        templateUrl: basePathArtistas + 'artistas.list.html',
+                       
+                    },
+                    detailView: {
                         resolve: {
                             artistas: ['$http', function ($http) {
                                     return $http.get('data/artistas.json');
                                 }]
                         },
-                        templateUrl: basePathArtistas + 'artistas.list.html',
+                        templateUrl: basePath + 'funcion.detail.html',
                         controller: ['$scope', 'artistas', '$stateParams', function ($scope, artistas, $params) {
                                 $scope.artistasRecords = artistas.data;
-                                $scope.currentFuncion = $scope.funcionesRecords[$params.funcionId - 1];
-                            }]
-                    },
-                    detailView: {
-                        templateUrl: basePath + 'funcion.detail.html',
-                        controller: ['$scope', '$stateParams', function ($scope, $params) {
                                 $scope.currentFuncion = $scope.funcionesRecords[$params.funcionId - 1];
                             }]
                     }
