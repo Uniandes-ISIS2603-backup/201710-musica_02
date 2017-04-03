@@ -39,6 +39,7 @@ public class FestivalEntity implements Serializable
     private List <VenueEntity> venuesEntities = new ArrayList <VenueEntity>();
     @OneToMany(mappedBy = "festivalEntity")
     private List <FuncionEntity> funcionesEntities = new ArrayList <FuncionEntity> (); 
+    private String imagen;
     
    
     
@@ -138,6 +139,20 @@ public class FestivalEntity implements Serializable
      */
     public void setVenuesEntities(List <VenueEntity> venuesEnities) {
         this.venuesEntities = venuesEnities;
+    }
+
+    /**
+     * @return the imagen
+     */
+    public String getImagen() {
+        return imagen;
+    }
+
+    /**
+     * @param imagen the imagen to set
+     */
+    public void setImagen(String imagen) {
+        this.imagen = imagen;
     }
 
   
