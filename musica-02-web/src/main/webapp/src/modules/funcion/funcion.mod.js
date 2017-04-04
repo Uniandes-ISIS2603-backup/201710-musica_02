@@ -17,13 +17,17 @@
                             return $http.get('data/funciones.json');
                         }]
                 },
-
-                templateUrl: basePath + 'funcion.list.html',
-                controller: ['$scope', 'funciones', function ($scope, funciones) {
-                        $scope.funcionesRecords = funciones.data;
-                    }]
+                
+                 views: {
+                    mainView: {templateUrl: basePath + 'funcion.list.html',
+                        controller: ['$scope', 'funciones', function ($scope, funciones) {
+                                $scope.funcionesRecords = funciones.data;
+                            }]
+                    }
+                }
             });
         }
     ]);
 })(window.angular);
+               
 

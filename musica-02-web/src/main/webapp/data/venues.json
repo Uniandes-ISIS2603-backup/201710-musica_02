@@ -1,0 +1,67 @@
+[{
+        "id": 1,  
+        "nombre": "La media torta",    
+
+        "tipo": "Abierto",
+
+        "capacidad": 250,
+
+        "direccion": "Calle 18 # 1-05 E, Bogotá, Cundinamarca, Colombia",
+
+        "ubicacion": "Numerada",
+
+        "ciudadDTO": {
+            "nombre": "Bogotá",
+            "id": 1
+        },
+
+        "festivalDTO": {
+            "nombre": "Jazz",
+            "fechaInicio": "18/09/17",
+            "fechaFin": "02/12/17",
+            "id": 10
+        },
+
+        "funcionDTO": {
+            "fecha": "20/09/17",
+            "duracion": 2,
+            "esPaga": true,
+            "entradasDisponibles": 230
+        },
+
+        "image": "http://2.bp.blogspot.com/-7YceTrb1ePs/UWeSc4QKH3I/AAAAAAAABDY/0cQBtQNSzSM/s1600/mediatorta.jpg"
+    },
+    {
+        "id": 2,  
+        "nombre": "Teatro la castellana",
+
+        "tipo": "Cerrado",
+
+        "capacidad": 550,
+
+        "direccion": "Cl. 95 #4715, Bogotá, Colombia",
+
+        "ubicacion": "Numerada",
+
+        "ciudadDTO": {
+            "nombre": "Bogotá",
+            "id": 1
+        },
+
+        "festivalDTO": {
+            "nombre": "Rock",
+            "fechaInicio": "23/09/17",
+            "fechaFin": "05/12/17",
+            "id": 11
+        },
+
+        "funcionDTO": {
+            "fecha": "23/09/17",
+            "duracion": 2,
+            "esPaga": true,
+            "entradasDisponibles": 130
+        },
+
+        "image": "http://i208.photobucket.com/albums/bb252/danielacadauno/Edificios/Teatros/Jorgeeliecer2.jpg"
+    }
+]

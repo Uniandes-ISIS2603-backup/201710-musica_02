@@ -1,0 +1,33 @@
+<div class="panel panel-default"> 
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="thumb">
+                    <img class="img-responsive" ng-src="{{currentVenue.image}}"/>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <dl>     
+                    <dt>{{currentVenue.name}}</dt>
+                    <dt>Tipo</dt>
+                    <dd>{{currentVenue.tipo}}</dd>
+                    <hr>
+                    <dt>Capacidad</dt>
+                    <dd>{{currentVenue.capacidad}}</dd>
+                    <hr>
+                    <dt class="bold">Dirección</dt>
+                    <dd>{{currentVenue.direccion}}</dd>
+                    <hr>
+                    <dt class="bold">Ciudad</dt>
+                    <dd>{{currentVenue.ciudadDTO.nombre}}</dd>
+                    <hr>
+                    <dt class="bold">Festivales</dt>
+                    <dd>{{currentVenue.festivalDTO.nombre}}</dd>
+                    <hr>
+                    <dt class="bold">Fechas de próximas funciones</dt>
+                    <dd>{{currentVenue.funcionDTO.fecha}}</dd>
+                </dl>
+                </div>
+        </div>
+    </div>
+</div>

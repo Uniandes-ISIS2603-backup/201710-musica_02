@@ -1,0 +1,15 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-2 col-md-2" ng-repeat="venue in venuesRecords">
+            <div class="thumbnail">
+              <a ui-sref="venueDetail({venueId: venue.id})"> 
+                <img class="img-responsive" ng-src='{{venue.image}}' alt="{{venue.nombre}}" />
+              </a>
+                <div class="caption text-center">
+                    <p> {{venue.nombre}}</p> 
+                    <!--Falta algooo acaa del estilo <p ng-repeat="author in book.authors">{{author.name}}</p>--->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
