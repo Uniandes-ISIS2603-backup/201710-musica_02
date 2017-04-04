@@ -5,7 +5,8 @@
  */
 (function (ng) {
     var mod = ng.module("funcionModule", ['ui.router']);
-    mod.constant("authorsContext", "api/funcion");
+    mod.constant("funcionContext", "api/funciones");
+    mod.constant("artistasContext", "api/artistas");
     mod.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
             var basePath = 'src/modules/funcion/';
             var basePathArtistas = 'src/modules/artistas/';
@@ -16,8 +17,8 @@
                 url: '/funciones',
                 abstract: true,
                 resolve: {
-                    funciones: ['$http', function ($http) {
-                            return $http.get('data/funciones.json');
+                    funciones: ['$http', 'funcionesContext', function ($http, funcionesContext) {
+                            return $http.get(funcionesContext);
                         }]
                 },
                 views: {
@@ -44,23 +45,26 @@
                 param: {
                     funcionId: null
                 },
+                resolve: {
+                    currentFuncion: ['$http', 'funcionesContext', '$stateParams', function ($http, funcionesContext, $params) {
+                            return $http.get(funcionesContext + '/' + $params.funcionId);
+                        }]
+                },
+
                 views: {
-                    listView: {
-                       
-                        templateUrl: basePathArtistas + 'artistas.list.html',
-                       
-                    },
+
                     detailView: {
-                        resolve: {
-                            artistas: ['$http', function ($http) {
-                                    return $http.get('data/artistas.json');
-                                }]
-                        },
+
                         templateUrl: basePath + 'funcion.detail.html',
-                        controller: ['$scope', 'artistas', '$stateParams', function ($scope, artistas, $params) {
-                                $scope.artistasRecords = artistas.data;
-                                $scope.currentFuncion = $scope.funcionesRecords[$params.funcionId - 1];
+                        controller: ['$scope', 'currentFuncion', '$stateParams', function ($scope, currentFuncion, $params) {
+                               
+                                $scope.currentFuncion = currentFuncion.data;
+                                $scope.artistasRecords = currentFuncion.data.artistasDTOs;
                             }]
+                    },
+                    listView: {
+                        templateUrl: basePathArtistas + 'artistas.list.html',
+                      
                     }
                 }
             });
