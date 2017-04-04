@@ -1,0 +1,86 @@
+[
+    {
+        "id": 1,
+        "nombre": "Rawayana",
+        "image": "https://static1.squarespace.com/static/562e71a4e4b0cdf2dc86d0a9/57c9b983d1758e59f1aba7f3/57e15903d1758e4444a72fc3/1474386293919/Rawayana+sessions+POINT.jpg?format=500w",
+        "trayectoria": " Rawayana es una banda venezolana de reggae formada en 2007 en Caracas. Está integrada por Alberto «Beto» Montenegro, Antonio «Tony» Casas, Andrés Story, Alejandro Abeijón y Rodrigo Michelageli. Es reconocida por su mezcla de regge y ska. ",
+        "genero": "Reggae",
+        "funciones":
+                [  
+                    {
+                        "id": 4,
+                        "venueDTO": {
+                            "nombre": "Kennedy center"
+                        }
+                    }
+                ]
+    }
+    ,
+    {
+        "id": 2,
+        "nombre": "Pink Floyd",
+        "image": "https://lh5.googleusercontent.com/-47dq5DZRFLc/AAAAAAAAAAI/AAAAAAAAA4g/EbOuLiyhLMQ/s0-c-k-no-ns/photo.jpg",
+        "trayectoria": "Pink Floyd es una banda de rock británica, considerada un icono cultural del siglo xx y una de las bandas más influyentes en la historia de la música, que obtuvo gran popularidad gracias a su música .",
+        "genero": "Rock",
+        "funciones":
+                [  
+                    {
+                        "id": 1,
+                        "venueDTO": {
+                            "nombre": "Dakota center"
+                        }
+                    }
+                ]
+    }
+    ,
+    {
+        "id": 3,
+        "nombre": "Catfish and the Bottlemen",
+        "image": "http://assets9.radiox.co.uk/2016/43/catfish--the-bottlemen-1477393497-article-0.jpeg",
+        "trayectoria": "Catfish and the Bottlemen es una banda de rock británica formada el 2010 por el actual vocalista y guitarrista de la misma, Van McCann en Llandudno en Gales del Norte. En 2016 recibieron el galardón artista revelación británico en los Brit Awards.",
+        "genero": "Rock",
+        "funciones":
+                [  
+                    {
+                        "id": 2,
+                        "venueDTO": {
+                            "nombre": "Stuart center"
+                        }
+                    }
+                ]
+    }
+    ,
+    {
+        "id": 4,
+        "nombre": "Oasis",
+        "image": "https://s-media-cache-ak0.pinimg.com/736x/2c/28/f1/2c28f185e6a2e72f41e9f9650f5677f8.jpg",
+        "trayectoria": "Oasis fue una banda de rock británica, formada en la ciudad de Mánchester en 1991. En sus inicios conocido como The Rain, el grupo contaba en sus filas con el cantante Liam Gallagher, el guitarrista ...",
+        "genero": "Rock",
+        "funciones":
+                [  
+                    {
+                        "id": 3,
+                        "venueDTO": {
+                            "nombre": "Debra center"
+                        }
+                    }
+                ]
+    }
+    ,
+    {
+        "id": 5,
+        "nombre": "John Mayer",
+        "image": "https://lh5.googleusercontent.com/-ptqur98OYRk/AAAAAAAAAAI/AAAAAAAAAtU/Ed9gijOpt1k/s0-c-k-no-ns/photo.jpg",
+        "trayectoria": "ohn Clayton Mayer, conocido simplemente como John Mayer, es un músico, compositor y productor discográfico estadounidense.",
+        "genero": "Pop Rock, Blues Rock",
+        "funciones":
+                [  
+                    {
+                        "id": 5,
+                        "venueDTO": {
+                            "nombre": "Service center"
+                        }
+                    }
+                ]
+    }
+]

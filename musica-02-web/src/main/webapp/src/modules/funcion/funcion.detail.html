@@ -1,0 +1,62 @@
+<div class ="panel panel-default panel-body" row>
+    <b class="col-md-6"> Funcion </b>
+    <b class="col-md-6"> Artistas </b>
+    <div row>       
+        <div class ="col-md-6 bordeNaranja">
+            <div class ="row">
+                <div class="col-md-6">
+                    <div class="thumb">
+                        <img class="img-responsive" ng-src ="{{currentFuncion.image}}"/>
+                    </div>
+                </div>
+                <div class ="thumb col-md-3">
+                    <dl>
+                        <dt> <b>Fecha</b></dt>
+                        <dd>{{currentFuncion.fecha}}</dd>
+
+                        <hr>
+                        <dt><b> Venue</b></dt>
+                        <dd>{{currentFuncion.venueDTO.nombre}}</dd>
+                        <hr>
+                        <dt><b>¿Es paga?</b></dt>
+                        <dd>{{currentFuncion.esPaga}}</dd>
+                        <hr>
+                        <dt><b>Festival</b></dt>
+                        <dd>
+                            	<ul ng-repeat="festival in currentFuncion.festivalDTO">
+                                <a ui-sref="festivalDetail{{festivalId=festival.id}}">{{currentFuncion.festivalDTO.nombre}}</a>
+                            </ul></dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+        <div class="thumb col-md-6 bordeNaranja">
+            <div class="row">
+
+                <div class="col-md-4" ng-repeat="artista in artistasRecords |filter:currentFuncion.venueDTO.nombre">
+
+                    <div class="thumbnail">
+                        <a ui-sref="artistaDetail({artistaId: artista.id})"> 
+                            <img class="img-responsive" ng-src ='{{artista.image}}' alt = "{{artista.id}}"/>
+                        </a>   
+                        <div class ="caption text-center"> 
+                            <p>{{artista.nombre}}</p>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="col-md-12 bordeNaranja">
+        <ul class="nav
+            nav-tabs">
+            <li role="presentation" class="active"> <a ui-sref="reviewsList({funcionId: currentFuncion.id})">Reviews</a></li>
+            <div ui-view="childrenView"></div>
+        </ul>
+    </div>
+
+
+
+</div>

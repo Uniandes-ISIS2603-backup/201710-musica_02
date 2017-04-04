@@ -1,0 +1,80 @@
+[{
+        "id": 1,
+        "description": "Cras pellentesque volutpat dui. Maecenas tristique, est et tempus semper, est quam pharetra magna, ac consequat metus sapien ut nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Mauris viverra diam vitae quam. Suspendisse potenti. Nullam porttitor lacus at turpis. Donec posuere metus vitae ipsum. Aliquam non mauris. Morbi non lectus. Aliquam sit amet diam in magna bibendum imperdiet.",
+        "funcion": {
+            "id": 2
+        },
+        "usuario": {
+            "login": "pmason0"
+        }
+    },
+    {
+        "id": 2,
+        "description": "Fusce posuere felis sed lacus. Morbi sem mauris, laoreet ut, rhoncus aliquet, pulvinar sed, nisl. Nunc rhoncus dui vel sem. Sed sagittis. Nam congue, risus semper porta volutpat, quam pede lobortis ligula, sit amet eleifend pede libero quis orci. Nullam molestie nibh in lectus.",
+        "funcion": {
+            "id": 1
+        },
+        "usuario": {
+            "login": "mrobinson1"
+        }
+    },
+    {
+        "id": 3,
+        "description": "Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nulla dapibus dolor vel est. Donec odio justo, sollicitudin ut, suscipit a, feugiat et, eros. Vestibulum ac est lacinia nisi venenatis tristique. Fusce congue, diam id ornare imperdiet, sapien urna pretium nisl, ut volutpat sapien arcu sed augue. Aliquam erat volutpat. In congue. Etiam justo. Etiam pretium iaculis justo. In hac habitasse platea dictumst. Etiam faucibus cursus urna.",
+        "funcion": {
+            "id": 3
+        },
+        "usuario": {
+            "login": "dryan2"
+        }
+    },
+    {
+        "id": 4,
+        "description": "Nunc rhoncus dui vel sem. Sed sagittis. Nam congue, risus semper porta volutpat, quam pede lobortis ligula, sit amet eleifend pede libero quis orci. Nullam molestie nibh in lectus.",
+        "funcion": {
+            "id": 2
+        },
+        "usuario": {
+            "login": "hjordan3"
+        }
+    },
+    {
+        "id": 5,
+        "description": "Nulla tellus. In sagittis dui vel nisl. Duis ac nibh. Fusce lacus purus, aliquet at, feugiat non, pretium quis, lectus. Suspendisse potenti. In eleifend quam a odio.",
+        "funcion": {
+            "id": 5
+        },
+        "usuario": {
+            "login": "slopez4"
+        }
+    },
+    {
+        "id": 6,
+        "description": "Ut tellus. Nulla ut erat id mauris vulputate elementum.",
+        "funcion": {
+            "id": 6
+        },
+        "usuario": {
+            "login": "manderson5"
+        }
+    },
+    {
+        "id": 7,
+        "description": "Integer tincidunt ante vel ipsum. Praesent blandit lacinia erat. Vestibulum sed magna at nunc commodo placerat. Praesent blandit. Nam nulla. Integer pede justo, lacinia eget, tincidunt eget, tempus vel, pede. Morbi porttitor lorem id ligula. Suspendisse ornare consequat lectus. In est risus, auctor sed, tristique in, tempus sit amet, sem.",
+        "funcion": {
+            "id": 4
+        },
+        "usuario": {
+            "login": "smiller6"
+        }
+    },
+    {
+        "id": 8,
+        "description": "Integer ac neque. Duis bibendum. Morbi non quam nec dui luctus rutrum. Nulla tellus.",
+        "funcion": {
+            "id": 6
+        },
+        "usuario": {
+            "login": "smoreno7"
+        }
+    }]

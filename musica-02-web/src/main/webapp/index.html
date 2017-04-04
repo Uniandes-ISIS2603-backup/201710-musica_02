@@ -27,33 +27,51 @@ SOFTWARE.
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
         <title>musica</title>
-        
+        <!-- stylesheet Externas -->
         <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
-
+        <!-- stylesheet Internas -->
+        <link rel="stylesheet" href="css/style.css" />
+        <!-- Dependencias Externas -->
         <script src="bower_components/angular/angular.js"></script>
         <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
         <!----------Funcion-------->
-         <script src="src/modules/funcion/funcion.mod.js" type="text/javascript"></script>
+        <script src="src/modules/funcion/funcion.mod.js" type="text/javascript"></script>
+        <!----------Review-------->
+        <script src ="src/modules/review/review.mod.js" type="text/javascript"></script>
+        <!----------Festival-------->
+        <script src="src/modules/festival/festival.mod.js" type="text/javascript"></script>
+        <!----------Artista-------->
+        <script src="src/modules/artistas/artistas.mod.js" type="text/javascript"></script>
          <!----------Venue-------->
          <script src="src/modules/venue/venues.mod.js" type="text/javascript"></script>
           
-         
          <script src="src/app.js" type="text/javascript"></script> 
-
-      
+         
     </head>
+
     <body class="span4">
-        <div class =" container-fluid">
-            <div class="row">
-                <div class="col-lg-12">
+    <div class="container-fluid">
+            <div class ="row mainHeader">
+                <div class="col-sm-12">
+                    <h2 class="mainTitle"> <div class="caption text-center fondoAzul"> M U S I C  F E S T </div></h2>
+                </div>
+            </div>
+                <div class="row">
+                  <div class="col-sm-12">
                     <ul class="nav nav-tabs">
-                        <li><a ui-sref="funcionList">Funciones</a></li>
-                        <li><a ui-sref="venuesList">Venues</a></li>
+                        <li role = "navigation"><a ui-sref="funcionList">Funciones</a></li>
+                        <li role = "presentation"><a ui-sref="festivalesList">Festivales</a></li>
+                        <li role="presentation"><a ui-sref="artistasList">Artistas</a></li>
+                        <li role="presentation"><a ui-sref="venuesList">Venues</a></li>
                     </ul>                   
                 </div>
             </div>
-        </div>
-            <div ui-view = "mainView"></div> 
+            <div class="span4" ui-view="mainView"></div>
+            <div class="footer">
+                <p class="footerTitle">Mighty Fingers: Juan Diego González - Andrés Olivares - Alejandro Echeverri - Pedro Salazar - Camilo Anzola </p>
+            </div>  
+    </div> 
     </body>
 </html>

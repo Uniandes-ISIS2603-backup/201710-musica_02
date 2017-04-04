@@ -18,6 +18,8 @@ public class ArtistaDTO implements Serializable
 	private String nombre;
 
 	private String trayectoria;
+        
+        private String imagen;
 
 	public ArtistaDTO()
         {
@@ -86,6 +88,20 @@ public class ArtistaDTO implements Serializable
      */
     public void setTrayectoria(String trayectoria) {
         this.trayectoria = trayectoria;
+    }
+
+    /**
+     * @return the imagen
+     */
+    public String getImagen() {
+        return imagen;
+    }
+
+    /**
+     * @param imagen the imagen to set
+     */
+    public void setImagen(String imagen) {
+        this.imagen = imagen;
     }
        
        

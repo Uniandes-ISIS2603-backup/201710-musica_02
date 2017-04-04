@@ -10,6 +10,8 @@ import co.edu.uniandes.csw.musica.persistence.VenuePersistence;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
+import co.edu.uniandes.csw.musica.exceptions.BusinessLogicException;
+
 
 /**
  *
@@ -28,9 +30,13 @@ public class VenueLogic {
    {
        return persistence.findAll();
    }
-   public VenueEntity getVenue(Long id)
+   public VenueEntity getVenue(Long id) throws BusinessLogicException
    {
-       return persistence.find(id);
+        VenueEntity entity = persistence.find(id);
+        if(entity != null)
+        return persistence.find(id);
+        else throw new BusinessLogicException ("No se ha encontrado un venue con dicho Id");
+    
    }
    public VenueEntity createVenue(VenueEntity entity)
    {

@@ -1,0 +1,19 @@
+<div class="container-fluid">
+    <div class="col-md-12">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Name</th>    
+                    <th>Birth Date</th>  
+
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="author in authorsRecords">
+                    <td id="{{$index}}-name">   <a ui-sref="authorDetail({authorId: author.id})">{{author.name}}</a></td>
+                    <td id="{{$index}}-descrption">{{author.birthDate}}</td>                   
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -5,20 +5,20 @@ To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
 <div class="container-fluid">
-    <div class="row">
-        <div class="col-sm-2 col-md-2" ng-repeat="funcion in funcionesRecords">
-            <div class="thumbnail">
-                <img class="img-responsive" ng-src ='{{funcion.image}}' alt = "{{funcion.id}}"/>
-                <div class ="caption text-center"> <b>Artista invitado</b>: 
-                    <p> {{funcion.artistasDTOs.nombre}}</p>
-                </div>
-                <div class="caption text-center"> <b>Lugar</b>: 
-                    <p>{{funcion.venueDTO.nombre}}</p>
-                </div>
-                <div class="caption text-center"> <b>fecha</b>: 
-                    <p> {{funcion.fecha}}</p>
-                </div>
-            </div>
-        </div> 
+    <div class="col-sm-12">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Venue</th>
+                    <th>Fecha</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="funcion in funcionesRecords">
+                    <td id="{{$index}}-name"><a ui-sref="funcionDetail({funcionId: funcion.id})">{{funcion.venueDTO.nombre}}</a></td>
+                    <td id="{{$index}}-description">{{funcion.fecha}}</td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 </div>

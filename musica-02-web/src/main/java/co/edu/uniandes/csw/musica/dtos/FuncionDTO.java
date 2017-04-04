@@ -26,6 +26,8 @@ public class FuncionDTO implements Serializable
 
 	private Long id;
         
+        private String imagen;
+        
       
 	public FuncionDTO(){
             
@@ -39,16 +41,18 @@ public class FuncionDTO implements Serializable
                 entradasDisponibles = enti.getEntradasDisponibles();
                 esPaga = enti.getEsPaga();
                 duracion = enti.getDuracion();
+                imagen = enti.getImagen();
             }
         }
        public FuncionEntity toEntity()
        {
            FuncionEntity entity = new FuncionEntity();
-           entity.setId(this.id);
-           entity.setDuracion(this.duracion);
-           entity.setEsPaga(this.esPaga);
-           entity.setEntradasDisponibles(this.entradasDisponibles);
-           entity.setFecha(this.fecha);
+           entity.setId(this.getId());
+           entity.setDuracion(this.getDuracion());
+           entity.setEsPaga(this.getEsPaga());
+           entity.setEntradasDisponibles(this.getEntradasDisponibles());
+           entity.setFecha(this.getFecha());
+           entity.setImagen(this.getImagen());
             return entity;
        }
     /**
@@ -120,10 +124,21 @@ public class FuncionDTO implements Serializable
     public void setId(Long id) {
         this.id = id;
     }
-    
+
     /**
-     * @return the review
+     * @return the imagen
      */
+    public String getImagen() {
+        return imagen;
+    }
+
+    /**
+     * @param imagen the imagen to set
+     */
+    public void setImagen(String imagen) {
+        this.imagen = imagen;
+    }
+
 
 
     

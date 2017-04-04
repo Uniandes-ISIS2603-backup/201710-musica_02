@@ -1,5 +1,117 @@
-[{"id":1,"duracion":120,"fecha":"12/25/2016","esPaga":false,"entradasDisponibles":942,"festivalDTO":{"id":1,"nombre":"Batz Group"},"artistasDTOs":{"nombre":"Pink Floyd"},"venueDTO":{"nombre":"Dakota Center"},"reviewsDTO":{"nombreUsuario":"kdean0","descropcion":"Ut at dolor quis odio consequat varius. Integer ac leo. Pellentesque ultrices mattis odio. Donec vitae nisi.","calificacion":3},"image":"https://www.floydianslip.com/images/slideshow/photo6.jpg"},
-{"id":2,"duracion":102,"fecha":"4/23/2016","esPaga":false,"entradasDisponibles":148,"festivalDTO":{"id":2,"nombre":"Bauch, Steuber and Wiegand"},"artistasDTOs":{"nombre":"Catfish and the bottle men"},"venueDTO":{"nombre":"Stuart center"},"reviewsDTO":{"nombreUsuario":"ggilbert1","descropcion":"Proin leo odio, porttitor id, consequat in, consequat ut, nulla. Sed accumsan felis. Ut at dolor quis odio consequat varius. Integer ac leo. Pellentesque ultrices mattis odio. Donec vitae nisi. Nam ultrices, libero non mattis pulvinar, nulla pede ullamcorper augue, a suscipit nulla elit ac nulla. Sed vel enim sit amet nunc viverra dapibus. Nulla suscipit ligula in lacus. Curabitur at ipsum ac tellus semper interdum.","calificacion":1},"image":"http://thisnewband.com/wp-content/uploads/2015/09/IMG_7540.jpg"},
-{"id":3,"duracion":81,"fecha":"11/30/2016","esPaga":false,"entradasDisponibles":415,"festivalDTO":{"id":3,"nombre":"Rempel-Daniel"},"artistasDTOs":{"nombre":"Oasis"},"venueDTO":{"nombre":"Debra center"},"reviewsDTO":{"nombreUsuario":"agarcia2","descropcion":"Nulla neque libero, convallis eget, eleifend luctus, ultricies eu, nibh. Quisque id justo sit amet sapien dignissim vestibulum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nulla dapibus dolor vel est. Donec odio justo, sollicitudin ut, suscipit a, feugiat et, eros. Vestibulum ac est lacinia nisi venenatis tristique. Fusce congue, diam id ornare imperdiet, sapien urna pretium nisl, ut volutpat sapien arcu sed augue. Aliquam erat volutpat. In congue.","calificacion":3},"image":"http://img2.thejournal.ie/inline/1334434/original/?width=630&version=1334434"},
-{"id":4,"duracion":70,"fecha":"3/12/2017","esPaga":true,"entradasDisponibles":182,"festivalDTO":{"id":4,"nombre":"VonRueden-Littel"},"artistasDTOs":{"nombre":"Rawayana"},"venueDTO":{"nombre":"Kennedy center"},"reviewsDTO":{"nombreUsuario":"pcrawford3","descropcion":"Pellentesque eget nunc. Donec quis orci eget orci vehicula condimentum. Curabitur in libero ut massa volutpat convallis. Morbi odio odio, elementum eu, interdum eu, tincidunt in, leo. Maecenas pulvinar lobortis est. Phasellus sit amet erat. Nulla tempus. Vivamus in felis eu sapien cursus vestibulum.","calificacion":3},"image":"http://hot94.fm/wp-content/uploads/2016/12/Rawayana730.gif"},
-{"id":5,"duracion":86,"fecha":"3/22/2017","esPaga":false,"entradasDisponibles":682,"festivalDTO":{"id":5,"nombre":"Rogahn-Graham"},"artistasDTOs":{"nombre":"John Mayer"},"venueDTO":{"nombre":"Service center"},"reviewsDTO":{"nombreUsuario":"jgomez4","descropcion":"Morbi ut odio. Cras mi pede, malesuada in, imperdiet et, commodo vulputate, justo.","calificacion":3},"image":"https://s-media-cache-ak0.pinimg.com/564x/0b/1b/3f/0b1b3f8c262603c0ed91073356963fa6.jpg"}]
+[{
+        "id": 1,
+        "duracion": 120,
+        "fecha": "12/25/2016",
+        "esPaga": false,
+        "entradasDisponibles": 942,
+                    "nombre": "Lollapalooza",
+
+        "festivalDTO": {
+            "id": 1,
+            "nombre": "Lollapalooza"
+        },
+        "artistas": [{
+                "id": 2,
+                "nombre": "Pink Floyd"
+            }],
+        "venueDTO": {
+            "nombre": "Dakota Center"
+        },
+        "image": "http://thisnewband.com/wp-content/uploads/2015/09/IMG_7540.jpg"
+    },
+    {
+        "id": 2,
+        "duracion": 102,
+        "fecha": "4/23/2016",
+        "esPaga": true,
+        "entradasDisponibles": 148,
+        "festivalDTO": {
+            "id": 2,
+            "nombre": "Bauch, Steuber and Wiegand"
+        },
+        "artistas": [{
+                "id": 3,
+                "nombre": "Catfish and the Bottlemen"
+            }],
+        "venueDTO": {
+            "nombre": "Stuart center"
+        },
+        "image": "http://thisnewband.com/wp-content/uploads/2015/09/IMG_7540.jpg"
+    },
+    {
+        "id": 3,
+        "duracion": 81,
+        "fecha": "11/30/2016",
+        "esPaga": false,
+        "entradasDisponibles": 415,
+        "festivalDTO": {
+            "id": 3,
+            "nombre": "Rempel-Daniel"
+        },
+        "artistas": [{
+                "id": 4,
+                "nombre": "Oasis"
+            }],
+        "venueDTO": {
+            "nombre": "Debra center"
+        },
+       
+        "image": "http://img2.thejournal.ie/inline/1334434/original/?width=630&version=1334434"
+    },
+    {
+        "id": 4,
+        "duracion": 70,
+        "fecha": "3/12/2017",
+        "esPaga": true,
+        "entradasDisponibles": 182,
+        "festivalDTO": {
+            "id": 4,
+            "nombre": "VonRueden-Littel"
+        },
+        "artistas": [{
+                "id": 1,
+                "nombre": "Rawayana"
+            }],
+        "venueDTO": {
+            "nombre": "Kennedy center"
+        },
+        
+        "image": "http://hot94.fm/wp-content/uploads/2016/12/Rawayana730.gif"
+    },
+    {
+        "id": 5,
+        "duracion": 86,
+        "fecha": "3/22/2017",
+        "esPaga": false,
+        "entradasDisponibles": 682,
+        "festivalDTO": {
+            "id": 5,
+            "nombre": "Rogahn-Graham"
+        },
+        "artistas": [{
+                "id": 5,
+                "nombre": "John Mayer"
+            }],
+        "venueDTO": {
+            "nombre": "Service center"
+        },
+        
+        "image": "https://s-media-cache-ak0.pinimg.com/564x/0b/1b/3f/0b1b3f8c262603c0ed91073356963fa6.jpg"
+    },
+    {
+        "id": 6,
+        "duracion": 120,
+        "fecha": "12/25/2016",
+        "esPaga": true,
+        "entradasDisponibles": 942,
+        "festivalDTO": {
+            "id": 1,
+            "nombre": "Batz Group"
+        },
+        "artistas": [],
+        "venueDTO": {
+            "nombre": "Dakota Center"
+        },
+        
+        "image": "https://scontent-dft4-2.xx.fbcdn.net/v/t1.0-9/16142757_207642886367238_7745917909667270993_n.jpg?oh=cb8a7e0c1432f6c3109598ada3b3ca7c&oe=596A20BB"
+    }]

@@ -1,0 +1,26 @@
+<div class="container-fluid">
+    
+    <div class="row">
+        
+        <div class="col-md-2" ng-repeat="artista in artistasRecords |filter:currentFuncion.venueDTO.nombre">
+            
+            <div class="thumbnail">
+                 <a ui-sref="artistaDetail({artistaId: artista.id})"> 
+                    <img class="img-responsive" ng-src ='{{artista.image}}' alt = "{{artista.id}}"/>
+                 </a>
+                    <div class ="caption text-center"> 
+                        <p>{{artista.nombre}}</p>
+                        <p ng-repeat="funcion in artista.funciones">
+                            <a ui-sref="funcionDetail{{funcionId= funcion.id}}"class="thumb">{{funcion.id}}</a>
+                        </p>
+                       
+                    </div>
+               
+                
+            </div>
+            
+        </div>
+        
+    </div>
+    
+</div>

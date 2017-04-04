@@ -71,7 +71,7 @@ public class VenueResource {
     }
     @GET 
     @Path("{id: \\d+}")
-    public VenueDetailDTO getVenue(@PathParam("id") Long id)
+    public VenueDetailDTO getVenue(@PathParam("id") Long id) throws BusinessLogicException
     {
         // TODO verficar que exista el venue y si no, disparar WebApplicationException con 404
        
