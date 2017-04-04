@@ -1,0 +1,22 @@
+<div class="container-fluid">
+    <div class="col-md-4">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Numero</th>    
+                    <th>Silla</th>  
+                    <th>Precio</th>
+                    <th>Funcion</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="entrada in entradaRecords">
+                    <td id="{{$index}}-Numero">{{entrada.noEntrada}}</td>
+                    <td id="{{$index}}-Silla">{{entrada.silla}}</td>
+                    <td id="{{$index}}-Precio">{{entrada.precio}}</td>
+<!--                    <td id="{{$index}}-Funcion"><a ui-sref="clienteEntradas({usuario: cliente.usuario})">{{cliente.usuario}}</a></td>-->
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

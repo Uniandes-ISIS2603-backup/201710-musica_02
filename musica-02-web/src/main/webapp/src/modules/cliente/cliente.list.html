@@ -1,17 +1,28 @@
 <div class="container-fluid">
-    <div class="col-md-12">
+    <div class="col-md-4">
         <table class="table table-hover">
             <thead>
                 <tr>
-                    <th>Name</th>    
-                    <th>Birth Date</th>  
+                    <th>Nombre</th>    
+                    <th>Usuario</th>  
+                    <th>TipoDocumento</th>
+                    <th>Documento</th>
+                    <th>Abono</th>
+                    <th>RegistradoBlog</th>
+                    <!--<th>VerEntradas</th>-->
+                    
 
                 </tr>
             </thead>
             <tbody>
-                <tr ng-repeat="author in authorsRecords">
-                    <td id="{{$index}}-name">   <a ui-sref="authorDetail({authorId: author.id})">{{author.name}}</a></td>
-                    <td id="{{$index}}-descrption">{{author.birthDate}}</td>                   
+                <tr ng-repeat="cliente in clienteRecords">
+                    <td id="{{$index}}-nombre">{{cliente.nombre}}</td>
+                    <td id="{{$index}}-usuario">{{cliente.usuario}}</td>
+                    <td id="{{$index}}-tipoDoc">{{cliente.tipoDocumento}}</td>
+                    <td id="{{$index}}-doc">{{cliente.documento}}</td>
+                    <td id="{{$index}}-abono">{{cliente.abono}}</td>
+                    <td id="{{$index}}-registrado">{{cliente.registradoBlog }}</td>
+                    <!--<td id="{{$index}}-entradas"><a ui-sref="clienteEntradas({usuario: cliente.usuario})">{Entradas}</a></td>-->
                 </tr>
             </tbody>
         </table>
