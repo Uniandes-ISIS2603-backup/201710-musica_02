@@ -33,7 +33,7 @@
                  listView:{
                      templateUrl: basePath + 'review.list.html',
                      controller:['$scope','reviews',function($scope,reviews){
-                             $scope.reviewsRecord = reviews.data;
+                             $scope.reviewsRecords = reviews.data;
                      }]
                  }
              }

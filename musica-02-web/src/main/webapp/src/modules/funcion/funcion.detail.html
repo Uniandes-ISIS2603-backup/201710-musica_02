@@ -16,21 +16,25 @@
 
                         <hr>
                         <dt><b> Venue</b></dt>
-                        <dd>{{currentFuncion.venueDTO.nombre}}</dd>
+                         <a ui-sref="venueDetail({venueId:currentFuncion.venueDTO.id})"> {{currentFuncion.venueDTO.nombre}}</a>
                         <hr>
                         <dt><b>¿Es paga?</b></dt>
                         <input type="checkbox" checked="{{currentFuncion.esPaga}}"disabled="disabled"/>
                         <hr>
+
+                        <dt><b>Festivaeel</b></dt>
                         
-                            <dt><b>Festival</b></dt>
-                            <dd>{{currentFuncion.festivalDTO.nombre}}</dd>
-                            <hr>
-                            <dt><b>Entradas disponibles </b></dt>
-                            <dd>{{currentFuncion.entradasDisponibles}}</dd>
-                            <hr>
-                            <dt><b>Duración</b></dt>
-                            <dd>{{currentFuncion.duracion}}</dd>
-                        
+                            <a ui-sref ="festivalDetail({festivalId: currentFuncion.festivalDTO..id})">{{currentFuncion.festivalDTO.nombre}}</a>
+
+                        </ul>
+
+                        <hr>
+                        <dt><b>Entradas disponibles </b></dt>
+                        <dd>{{currentFuncion.entradasDisponibles}}</dd>
+                        <hr>
+                        <dt><b>Duración</b></dt>
+                        <dd>{{currentFuncion.duracion}}</dd>
+
                     </dl>
                 </div>
             </div>
