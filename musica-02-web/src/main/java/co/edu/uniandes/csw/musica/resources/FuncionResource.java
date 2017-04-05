@@ -78,7 +78,11 @@ public class FuncionResource {
 
     @POST
     public FuncionDetailDTO createFuncion(FuncionDetailDTO dto) throws BusinessLogicException {
-        FestivalEntity festival = festLogic.getFestival(dto.getFestivalDTO().getId());
+        FestivalEntity festival;
+        if(dto.getFestivalDTO()!=null){
+        festival = festLogic.getFestival(dto.getFestivalDTO().getId());
+        }
+        else festival=null;
         FuncionEntity fun = null;
         if (festival == null) {
             throw new BusinessLogicException("Debe existir el festival para poder añadir la función");

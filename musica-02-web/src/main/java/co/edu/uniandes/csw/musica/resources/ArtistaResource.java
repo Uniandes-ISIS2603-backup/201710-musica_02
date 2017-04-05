@@ -57,7 +57,7 @@ public class ArtistaResource
     }
 
     @POST
-    public ArtistaDetailDTO createArtista(ArtistaDTO dto) throws BusinessLogicException 
+    public ArtistaDetailDTO createArtista(ArtistaDetailDTO dto) throws BusinessLogicException 
     {
         ArtistaEntity artista = logic.createArtista(dto.toEntity());
         return new ArtistaDetailDTO(artista);
@@ -76,6 +76,13 @@ public class ArtistaResource
     public ArtistaDetailDTO getArtista(@PathParam("id") Long id) throws BusinessLogicException
     {
         return new ArtistaDetailDTO(logic.getArtista(id));
+    }
+    @GET 
+    @Path("festival/{id: \\d+}")
+    public List<ArtistaDetailDTO> getArtistasPorFestival(@PathParam("id") Long id) throws BusinessLogicException
+    {
+          return listEntity2DTO(logic.getArtistasPorFestival(id));
+
     }
  
     // TODO implementar get /artistas/:id/funciones funciones en las que actuará el artista

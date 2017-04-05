@@ -25,7 +25,7 @@ public class FestivalLogic {
     {
         return persistence.findAll();
     }
-     public FestivalEntity getFestival (Long id) throws BusinessLogicException
+     public FestivalEntity getFestival (Long id)  
     {
         return persistence.find(id);
     }

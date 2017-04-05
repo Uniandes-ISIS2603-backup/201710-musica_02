@@ -7,6 +7,8 @@
     var mod = ng.module("festivalModule", ['ui.router']);
     mod.constant("festivalesContext", "api/festivales");
     mod.constant("funcionesContext", "api/funciones");
+   mod.constant("artistasContext", "api/artistas");
+
     mod.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
             var basePath = 'src/modules/festival/';
             $urlRouterProvider.otherwise("/festivalesList");
@@ -43,20 +45,33 @@
                     festivalId: null
                 },
                 views:{
-                    listView:{
-                        
-                      templateUrl: basePath + 'festival.list.html'  
+                    childrenView:{
+                         resolve: {
+                            currentArtistas: ['$http','artistasContext','$stateParams', function ($http,artistasContext,$params) {
+                                    return $http.get(artistasContext+'/festival/'+$params.festivalId);
+                                }]      
+                        },                       
+                      templateUrl:   'src/modules/artistas/artistas.list.html'  ,
+                                controller: ['$scope','currentArtistas', function ($scope,currentArtistas) {
+                                $scope.artistasRecords = currentArtistas.data;
+
+                            }]
                     },
                     detailView:{
                         resolve: {
                             funciones: ['$http','funcionesContext', function ($http,funcionesContext) {
                                     return $http.get(funcionesContext);
-                                }]
+                                }],
+                            currentFestival:['$http','festivalesContext','$stateParams', function ($http,festivalesContext,$params ){
+                                    return $http.get(festivalesContext + '/' + $params.festivalId);
+
+                                }]            
                         },
                         templateUrl: basePath + 'festival.detail.html',
-                        controller: ['$scope','funciones', '$stateParams', function ($scope, funciones,$params) {
+                        controller: ['$scope','funciones','currentFestival', function ($scope, funciones,currentFestival) {
                                 $scope.funcionesRecords = funciones.data;
-                                $scope.currentFestival = $scope.festivalesRecords[$params.festivalId-1001];
+                                $scope.currentFestival = currentFestival.data;
+
                             }]
                     }
                 }
