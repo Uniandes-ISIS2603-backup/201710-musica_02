@@ -22,9 +22,9 @@
                         <input type="checkbox" checked="{{currentFuncion.esPaga}}"disabled="disabled"/>
                         <hr>
 
-                        <dt><b>Festivaeel</b></dt>
+                        <dt><b>Festivael</b></dt>
                         
-                            <a ui-sref ="festivalDetail({festivalId: currentFuncion.festivalDTO..id})">{{currentFuncion.festivalDTO.nombre}}</a>
+                            <a ui-sref ="festivalDetail({festivalId: currentFuncion.festivalDTO.id})">{{currentFuncion.festivalDTO.nombre}}</a>
 
                         </ul>
 
@@ -33,7 +33,7 @@
                         <dd>{{currentFuncion.entradasDisponibles}}</dd>
                         <hr>
                         <dt><b>Duración</b></dt>
-                        <dd>{{currentFuncion.duracion}}</dd>
+                        <dd>{{currentFuncion.duracion + " minutos"}}</dd>
 
                     </dl>
                 </div>
