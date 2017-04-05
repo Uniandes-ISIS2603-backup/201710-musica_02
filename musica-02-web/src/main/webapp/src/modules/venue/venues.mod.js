@@ -1,6 +1,7 @@
 (function (ng) {
     var mod = ng.module("venuesModule", ['ui.router']);
     mod.constant("venuesContext", "api/venues");
+    mod.constant("funcionesContext", "api/funciones");
     mod.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
             var basePath = 'src/modules/venue/';
 
@@ -47,9 +48,15 @@
                         templateUrl: basePath + 'venues.list.html'
                     },
                     'detailView':{
+                        resolve: {
+                        funciones: ['$http','funcionesContext', function ($http,funcionesContext) {
+                                    return $http.get(funcionesContext);
+                                }]},
                         templateUrl: basePath + 'venues.detail.html',
-                        controller: ['$scope', '$stateParams', function ($scope, $params) {
-                                $scope.currentVenue = $scope.venuesRecords[$params.venueId-1];
+                        controller: ['$scope','funciones','$stateParams', function ($scope, funciones, $params) {
+                                
+                                $scope.currentVenue = $scope.venuesRecords[$params.venueId-1001];
+                                $scope.funcionesRecords = funciones.data;
                     }]
                  }
                }

@@ -7,6 +7,7 @@
     var mod = ng.module("clienteModule", ['ui.router']);
 
     mod.constant("clientesContext", "api/clientes");
+    mod.constant 
 
     mod.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
             var basePath = 'src/modules/cliente/';
@@ -16,8 +17,8 @@
                 url: '/clientes',
                 abstract: true,
                 resolve: {
-                    clientes: ['$http', function ($http) {
-                            return $http.get('data/clientes.json');
+                    clientes: ['$http', 'clientesContext',function ($http,clientesContext) {
+                            return $http.get(clientesContext);
                         }]
                 },
                 views: {
@@ -47,8 +48,8 @@
                 views: {
                     'listView': {
                         resolve: {
-                            entradas: ['$http', function($http) {
-                                    return $http.get('data/entradas.json');
+                            entradas: ['$http','$stateParams', function($http,$params) {
+                                    return $http.get('api/clientes/'+$params.usuario+'/entradas');
                                 }]
                         },
                         templateUrl: basePath + 'clienteEntradas.html',

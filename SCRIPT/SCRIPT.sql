@@ -7,10 +7,12 @@
  * Author:  af.olivares10
  * Created: 03-abr-2017
  */
+DELETE FROM ENTRADAENTITY;
+
 DELETE FROM FUNCIONENTITY_ARTISTAENTITY;
 DELETE FROM REVIEWENTITY;
 DELETE FROM CLIENTEENTITY;
-DELETE FROM ENTRADAENTITY;
+
 DELETE FROM CANCIONENTITY;
 DELETE FROM DISCOENTITY;
 DELETE FROM ARTISTAENTITY;
@@ -31,11 +33,11 @@ insert into FESTIVALENTITY (ID, FECHAFIN, FECHAINICIO, NOMBRE, CIUDADENTITY_ID,I
 insert into FESTIVALENTITY (ID, FECHAFIN, FECHAINICIO, NOMBRE, CIUDADENTITY_ID,IMAGEN) values (1004, '2017-12-01', '2017-01-01', 'Glastonburry', 1004,'http://cdn.glastonburyfestivals.co.uk/wp-content/themes/glasto/assets/gfx/glastonbury_festival_generic.png');
 insert into FESTIVALENTITY (ID, FECHAFIN, FECHAINICIO, NOMBRE, CIUDADENTITY_ID,IMAGEN) values (1005, '2017-12-01', '2017-01-01', 'Coachella', 1005,'https://s-media-cache-ak0.pinimg.com/originals/90/47/3b/90473b91f75571e71468afcdb8fb42f5.jpg');
 
-insert into VENUEENTITY (ID, CAPACIDADMAX, DIRECCION, NOMBRE, TIPO, CIUDADENTITY_ID, FESTIVALENTITY_ID, IMAGEN) values (1001, 201, '309 Claremont Court', 'Elmside', 'ABIERTO', 1001, 1001, 'http://www.cultura.ipn.mx/PublishingImages/2014/Espacios/Optimizadas/002---AUDITORIO-A.jpg');
+insert into VENUEENTITY (ID, CAPACIDADMAX, DIRECCION, NOMBRE, TIPO, CIUDADENTITY_ID, FESTIVALENTITY_ID, IMAGEN) values (1001, 201, '309 Claremont Court', 'Elmside', 'ABIERTO', 1001, 1001, 'https://s-media-cache-ak0.pinimg.com/736x/bd/ce/8e/bdce8e9a495c2e7548c13c39af9d1d62.jpg');
 insert into VENUEENTITY (ID, CAPACIDADMAX, DIRECCION, NOMBRE, TIPO, CIUDADENTITY_ID, FESTIVALENTITY_ID, IMAGEN) values (1002, 202, '60114 Fordem Drive', 'Carpenter', 'CUBIERTO', 1002, 1002, 'http://dceven.ufsc.br/files/2011/02/auditorio2_jpg.jpg');
-insert into VENUEENTITY (ID, CAPACIDADMAX, DIRECCION, NOMBRE, TIPO, CIUDADENTITY_ID, FESTIVALENTITY_ID, IMAGEN) values (1003, 203, '9226 Namekagon Parkway', 'Bay', 'CUBIERTO', 1003, 1003, 'https://s3-sa-east-1.amazonaws.com/wwwmercadoec/items/sonido-y-amplificacin-profesional-djs-discomvil-tarimas-escenarios-para-eventos-0-0-1.jpg');
-insert into VENUEENTITY (ID, CAPACIDADMAX, DIRECCION, NOMBRE, TIPO, CIUDADENTITY_ID, FESTIVALENTITY_ID, IMAGEN) values (1004, 204, '63077 Fair Oaks Hill', 'Randy', 'CUBIERTO', 1004, 1004, 'https://s-media-cache-ak0.pinimg.com/736x/bd/ce/8e/bdce8e9a495c2e7548c13c39af9d1d62.jpg');
-insert into VENUEENTITY (ID, CAPACIDADMAX, DIRECCION, NOMBRE, TIPO, CIUDADENTITY_ID, FESTIVALENTITY_ID, IMAGEN) values (1005, 205, '47 Welch Terrace', 'Mockingbird', 'ABIERTO', 1005, 1005, 'http://www.estructurasvt.com.ar/altarimasogradasi/alquileractosmas.jpg');
+insert into VENUEENTITY (ID, CAPACIDADMAX, DIRECCION, NOMBRE, TIPO, CIUDADENTITY_ID, FESTIVALENTITY_ID, IMAGEN) values (1003, 203, '9226 Namekagon Parkway', 'Bay', 'CUBIERTO', 1003, 1003, 'http://www.estructurasvt.com.ar/altarimasogradasi/alquileractosmas.jpg');
+insert into VENUEENTITY (ID, CAPACIDADMAX, DIRECCION, NOMBRE, TIPO, CIUDADENTITY_ID, FESTIVALENTITY_ID, IMAGEN) values (1004, 204, '63077 Fair Oaks Hill', 'Randy', 'CUBIERTO', 1004, 1004, 'http://www.cultura.ipn.mx/PublishingImages/2014/Espacios/Optimizadas/002---AUDITORIO-A.jpg');
+insert into VENUEENTITY (ID, CAPACIDADMAX, DIRECCION, NOMBRE, TIPO, CIUDADENTITY_ID, FESTIVALENTITY_ID, IMAGEN) values (1005, 205, '47 Welch Terrace', 'Mockingbird', 'ABIERTO', 1005, 1005, 'https://s3-sa-east-1.amazonaws.com/wwwmercadoec/items/sonido-y-amplificacin-profesional-djs-discomvil-tarimas-escenarios-para-eventos-0-0-1.jpg');
 
 insert into FUNCIONENTITY (ID, DURACION, ENTRADASDISPONIBLES, ESPAGA, FECHA, FESTIVALENTITY_ID, VENUEENTITY_ID, IMAGEN) values (1001, 110, 201, 1, '2017-04-21', 1001, 1001, 'http://thisnewband.com/wp-content/uploads/2015/09/IMG_7540.jpg');
 insert into FUNCIONENTITY (ID, DURACION, ENTRADASDISPONIBLES, ESPAGA, FECHA, FESTIVALENTITY_ID, VENUEENTITY_ID, IMAGEN) values (1002, 120, 202, 1, '2017-04-21', 1002, 1002, 'http://thisnewband.com/wp-content/uploads/2015/09/IMG_7540.jpg');
@@ -81,6 +83,12 @@ insert into CANCIONENTITY (ID, DURACION, NOMBRE, DISCOENTITY_ID) values (1002, 4
 insert into CANCIONENTITY (ID, DURACION, NOMBRE, DISCOENTITY_ID) values (1003, 5, 'Hunter', 1003);
 insert into CANCIONENTITY (ID, DURACION, NOMBRE, DISCOENTITY_ID) values (1004, 6, 'Watkins', 1004);
 insert into CANCIONENTITY (ID, DURACION, NOMBRE, DISCOENTITY_ID) values (1005, 7, 'Collins', 1005);
+
+insert into ENTRADAENTITY (ID,LIBRE,NOENTRADA,PRECIO,SILLA,CLIENTEENTITY_USUARIO,FUNCIONENTITY_ID) values (1,0,1,1000,'3A','1001',1001);
+insert into ENTRADAENTITY (ID,LIBRE,NOENTRADA,PRECIO,SILLA,CLIENTEENTITY_USUARIO,FUNCIONENTITY_ID) values (2,0,2,1000,'3A','1001',1003);
+insert into ENTRADAENTITY (ID,LIBRE,NOENTRADA,PRECIO,SILLA,CLIENTEENTITY_USUARIO,FUNCIONENTITY_ID) values (3,0,3,1000,'3A','1003',1004);
+insert into ENTRADAENTITY (ID,LIBRE,NOENTRADA,PRECIO,SILLA,CLIENTEENTITY_USUARIO,FUNCIONENTITY_ID) values (4,0,4,1000,'3A','1004',1002);
+insert into ENTRADAENTITY (ID,LIBRE,NOENTRADA,PRECIO,SILLA,CLIENTEENTITY_USUARIO,FUNCIONENTITY_ID) values (5,0,5,1000,'3A','1002',1001);
 
 
 
