@@ -22,8 +22,9 @@
                     <dt class="bold">Ciudad</dt>
                     <dd>{{currentVenue.ciudadDTO.nombre}}</dd>
                    
-                    <dt class="bold">Festivales que se realizan en este venue</dt>
-                    <dd>{{currentVenue.festivalDTO.nombre}}</dd>
+                    
+                    <dt><b> Festivales que se realizan aquí </b></dt>
+                    <a ui-sref="festivalDetail({festivalId:currentVenue.festivalDTO.id})">{{currentVenue.festivalDTO.nombre}}</a>
                     <dt> Desde </dt><dd>{{currentVenue.festivalDTO.fechaInicio}}</dd><dt> hasta </dt><dd>{{currentVenue.festivalDTO.fechaFin}}</dd>
                 </dl>
                 </div>
