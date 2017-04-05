@@ -35,7 +35,7 @@ public class EntradaPersistence {
     }
     
     public List<EntradaEntity> findByCliente(String usuario) {
-         TypedQuery<EntradaEntity> q = em.createQuery("select u from EntradaEntity u where u.clienteEntity = :usuario", EntradaEntity.class);
+         TypedQuery<EntradaEntity> q = em.createQuery("select u from EntradaEntity u where u.clienteEntity_usuario = usuario", EntradaEntity.class);
         q = q.setParameter("usuario", usuario);
         List<EntradaEntity> entradas = q.getResultList();
         if (entradas.isEmpty() ) {
@@ -47,7 +47,7 @@ public class EntradaPersistence {
     }
     
     public List<EntradaEntity> findByFuncion(Long id) {
-         TypedQuery<EntradaEntity> q = em.createQuery("select u from EntradaEntity u where u.funcionEntity = :id", EntradaEntity.class);
+         TypedQuery<EntradaEntity> q = em.createQuery("select u from EntradaEntity u where u.funcionEntity_id = :id", EntradaEntity.class);
         q = q.setParameter("id", id);
         List<EntradaEntity> entradas = q.getResultList();
         if (entradas.isEmpty() ) {
