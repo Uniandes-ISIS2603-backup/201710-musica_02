@@ -1,21 +1,19 @@
-<div class="container-fluid">
-    
-    <div class="row">
-        
-        <div class="col-md-2" ng-repeat="cancion in cancionesRecords |filter:currentDisco.DiscoDTO.nombre">
-            
-            <div class="thumbnail">
-                    <div class ="caption text-center"> 
-                        <p>{{cancion.nombre}}</p>
-                        <p>{{cancion.duracion}}</p>
-                       
-                    </div>
-               
-                
-            </div>
-            
-        </div>
-        
+
+<div class="col-md-12">
+    <div class="container-fluid">   
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th><b>Canciones</b></th>                      
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="cancion in cancionesRecords |filter:currentDisco.name">
+                    <td id="{{$index}}-name">{{cancion.name}}</td> 
+                    <td id="{{$index}}-name">{{cancion.duracion}}</td>  
+                </tr>
+            </tbody>
+        </table>
     </div>
-    
+
 </div>

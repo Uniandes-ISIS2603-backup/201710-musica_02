@@ -47,13 +47,13 @@ public class EntradaResource {
         return listDTO;
     }
 
-    @GET
-    public List<EntradaDetailDTO> getEntradas() {
-        return listEntity2DTO(entradaLogic.getEntradas());
-    }
+//    @GET
+//    public List<EntradaDetailDTO> getEntradas() {
+//        return listEntity2DTO(entradaLogic.getEntradas());
+//    }
 
     @GET
-    @Path("{idCliente}")
+    //@Path("{idCliente}")
     // TODOya Revisar con los TODOs del principio
     // TODO:ya documentar lo que retorna el método. Las entradas de un usuario sin importar la feria ni la función  ?
     // TODO yasi el recurso no existe se debe disparar WebApplication Exception 404
@@ -62,7 +62,7 @@ public class EntradaResource {
     }
 
     @GET
-    @Path("{idCliente}/funciones/{funcion}")
+    @Path("/funciones/{funcion}")
     // TODO funciones/{funcion}  es la convención navegar sobre las colecciones (es decir en plural) 
     // TODO si el recurso no existe se debe disparar WebApplication Exception 404
     public List<EntradaDetailDTO> getByFuncion(@PathParam("funcion") Long id) throws Exception {

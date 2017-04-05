@@ -2,8 +2,10 @@
     var mod = ng.module("cancionModule", ['ui.router']);
     mod.constant("cancionesContext", "api/canciones");
     mod.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
+            
             var basePath = 'src/modules/cancion/';
             $urlRouterProvider.otherwise("/cancionesList");
+            self = this;
 
             $stateProvider.state('canciones', {
                 url: '/canciones',
@@ -26,7 +28,7 @@
                 parent: 'canciones',
                 views: {
                     'listView': {
-                        templateUrl: basePath + 'canciones.list.html'
+                        templateUrl: basePath + 'cancion.list.html'
                     }
                 }
             });

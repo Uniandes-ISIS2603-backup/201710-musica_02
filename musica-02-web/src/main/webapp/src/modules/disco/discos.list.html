@@ -2,17 +2,16 @@
     <b>Discos<b>    
     <div class="row">
         
-        <div class="col-md-2" ng-repeat="disco in discosRecords |filter:currentArtista.artistaDTO.nombre">
+        <div class="col-md-2" ng-repeat="disco in discosRecords |filter:currentArtista.nombre">
             
             <div class="thumbnail">
                  <a ui-sref="discoDetail({discoId: disco.id})"> 
                     <img class="img-responsive" ng-src ='{{disco.image}}' alt = "{{disco.id}}"/>
                  </a>
                     <div class ="caption text-center"> 
-                        <p>{{disco.nombre}}</p>
+                        <p>{{disco.name}}</p>
                        
                     </div>
-               
                 
             </div>
             
