@@ -14,7 +14,8 @@ er, choose License Headers in Project Properties.
         'reviewModule',
         'festivalModule',
         'artistaModule',
-        'venuesModule'
+        'venuesModule',
+        'clienteModule'
     ]);
     // Resuelve problemas de las promesas
     app.config(['$qProvider', function ($qProvider) {

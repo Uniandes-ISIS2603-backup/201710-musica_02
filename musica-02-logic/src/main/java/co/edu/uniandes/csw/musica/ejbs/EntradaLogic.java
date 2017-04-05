@@ -13,6 +13,7 @@ import co.edu.uniandes.csw.musica.persistence.FuncionPersistence;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
+import javax.ws.rs.WebApplicationException;
 
 /**
  *
@@ -49,8 +50,10 @@ public class EntradaLogic {
         return entradaPersistence.findByCliente(usuario);
     }
 
-    public List<EntradaEntity> getByFuncion(Long id) {
-        return entradaPersistence.findByFuncion(id);
+    public List<EntradaEntity> getByFuncion(Long id) throws Exception{
+         List<EntradaEntity> e = entradaPersistence.findByFuncion(id);
+         if(e == null) throw new WebApplicationException(404);
+        return e;
     }
 
     public ClienteEntity getCliente(Long id) {

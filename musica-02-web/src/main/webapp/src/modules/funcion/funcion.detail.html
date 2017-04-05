@@ -6,10 +6,10 @@
             <div class ="row">
                 <div class="col-md-6">
                     <div class="thumb">
-                        <img class="img-responsive" ng-src ="{{currentFuncion.image}}"/>
+                        <img class="img-responsive" ng-src ="{{currentFuncion.imagen}}"/>
                     </div>
                 </div>
-                <div class ="thumb col-md-3">
+                <div class ="thumb col-md-4">
                     <dl>
                         <dt> <b>Fecha</b></dt>
                         <dd>{{currentFuncion.fecha}}</dd>
@@ -19,13 +19,18 @@
                         <dd>{{currentFuncion.venueDTO.nombre}}</dd>
                         <hr>
                         <dt><b>¿Es paga?</b></dt>
-                        <dd>{{currentFuncion.esPaga}}</dd>
+                        <input type="checkbox" checked="{{currentFuncion.esPaga}}"disabled="disabled"/>
                         <hr>
-                        <dt><b>Festival</b></dt>
-                        <dd>
-                            	<ul ng-repeat="festival in currentFuncion.festivalDTO">
-                                <a ui-sref="festivalDetail{{festivalId=festival.id}}">{{currentFuncion.festivalDTO.nombre}}</a>
-                            </ul></dd>
+                        
+                            <dt><b>Festival</b></dt>
+                            <dd>{{currentFuncion.festivalDTO.nombre}}</dd>
+                            <hr>
+                            <dt><b>Entradas disponibles </b></dt>
+                            <dd>{{currentFuncion.entradasDisponibles}}</dd>
+                            <hr>
+                            <dt><b>Duración</b></dt>
+                            <dd>{{currentFuncion.duracion}}</dd>
+                        
                     </dl>
                 </div>
             </div>
@@ -33,11 +38,11 @@
         <div class="thumb col-md-6 bordeNaranja">
             <div class="row">
 
-                <div class="col-md-4" ng-repeat="artista in artistasRecords |filter:currentFuncion.venueDTO.nombre">
+                <div class="col-md-4" ng-repeat="artista in artistasRecords">
 
                     <div class="thumbnail">
                         <a ui-sref="artistaDetail({artistaId: artista.id})"> 
-                            <img class="img-responsive" ng-src ='{{artista.image}}' alt = "{{artista.id}}"/>
+                            <img class="img-responsive" ng-src ='{{artista.imagen}}' alt = "{{artista.id}}"/>
                         </a>   
                         <div class ="caption text-center"> 
                             <p>{{artista.nombre}}</p>
@@ -53,9 +58,11 @@
         <ul class="nav
             nav-tabs">
             <li role="presentation" class="active"> <a ui-sref="reviewsList({funcionId: currentFuncion.id})">Reviews</a></li>
-            <div ui-view="childrenView"></div>
+
         </ul>
+        <div ui-view="childrenView"></div>
     </div>
+
 
 
 
