@@ -22,6 +22,8 @@ public class VenueDTO implements Serializable
 	private Integer capacidadMax;
 	
 	private String direccion;
+        
+        private String imagen;
 
 	
 	public VenueDTO()
@@ -33,11 +35,12 @@ public class VenueDTO implements Serializable
         {
             if(entity != null)
             {
-                id = entity.getId();
-                nombre = entity.getNombre();
-                tipo = entity.getTipo();
-                capacidadMax = entity.getCapacidadMax();
-                direccion = entity.getDireccion();
+                this.id = entity.getId();
+                this.nombre = entity.getNombre();
+                this.tipo = entity.getTipo();
+                this.capacidadMax = entity.getCapacidadMax();
+                this.direccion = entity.getDireccion();
+                this.imagen = entity.getImagen();
             }
         }
        public VenueEntity toEntity()
@@ -50,6 +53,7 @@ public class VenueDTO implements Serializable
            entity.setTipo(this.getTipo());
            entity.setCapacidadMax(this.getCapacidadMax());
            entity.setDireccion(this.getDireccion());
+           entity.setImagen(this.getImagen());
            
            return entity;
        }
@@ -122,6 +126,15 @@ public class VenueDTO implements Serializable
      */
     public void setDireccion(String direccion) {
         this.direccion = direccion;
+    }
+    
+    public String getImagen()
+    {
+        return this.imagen;
+    }
+    
+    public void setImagen(String pImagen) {
+        this.imagen = pImagen;
     }
 
 }

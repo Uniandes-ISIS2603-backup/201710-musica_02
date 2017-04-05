@@ -29,6 +29,7 @@ public class VenueEntity implements Serializable
     private String tipo;
     private Integer capacidadMax;
     private String direccion;
+    private String imagen;
     
     @ManyToOne 
     private CiudadEntity ciudadEntity;
@@ -172,6 +173,16 @@ public class VenueEntity implements Serializable
     public void setFuncionEntity(List<FuncionEntity> funcionEntity) {
         this.funcionEntity = funcionEntity;
     }
+
+    public String getImagen() 
+    {
+        return imagen;
+    }
+    
+    public void setImagen(String pImagen)
+    {
+        this.imagen = pImagen;  
+    }      
 
 
   

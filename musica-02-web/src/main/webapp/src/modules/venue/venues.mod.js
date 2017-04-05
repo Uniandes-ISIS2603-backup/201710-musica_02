@@ -1,6 +1,6 @@
 (function (ng) {
     var mod = ng.module("venuesModule", ['ui.router']);
-
+    mod.constant("venuesContext", "api/venues");
     mod.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
             var basePath = 'src/modules/venue/';
 
@@ -11,8 +11,8 @@
                 abstract: true,
 
                 resolve: {
-                    venues: ['$http', function ($http) {
-                            return $http.get('data/venues.json');
+                    venues: ['$http', 'venuesContext', function ($http, venuesContext) {
+                            return $http.get(venuesContext);
                         }]
                 },
                 views: {
@@ -35,6 +35,12 @@
                 parent: 'venues',
                 param: {
                     venueId: null
+                },
+                resolve: {
+                    currentVenue:['$http', 'venuesContext', '$stateParams', function($http, 
+                        venuesContext, $params){
+                            return $http.get(venuesContext+'/'+$params.venueId);
+                        }]
                 },
                 views: {
                     'listView': {

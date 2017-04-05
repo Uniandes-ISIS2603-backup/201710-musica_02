@@ -3,17 +3,18 @@
         <div class="row">
             <div class="col-md-3">
                 <div class="thumb">
-                    <img class="img-responsive" ng-src="{{currentVenue.image}}"/>
+                    <img class="img-responsive" ng-src="{{currentVenue.imagen}}"/>
                 </div>
             </div>
             <div class="col-md-3">
-                <dl>     
-                    <dt>{{currentVenue.name}}</dt>
+                <dl> 
+                    <dt> <b>Nombre</b></dt>
+                    <dt>{{currentVenue.nombre}}</dt>
                     <dt>Tipo</dt>
                     <dd>{{currentVenue.tipo}}</dd>
                     <hr>
                     <dt>Capacidad</dt>
-                    <dd>{{currentVenue.capacidad}}</dd>
+                    <dd>{{currentVenue.capacidadmax}}</dd>
                     <hr>
                     <dt class="bold">Dirección</dt>
                     <dd>{{currentVenue.direccion}}</dd>
