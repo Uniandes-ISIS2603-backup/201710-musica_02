@@ -49,7 +49,7 @@
                     'detailView':{
                         templateUrl: basePath + 'venues.detail.html',
                         controller: ['$scope', '$stateParams', function ($scope, $params) {
-                                $scope.currentVenue = $scope.venuesRecords[$params.venueId-1];
+                                $scope.currentVenue = $scope.venuesRecords[$params.venueId-1001];
                     }]
                  }
                }
