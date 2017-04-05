@@ -1,8 +1,9 @@
-(function (ng){
+(function (ng) {
     var mod = ng.module("artistaModule", ['ui.router']);
     mod.constant("artistasContext", "api/artistas");
+    mod.constant("dicosContext", "discos");
     mod.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
-             
+
             var basePath = 'src/modules/artistas/';
             $urlRouterProvider.otherwise("/artistasList");
 
@@ -10,8 +11,8 @@
                 url: '/artistas',
                 abstract: true,
                 resolve: {
-                    artistas: ['$http', function ($http) {
-                            return $http.get('data/artistas.json');
+                    artistas: ['$http', 'artistasContext', function ($http, artistasContext) {
+                            return $http.get(artistasContext);
                         }]
                 },
                 views: {
@@ -37,22 +38,26 @@
                     artistaId: null
                 },
                 views: {
-                    'listView': {
-                       resolve: {
-                    discos: ['$http', function ($http) {
-                            return $http.get('data/discos.json');
-                        }]
-                },
+                    'childrenView': {
+                        resolve: {
+                            discos: ['$http', 'artistasContext', '$stateParams', function ($http, artistasContext, $params) {
+                                    return $http.get(artistasContext + '/' + $params.artistaId + '/discos');
+                                }]
+                        },
                         templateUrl: 'src/modules/disco/discos.list.html',
-                        controller: ['$scope', '$stateParams','discos', function ($scope, $params,discos) {
-                                $scope.currentArtista = $scope.artistasRecords[$params.artistaId-1];
+                        controller: ['$scope', 'discos', function ($scope, discos) {
                                 $scope.discosRecords = discos.data;
                             }]
                     },
                     'detailView': {
+                        resolve: {
+                            currentArtista: ['$http', 'artistasContext', '$stateParams', function ($http, artistasContext, $params) {
+                                    return $http.get(artistasContext + '/' + $params.artistaId);
+                                }]
+                        },
                         templateUrl: basePath + 'artistas.detail.html',
-                        controller: ['$scope', '$stateParams', function ($scope, $params) {
-                                $scope.currentArtista = $scope.artistasRecords[$params.artistaId-1];
+                        controller: ['$scope','currentArtista' , function ($scope, currentArtista) {
+                                $scope.currentArtista = currentArtista.data;
                             }]
                     }
 

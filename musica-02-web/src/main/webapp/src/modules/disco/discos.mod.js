@@ -1,6 +1,6 @@
 (function (ng){
     var mod = ng.module("discoModule", ['ui.router']);
-    mod.constant("discosContext", "api/discos");
+    mod.constant("discosContext", "/api/artistas/idArtista/discos");
     mod.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
            
             
@@ -32,28 +32,33 @@
                     }
                 }
             }).state('discoDetail', {
-                url: '/{discoId:int}/detail',
+                url: '/{artistaId:int}/{discoId:int}/detail',
                 parent: 'discos',
                 param: {
-                    discoId: null
+                    discoId: null,
+                    artistaId: null
                 },
                 views: {
-                    'listView': {
+                    'childrenView': {
                         resolve: {
-                            canciones: ['$http', function ($http) {
-                                    return $http.get('data/canciones.json');
+                            canciones: ['$http', '$stateParams', function ($http, $params) {
+                                    return $http.get('api/artistas/' + $params.artistaId + '/discos/' + $params.discoId+'/canciones');
                                 }]
                         },
                         templateUrl: 'src/modules/cancion/cancion.list.html',
                         controller: ['$scope', 'canciones', '$stateParams', function ($scope, canciones, $params) {
-                                $scope.currentDisco = $scope.discosRecords[$params.discoId - 1];
                                 $scope.cancionesRecords = canciones.data;
                             }]
                     },
                     detailView: {
+                                                resolve: {
+                            currentDisco: ['$http', '$stateParams', function ($http, $params) {
+                                    return $http.get('api/artistas/' + $params.artistaId + '/discos/' + $params.discoId);
+                                }]
+                        },
                         templateUrl: basePath + 'discos.detail.html',
-                        controller: ['$scope', '$stateParams', function ($scope, $params) {
-                                $scope.currentDisco = $scope.discosRecords[$params.discoId-1];
+                        controller: ['$scope', '$stateParams','currentDisco', function ($scope, $params,currentDisco) {
+                                $scope.currentDisco = currentDisco.data;
                             }]
                     }
 

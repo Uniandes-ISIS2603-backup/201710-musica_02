@@ -20,10 +20,13 @@ public class ArtistaDTO implements Serializable
 	private String trayectoria;
         
         private String imagen;
+        
+        private String genero;
+        
 
 	public ArtistaDTO()
-        {
-            
+        {        
+       
 	}
         
         public ArtistaDTO(ArtistaEntity entity)
@@ -33,6 +36,8 @@ public class ArtistaDTO implements Serializable
                 id = entity.getId();
                 nombre = entity.getNombre();
                 trayectoria = entity.getTrayectoria();
+                imagen = entity.getImagen();
+                genero = entity.getGenero();
             }
         }
         
@@ -44,7 +49,8 @@ public class ArtistaDTO implements Serializable
            entity.setId(this.getId());
            entity.setNombre(this.getNombre());
            entity.setTrayectoria(this.getTrayectoria());
-           
+           entity.setImagen(this.getImagen());
+           entity.setGenero(this.getGenero());
            return entity;
        }
 
@@ -102,6 +108,20 @@ public class ArtistaDTO implements Serializable
      */
     public void setImagen(String imagen) {
         this.imagen = imagen;
+    }
+
+    /**
+     * @return the genero
+     */
+    public String getGenero() {
+        return genero;
+    }
+
+    /**
+     * @param genero the genero to set
+     */
+    public void setGenero(String genero) {
+        this.genero = genero;
     }
        
        
