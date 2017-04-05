@@ -1,6 +1,9 @@
 <div class="panel panel-default"> 
+    <b class="col-md-6">Venue</b>
+    <b class="col-md-6" >Funciones</b>
     <div class="panel-body">
         <div class="row">
+            
             <div class="col-md-3">
                 <div class="thumb">
                     <img class="img-responsive" ng-src="{{currentVenue.imagen}}"/>
@@ -22,11 +25,25 @@
                     <dt class="bold">Ciudad</dt>
                     <dd>{{currentVenue.ciudadDTO.nombre}}</dd>
                    
-                    <dt class="bold">Festivales que se realizan en este venue</dt>
-                    <dd>{{currentVenue.festivalDTO.nombre}}</dd>
-                    <dt> Desde </dt><dd>{{currentVenue.festivalDTO.fechaInicio}}</dd><dt> hasta </dt><dd>{{currentVenue.festivalDTO.fechaFin}}</dd>
-                </dl>
+                    
+                    <dt><b> Festivales que se realizan aquí </b></dt>
+                    <a ui-sref="festivalDetail({festivalId:currentVenue.festivalDTO.id})">{{currentVenue.festivalDTO.nombre}}</a>
+                    </dl>
                 </div>
+            <div class ="thumb col-md-3" >
+            <table class="table table-hover ">
+                <thead>
+                    <tr>
+                        <th>Fecha</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="funcion in funcionesRecords|filter: currentVenue.nombre">
+                        <td id="{{$index}}-description"><a ui-sref="funcionDetail({funcionId: funcion.id})">{{funcion.fecha}}</a></td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
+        </div>           
     </div>
 </div>
