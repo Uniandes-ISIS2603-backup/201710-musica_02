@@ -16,8 +16,8 @@
                 url: '/clientes',
                 abstract: true,
                 resolve: {
-                    clientes: ['$http', function ($http) {
-                            return $http.get('data/clientes.json');
+                    clientes: ['$http', 'clientesContext',function ($http,clientesContext) {
+                            return $http.get(clientesContext);
                         }]
                 },
                 views: {
@@ -47,8 +47,8 @@
                 views: {
                     'listView': {
                         resolve: {
-                            entradas: ['$http', function($http) {
-                                    return $http.get('data/entradas.json');
+                            entradas: ['$http', function($http,$stateParams) {
+                                    return $http.get('api/'+$stateParams+'/entradas');
                                 }]
                         },
                         templateUrl: basePath + 'clienteEntradas.html',
