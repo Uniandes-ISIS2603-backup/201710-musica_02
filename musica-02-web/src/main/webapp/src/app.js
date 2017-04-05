@@ -11,7 +11,6 @@ er, choose License Headers in Project Properties.
         // External dependencies
         'ui.router',
 		
-		
         // Internal modules dependencies   
 		
         //Juan Diego

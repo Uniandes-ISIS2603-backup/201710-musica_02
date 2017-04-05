@@ -17,20 +17,22 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class DiscoDTO implements Serializable
 {
     
-        private String nombre;
-
-	private Long id;  
-        private String imagen;
+    private String nombre;
+    
+    private Long id;  
+    
+    private String imagen;
       
-	public DiscoDTO(){
+    public DiscoDTO(){
             
-	}
+    }
         public DiscoDTO(DiscoEntity entity)
         {
             if(entity != null)
             {
                 id = entity.getId();
                 nombre = entity.getNombre();
+                imagen = entity.getImagen();
             }
         }
        public DiscoEntity toEntity()
@@ -40,6 +42,7 @@ public class DiscoDTO implements Serializable
            //sets
            entity.setId(this.getId());
            entity.setNombre(this.getNombre());
+           entity.setImagen(this.getImagen());
            
             return entity;
        }
