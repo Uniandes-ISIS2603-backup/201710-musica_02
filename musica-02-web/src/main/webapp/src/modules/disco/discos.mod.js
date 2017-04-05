@@ -2,6 +2,8 @@
     var mod = ng.module("discoModule", ['ui.router']);
     mod.constant("discosContext", "api/discos");
     mod.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
+           
+            
             var basePath = 'src/modules/disco/';
             $urlRouterProvider.otherwise("/discosList");
 
@@ -21,7 +23,7 @@
                             }]
                     }
                 }
-            }).state('discoList', {
+            }).state('discosList', {
                 url: '/list',
                 parent: 'discos',
                 views: {
@@ -42,10 +44,10 @@
                                     return $http.get('data/canciones.json');
                                 }]
                         },
-                        templateUrl: basePath + 'discos.list.html',
+                        templateUrl: 'src/modules/cancion/cancion.list.html',
                         controller: ['$scope', 'canciones', '$stateParams', function ($scope, canciones, $params) {
+                                $scope.currentDisco = $scope.discosRecords[$params.discoId - 1];
                                 $scope.cancionesRecords = canciones.data;
-                                $scope.currentDisco = $scope.funcionesRecords[$params.funcionId - 1];
                             }]
                     },
                     detailView: {

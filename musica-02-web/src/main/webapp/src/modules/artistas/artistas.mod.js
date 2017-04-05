@@ -2,6 +2,7 @@
     var mod = ng.module("artistaModule", ['ui.router']);
     mod.constant("artistasContext", "api/artistas");
     mod.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
+             
             var basePath = 'src/modules/artistas/';
             $urlRouterProvider.otherwise("/artistasList");
 
