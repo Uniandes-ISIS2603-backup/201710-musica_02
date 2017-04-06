@@ -44,7 +44,7 @@ insert into FUNCIONENTITY (ID, DURACION, ENTRADASDISPONIBLES, ESPAGA, FECHA, FES
 insert into FUNCIONENTITY (ID, DURACION, ENTRADASDISPONIBLES, ESPAGA, FECHA, FESTIVALENTITY_ID, VENUEENTITY_ID, IMAGEN) values (1003, 130, 203, 0, '2017-04-21', 1003, 1003, 'http://img2.thejournal.ie/inline/1334434/original/?width=630&version=1334434');
 insert into FUNCIONENTITY (ID, DURACION, ENTRADASDISPONIBLES, ESPAGA, FECHA, FESTIVALENTITY_ID, VENUEENTITY_ID, IMAGEN) values (1004, 140, 204, 0, '2017-04-21', 1004, 1004, 'http://hot94.fm/wp-content/uploads/2016/12/Rawayana730.gif');
 insert into FUNCIONENTITY (ID, DURACION, ENTRADASDISPONIBLES, ESPAGA, FECHA, FESTIVALENTITY_ID, VENUEENTITY_ID, IMAGEN) values (1005, 150, 205, 0, '2017-04-21', 1005, 1005, 'https://s-media-cache-ak0.pinimg.com/564x/0b/1b/3f/0b1b3f8c262603c0ed91073356963fa6.jpg');
-insert into FUNCIONENTITY (ID, DURACION, ENTRADASDISPONIBLES, ESPAGA, FECHA, FESTIVALENTITY_ID, VENUEENTITY_ID, IMAGEN) values (1006, 110, 201, 1, '2017-05-21', 1001, 1001, 'https://scontent-dft4-2.xx.fbcdn.net/v/t1.0-9/16142757_207642886367238_7745917909667270993_n.jpg?oh=cb8a7e0c1432f6c3109598ada3b3ca7c&oe=596A20BB');
+insert into FUNCIONENTITY (ID, DURACION, ENTRADASDISPONIBLES, ESPAGA, FECHA, FESTIVALENTITY_ID, VENUEENTITY_ID, IMAGEN) values (1006, 110, 201, 1, '2017-05-21', 1001, 1001, 'http://edmchicago.com/wp-content/uploads/2016/03/TC-Lollapalooza-1366x800.jpg');
 
 insert into ARTISTAENTITY (ID, GENERO, NOMBRE, TRAYECTORIA, IMAGEN) values (1001, 'ROCK', 'Led zepellin', 'monetize magnetic relationships', 'http://img.wennermedia.com/social/led-zeppelin-bbc-album-review-fb72cd94-408c-4600-a911-f5a4f5d4730c.jpg');
 insert into ARTISTAENTITY (ID, GENERO, NOMBRE,  TRAYECTORIA, IMAGEN) values (1002, 'ELECTRONICA', 'Skrillex',  'expedite granular technologies', 'http://www.revolution935.com//wp-content/uploads/2016/01/skrillex-headshot.jpg');
@@ -63,6 +63,8 @@ insert into REVIEWENTITY (ID, DESCRIPCION, CALIFICACION, FECHA, CLIENTE_USUARIO,
 insert into REVIEWENTITY (ID, DESCRIPCION, CALIFICACION, FECHA, CLIENTE_USUARIO, FUNCION_ID) values (1003, 'Nullam varius.', 3, '2017-04-01', '1003', 1003);
 insert into REVIEWENTITY (ID, DESCRIPCION, CALIFICACION, FECHA, CLIENTE_USUARIO, FUNCION_ID) values (1004, 'Proin eu mi.', 4, '2017-04-01', '1004', 1004);
 insert into REVIEWENTITY (ID, DESCRIPCION, CALIFICACION, FECHA, CLIENTE_USUARIO, FUNCION_ID) values (1005, 'Pellentesque ultrices mattis odio. Donec vitae nisi. Nam ultrices, libero non mattis pulvinar, nulla pede ullamcorper augue, a suscipit nulla elit ac nulla. Sed vel enim sit amet nunc viverra dapibus. Nulla suscipit ligula in lacus.', 5, '2017-04-01', '1005', 1005);
+insert into REVIEWENTITY (ID, DESCRIPCION, CALIFICACION, FECHA, CLIENTE_USUARIO, FUNCION_ID) values (1006, 'Pellentesque ultrices mattis odio. Donec vitae nisi. Nam ultrices, libero non mattis pulvinar, nulla pede ullamcorper augue, a suscipit nulla elit ac nulla. Sed vel enim sit amet nunc viverra dapibus. Nulla suscipit ligula in lacus.', 5, '2017-04-01', '1005', 1006);
+
 
 
 insert into DISCOENTITY (ID, NOMBRE, ARTISTAENTITY_ID, IMAGEN) values (1001, 'Physical Graffiti (1975)', 1001, 'https://www.rock.com/assets/products/60626/large/led-zeppelin-i-album-cover-sticker-s1506.jpg');
@@ -79,6 +81,8 @@ insert into FUNCIONENTITY_ARTISTAENTITY (ARTISTAS_ID, FUNCIONES_ID) values (1002
 insert into FUNCIONENTITY_ARTISTAENTITY (ARTISTAS_ID, FUNCIONES_ID) values (1003, 1003);
 insert into FUNCIONENTITY_ARTISTAENTITY (ARTISTAS_ID, FUNCIONES_ID) values (1004, 1004);
 insert into FUNCIONENTITY_ARTISTAENTITY (ARTISTAS_ID, FUNCIONES_ID) values (1005, 1005);
+insert into FUNCIONENTITY_ARTISTAENTITY (ARTISTAS_ID, FUNCIONES_ID) values (1005, 1006);
+insert into FUNCIONENTITY_ARTISTAENTITY (ARTISTAS_ID, FUNCIONES_ID) values (1003, 1006);
 
 insert into CANCIONENTITY (ID, DURACION, NOMBRE, DISCOENTITY_ID) values (1001, 300, 'Freeman', 1001);
 insert into CANCIONENTITY (ID, DURACION, NOMBRE, DISCOENTITY_ID) values (1002, 400, 'Bennett', 1002);
