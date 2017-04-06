@@ -1,6 +1,7 @@
-.bordeGris {
+.bordeAzul {
     border-style: groove ;
       border-radius: 12px;
+      border-color: #073763;
 }
 .bordeNaranja {
     border-style: groove ;
