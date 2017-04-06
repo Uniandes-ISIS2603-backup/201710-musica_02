@@ -8,6 +8,7 @@ package co.edu.uniandes.csw.musica.entities;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -43,7 +44,7 @@ public class ArtistaEntity implements Serializable
     //viene de las constantes
     private String genero;
     
-    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "artistas")
+    @ManyToMany(cascade = CascadeType.ALL, mappedBy = "artistas")
     private List<FuncionEntity> funciones = new ArrayList<FuncionEntity>();
 
     /**

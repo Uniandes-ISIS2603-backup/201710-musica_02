@@ -45,7 +45,19 @@ public class ArtistaPersistence
     public void delete(Long id) {
         ArtistaEntity entity = em.find(ArtistaEntity.class, id);
         em.remove(entity);
-    }    
+    } 
+    public List<ArtistaEntity> findByFuncion(Long idFun)
+    {
+       TypedQuery<ArtistaEntity> q
+                = em.createQuery("select a from ArtistaEntity a join a.funciones f where f.id = :id", ArtistaEntity.class);
+        q = q.setParameter("id", idFun);
+        
+       List<ArtistaEntity> sameId = q.getResultList();
+
+            return sameId;
+        
+
+    }
     
     
 }

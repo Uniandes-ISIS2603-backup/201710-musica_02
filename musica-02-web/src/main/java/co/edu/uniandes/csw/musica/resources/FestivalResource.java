@@ -57,10 +57,10 @@ public class FestivalResource {
     
     @GET
     @Path("{id: \\d+}")
-    public FestivalDetailDTO getFestival (@PathParam("id") Long id) throws BusinessLogicException
+    public FestivalDetailDTO getFestival (@PathParam("id") Long id) throws WebApplicationException
     {
         FestivalEntity fest = logic.getFestival(id);
-        if (fest == null)
+        if (fest != null)
         return new FestivalDetailDTO(logic.getFestival(id));
         throw new WebApplicationException("No se encontró un festival con ese id", 404);
     }
