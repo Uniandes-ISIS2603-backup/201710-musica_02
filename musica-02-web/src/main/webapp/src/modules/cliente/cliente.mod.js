@@ -58,6 +58,14 @@
                         }]
                     }
                 }
+            }).state('test' , {
+                url:'/entradas',
+                parent:'clientes',
+                views: {
+                    'listView': {
+                        templateUrl:basePath+'clienteEntradas.html'
+                    }
+                }
             });
         }
     ]);
