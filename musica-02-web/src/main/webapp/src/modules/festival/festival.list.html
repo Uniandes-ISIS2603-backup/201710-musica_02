@@ -4,22 +4,58 @@ To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
-<b>Festivales</b>
 
 <div class="container-fluid bordeAzul">
     <div class="row ">
         <!-- festivalesRecords fue inicializada en el controlador del estado festivalList -->
         <!-- Itera sobre cada uno de los libros en la colección festivalesRecords -->
-        <div class="col-sm-2 col-md-2" ng-repeat="festival in festivalesRecords|filter: mierda.name">
-            <!--Despliega la imagen  -->
-            <div class="thumbnail">
-                <a ui-sref ="festivalDetail({festivalId: festival.id})">
-                    <img class="img-responsive" ng-src="{{festival.imagen}}" alt="{{festival.nombre}}" /> 
-                </a>
-                <!-- Despliega en el caption de la imagen el nombre del libro -->
-                <div class="caption text-center"><b>{{festival.nombre}}</b></div>
-            </div>
-        </div>
+
+        <style>
+            table {
+                border-collapse: collapse;
+                width: 100%;
+            }
+
+            th, td {
+                text-align: left;
+                padding: 8px;
+            }
+
+            tr:nth-child(even){background-color: #f2f2f2}
+
+            th {
+                background-color: #4CAF50;
+                color: white;
+            }
+        </style>
+        <table class="table table-hover ">
+            <thead>
+                <tr>
+                    <th>Festival</th>
+                    <th>Nombre</th>
+                    <th>Fecha</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="festival in festivalesRecords">
+                    <td id="{{$index}}-name">                    
+                        <a ui-sref ="festivalDetail({festivalId: festival.id})">
+                            <img class="img-responsive col-sm-6 col-md-6" ng-src="{{festival.imagen}}" alt="{{festival.nombre}}" /> 
+                        </a>
+                    </td>
+                    <td id="festNombre" class="col-sm-2 col-md-2">
+                        <a ui-sref ="festivalDetail({festivalId: festival.id})">
+                            <b>{{festival.nombre}}</b>
+                        </a>
+
+                    </td>
+
+                    <td id="festFecha"class="col-sm-4 col-md-4"><b>{{festival.fechaInicio}}</b></td>
+
+                </tr>
+            </tbody>
+        </table>
+
     </div>
 </div>
 
