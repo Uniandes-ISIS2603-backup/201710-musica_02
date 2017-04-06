@@ -31,8 +31,6 @@ import javax.ws.rs.core.MediaType;
 @Path("/artistas")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
- // TODO verficar que exista el artista en los métodos que reciben el id. 
- // TODO Si no existe, disparar WebAppliactionException  
 public class ArtistaResource 
 {
     @Inject
@@ -51,7 +49,6 @@ public class ArtistaResource
 
     @GET
     public List<ArtistaDetailDTO> getArtistas() {
-        System.out.println("hola");
         return listEntity2DTO(logic.getArtistas());
           
     }
@@ -86,6 +83,5 @@ public class ArtistaResource
     }
  
     // TODO implementar get /artistas/:id/funciones funciones en las que actuará el artista
-    // TODO implementar disco como un subrecurso de artista 
-    // TODO implementar canción como un subrecurso de disco 
+
 }
