@@ -65,7 +65,9 @@ insert into REVIEWENTITY (ID, DESCRIPCION, CALIFICACION, FECHA, CLIENTE_USUARIO,
 insert into REVIEWENTITY (ID, DESCRIPCION, CALIFICACION, FECHA, CLIENTE_USUARIO, FUNCION_ID) values (1005, 'Pellentesque ultrices mattis odio. Donec vitae nisi. Nam ultrices, libero non mattis pulvinar, nulla pede ullamcorper augue, a suscipit nulla elit ac nulla. Sed vel enim sit amet nunc viverra dapibus. Nulla suscipit ligula in lacus.', 5, '2017-04-01', '1005', 1005);
 
 
-insert into DISCOENTITY (ID, NOMBRE, ARTISTAENTITY_ID, IMAGEN) values (1001, 'Led Zeppelin (1969)', 1001, 'https://www.rock.com/assets/products/60626/large/led-zeppelin-i-album-cover-sticker-s1506.jpg');
+insert into DISCOENTITY (ID, NOMBRE, ARTISTAENTITY_ID, IMAGEN) values (1001, 'Physical Graffiti (1975)', 1001, 'https://www.rock.com/assets/products/60626/large/led-zeppelin-i-album-cover-sticker-s1506.jpg');
+insert into DISCOENTITY (ID, NOMBRE, ARTISTAENTITY_ID, IMAGEN) values (1006, 'Led Zeppelin (1969)', 1001, 'https://upload.wikimedia.org/wikipedia/en/e/e3/Led_Zeppelin_-_Physical_Graffiti.jpg');
+insert into DISCOENTITY (ID, NOMBRE, ARTISTAENTITY_ID, IMAGEN) values (1007, 'Houses of the Holy (1973)', 1001, 'https://upload.wikimedia.org/wikipedia/en/9/9f/Led_Zeppelin_-_Houses_of_the_Holy.jpg');
 insert into DISCOENTITY (ID, NOMBRE, ARTISTAENTITY_ID, IMAGEN) values (1002, 'Bangarang', 1002, 'https://upload.wikimedia.org/wikipedia/en/4/46/Bangarang_cover.jpg');
 insert into DISCOENTITY (ID, NOMBRE, ARTISTAENTITY_ID, IMAGEN) values (1003, '4X4=12 (2010)', 1003, 'http://www.themusicninja.com/wp-content/uploads/2010/12/deadmau5-4x412-review.jpg');
 insert into DISCOENTITY (ID, NOMBRE, ARTISTAENTITY_ID, IMAGEN) values (1004, 'En el sendero (2014)', 1004, 'http://k31.kn3.net/taringa/F/9/3/8/7/D/BraaGranate/1E7.png');
@@ -78,11 +80,13 @@ insert into FUNCIONENTITY_ARTISTAENTITY (ARTISTAS_ID, FUNCIONES_ID) values (1003
 insert into FUNCIONENTITY_ARTISTAENTITY (ARTISTAS_ID, FUNCIONES_ID) values (1004, 1004);
 insert into FUNCIONENTITY_ARTISTAENTITY (ARTISTAS_ID, FUNCIONES_ID) values (1005, 1005);
 
-insert into CANCIONENTITY (ID, DURACION, NOMBRE, DISCOENTITY_ID) values (1001, 3, 'Freeman', 1001);
-insert into CANCIONENTITY (ID, DURACION, NOMBRE, DISCOENTITY_ID) values (1002, 4, 'Bennett', 1002);
-insert into CANCIONENTITY (ID, DURACION, NOMBRE, DISCOENTITY_ID) values (1003, 5, 'Hunter', 1003);
-insert into CANCIONENTITY (ID, DURACION, NOMBRE, DISCOENTITY_ID) values (1004, 6, 'Watkins', 1004);
-insert into CANCIONENTITY (ID, DURACION, NOMBRE, DISCOENTITY_ID) values (1005, 7, 'Collins', 1005);
+insert into CANCIONENTITY (ID, DURACION, NOMBRE, DISCOENTITY_ID) values (1001, 300, 'Freeman', 1001);
+insert into CANCIONENTITY (ID, DURACION, NOMBRE, DISCOENTITY_ID) values (1002, 400, 'Bennett', 1002);
+insert into CANCIONENTITY (ID, DURACION, NOMBRE, DISCOENTITY_ID) values (1003, 500, 'Hunter', 1003);
+insert into CANCIONENTITY (ID, DURACION, NOMBRE, DISCOENTITY_ID) values (1004, 600, 'Watkins', 1004);
+insert into CANCIONENTITY (ID, DURACION, NOMBRE, DISCOENTITY_ID) values (1005, 700, 'Collins', 1005);
+insert into CANCIONENTITY (ID, DURACION, NOMBRE, DISCOENTITY_ID) values (1006, 300, 'The Rain Song', 1006);
+insert into CANCIONENTITY (ID, DURACION, NOMBRE, DISCOENTITY_ID) values (1007, 300, 'Over the Hills and Far Away', 1006);
 
 insert into ENTRADAENTITY (ID,LIBRE,NOENTRADA,PRECIO,SILLA,CLIENTEENTITY_USUARIO,FUNCIONENTITY_ID) values (1,0,1,1000,'3A','1001',1001);
 insert into ENTRADAENTITY (ID,LIBRE,NOENTRADA,PRECIO,SILLA,CLIENTEENTITY_USUARIO,FUNCIONENTITY_ID) values (2,0,2,1000,'3A','1001',1003);
