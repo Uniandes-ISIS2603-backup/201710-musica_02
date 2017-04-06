@@ -5,7 +5,9 @@
  */
 package co.edu.uniandes.csw.musica.persistence;
 
+import co.edu.uniandes.csw.musica.entities.FestivalEntity;
 import co.edu.uniandes.csw.musica.entities.FuncionEntity;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import javax.ejb.Stateless;
@@ -76,5 +78,10 @@ public class FuncionPersistence {
         q.executeUpdate();
         return q.getSingleResult();
     }
-
+     public List<FuncionEntity> findByFestival(Long fest) {
+        TypedQuery<FuncionEntity> q = em.createQuery("select fu from FestivalEntity fe join fe.funcionesEntities fu where fe.id = :id", FuncionEntity.class);
+        q = q.setParameter("id", fest);
+        List<FuncionEntity> funs = q.getResultList();
+        return funs;
+    }
 }

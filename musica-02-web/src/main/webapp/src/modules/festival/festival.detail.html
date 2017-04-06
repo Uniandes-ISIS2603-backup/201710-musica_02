@@ -27,8 +27,9 @@
                 </thead>
                 <tbody>
                     <tr ng-repeat="funcion in funcionesRecords|filter: currentFestival.nombre">
+                <script></script>
                         <td id="{{$index}}-name"><a ui-sref="funcionDetail({funcionId: funcion.id})">{{funcion.venueDTO.nombre}}</a></td>
-                        <td id="{{$index}}-description">{{funcion.fecha}}</td>
+                        <td id="fechaFun">{{funcion.fecha}}</td>
                     </tr>
                 </tbody>
             </table>

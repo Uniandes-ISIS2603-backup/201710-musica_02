@@ -9,7 +9,9 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -38,7 +40,7 @@ public class FuncionEntity implements Serializable {
     private List<ReviewEntity> reviews = new ArrayList<ReviewEntity>();
     @OneToMany(mappedBy ="funcionEntity")
     private List<EntradaEntity> entradas = new ArrayList<EntradaEntity>();
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.ALL)
     private List<ArtistaEntity> artistas = new ArrayList<ArtistaEntity>();
     @ManyToOne
     private FestivalEntity festivalEntity;
