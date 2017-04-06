@@ -44,7 +44,7 @@ public class ArtistaEntity implements Serializable
     //viene de las constantes
     private String genero;
     
-    @ManyToMany(cascade = CascadeType.ALL, mappedBy = "artistas")
+    @ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY,mappedBy = "artistas")
     private List<FuncionEntity> funciones = new ArrayList<FuncionEntity>();
 
     /**
