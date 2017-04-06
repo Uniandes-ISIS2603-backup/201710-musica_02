@@ -18,9 +18,8 @@
     background-color:#e69138;
 }
 .mainHeader{
-   padding: 35px;
-   /*background-image: url("vg.gif");*/
-   background-image: url("ss.png");
-   background-repeat: no-repeat;
+    background-image: url(ss.png);
+    padding: 60px;
+    background-repeat: no-repeat;
        
 }
