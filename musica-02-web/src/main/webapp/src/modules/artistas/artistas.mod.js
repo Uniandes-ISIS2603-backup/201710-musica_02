@@ -10,12 +10,15 @@
             $stateProvider.state('artistas', {
                 url: '/artistas',
                 abstract: true,
-                resolve: {
+                resolve:
+                {
                     artistas: ['$http', 'artistasContext', function ($http, artistasContext) {
                             return $http.get(artistasContext);
                         }]
-                },
-                views: {
+                }
+                ,
+                views: 
+                {
                     'mainView': {
                         templateUrl: basePath + 'artistas.html',
                         controller: ['$scope', 'artistas', function ($scope, artistas) {
@@ -30,7 +33,7 @@
                     'listView': {
                         templateUrl: basePath + 'artistas.list.html'
                     }
-                }
+                } 
             }).state('artistaDetail', {
                 url: '/{artistaId:int}/detail',
                 parent: 'artistas',
@@ -40,10 +43,12 @@
                 views: {
                     'childrenView': {
                         resolve: {
-                            discos: ['$http', 'artistasContext', '$stateParams', function ($http, artistasContext, $params) {
+                            discos: ['$http', 'artistasContext', '$stateParams', function ($http, artistasContext, $params) 
+                                    {
                                     return $http.get(artistasContext + '/' + $params.artistaId + '/discos');
-                                }]
-                        },
+                                    }
+                                    ]
+                                },
                         templateUrl: 'src/modules/disco/discos.list.html',
                         controller: ['$scope', 'discos', function ($scope, discos) {
                                 $scope.discosRecords = discos.data;
@@ -64,5 +69,15 @@
                 }
 
             });
+            
+            $stateProvider.state('artistaCreate', {
+                url: '/create',
+                views: {
+                    'createView': {
+                        templateUrl: basePath + 'artistas.create.html'
+                    }
+                }
+            });
+            
         }]);
 })(window.angular);

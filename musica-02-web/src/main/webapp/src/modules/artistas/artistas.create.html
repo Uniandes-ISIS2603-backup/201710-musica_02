@@ -23,28 +23,54 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 -->
 
-<div class="panel panel-default">
-    <div class="panel-body">
-        <div class="row">
-            <div class="col-md-3">
-                <div class="thumb">
-                    <img class="img-responsive" ng-src="{{currentArtista.imagen}}"/>
-                </div> 
-            </div>
-            <div class="thumb">
-                <dl>
-                    
-                    <dt><b>Nombre</b></dt>
-                    <dd>{{currentArtista.nombre}}</dd>
-                    <hr>
-                    <dt><b>Genero</b></dt>
-                    <dd>{{currentArtista.genero}}</dd>
-                    <hr>
-                     <dt><b>Trayectoria</b></dt>
-                    <dd>{{currentArtista.trayectoria}}</dd>
-                     
-                </dl>
-            </div>
-        </div>
-    </div>
-</div>
+<html>
+
+<head>
+<title>Registro Artista</title>
+</head>    
+    
+<body>
+
+<h2>Registro de Artista:</h2>
+
+
+Nombre:<br>
+<input type="text" name="firstname">
+<br><br>
+
+Genero:<br>
+<select name="genero">
+
+    <option value="ROCK">ROCK</option>
+    <option value="METAL">METAL</option>
+    <option value="REGGAE">REGGAE</option>
+    <option value="REGGAETON">REGGAETON</option>
+    <option value="POP">POP</option>
+    <option value="SALSA">SALSA</option>
+    <option value="REGGAETON">REGGAETON</option>
+    <option value="MUSICA CLASICA">MUSICA CLASICA</option>
+    <option value="ELECTRONICA">ELECTRONICA</option>
+    <option value="JAZZ">JAZZ</option>
+    <option value="PUNK">PUNK</option>
+    
+    <option value="OTRA">OTRA</option>
+    <option value="NULL" selected> </option>
+    
+</select>
+<br><br>
+
+Trayectoria:<br>
+<textarea name="message" rows="10" cols="30"></textarea>
+<br><br>
+
+Direccion de imagen:<br>
+<input type="text" name="lastname">
+<br><br>
+
+<hr>
+<input type="submit">
+
+
+
+</body>
+</html>

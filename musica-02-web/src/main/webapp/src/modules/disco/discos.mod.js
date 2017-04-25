@@ -1,9 +1,11 @@
 (function (ng){
     var mod = ng.module("discoModule", ['ui.router']);
     mod.constant("discosContext", "/api/artistas/idArtista/discos");
-    mod.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
-           
-            
+    
+    mod.config(['$stateProvider', '$urlRouterProvider', 
+        
+        function ($stateProvider, $urlRouterProvider) 
+        {
             var basePath = 'src/modules/disco/';
             $urlRouterProvider.otherwise("/discosList");
 
@@ -51,7 +53,8 @@
                             }]
                     },
                     detailView: {
-                                                resolve: {
+                        
+                        resolve: {
                             currentDisco: ['$http', '$stateParams', function ($http, $params) {
                                     return $http.get('api/artistas/' + $params.artistaId + '/discos/' + $params.discoId);
                                 }]

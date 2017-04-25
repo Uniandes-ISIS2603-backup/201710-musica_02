@@ -27,7 +27,8 @@
                 url: '/list',
                 parent: 'canciones',
                 views: {
-                    'listView': {
+                    'listView': 
+                    {
                         templateUrl: basePath + 'cancion.list.html'
                     }
                 }
