@@ -21,21 +21,160 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-
 /**
  *
  * @author af.olivares10
  */
 package co.edu.uniandes.csw.musica.persistence;
+
 import co.edu.uniandes.csw.musica.entities.FestivalEntity;
+import java.util.ArrayList;
+import java.util.List;
+import javax.inject.Inject;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.transaction.UserTransaction;
+import org.junit.After;
+import org.junit.AfterClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import org.junit.Before;
+import org.junit.BeforeClass;
+import org.jboss.arquillian.container.test.api.Deployment;
+import org.jboss.shrinkwrap.api.ShrinkWrap;
+import org.jboss.shrinkwrap.api.spec.JavaArchive;
+import org.jboss.arquillian.junit.Arquillian;
+import org.junit.Assert;
+import org.junit.runner.RunWith;
 import uk.co.jemos.podam.api.PodamFactory;
 import uk.co.jemos.podam.api.PodamFactoryImpl;
+
+@RunWith(Arquillian.class)
 public class FestivalPersistenceTest {
-    public void setup(){
-        PodamFactory factory = new PodamFactoryImpl();
-        FestivalEntity fest = factory.manufacturePojo(FestivalEntity.class);
+
+    @Deployment
+    public static JavaArchive createDeployment() {
+        return ShrinkWrap.create(JavaArchive.class)
+                .addPackage(FestivalEntity.class.getPackage())
+                .addPackage(FestivalPersistence.class.getPackage())
+                .addAsManifestResource("META-INF/persistence.xml", "persistence.xml")
+                .addAsManifestResource("META-INF/beans.xml", "beans.xml");
     }
-    
+    @Inject
+    private FestivalPersistence festivalPersistence;
+    @PersistenceContext
+    private EntityManager em;
+    @Inject
+    UserTransaction utx;
+
+    private List<FestivalEntity> data = new ArrayList<>();
+
+    @BeforeClass
+    public static void setUpClass() throws Exception {
+    }
+
+    @AfterClass
+    public static void tearDownClass() throws Exception {
+    }
+
+    @Before
+    public void setUp() throws Exception {
+        try {
+            utx.begin();
+            em.joinTransaction();
+            clearData();
+            insertData();
+            utx.commit();
+        } catch (Exception e) {
+            try {
+                utx.rollback();
+
+            } catch (Exception e1) {
+                e.printStackTrace();
+                fail("Configuration database fail");
+            }
+
+        }
+    }
+
+    private void clearData() {
+        em.createQuery("delete from FestivalEntity").executeUpdate();
+    }
+
+    private void insertData() {
+        PodamFactory factory = new PodamFactoryImpl();
+        for (int i = 0; i < 3; i++) {
+            FestivalEntity fest = factory.manufacturePojo(FestivalEntity.class);
+            em.persist(fest);
+            data.add(fest);
+        }
+    }
+
+    @After
+    public void tearDown() throws Exception {
+    }
+
+    /**
+     * Test of find method, of class FestivalPersistence.
+     */
+    @Test
+    public void testFind() throws Exception {
+        FestivalEntity entity = data.get(0);
+        FestivalEntity newEntity = festivalPersistence.find(entity.getId());
+        Assert.assertNotNull(newEntity);
+        Assert.assertEquals(entity.getNombre(), newEntity.getNombre());
+    }
+
+    /**
+     * Test of findAll method, of class FestivalPersistence.
+     */
+    @Test
+    public void testFindAll() throws Exception {
+        List<FestivalEntity> list = festivalPersistence.findAll();
+        Assert.assertEquals(data.size(), list.size());
+        for (FestivalEntity ent : list) {
+            boolean found = false;
+            for (FestivalEntity entity : data) {
+                if (ent.getId().equals(entity.getId())) {
+                    found = true;
+                }
+            }
+            Assert.assertTrue(found);
+        }
+    }
+
+    /**
+     * Test of create method, of class FestivalPersistence.
+     */
+    @Test
+    public void testCreate() throws Exception {
+        PodamFactory factory = new PodamFactoryImpl();
+        FestivalEntity newEntity = factory.manufacturePojo(FestivalEntity.class);
+
+        FestivalEntity result = festivalPersistence.create(newEntity);
+
+        Assert.assertNotNull(result);
+        FestivalEntity entity = em.find(FestivalEntity.class, result.getId());
+        Assert.assertNotNull(entity);
+        Assert.assertEquals(newEntity.getNombre(), entity.getNombre());
+    }
+
+    /**
+     * Test of update method, of class FestivalPersistence.
+     */
+    @Test
+    public void testUpdate() throws Exception {
+        FestivalEntity entity = data.get(0);
+        PodamFactory factory = new PodamFactoryImpl();
+        FestivalEntity newEntity = factory.manufacturePojo(FestivalEntity.class);
+
+        newEntity.setId(entity.getId());
+
+        festivalPersistence.update(newEntity);
+
+        FestivalEntity resp = em.find(FestivalEntity.class, entity.getId());
+
+        Assert.assertEquals(newEntity.getNombre(), resp.getNombre());
+    }
+
 }

@@ -38,6 +38,8 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
+import uk.co.jemos.podam.common.PodamExclude;
+import uk.co.jemos.podam.common.PodamStrategyValue;
 
 
 @Entity
@@ -48,14 +50,19 @@ public class FestivalEntity implements Serializable
     private Long id;
     private String nombre;
     @Temporal(javax.persistence.TemporalType.DATE)
+    //@PodamStrategyValue(DateStrategy.class)
     private Date fechaInicio;
     @Temporal(javax.persistence.TemporalType.DATE)
+    //@PodamStrategyValue(DateStrategy.class)
     private Date fechaFin;
     @ManyToOne
+    @PodamExclude
     private CiudadEntity ciudadEntity;
     @OneToMany(mappedBy = "festivalEntity")
+    @PodamExclude
     private List <VenueEntity> venuesEntities = new ArrayList <VenueEntity>();
     @OneToMany(mappedBy = "festivalEntity")
+    @PodamExclude
     private List <FuncionEntity> funcionesEntities = new ArrayList <FuncionEntity> (); 
     private String imagen;
     
