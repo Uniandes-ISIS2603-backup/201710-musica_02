@@ -42,18 +42,31 @@ public class FestivalPersistence {
     protected EntityManager em;
 
     public FestivalEntity find(Long id) {
-          TypedQuery<FestivalEntity> q
+        TypedQuery<FestivalEntity> q
                 = em.createQuery("select u from FestivalEntity u where u.id = :id", FestivalEntity.class);
         q = q.setParameter("id", id);
-        
-       List<FestivalEntity> sameId = q.getResultList();
-        if (sameId.isEmpty() ) {
-            return null; 
+
+        List<FestivalEntity> sameId = q.getResultList();
+        if (sameId.isEmpty()) {
+            return null;
         } else {
             return sameId.get(0);
         }
 
-        
+    }
+
+    public FestivalEntity findPorGenero(String genero) {
+        TypedQuery<FestivalEntity> q
+                = em.createQuery("select u from FestivalEntity u where u.genero = :genero", FestivalEntity.class);
+        q = q.setParameter("genero", genero);
+
+        List<FestivalEntity> sameId = q.getResultList();
+        if (sameId.isEmpty()) {
+            return null;
+        } else {
+            return sameId.get(0);
+        }
+
     }
 
     public List<FestivalEntity> findAll() {
@@ -62,12 +75,13 @@ public class FestivalPersistence {
         return allFestivals;
     }
 
-    public FestivalEntity create(FestivalEntity entity)  {
-        em.persist(entity); 
+    public FestivalEntity create(FestivalEntity entity) {
+        em.persist(entity);
         return entity;
     }
-        public FestivalEntity update(FestivalEntity entity)  {
-        em.merge(entity); 
+
+    public FestivalEntity update(FestivalEntity entity) {
+        em.merge(entity);
         return entity;
     }
 

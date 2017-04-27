@@ -1,18 +1,18 @@
 .bordeAzul {
     border-style: groove ;
-      border-radius: 12px;
-      border-color: #082A8F;
+    border-radius: 12px;
+    border-color: #082A8F;
 }
 .bordeNaranja {
     border-style: groove ;
-      border-radius: 12px;
-      border-color:#e69138;
-      
+    border-radius: 12px;
+    border-color:#e69138;
+
 }
 .fondoAzul{
     background-color:#073763;
-        color:white;
-    
+    color:white;
+
 }
 .fondoNaranja{
     background-color:#e69138;
@@ -21,5 +21,21 @@
     background-image: url(ss.png);
     padding: 60px;
     background-repeat: no-repeat;
-       
+
+}
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even){background-color: #f2f2f2}
+
+th {
+    background-color: #4CAF50;
+    color: white;
 }

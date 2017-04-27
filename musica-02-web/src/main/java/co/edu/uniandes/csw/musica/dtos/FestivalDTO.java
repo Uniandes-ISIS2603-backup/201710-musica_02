@@ -44,6 +44,8 @@ public class FestivalDTO implements Serializable{
     private Long id;
     
     private String imagen;
+    
+   private String genero;
 
     public FestivalDTO() {
 
@@ -56,16 +58,18 @@ public class FestivalDTO implements Serializable{
             this.nombre = entity.getNombre();
             this.id = entity.getId();
             this.imagen = entity.getImagen();
+            this.genero = entity.getGenero();
         }
     }
 
     public FestivalEntity toEntity() {
         FestivalEntity fe = new FestivalEntity();
-        fe.setFechaFin(getFechaFin());
-        fe.setFechaInicio(getFechaInicio());
-        fe.setId(getId());
-        fe.setNombre(getNombre());
-        fe.setImagen(getImagen());
+        fe.setFechaFin(fechaFin);
+        fe.setFechaInicio(fechaFin);
+        fe.setId(id);
+        fe.setNombre(nombre);
+        fe.setImagen(imagen);
+        fe.setGenero(genero);
         return fe;
     }
 
@@ -113,6 +117,20 @@ public class FestivalDTO implements Serializable{
      */
     public void setImagen(String imagen) {
         this.imagen = imagen;
+    }
+
+    /**
+     * @return the genero
+     */
+    public String getGenero() {
+        return genero;
+    }
+
+    /**
+     * @param genero the genero to set
+     */
+    public void setGenero(String genero) {
+        this.genero = genero;
     }
 
 }
