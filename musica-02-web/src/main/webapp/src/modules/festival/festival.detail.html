@@ -11,9 +11,9 @@
                     <dt> <b>Nombre</b></dt>
                     <dd>{{currentFestival.nombre}}</dd>
                     <dt> <b>Fecha inicio</b></dt>
-                    <dd>{{currentFestival.fechaInicio}}</dd>
+                    <dd>{{currentFestival.fechaInicio|date:'yyyy-MM-dd'}}</dd>
                     <dt><b>Fecha Fin</b></dt>
-                    <dd>{{currentFestival.fechaFin}}</dd>
+                    <dd>{{currentFestival.fechaFin|date:'yyyy-MM-dd'}}</dd>
                 </dl>
             </div>
         </div>
@@ -29,7 +29,7 @@
                 <tbody>
                     <tr ng-repeat="funcion in funcionesRecords|filter: currentFestival.nombre">
                         <td id="{{$index}}-name"><a ui-sref="funcionDetail({funcionId: funcion.id})">{{funcion.venueDTO.nombre}}</a></td>
-                        <td id="fechaFun">{{funcion.fecha}}</td>
+                        <td id="fechaFun">{{funcion.fecha|date:'yyyy-MM-dd'}}</td>
                     </tr>
                 </tbody>
             </table>

@@ -25,15 +25,16 @@ SOFTWARE.
 <html ng-app = "mainApp">
 
     <head>
+
         <link rel="shortcut icon" href="http://24.media.tumblr.com/1e99e6e8d166fe1e08e8bdbaf4ebb957/tumblr_n1suiuUxcB1rtbl5vo1_400.gif" type="image/x-icon" 
 
               <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-        
-		<title>Moosica</title>
-		
+
+        <title>Moosica</title>
+
         <!-- stylesheet Externas -->
         <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
 
@@ -51,6 +52,7 @@ SOFTWARE.
 
         <!----------Festival-------->
         <script src="src/modules/festival/festival.mod.js" type="text/javascript"></script>
+        <script src="src/modules/festival/dropdown.js" type="text/javascript"></script>
 
         <!----------Artista-------->
         <script src="src/modules/artistas/artistas.mod.js" type="text/javascript"></script>
@@ -73,30 +75,31 @@ SOFTWARE.
     <body class="span4">
         <div class="container-fluid">
             <div class ="row ">
-                <div class="mainHeader col-sm-1"></div>
-
-                    <div class="col-sm-10">
-                        <h2 class="mainTitle"> <div class="caption text-center fondoAzul"> M O O S I C  F E S T </div></h2>
-                    </div>
+               
+                    <h2 class="mainTitle caption text-center fondoAzul">  M O O S I C  F E S T </h2>
+            </div>
+            <div class ="row ">
+                <div class="col-sm-5"></div>
+                <a target="_blank" href="http://image.blingee.com/images19/content/output/000/000/000/7bc/797423205_1491755.gif"><div class="mainHeader col-sm-2"></div></a>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <ul class="nav nav-tabs">
+                        <li><a href="festivalesList"class="fondoAzul">Festivales</a></li>
+                        <li><a ui-sref="funcionList"class="fondoAzul">Funciones</a></li>
+                        <li><a ui-sref="artistasList" class="fondoAzul">Artistas</a></li>
+                        <li ><a ui-sref="venuesList" class="fondoAzul">Venues</a></li>
+                        <ul class="nav nav-tabs navbar-right">
+                            <li><a ui-sref="artistaCreate"class="fondoAzul">Registrar Artista</a></li>
+                            <li><a ui-sref="clientesList"class="fondoAzul">Clientes</a></li>
+                        </ul>
+                    </ul>                   
                 </div>
-                <div class="row">
-                    <div class="col-sm-12">
-                        <ul class="nav nav-tabs">
-                            <li role = "presentation"><a ui-sref="festivalesList">Festivales</a></li>
-                            <li role = "navigation"><a ui-sref="funcionList">Funciones</a></li>
-                            <li role="presentation"><a ui-sref="artistasList">Artistas</a></li>
-                            <li role="presentation"> <a ui-sref="venuesList">Venues</a></li>
-                            <ul class="nav nav-tabs navbar-right">
-                                <li role="presentation"><a ui-sref="artistaCreate">Registrar Artista</a></li>
-                                <li role="presentation"><a ui-sref="clientesList">Clientes</a></li>
-                            </ul>
-                        </ul>                   
-                    </div>
-                </div>
-                <div class="span4" ui-view="mainView"></div>
-                <div class="footer">
-                    <p class="footerTitle">Mighty Fingers: Juan Diego González - Andrés Olivares - Alejandro Echeverri - Pedro Salazar - Camilo Anzola </p>
-                </div>  
-            </div> 
+            </div>
+            <div class="span4" ui-view="mainView"></div>
+            <div class="footer">
+                <p class="footerTitle">Mighty Fingers: Juan Diego González - Andrés Olivares - Alejandro Echeverri - Pedro Salazar - Camilo Anzola </p>
+            </div>  
+        </div> 
     </body>
 </html>

@@ -47,7 +47,7 @@ public class FestivalLogic {
     {
         return persistence.find(id);
     }
-    public FestivalEntity getFestivalPorGenero (String genero)  
+    public List getFestivalesPorGenero (String genero)  
     {
         return persistence.findPorGenero(genero);
     }

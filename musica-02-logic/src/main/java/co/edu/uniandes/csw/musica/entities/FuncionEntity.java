@@ -37,6 +37,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
+import uk.co.jemos.podam.common.PodamExclude;
 
 /**
  *
@@ -54,14 +55,19 @@ public class FuncionEntity implements Serializable {
     private Boolean esPaga;
     private Integer entradasDisponibles;
     private String imagen;
+    @PodamExclude
     @OneToMany(mappedBy = "funcion")
     private List<ReviewEntity> reviews = new ArrayList<ReviewEntity>();
+    @PodamExclude
     @OneToMany(mappedBy ="funcionEntity")
     private List<EntradaEntity> entradas = new ArrayList<EntradaEntity>();
+    @PodamExclude
     @ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<ArtistaEntity> artistas = new ArrayList<ArtistaEntity>();
+    @PodamExclude
     @ManyToOne
     private FestivalEntity festivalEntity;
+    @PodamExclude
     @ManyToOne
     private VenueEntity venueEntity;
     

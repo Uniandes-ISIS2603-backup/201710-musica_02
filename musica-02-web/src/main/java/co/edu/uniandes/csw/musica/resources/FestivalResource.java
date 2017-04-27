@@ -84,12 +84,10 @@ public class FestivalResource {
     }
     @GET
     @Path("genero/{genero}")
-    public FestivalDetailDTO getFestivalPorGenero (@PathParam("genero") String genero) throws WebApplicationException
+    public List<FestivalDetailDTO> getFestivalesPorGenero (@PathParam("genero") String genero) throws WebApplicationException
     {
-        FestivalEntity fest = logic.getFestivalPorGenero(genero);
-        if (fest != null)
-        return new FestivalDetailDTO(fest);
-        throw new WebApplicationException("No se encontró un festival con ese género", 404);
+        return listEntity2DTODETAIL(logic.getFestivalesPorGenero(genero));
+
     }
     @POST
     public FestivalDetailDTO createFestival (FestivalDetailDTO festival) 

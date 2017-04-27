@@ -5,14 +5,30 @@ To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
 
-<div class="container-fluid bordeAzul">
-    <div class="row ">
-        <!-- festivalesRecords fue inicializada en el controlador del estado festivalList -->
-        <!-- Itera sobre cada uno de los libros en la colección festivalesRecords -->
+<div class="container-fluid">
+    <br/>
+    <b>Filtrar búsqueda</b>
+    <div class =" row">
+             <div class="dropdown">
+                <button onclick="mostrarGeneros()" class="dropbtn">Género</button>
+                <div id="dropGenero" class="dropdown-content">
+                    <a ui-sref ="festivalGenList({genero: 'Rock'})">Rock</a>
+                    <a ui-sref ="festivalGenList({genero: 'Salsa'})" >Salsa</a>
+                    <a ui-sref ="festivalGenList({genero: 'Reggaeton'})">Reggaeton</a>
+                    <a ui-sref ="festivalGenList({genero: 'Reggae'})">Raggae</a>
+                    <a ui-sref ="festivalGenList({genero: 'HipHop'})">HipHop</a>
+                    <a ui-sref ="festivalGenList({genero: 'Electronica'})">Electrónica</a>
+                    <a ui-sref ="festivalGenList({genero: 'Mixto'})">Mixto</a>
+                    <a ui-sref ="festivalesList">Todos</a>
 
-        <style>
-            
-        </style>
+                </div>
+
+        </div>
+    </div>
+    <div class="row ">
+        <br/>
+        <b>&nbsp;&nbsp;&nbsp;&nbsp; Resultados</b>
+
         <table class="table table-hover ">
             <thead>
                 <tr>
@@ -35,7 +51,7 @@ and open the template in the editor.
 
                     </td>
 
-                    <td id="festFecha"class="col-sm-4 col-md-4"><b>{{festival.fechaInicio}}</b></td>
+                    <td id="festFecha"class="col-sm-4 col-md-4"><b>{{festival.fechaInicio|date:'yyyy-MM-dd'}}</b></td>
 
                 </tr>
             </tbody>

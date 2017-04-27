@@ -55,17 +55,13 @@ public class FestivalPersistence {
 
     }
 
-    public FestivalEntity findPorGenero(String genero) {
+    public List<FestivalEntity> findPorGenero(String genero) {
         TypedQuery<FestivalEntity> q
                 = em.createQuery("select u from FestivalEntity u where u.genero = :genero", FestivalEntity.class);
         q = q.setParameter("genero", genero);
 
-        List<FestivalEntity> sameId = q.getResultList();
-        if (sameId.isEmpty()) {
-            return null;
-        } else {
-            return sameId.get(0);
-        }
+        return q.getResultList();
+
 
     }
 

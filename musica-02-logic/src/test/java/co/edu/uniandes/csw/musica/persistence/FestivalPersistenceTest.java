@@ -124,6 +124,7 @@ public class FestivalPersistenceTest {
         FestivalEntity newEntity = festivalPersistence.find(entity.getId());
         Assert.assertNotNull(newEntity);
         Assert.assertEquals(entity.getNombre(), newEntity.getNombre());
+        Assert.assertEquals(entity.getGenero(), newEntity.getGenero());
     }
 
     /**
