@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <!--
 To change this license header, choose License Headers in Project Properties.
@@ -9,19 +10,19 @@ and open the template in the editor.
     <br/>
     <b>Filtrar búsqueda</b>
     <div class =" row">
-             <div class="dropdown">
-                <button onclick="mostrarGeneros()" class="dropbtn">Género</button>
-                <div id="dropGenero" class="dropdown-content">
-                    <a ui-sref ="festivalGenList({genero: 'Rock'})">Rock</a>
-                    <a ui-sref ="festivalGenList({genero: 'Salsa'})" >Salsa</a>
-                    <a ui-sref ="festivalGenList({genero: 'Reggaeton'})">Reggaeton</a>
-                    <a ui-sref ="festivalGenList({genero: 'Reggae'})">Raggae</a>
-                    <a ui-sref ="festivalGenList({genero: 'HipHop'})">HipHop</a>
-                    <a ui-sref ="festivalGenList({genero: 'Electronica'})">Electrónica</a>
-                    <a ui-sref ="festivalGenList({genero: 'Mixto'})">Mixto</a>
-                    <a ui-sref ="festivalesList">Todos</a>
+        <div class="dropdown">
+            <button onclick="mostrarGeneros()" class="dropbtn">Género</button>
+            <div id="dropGenero" class="dropdown-content">
+                <a ui-sref ="festivalGenList({genero: 'Rock'})">Rock</a>
+                <a ui-sref ="festivalGenList({genero: 'Salsa'})" >Salsa</a>
+                <a ui-sref ="festivalGenList({genero: 'Reggaeton'})">Reggaeton</a>
+                <a ui-sref ="festivalGenList({genero: 'Reggae'})">Raggae</a>
+                <a ui-sref ="festivalGenList({genero: 'HipHop'})">HipHop</a>
+                <a ui-sref ="festivalGenList({genero: 'Electronica'})">Electrónica</a>
+                <a ui-sref ="festivalGenList({genero: 'Mixto'})">Mixto</a>
+                <a ui-sref ="festivalesList">Todos</a>
 
-                </div>
+            </div>
 
         </div>
     </div>
@@ -57,6 +58,9 @@ and open the template in the editor.
             </tbody>
         </table>
 
+    </div>
+    <div class="row">
+        <button class="botonAgregar botonAgregar1" style="float: right;"ui-sref="festivalInsert">Agregar festival +</button>
     </div>
 </div>
 

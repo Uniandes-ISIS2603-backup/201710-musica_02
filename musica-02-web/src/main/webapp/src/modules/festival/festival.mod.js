@@ -91,6 +91,16 @@
                             }]
                     }
                 }
+            }).state('festivalInsert', {
+                url: '/agregar',
+                parent: 'festivales',
+                views: {
+                    insertarView: {
+                        templateUrl: basePath + 'festival.insertar.html',
+
+                    }
+                }
+
             });
         }
     ]);
