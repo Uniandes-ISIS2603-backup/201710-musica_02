@@ -1,13 +1,34 @@
 <div class="container-fluid">
     <br>
-    <h1> Agregar un nuevo festival </h1>
+    <h1 class="centro"><font color="#ADD8E6"> Agregar un nuevo festival</font> </h1>
     <br>
     <div class="row">
         <div class="col-sm-6 col-md-6 derecha"><b><font> Nombre del festival:</font> </b></div>
-        <div class="col-sm-6 col-md-6"> <input type="text" name="NombreFestival"></div>
-    </div>    
+        <div class="col-sm-6 col-md-6"> <input type="text" name="nombreFestival" id="nombreFestival"></div>
+    </div>  
+    <div class="row">
+        <div class="col-sm-6 col-md-6 derecha"><b><font>Fecha inicio:</font> </b></div> 
+        <div class="col-sm-6 col-md-6"> <input type="date" name="fechaInicioFest" id="fechaInicioFest"></div>
+    </div>  
+    <div class="row">
+        <div class="col-sm-6 col-md-6 derecha"><b><font>Fecha fin:</font> </b></div> 
+        <div class="col-sm-6 col-md-6"> <input type="date" name="fechaFinFest" id="fechaFinFest"></div>
+    </div>  
+    <div class="row">
+        <div class="col-sm-6 col-md-6 derecha"><b><font> Vìnculo a la imagen:</font> </b></div>
+        <div class="col-sm-6 col-md-6"> <input type="text" name="imagenFestival" id="imagenFestival"></div>
+    </div> 
+    <div class="row">
+        <div class="col-sm-6 col-md-6 derecha"><b><font> Venue:</font> </b></div>
+        <div class="col-sm-6 col-md-6">
+            <select>
+                <option ng-repeat="venue in venuesRecords">{{venue.nombre}}</option>
+            </select>
+        </div>
+    </div> 
 
-    <input type="submit" value="Agregar festival">
+    <br>
+    <div class="centro"><input  type="submit" value="Agregar festival"></div>
 
 </div>
 </div>

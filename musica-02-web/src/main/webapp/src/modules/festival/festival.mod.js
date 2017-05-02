@@ -17,6 +17,9 @@
                 resolve: {
                     festivales: ['$http', 'festivalesContext', function ($http, festivalesContext) {
                             return $http.get(festivalesContext);
+                        }],
+                    venues: ['$http', function ($http) {
+                            return $http.get('api/venues');
                         }]
                 },
                 views: {
@@ -97,6 +100,10 @@
                 views: {
                     insertarView: {
                         templateUrl: basePath + 'festival.insertar.html',
+                        controller: ['$scope', 'venues', function ($scope, venues) {
+                                $scope.venuesRecords = venues.data;
+                            }]
+
 
                     }
                 }
