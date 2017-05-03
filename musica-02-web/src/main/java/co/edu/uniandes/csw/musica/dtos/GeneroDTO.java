@@ -1,7 +1,7 @@
-/* 
+/*
  * The MIT License
  *
- * Copyright 2017 Mighty Fingers.
+ * Copyright 2017 af.olivares10.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,99 +23,64 @@
  */
 package co.edu.uniandes.csw.musica.dtos;
 
-import co.edu.uniandes.csw.musica.entities.FestivalEntity;
-import java.io.Serializable;
-import java.util.Date;
+import co.edu.uniandes.csw.musica.entities.GeneroEntity;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
- * <!-- begin-user-doc -->
- * <!--  end-user-doc  --> @generated
+ *
+ * @author af.olivares10
  */
 @XmlRootElement
-public class FestivalDTO implements Serializable{
-
-    private String nombre;
-
-    private Date fechaInicio;
-
-    private Date fechaFin;
+public class GeneroDTO {
 
     private Long id;
-    
-    private String imagen;
-    
+    private String nombre;
 
-    public FestivalDTO() {
+    public GeneroDTO() {
 
     }
 
-    public FestivalDTO(FestivalEntity entity) {
+    public GeneroDTO(GeneroEntity entity) {
         if (entity != null) {
-            this.fechaInicio = entity.getFechaInicio();
-            this.fechaFin = entity.getFechaFin();
+
             this.nombre = entity.getNombre();
             this.id = entity.getId();
-            this.imagen = entity.getImagen();
         }
     }
 
-    public FestivalEntity toEntity() {
-        FestivalEntity fe = new FestivalEntity();
-        fe.setFechaFin(fechaFin);
-        fe.setFechaInicio(fechaFin);
+    public GeneroEntity toEntity() {
+        GeneroEntity fe = new GeneroEntity();
         fe.setId(id);
         fe.setNombre(nombre);
-        fe.setImagen(imagen);
         return fe;
     }
 
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public Date getFechaInicio() {
-        return fechaInicio;
-    }
-
-    public void setFechaInicio(Date fechaInicio) {
-        this.fechaInicio = fechaInicio;
-    }
-
-    public Date getFechaFin() {
-        return fechaFin;
-    }
-
-    public void setFechaFin(Date fechaFin) {
-        this.fechaFin = fechaFin;
-    }
-
+    /**
+     * @return the id
+     */
     public Long getId() {
         return id;
     }
 
+    /**
+     * @param id the id to set
+     */
     public void setId(Long id) {
         this.id = id;
     }
 
     /**
-     * @return the imagen
+     * @return the nombre
      */
-    public String getImagen() {
-        return imagen;
+    public String getNombre() {
+        return nombre;
     }
 
     /**
-     * @param imagen the imagen to set
+     * @param nombre the nombre to set
      */
-    public void setImagen(String imagen) {
-        this.imagen = imagen;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
-
-
 
 }

@@ -18,16 +18,21 @@
                     festivales: ['$http', 'festivalesContext', function ($http, festivalesContext) {
                             return $http.get(festivalesContext);
                         }],
-                    venues: ['$http', function ($http) {
-                            return $http.get('api/venues');
+                    ciudades: ['$http', function ($http) {
+                            return $http.get('api/ciudades');
+                        }],
+                    generos: ['$http', function ($http) {
+                            return $http.get('api/generos');
                         }]
                 },
                 views: {
                     mainView: {
 
                         templateUrl: basePath + 'festival.html',
-                        controller: ['$scope', 'festivales', function ($scope, festivales) {
+                        controller: ['$scope', 'festivales', 'generos', 'ciudades', function ($scope, festivales, generos, ciudades) {
                                 $scope.festivalesRecords = festivales.data;
+                                $scope.generosRecords = generos.data;
+                                $scope.ciudadesRecords = ciudades.data;
                             }]
                     }
                 }
@@ -36,11 +41,12 @@
                 parent: 'festivales',
                 views: {
                     listView: {
-                        templateUrl: basePath + 'festival.list.html'
+                        templateUrl: basePath + 'festival.list.html',
+
                     }
                 }
             }).state('festivalGenList', {
-                url: '/{genero}/',
+                url: 'festivalesPorGenero/{genero:int}/',
                 parent: 'festivales',
                 param: {
                     genero: null
@@ -55,7 +61,6 @@
                         },
                         controller: ['$scope', 'currentFestivales', function ($scope, currentFestivales) {
                                 $scope.festivalesRecords = currentFestivales.data;
-
                             }]
                     }
 
@@ -100,11 +105,23 @@
                 views: {
                     insertarView: {
                         templateUrl: basePath + 'festival.insertar.html',
-                        controller: ['$scope', 'venues', function ($scope, venues) {
-                                $scope.venuesRecords = venues.data;
+                        resolve: {
+                            agregarFestival: ["$http", function ($http) {
+                                    var a=       
+                                    function (festival) {
+                                                $http.post("api/festivales/", festival);
+                                                }
+                                 return a;           
+                                }]
+                        },
+                        controller: ['$scope', 'agregarFestival','$state', function ($scope, agregarFestival,$state) {
+                                $scope.festival = {};
+                                $scope.postFestival = function()
+                                {
+                                    agregarFestival($scope.festival);
+                                    $state.reload();
+                                }
                             }]
-
-
                     }
                 }
 

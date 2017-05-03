@@ -55,9 +55,9 @@ public class FestivalPersistence {
 
     }
 
-    public List<FestivalEntity> findPorGenero(String genero) {
+    public List<FestivalEntity> findPorGenero(Long genero) {
         TypedQuery<FestivalEntity> q
-                = em.createQuery("select u from FestivalEntity u where u.genero = :genero", FestivalEntity.class);
+                = em.createQuery("select u from FestivalEntity u join u.genero g where g.id = :genero", FestivalEntity.class);
         q = q.setParameter("genero", genero);
 
         return q.getResultList();

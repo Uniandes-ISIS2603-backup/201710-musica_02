@@ -1,7 +1,7 @@
-/* 
+/*
  * The MIT License
  *
- * Copyright 2017 Mighty Fingers.
+ * Copyright 2017 af.olivares10.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,10 +23,9 @@
  */
 package co.edu.uniandes.csw.musica.resources;
 
-import co.edu.uniandes.csw.musica.dtos.FestivalDTO;
-import co.edu.uniandes.csw.musica.dtos.FestivalDetailDTO;
-import co.edu.uniandes.csw.musica.ejbs.FestivalLogic;
-import co.edu.uniandes.csw.musica.entities.FestivalEntity;
+import co.edu.uniandes.csw.musica.dtos.GeneroDTO;
+import co.edu.uniandes.csw.musica.ejbs.GeneroLogic;
+import co.edu.uniandes.csw.musica.entities.GeneroEntity;
 import co.edu.uniandes.csw.musica.exceptions.BusinessLogicException;
 import java.util.ArrayList;
 import java.util.List;
@@ -47,57 +46,50 @@ import javax.ws.rs.core.MediaType;
  *
  * @author af.olivares10
  */
-@Path("/festivales")
+@Path("/generos")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
-
-public class FestivalResource {
-
+public class GeneroResource {
+    
     @Inject
-    private FestivalLogic logic;
+    private GeneroLogic logic;
     @Context
     HttpServlet http;
 
-    private List<FestivalDetailDTO> listEntity2DTODETAIL(List<FestivalEntity> entityList) {
-        List<FestivalDetailDTO> listDTO = new ArrayList<>();
-        for (FestivalEntity c : entityList) {
-            FestivalDetailDTO est = new FestivalDetailDTO(c);
+    private List<GeneroDTO> listEntity2DTO(List<GeneroEntity> entityList) {
+        List<GeneroDTO> listDTO = new ArrayList<>();
+        for (GeneroEntity c : entityList) {
+            GeneroDTO est = new GeneroDTO(c);
             listDTO.add(est);
         }
         return listDTO;
     }
     
     @GET
-    public  List<FestivalDetailDTO> getFestivales()
+    public  List<GeneroDTO> getGeneros()
     {
-        return listEntity2DTODETAIL(logic.getFestivales());
+        return listEntity2DTO(logic.getGeneros());
     }
     
     @GET
     @Path("{id: \\d+}")
-    public FestivalDetailDTO getFestival (@PathParam("id") Long id) throws WebApplicationException
+    public GeneroDTO getGenero (@PathParam("id") Long id) throws WebApplicationException
     {
-        FestivalEntity fest = logic.getFestival(id);
-        if (fest != null)
-        return new FestivalDetailDTO(fest);
-        throw new WebApplicationException("No se encontró un festival con ese id", 404);
+        GeneroEntity gen = logic.getGenero(id);
+        if (gen != null)
+        return new GeneroDTO(gen);
+        throw new WebApplicationException("No se encontró un genero con ese id", 404);
     }
-    @GET
-    @Path("genero/{genero}")
-    public List<FestivalDetailDTO> getFestivalesPorGenero (@PathParam("genero") Long genero) throws WebApplicationException
-    {
-        return listEntity2DTODETAIL(logic.getFestivalesPorGenero(genero));
 
-    }
     @POST
-    public FestivalDetailDTO createFestival (FestivalDetailDTO festival) 
+    public GeneroDTO createGenero (GeneroDTO genero) 
     {
-        return new FestivalDetailDTO(logic.createFestival(festival.toEntity()));
+        return new GeneroDTO(logic.createGenero(genero.toEntity()));
     }
     @PUT
-    public FestivalDetailDTO updateFestival (FestivalDetailDTO festival)
+    public GeneroDTO updateGenero (GeneroDTO genero)
     {
-        return new FestivalDetailDTO(logic.updateFestival(festival.toEntity()));
+        return new GeneroDTO(logic.updateGenero(genero.toEntity()));
     }
-
+    
 }

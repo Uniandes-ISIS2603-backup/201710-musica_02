@@ -20,6 +20,7 @@ DELETE FROM FUNCIONENTITY;
 DELETE FROM VENUEENTITY;
 DELETE FROM FESTIVALENTITY;
 DELETE FROM CIUDADENTITY;
+DELETE FROM GENEROENTITY;
 
 insert into CIUDADENTITY (id, name) values (1001, 'Goim');
 insert into CIUDADENTITY (id, name) values (1002, 'Kungsbacka');
@@ -27,11 +28,20 @@ insert into CIUDADENTITY (id, name) values (1003, 'Musina');
 insert into CIUDADENTITY (id, name) values (1004, 'Frei Paulo');
 insert into CIUDADENTITY (id, name) values (1005, 'Jiumen');
 
-insert into FESTIVALENTITY (ID, FECHAFIN, FECHAINICIO, NOMBRE, CIUDADENTITY_ID,IMAGEN,GENERO) values (1001, '2017-12-01', '2017-01-01', 'Lollapalooza' , 1001,'https://consequenceofsound.files.wordpress.com/2016/01/lollapalooza-2015.png','Rock');
-insert into FESTIVALENTITY (ID, FECHAFIN, FECHAINICIO, NOMBRE, CIUDADENTITY_ID,IMAGEN,GENERO) values (1002, '2017-12-01', '2017-01-01', 'Salsa al parque', 1002,'http://4.bp.blogspot.com/-1XOb4FGcvIo/UcuVi_oEu9I/AAAAAAAAErg/i3VhHH_g6ig/s1600/festival+salsa+al+parque.gif','Salsa');
-insert into FESTIVALENTITY (ID, FECHAFIN, FECHAINICIO, NOMBRE, CIUDADENTITY_ID,IMAGEN,GENERO) values (1003, '2017-12-01', '2017-01-01', 'Woodstock', 1003,'https://pbs.twimg.com/profile_images/619207497883197440/j3kmzWJN.jpg','Reggaeton');
-insert into FESTIVALENTITY (ID, FECHAFIN, FECHAINICIO, NOMBRE, CIUDADENTITY_ID,IMAGEN,GENERO) values (1004, '2017-12-01', '2017-01-01', 'Glastonburry', 1004,'http://cdn.glastonburyfestivals.co.uk/wp-content/themes/glasto/assets/gfx/glastonbury_festival_generic.png','HipHop');
-insert into FESTIVALENTITY (ID, FECHAFIN, FECHAINICIO, NOMBRE, CIUDADENTITY_ID,IMAGEN,GENERO) values (1005, '2017-12-01', '2017-01-01', 'Coachella', 1005,'https://s-media-cache-ak0.pinimg.com/originals/90/47/3b/90473b91f75571e71468afcdb8fb42f5.jpg','Mixto');
+insert into GENEROENTITY (ID,NOMBRE) values (1001, 'Rock');
+insert into GENEROENTITY (ID,NOMBRE) values (1002, 'Salsa');
+insert into GENEROENTITY (ID,NOMBRE) values (1003, 'Reggaeton');
+insert into GENEROENTITY (ID,NOMBRE) values (1004, 'Reggae');
+insert into GENEROENTITY (ID,NOMBRE) values (1005, 'HipHop');
+insert into GENEROENTITY (ID,NOMBRE) values (1006, 'Electronica');
+insert into GENEROENTITY (ID,NOMBRE) values (1007, 'Mixto');
+
+
+insert into FESTIVALENTITY (ID, FECHAFIN, FECHAINICIO, NOMBRE, CIUDADENTITY_ID,IMAGEN,GENERO_ID) values (1001, '2017-12-01', '2017-01-01', 'Lollapalooza' , 1001,'https://consequenceofsound.files.wordpress.com/2016/01/lollapalooza-2015.png',1001);
+insert into FESTIVALENTITY (ID, FECHAFIN, FECHAINICIO, NOMBRE, CIUDADENTITY_ID,IMAGEN,GENERO_ID) values (1002, '2017-12-01', '2017-01-01', 'Salsa al parque', 1002,'http://4.bp.blogspot.com/-1XOb4FGcvIo/UcuVi_oEu9I/AAAAAAAAErg/i3VhHH_g6ig/s1600/festival+salsa+al+parque.gif',1002);
+insert into FESTIVALENTITY (ID, FECHAFIN, FECHAINICIO, NOMBRE, CIUDADENTITY_ID,IMAGEN,GENERO_ID) values (1003, '2017-12-01', '2017-01-01', 'Woodstock', 1003,'https://pbs.twimg.com/profile_images/619207497883197440/j3kmzWJN.jpg',1003);
+insert into FESTIVALENTITY (ID, FECHAFIN, FECHAINICIO, NOMBRE, CIUDADENTITY_ID,IMAGEN,GENERO_ID) values (1004, '2017-12-01', '2017-01-01', 'Glastonburry', 1004,'http://cdn.glastonburyfestivals.co.uk/wp-content/themes/glasto/assets/gfx/glastonbury_festival_generic.png',1005);
+insert into FESTIVALENTITY (ID, FECHAFIN, FECHAINICIO, NOMBRE, CIUDADENTITY_ID,IMAGEN,GENERO_ID) values (1005, '2017-12-01', '2017-01-01', 'Coachella', 1005,'https://s-media-cache-ak0.pinimg.com/originals/90/47/3b/90473b91f75571e71468afcdb8fb42f5.jpg',1006);
 
 insert into VENUEENTITY (ID, CAPACIDADMAX, DIRECCION, NOMBRE, TIPO, CIUDADENTITY_ID, FESTIVALENTITY_ID, IMAGEN) values (1001, 201, '309 Claremont Court', 'Elmside', 'ABIERTO', 1001, 1001, 'https://s-media-cache-ak0.pinimg.com/736x/bd/ce/8e/bdce8e9a495c2e7548c13c39af9d1d62.jpg');
 insert into VENUEENTITY (ID, CAPACIDADMAX, DIRECCION, NOMBRE, TIPO, CIUDADENTITY_ID, FESTIVALENTITY_ID, IMAGEN) values (1002, 202, '60114 Fordem Drive', 'Carpenter', 'CUBIERTO', 1002, 1002, 'http://dceven.ufsc.br/files/2011/02/auditorio2_jpg.jpg');

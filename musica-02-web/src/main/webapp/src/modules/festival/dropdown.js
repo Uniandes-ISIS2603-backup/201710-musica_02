@@ -1,6 +1,7 @@
 function mostrarGeneros() {
     document.getElementById("dropGenero").classList.toggle("show");
 }
+
 window.onclick = function(event) {
   if (!event.target.matches('.dropbtn')) {
 

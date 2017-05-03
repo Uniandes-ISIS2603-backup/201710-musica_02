@@ -65,7 +65,9 @@ public class FestivalEntity implements Serializable
     @PodamExclude
     private List <FuncionEntity> funcionesEntities = new ArrayList <FuncionEntity> (); 
     private String imagen;
-    private String genero;
+    @ManyToOne
+    @PodamExclude
+    private GeneroEntity genero;
    
     
     /**
@@ -183,16 +185,17 @@ public class FestivalEntity implements Serializable
     /**
      * @return the genero
      */
-    public String getGenero() {
+    public GeneroEntity getGenero() {
         return genero;
     }
 
     /**
      * @param genero the genero to set
      */
-    public void setGenero(String genero) {
+    public void setGenero(GeneroEntity genero) {
         this.genero = genero;
     }
+
 
   
     
