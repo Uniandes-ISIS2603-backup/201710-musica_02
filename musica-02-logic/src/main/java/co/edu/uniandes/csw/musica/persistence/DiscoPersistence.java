@@ -45,6 +45,9 @@ public class DiscoPersistence
         return em.find(DiscoEntity.class, id);
     }
 
+    /*
+    @param id = id del artista
+    */
     public List<DiscoEntity> findAll(Long id) {
         
         TypedQuery<DiscoEntity> q = em.createQuery("select u from DiscoEntity u WHERE u.artistaEntity.id = :var", DiscoEntity.class);

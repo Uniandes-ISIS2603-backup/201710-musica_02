@@ -33,6 +33,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import uk.co.jemos.podam.common.PodamExclude;
 
 /**
  *
@@ -62,6 +63,7 @@ public class ArtistaEntity implements Serializable
     //viene de las constantes
     private String genero;
     
+    @PodamExclude
     @ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY,mappedBy = "artistas")
     private List<FuncionEntity> funciones = new ArrayList<FuncionEntity>();
 
