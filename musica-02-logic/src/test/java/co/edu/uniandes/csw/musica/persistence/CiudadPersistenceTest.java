@@ -72,7 +72,7 @@ public class CiudadPersistenceTest
     @Inject
     UserTransaction utx;
     
-    private List<CiudadEntity> data = new ArrayList<CiudadEntity>();
+    private List<CiudadEntity> data = new ArrayList<>();
     
     @Before
     public void setUp() 

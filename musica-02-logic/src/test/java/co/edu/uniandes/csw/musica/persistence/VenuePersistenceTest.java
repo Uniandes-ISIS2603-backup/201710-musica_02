@@ -67,7 +67,7 @@ public class VenuePersistenceTest
     @Inject
     UserTransaction utx;
     
-    private List<VenueEntity> data = new ArrayList<VenueEntity>();
+    private List<VenueEntity> data = new ArrayList<>();
     
      @Before
     public void setUp() 

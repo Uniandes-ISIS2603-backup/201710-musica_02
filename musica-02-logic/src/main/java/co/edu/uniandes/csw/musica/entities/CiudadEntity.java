@@ -31,6 +31,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import uk.co.jemos.podam.common.PodamExclude;
 
 @Entity
 public class CiudadEntity implements Serializable
@@ -39,9 +40,12 @@ public class CiudadEntity implements Serializable
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
+    
+    @PodamExclude
     @OneToMany(mappedBy = "ciudadEntity")
     private List<FestivalEntity> festivales = new ArrayList<>();
     
+    @PodamExclude
     @OneToMany(mappedBy = "ciudadEntity")
     private List<VenueEntity> venues = new ArrayList<>();
 

@@ -31,6 +31,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import uk.co.jemos.podam.common.PodamExclude;
 
 /**
  *
@@ -50,10 +51,13 @@ public class VenueEntity implements Serializable
     private String imagen;
     private String mapa;
     
+    @PodamExclude
     @ManyToOne 
     private CiudadEntity ciudadEntity;
-    @ManyToOne 
+    @PodamExclude
+    @ManyToOne
     private FestivalEntity festivalEntity;
+    @PodamExclude
     @OneToMany(mappedBy = "venueEntity")
     private List<FuncionEntity> funcionEntity;
     
