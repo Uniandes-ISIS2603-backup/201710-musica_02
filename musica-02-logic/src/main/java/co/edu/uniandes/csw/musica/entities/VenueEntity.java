@@ -48,6 +48,7 @@ public class VenueEntity implements Serializable
     private Integer capacidadMax;
     private String direccion;
     private String imagen;
+    private String mapa;
     
     @ManyToOne 
     private CiudadEntity ciudadEntity;
@@ -78,6 +79,16 @@ public class VenueEntity implements Serializable
             return this.getId().hashCode();
         }
         return super.hashCode();
+    }
+    
+    public String getMapa()
+    {
+        return mapa;
+    }
+    
+    public void setMapa(String newMapa)
+    {
+        mapa = newMapa;
     }
 
     /**

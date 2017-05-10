@@ -1,6 +1,6 @@
 <div class="panel panel-default"> 
     <b class="col-md-6">Venue</b>
-    <b class="col-md-6" >Funciones</b>
+    <b class="col-md-6" >Fechas de próximas funciones</b>
     <div class="panel-body">
         <div class="row">
             
@@ -30,11 +30,13 @@
                     <a ui-sref="festivalDetail({festivalId:currentVenue.festivalDTO.id})">{{currentVenue.festivalDTO.nombre}}</a>
                     </dl>
                 </div>
+            
             <div class ="thumb col-md-3" >
+                
             <table class="table table-hover ">
                 <thead>
                     <tr>
-                        <th>Fecha</th>
+                        <th>Próximas funciones</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -42,6 +44,7 @@
                         <td id="{{$index}}-description"><a ui-sref="funcionDetail({funcionId: funcion.id})">{{funcion.fecha}}</a></td>
                     </tr>
                 </tbody>
+  
             </table>
         </div>
         </div>           
