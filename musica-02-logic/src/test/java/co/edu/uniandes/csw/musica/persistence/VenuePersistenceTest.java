@@ -35,6 +35,7 @@ import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
+import static org.junit.Assert.fail;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -50,7 +51,7 @@ public class VenuePersistenceTest
 {
     
     @Deployment
-    public static JavaArchive createDevelopment() 
+    public static JavaArchive createDeployment() 
     {
         return ShrinkWrap.create(JavaArchive.class)
                 .addPackage(VenueEntity.class.getPackage())
@@ -69,8 +70,8 @@ public class VenuePersistenceTest
     
     private List<VenueEntity> data = new ArrayList<>();
     
-     @Before
-    public void setUp() 
+    @Before
+    public void setUp() throws Exception
     {
         try 
         {
@@ -85,13 +86,14 @@ public class VenuePersistenceTest
                 utx.rollback();
             } catch (Exception e1) {
                 e1.printStackTrace();
+                fail("Configuration database fail");
             }
         }
     }
     
     private void clearData() 
     {
-        em.createQuery("delete from venueEntity").executeUpdate();
+        em.createQuery("delete from VenueEntity").executeUpdate();
     }
     
     private void insertData() 
@@ -124,7 +126,7 @@ public class VenuePersistenceTest
     {
         List<VenueEntity> list = venuePersistance.findAll();
         Assert.assertEquals(data.size(), list.size());
-        for (VenueEntity ent : list) 
+        for(VenueEntity ent : list) 
         {
             boolean found = false;
             for (VenueEntity entity : data) 
