@@ -54,7 +54,7 @@ public class CiudadPersistenceTest
 {
     
     @Deployment
-    public static JavaArchive createDevelopment() 
+    public static JavaArchive createDeployment() 
     {
         return ShrinkWrap.create(JavaArchive.class)
                 .addPackage(CiudadEntity.class.getPackage())
@@ -75,7 +75,7 @@ public class CiudadPersistenceTest
     private List<CiudadEntity> data = new ArrayList<>();
     
     @Before
-    public void setUp() 
+    public void setUp() throws Exception
     {
         try 
         {
@@ -90,13 +90,14 @@ public class CiudadPersistenceTest
                 utx.rollback();
             } catch (Exception e1) {
                 e1.printStackTrace();
+                fail("Configuration database fail");
             }
         }
     }
     
     private void clearData() 
     {
-        em.createQuery("delete from venueEntity").executeUpdate();
+        em.createQuery("delete from CiudadEntity").executeUpdate();
     }
     
     private void insertData() 
@@ -170,24 +171,24 @@ public class CiudadPersistenceTest
         Assert.assertEquals(newEntity.getId(), entity.getId());
     }
     
-    @Test
-    public void deleteCiudadTest() 
-    {
-        CiudadEntity entity = data.get(0);
-        ciudadPersistance.delete(entity.getName());
-        CiudadEntity deleted = em.find(CiudadEntity.class, entity.getId());
-        Assert.assertNull(deleted);
-    }
-    
-    @Test
-    public void getCiudadByNameTest() 
-    {
-        CiudadEntity entity = data.get(0);
-        CiudadEntity newEntity = ciudadPersistance.findByName(entity.getName());
-        Assert.assertNotNull(newEntity);
-        Assert.assertEquals(entity.getName(), newEntity.getName());
-        Assert.assertEquals(newEntity.getId(), entity.getId());
-    }
+//    @Test
+//    public void deleteCiudadTest() 
+//    {
+//        CiudadEntity entity = data.get(0);
+//        ciudadPersistance.delete(entity.getName());
+//        CiudadEntity deleted = em.find(CiudadEntity.class, entity.getId());
+//        Assert.assertNull(deleted);
+//    }
+//    
+//    @Test
+//    public void getCiudadByNameTest() 
+//    {
+//        CiudadEntity entity = data.get(0);
+//        CiudadEntity newEntity = ciudadPersistance.findByName(entity.getName());
+//        Assert.assertNotNull(newEntity);
+//        Assert.assertEquals(entity.getName(), newEntity.getName());
+//        Assert.assertEquals(newEntity.getId(), entity.getId());
+//    }
     
     public CiudadPersistenceTest() 
     {
