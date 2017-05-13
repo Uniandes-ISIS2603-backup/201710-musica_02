@@ -24,11 +24,12 @@
     </div> 
     <br>
     <div class="row">
-        <div class="col-sm-6 col-md-6 derecha"><b><font> Genero:</font> </b></div>
+        <div class="col-sm-6 col-md-6 derecha"><b><font> Género:</font> </b></div>
         <div class="col-sm-6 col-md-6">
-            <select ng-model="festival.generoDTO.id">
-                <option ng-repeat="genero in generosRecords">{{genero.id}}</option>
-            </select>   
+            <select name="selectGeneroFestival" id="selectGeneroFestival"
+                    ng-options="genero.nombre for genero in generosRecords"
+                    ng-model="festival.generoDTO">
+            </select>
         </div>
     </div> 
     <br>
