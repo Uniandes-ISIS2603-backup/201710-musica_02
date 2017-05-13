@@ -25,10 +25,12 @@ package co.edu.uniandes.csw.musica.persistence;
 
 import co.edu.uniandes.csw.musica.entities.CiudadEntity;
 import java.util.List;
+import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
+@Stateless
 public class CiudadPersistence 
 {
     @PersistenceContext(unitName = "musicaPU")
