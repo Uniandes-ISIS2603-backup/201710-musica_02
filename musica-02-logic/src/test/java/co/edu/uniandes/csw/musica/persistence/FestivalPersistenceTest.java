@@ -124,6 +124,13 @@ public class FestivalPersistenceTest {
         FestivalEntity newEntity = festivalPersistence.find(entity.getId());
         Assert.assertNotNull(newEntity);
         Assert.assertEquals(entity.getNombre(), newEntity.getNombre());
+        Assert.assertEquals(entity.getFechaInicio().getDay(), newEntity.getFechaInicio().getDay());
+        Assert.assertEquals(entity.getFechaInicio().getMonth(), newEntity.getFechaInicio().getMonth());
+        Assert.assertEquals(entity.getFechaInicio().getYear(), newEntity.getFechaInicio().getYear());
+        Assert.assertEquals(entity.getFechaFin().getDay(), newEntity.getFechaFin().getDay());
+        Assert.assertEquals(entity.getFechaFin().getMonth(), newEntity.getFechaFin().getMonth());
+        Assert.assertEquals(entity.getFechaFin().getYear(), newEntity.getFechaFin().getYear());
+        Assert.assertEquals(entity.getImagen(), newEntity.getImagen());
     }
 
     /**
@@ -158,6 +165,13 @@ public class FestivalPersistenceTest {
         FestivalEntity entity = em.find(FestivalEntity.class, result.getId());
         Assert.assertNotNull(entity);
         Assert.assertEquals(newEntity.getNombre(), entity.getNombre());
+        Assert.assertEquals(entity.getFechaInicio().getDay(), newEntity.getFechaInicio().getDay());
+        Assert.assertEquals(entity.getFechaInicio().getMonth(), newEntity.getFechaInicio().getMonth());
+        Assert.assertEquals(entity.getFechaInicio().getYear(), newEntity.getFechaInicio().getYear());
+        Assert.assertEquals(entity.getFechaFin().getDay(), newEntity.getFechaFin().getDay());
+        Assert.assertEquals(entity.getFechaFin().getMonth(), newEntity.getFechaFin().getMonth());
+        Assert.assertEquals(entity.getFechaFin().getYear(), newEntity.getFechaFin().getYear());
+        Assert.assertEquals(entity.getImagen(), newEntity.getImagen());
     }
 
     /**
@@ -175,7 +189,13 @@ public class FestivalPersistenceTest {
 
         FestivalEntity resp = em.find(FestivalEntity.class, entity.getId());
 
-        Assert.assertEquals(newEntity.getNombre(), resp.getNombre());
-    }
+        Assert.assertEquals(resp.getNombre(), newEntity.getNombre());
+        Assert.assertEquals(resp.getFechaInicio().getDay(), newEntity.getFechaInicio().getDay());
+        Assert.assertEquals(resp.getFechaInicio().getMonth(), newEntity.getFechaInicio().getMonth());
+        Assert.assertEquals(resp.getFechaInicio().getYear(), newEntity.getFechaInicio().getYear());
+        Assert.assertEquals(resp.getFechaFin().getDay(), newEntity.getFechaFin().getDay());
+        Assert.assertEquals(resp.getFechaFin().getMonth(), newEntity.getFechaFin().getMonth());
+        Assert.assertEquals(resp.getFechaFin().getYear(), newEntity.getFechaFin().getYear());
+        Assert.assertEquals(resp.getImagen(), newEntity.getImagen());    }
 
 }
