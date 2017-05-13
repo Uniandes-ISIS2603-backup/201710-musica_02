@@ -1,7 +1,7 @@
-/* 
+/*
  * The MIT License
  *
- * Copyright 2017 Mighty Fingers.
+ * Copyright 2017 af.olivares10.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -21,43 +21,12 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package co.edu.uniandes.csw.musica.ejbs;
+package co.edu.uniandes.csw.musica.rest;
 
 /**
  *
  * @author af.olivares10
  */
-import co.edu.uniandes.csw.musica.entities.FestivalEntity;
-import co.edu.uniandes.csw.musica.exceptions.BusinessLogicException;
-import co.edu.uniandes.csw.musica.persistence.FestivalPersistence;
-import java.util.List;
-import javax.ejb.Stateless;
-import javax.inject.Inject;
-
-@Stateless
-public class FestivalLogic {
-    
-    @Inject FestivalPersistence persistence;
-    
-    public List<FestivalEntity> getFestivales()
-    {
-        return persistence.findAll();
-    }
-     public FestivalEntity getFestival (Long id)  
-    {
-        return persistence.find(id);
-    }
-    public List getFestivalesPorGenero (Long genero)  
-    {
-        return persistence.findPorGenero(genero);
-    }
-    public FestivalEntity createFestival (FestivalEntity festival) 
-    {
-        return persistence.create(festival);
-    }
-    public FestivalEntity updateFestival (FestivalEntity festival)
-    {
-        return persistence.update(festival);
-    }
+public class FestivalResourceTest {
     
 }
