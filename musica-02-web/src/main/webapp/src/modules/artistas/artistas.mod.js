@@ -2,6 +2,7 @@
     var mod = ng.module("artistaModule", ['ui.router']);
     mod.constant("artistasContext", "api/artistas");
     mod.constant("dicosContext", "discos");
+    mod.constant("generosContext", "api/generos");
     mod.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
 
             var basePath = 'src/modules/artistas/';
@@ -72,8 +73,16 @@
             
             $stateProvider.state('artistaCreate', {
                 url: '/create',
+                parent: 'artistas',
                 views: {
                     'createView': {
+                        //resolve{
+                        //generos: ['$http', 'generosContext', '$stateParams', function ($http, generosContext, $params) 
+                        //            {
+                        //            return $http.get(generosContext);
+                        //            }
+                        //            ]
+                        //       },
                         templateUrl: basePath + 'artistas.create.html'
                     }
                 }

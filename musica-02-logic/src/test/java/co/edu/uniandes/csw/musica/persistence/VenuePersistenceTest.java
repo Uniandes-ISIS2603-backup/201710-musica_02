@@ -1,7 +1,7 @@
 /*
  * The MIT License
  *
- * Copyright 2017 Mighty Fingers.
+ * Copyright 2017 ca.anzola.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -21,14 +21,11 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-
 package co.edu.uniandes.csw.musica.persistence;
 
-import org.junit.Test;
-import co.edu.uniandes.csw.musica.entities.ArtistaEntity;
+import co.edu.uniandes.csw.musica.entities.VenueEntity;
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -38,48 +35,43 @@ import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
+import static org.junit.Assert.fail;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import uk.co.jemos.podam.api.PodamFactory;
 import uk.co.jemos.podam.api.PodamFactoryImpl;
 
-
-import static org.junit.Assert.*;
-
 /**
  *
- * @author a.echeverrir
+ * @author ca.anzola
  */
 @RunWith(Arquillian.class)
-public class ArtistaPersistenceTest {
-    
-    
+public class VenuePersistenceTest 
+{
     
     @Deployment
-    public static JavaArchive createDeployment()
+    public static JavaArchive createDeployment() 
     {
         return ShrinkWrap.create(JavaArchive.class)
-                .addPackage(ArtistaEntity.class.getPackage())
-                .addPackage(ArtistaPersistence.class.getPackage())
+                .addPackage(VenueEntity.class.getPackage())
+                .addPackage(VenuePersistence.class.getPackage())
                 .addAsManifestResource("META-INF/persistence.xml", "persistence.xml")
                 .addAsManifestResource("META-INF/beans.xml", "beans.xml");
     }
-    
-    
     @Inject
-    private ArtistaPersistence artistaPersistence;
+    private VenuePersistence venuePersistance;
     
-    @PersistenceContext
+    @PersistenceContext(unitName = "musicaPU")
     private EntityManager em;
-    
+
     @Inject
     UserTransaction utx;
-
-    private List<ArtistaEntity> data = new ArrayList<ArtistaEntity>();
-
+    
+    private List<VenueEntity> data = new ArrayList<>();
+    
     @Before
-    public void setUp()
+    public void setUp() throws Exception
     {
         try 
         {
@@ -88,73 +80,59 @@ public class ArtistaPersistenceTest {
             clearData();
             insertData();
             utx.commit();
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
             e.printStackTrace();
-            try 
-            {
+            try {
                 utx.rollback();
-            } 
-            catch (Exception e1) 
-            {
+            } catch (Exception e1) {
                 e1.printStackTrace();
+                fail("Configuration database fail");
             }
         }
     }
     
-    
-     /**
-     * Limpia las tablas que están implicadas en la prueba.
-     */
-    private void clearData() {
-        em.createQuery("delete from ArtistaEntity").executeUpdate();
-        em.createQuery("delete from DiscoEntity").executeUpdate();
-        em.createQuery("delete from CancionEntity").executeUpdate();
+    private void clearData() 
+    {
+        em.createQuery("delete from VenueEntity").executeUpdate();
     }
-
-    /**
-     * Inserta los datos iniciales para el correcto funcionamiento de las
-     * pruebas.
-     *
-     */
-    private void insertData() {
+    
+    private void insertData() 
+    {
         PodamFactory factory = new PodamFactoryImpl();
-        for (int i = 0; i < 3; i++) {
-            ArtistaEntity entity = factory.manufacturePojo(ArtistaEntity.class);
+        for (int i = 0; i < 3; i++) 
+        {
+            VenueEntity entity = factory.manufacturePojo(VenueEntity.class);
             em.persist(entity);
             data.add(entity);
         }
     }
     
-    /**
-     * Prueba para crear un Artista.
-     */
     @Test
-    public void createArtistaTest() {
+    public void createVenueTest() 
+    {
         PodamFactory factory = new PodamFactoryImpl();
-        ArtistaEntity newEntity = factory.manufacturePojo(ArtistaEntity.class);
+        VenueEntity newEntity = factory.manufacturePojo(VenueEntity.class);
 
-        ArtistaEntity result = artistaPersistence.create(newEntity);
-
+        VenueEntity result = venuePersistance.create(newEntity);
         Assert.assertNotNull(result);
-        ArtistaEntity entity = em.find(ArtistaEntity.class, result.getId());
+        VenueEntity entity = em.find(VenueEntity.class, result.getId());
         Assert.assertNotNull(entity);
         Assert.assertEquals(newEntity.getNombre(), entity.getNombre());
+        Assert.assertEquals(newEntity.getId(), entity.getId());
     }
     
-    /**
-     * Prueba para consultar la lista de Artistas.
-     *
-     */
     @Test
-    public void getArtistasTest() {
-        List<ArtistaEntity> list = artistaPersistence.findAll();
+    public void getVenuesTest() 
+    {
+        List<VenueEntity> list = venuePersistance.findAll();
         Assert.assertEquals(data.size(), list.size());
-        for (ArtistaEntity ent : list) {
+        for(VenueEntity ent : list) 
+        {
             boolean found = false;
-            for (ArtistaEntity entity : data) {
-                if (ent.getId().equals(entity.getId())) {
+            for (VenueEntity entity : data) 
+            {
+                if (ent.getId().equals(entity.getId())) 
+                {
                     found = true;
                 }
             }
@@ -162,45 +140,46 @@ public class ArtistaPersistenceTest {
         }
     }
     
-    /**
-     * Prueba para consultar un Artista.
-     */
     @Test
-    public void getArtistaTest() {
-        ArtistaEntity entity = data.get(0);
-        ArtistaEntity newEntity = artistaPersistence.find(entity.getId());
+    public void getVenueTest() 
+    {
+        VenueEntity entity = data.get(0);
+        VenueEntity newEntity = venuePersistance.find(entity.getId());
         Assert.assertNotNull(newEntity);
         Assert.assertEquals(entity.getNombre(), newEntity.getNombre());
+        Assert.assertEquals(newEntity.getId(), entity.getId());
     }
     
-    /**
-     * Prueba para eliminar un Artista.
-     */
+    
     @Test
-    public void deleteArtistaTest() {
-        ArtistaEntity entity = data.get(0);
-        artistaPersistence.delete(entity.getId());
-        ArtistaEntity deleted = em.find(ArtistaEntity.class, entity.getId());
-        Assert.assertNull(deleted);
-    }
-
-    /**
-     * Prueba para actualizar un Artista.
-     */
-    @Test
-    public void updateArtistaTest() {
-        ArtistaEntity entity = data.get(0);
+    public void updateVenueTest() 
+    {
+        VenueEntity entity = data.get(0);
         PodamFactory factory = new PodamFactoryImpl();
-        ArtistaEntity newEntity = factory.manufacturePojo(ArtistaEntity.class);
+        VenueEntity newEntity = factory.manufacturePojo(VenueEntity.class);
 
         newEntity.setId(entity.getId());
 
-        artistaPersistence.update(newEntity);
+        venuePersistance.update(newEntity);
 
-        ArtistaEntity resp = em.find(ArtistaEntity.class, entity.getId());
+        VenueEntity resp = em.find(VenueEntity.class, entity.getId());
 
         Assert.assertEquals(newEntity.getNombre(), resp.getNombre());
+        Assert.assertEquals(newEntity.getId(), entity.getId());
     }
     
+    @Test
+    public void deleteVenueTest() 
+    {
+        VenueEntity entity = data.get(0);
+        venuePersistance.delete(entity.getId());
+        VenueEntity deleted = em.find(VenueEntity.class, entity.getId());
+        Assert.assertNull(deleted);
+    }
+    
+    public VenuePersistenceTest() 
+    {
+        
+    }
     
 }

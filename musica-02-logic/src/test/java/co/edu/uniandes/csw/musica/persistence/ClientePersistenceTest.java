@@ -70,13 +70,13 @@ public class ClientePersistenceTest {
     @Inject
     private ClientePersistence clientePersistence;
     
-    @PersistenceContext
+    @PersistenceContext(unitName = "musicaPU")
     private EntityManager em;
     
     @Inject
     private UserTransaction utx;
     
-    private List<ClienteEntity> data = new ArrayList<ClienteEntity>();
+    private List<ClienteEntity> data = new ArrayList<>();
     
     @Before
     public void setUp() {

@@ -47,6 +47,8 @@ public class VenueDTO implements Serializable
 	private String direccion;
         
         private String imagen;
+        
+        private String mapa;
 
 	
 	public VenueDTO()
@@ -64,6 +66,7 @@ public class VenueDTO implements Serializable
                 this.capacidadMax = entity.getCapacidadMax();
                 this.direccion = entity.getDireccion();
                 this.imagen = entity.getImagen();
+                this.mapa = entity.getMapa();
             }
         }
        public VenueEntity toEntity()
@@ -77,10 +80,20 @@ public class VenueDTO implements Serializable
            entity.setCapacidadMax(this.getCapacidadMax());
            entity.setDireccion(this.getDireccion());
            entity.setImagen(this.getImagen());
-           
+           entity.setMapa(this.getMapa());
            return entity;
        }
 
+    public String getMapa()
+    {
+        return mapa;
+    }
+    
+    public void setMapa(String newMapa)
+    {
+        mapa = newMapa;
+    }
+       
     /**
      * @return the nombre
      */

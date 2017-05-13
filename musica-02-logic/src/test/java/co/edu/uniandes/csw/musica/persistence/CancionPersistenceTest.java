@@ -25,7 +25,7 @@
 package co.edu.uniandes.csw.musica.persistence;
 
 import org.junit.Test;
-import co.edu.uniandes.csw.musica.entities.ArtistaEntity;
+import co.edu.uniandes.csw.musica.entities.CancionEntity;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -52,7 +52,7 @@ import static org.junit.Assert.*;
  * @author a.echeverrir
  */
 @RunWith(Arquillian.class)
-public class ArtistaPersistenceTest {
+public class CancionPersistenceTest {
     
     
     
@@ -60,15 +60,15 @@ public class ArtistaPersistenceTest {
     public static JavaArchive createDeployment()
     {
         return ShrinkWrap.create(JavaArchive.class)
-                .addPackage(ArtistaEntity.class.getPackage())
-                .addPackage(ArtistaPersistence.class.getPackage())
+                .addPackage(CancionEntity.class.getPackage())
+                .addPackage(CancionPersistence.class.getPackage())
                 .addAsManifestResource("META-INF/persistence.xml", "persistence.xml")
                 .addAsManifestResource("META-INF/beans.xml", "beans.xml");
     }
     
     
     @Inject
-    private ArtistaPersistence artistaPersistence;
+    private CancionPersistence cancionPersistence;
     
     @PersistenceContext
     private EntityManager em;
@@ -76,7 +76,7 @@ public class ArtistaPersistenceTest {
     @Inject
     UserTransaction utx;
 
-    private List<ArtistaEntity> data = new ArrayList<ArtistaEntity>();
+    private List<CancionEntity> data = new ArrayList<CancionEntity>();
 
     @Before
     public void setUp()
@@ -121,39 +121,39 @@ public class ArtistaPersistenceTest {
     private void insertData() {
         PodamFactory factory = new PodamFactoryImpl();
         for (int i = 0; i < 3; i++) {
-            ArtistaEntity entity = factory.manufacturePojo(ArtistaEntity.class);
+            CancionEntity entity = factory.manufacturePojo(CancionEntity.class);
             em.persist(entity);
             data.add(entity);
         }
     }
     
     /**
-     * Prueba para crear un Artista.
+     * Prueba para crear una Cancion.
      */
     @Test
-    public void createArtistaTest() {
+    public void createCancionTest() {
         PodamFactory factory = new PodamFactoryImpl();
-        ArtistaEntity newEntity = factory.manufacturePojo(ArtistaEntity.class);
+        CancionEntity newEntity = factory.manufacturePojo(CancionEntity.class);
 
-        ArtistaEntity result = artistaPersistence.create(newEntity);
+        CancionEntity result = cancionPersistence.create(newEntity);
 
         Assert.assertNotNull(result);
-        ArtistaEntity entity = em.find(ArtistaEntity.class, result.getId());
+        CancionEntity entity = em.find(CancionEntity.class, result.getId());
         Assert.assertNotNull(entity);
         Assert.assertEquals(newEntity.getNombre(), entity.getNombre());
     }
     
     /**
-     * Prueba para consultar la lista de Artistas.
+     * Prueba para consultar la lista de Discos.
      *
      */
     @Test
-    public void getArtistasTest() {
-        List<ArtistaEntity> list = artistaPersistence.findAll();
+    public void getCancionesTest() {
+        List<CancionEntity> list = cancionPersistence.findAll();
         Assert.assertEquals(data.size(), list.size());
-        for (ArtistaEntity ent : list) {
+        for (CancionEntity ent : list) {
             boolean found = false;
-            for (ArtistaEntity entity : data) {
+            for (CancionEntity entity : data) {
                 if (ent.getId().equals(entity.getId())) {
                     found = true;
                 }
@@ -163,44 +163,17 @@ public class ArtistaPersistenceTest {
     }
     
     /**
-     * Prueba para consultar un Artista.
+     * Prueba para consultar un Disco.
      */
     @Test
-    public void getArtistaTest() {
-        ArtistaEntity entity = data.get(0);
-        ArtistaEntity newEntity = artistaPersistence.find(entity.getId());
+    public void getDiscoTest() {
+        CancionEntity entity = data.get(0);
+        CancionEntity newEntity = cancionPersistence.find(entity.getId());
         Assert.assertNotNull(newEntity);
         Assert.assertEquals(entity.getNombre(), newEntity.getNombre());
     }
     
-    /**
-     * Prueba para eliminar un Artista.
-     */
-    @Test
-    public void deleteArtistaTest() {
-        ArtistaEntity entity = data.get(0);
-        artistaPersistence.delete(entity.getId());
-        ArtistaEntity deleted = em.find(ArtistaEntity.class, entity.getId());
-        Assert.assertNull(deleted);
-    }
-
-    /**
-     * Prueba para actualizar un Artista.
-     */
-    @Test
-    public void updateArtistaTest() {
-        ArtistaEntity entity = data.get(0);
-        PodamFactory factory = new PodamFactoryImpl();
-        ArtistaEntity newEntity = factory.manufacturePojo(ArtistaEntity.class);
-
-        newEntity.setId(entity.getId());
-
-        artistaPersistence.update(newEntity);
-
-        ArtistaEntity resp = em.find(ArtistaEntity.class, entity.getId());
-
-        Assert.assertEquals(newEntity.getNombre(), resp.getNombre());
-    }
+    
     
     
 }

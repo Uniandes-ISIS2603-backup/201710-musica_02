@@ -32,7 +32,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-
+import uk.co.jemos.podam.common.PodamExclude;
 
 /**
  *
@@ -51,6 +51,7 @@ public class DiscoEntity implements Serializable
     @ManyToOne
     private ArtistaEntity artistaEntity;
     
+    @PodamExclude
     @OneToMany(mappedBy = "discoEntity")
     private List<CancionEntity> canciones = new ArrayList<CancionEntity>();
 
