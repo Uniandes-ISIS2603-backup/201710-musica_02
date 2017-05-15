@@ -60,6 +60,32 @@
                     }]
                  }
                }
+            }).state('venueInsert', {
+                url: '/agregar',
+                parent: 'venues',
+                views: {
+                    insertarView: {
+                        templateUrl: basePath + 'venue.insertar.html',
+                        resolve: {
+                            agregarVenue: ["$http", function ($http) {
+                                    var a=       
+                                    function (venue) {
+                                                $http.post("api/venues/", venue);
+                                                }
+                                 return a;           
+                                }]
+                        },
+                        controller: ['$scope', 'agregarVenue','$state', function ($scope, agregarVenue,$state) {
+                                $scope.venue = {};
+                                $scope.postVenue = function()
+                                {
+                                    agregarVenue($scope.venue);
+                                    $state.reload();
+                                }
+                            }]
+                    }
+                }
+
             });
         }
     ]);
