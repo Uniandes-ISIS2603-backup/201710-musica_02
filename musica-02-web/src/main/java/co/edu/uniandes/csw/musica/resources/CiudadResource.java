@@ -87,18 +87,6 @@ public class CiudadResource {
         }
     }
 
-    @GET
-    @Path("{name}")
-    public CiudadDetailDTO getCityByName(@PathParam("name") String name) {
-        System.out.println(name);
-        CiudadEntity buscada = ciudadLogic.getCityByName(name);
-        if (buscada == null) {
-            throw new WebApplicationException("La ciudad con ese nombre no existe", 404);
-        } else {
-            return new CiudadDetailDTO(buscada);
-        }
-    }
-
     @POST
     public CiudadDetailDTO createCity(CiudadDetailDTO ciudadDto) throws BusinessLogicException {
         return new CiudadDetailDTO(ciudadLogic.createCity(ciudadDto.toEntity()));
@@ -122,17 +110,17 @@ public class CiudadResource {
     }
 
     @DELETE
-    @Path("/{name}")
-    public void deleteCity(@PathParam("name") String name) 
+    @Path("{Id: \\d+}")
+    public void deleteCity(@PathParam("Id") Long id) 
     {
-        CiudadDetailDTO ciudad = getCityByName(name);
+        CiudadDetailDTO ciudad = getCity(id);
         if (ciudad != null) 
         {
-           ciudadLogic.deleteCity(name);
+           ciudadLogic.deleteCity(id);
         }
         else
         {
-            throw new WebApplicationException("La ciudad con nombre <" + name + "> no existe.", Response.Status.CONFLICT);
+            throw new WebApplicationException("La ciudad con id <" + id + "> no existe.", Response.Status.CONFLICT);
         }
     }
 
