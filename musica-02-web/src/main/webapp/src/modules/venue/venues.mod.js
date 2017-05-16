@@ -14,12 +14,20 @@
                 resolve: {
                     venues: ['$http', 'venuesContext', function ($http, venuesContext) {
                             return $http.get(venuesContext);
+                        }],
+                    ciudades: ['$http', function ($http) {
+                            return $http.get('api/ciudades');
+                        }],
+                    festivales: ['$http', function ($http) {
+                            return $http.get('api/festivales');
                         }]
                 },
                 views: {
                     mainView: {templateUrl: basePath + 'venues.html',
-                        controller: ['$scope', 'venues', function ($scope, venues) {
+                        controller: ['$scope', 'venues', 'ciudades', 'festivales', function ($scope, venues, ciudades, festivales) {
                                 $scope.venuesRecords = venues.data;
+                                $scope.ciudadesRecords = ciudades.data;
+                                $scope.festivalesRecords = festivales.data;
                             }]
                     }
                 }
