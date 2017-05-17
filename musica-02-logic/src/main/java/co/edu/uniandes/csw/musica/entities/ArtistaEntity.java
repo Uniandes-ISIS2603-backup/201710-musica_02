@@ -41,16 +41,7 @@ import uk.co.jemos.podam.common.PodamExclude;
  */
 @Entity
 public class ArtistaEntity implements Serializable
-{
-
-    //CONSTANTES DE GENERO
-    public final static String ROCK = "Rock";
-    public final static String SALSA = "Salsa";
-    public final static String RAGGAE = "Raggae";
-    public final static String RAGGAETON = "Raggaeton";
-    public final static String HIPHOP = "HipHop";
-    public final static String ELECTRONICA = "Electronica";
-    
+{   
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

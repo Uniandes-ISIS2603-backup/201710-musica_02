@@ -16,7 +16,7 @@ and open the template in the editor.
             </thead>
             <tbody>
                 <tr ng-repeat="funcion in funcionesRecords">
-                    <td id="{{$index}}-name"><a ui-sref="funcionDetail({funcionId: funcion.id})">{{funcion.fecha}}</a></td>
+                    <td id="{{$index}}-name"><a ui-sref="funcionDetail({funcionId: funcion.id})">{{funcion.fecha|date:'yyyy-MM-dd'}}</a></td>
                     <td id="{{$index}}-description">{{funcion.venueDTO.nombre}}</td>
                     <td id="{{$index}}-description2"><a ui-sref="artista.nombre for artista in artistasRecords track by artista.id">{{artista.nombre}} </a></td> 
                 </tr>

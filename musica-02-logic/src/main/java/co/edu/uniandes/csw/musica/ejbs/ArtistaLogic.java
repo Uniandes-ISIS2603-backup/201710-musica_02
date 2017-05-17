@@ -88,4 +88,7 @@ public class ArtistaLogic {
         }
         return artistas;
     }
+     public List<ArtistaEntity> getArtistasPorFuncion(Long idFun){
+        return persistence.findByFuncion(idFun);
+    }
 }

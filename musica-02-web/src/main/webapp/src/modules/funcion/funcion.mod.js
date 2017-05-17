@@ -122,7 +122,7 @@
                                     return $http.get(funcionContext + '/' + $params.funcionId);
                                 }]
                         },
-                        controller: ['scope', '$http', 'currentFuncion', '$state', function ($scope, $http, currentFuncion, $state) {
+                        controller: ['$scope', '$http', 'currentFuncion', '$state', function ($scope, $http, currentFuncion, $state) {
                                 $scope.funcion = {};
                                 $scope.funcion.id = currentFuncion.data.id;
                                 $scope.putFuncion = function () {
