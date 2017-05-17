@@ -1,0 +1,56 @@
+<div class="container-fluid "  >
+    <br>
+    <h1 class="centro"><font color="#ADD8E6"> Actualizar un venue</font> </h1>
+    <br>
+    <div class="row">
+        <div class="col-sm-6 col-md-6 derecha"><b><font> Nombre del venue:</font> </b></div>
+        <div class="col-sm-6 col-md-6"> <input type="text" name="nombreVenue" id="nombreVenue" ng-model="venue.nombre"></div>
+    </div>  
+    <br>
+    <div class="row">
+        <div class="col-sm-6 col-md-6 derecha"><b><font>Tipo:</font> </b></div> 
+        <div class="col-sm-6 col-md-6"> <input type="text" name="tipoVenue" id="tipoVenue" ng-model="venue.tipo"></div>
+    </div>  
+    <br>
+    <div class="row">
+        <div class="col-sm-6 col-md-6 derecha"><b><font>Capacidad:</font> </b></div> 
+        <div class="col-sm-6 col-md-6"> <input type="number" name="capacidadVenue" id="capacidadVenue" ng-model="venue.capacidad" ></div>
+    </div>  
+    <br>
+    <div class="row">
+        <div class="col-sm-6 col-md-6 derecha"><b><font> Dirección:</font> </b></div>
+        <div class="col-sm-6 col-md-6"> <input type="text" name="dirVenue" id="dirVenue" ng-model="venue.direccion"></div>
+
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-sm-6 col-md-6 derecha"><b><font> Vìnculo a la imagen del mapa:</font> </b></div>
+        <div class="col-sm-6 col-md-6"> <input type="text" name="imagenMapaVenue" id="imagenMapaVenue" ng-model="venue.mapa"></div>
+    </div> 
+    <br>
+    <div class="row">
+        <div class="col-sm-6 col-md-6 derecha"><b><font> Vìnculo a la imagen del venue:</font> </b></div>
+        <div class="col-sm-6 col-md-6"> <input type="text" name="imagenVenue" id="imagenVenue" ng-model="venue.imagen"></div>
+    </div> 
+    <br>
+    <div class="row">
+        <div class="col-sm-6 col-md-6 derecha"><b><font> Festival:</font> </b></div>
+        <div class="col-sm-6 col-md-6">
+            <select name="selectFestivalVenue" id="selectFestivalVenue"
+                    ng-options="festival.nombre for festival in festivalesRecords"
+                    ng-model="venue.festivalDTO">
+            </select>
+        </div>
+    </div> 
+    <br>
+    <div class="row">
+        <div class="col-sm-6 col-md-6 derecha"><b><font> Ciudad:</font> </b></div>
+        <div class="col-sm-6 col-md-6">
+            <select ng-model="venue.ciudadVenue" >
+                <option ng-repeat="ciudad in ciudadesRecords">{{ciudad.nombre}}</option>
+            </select>   
+        </div>
+    </div> 
+    <br>
+    <div class="centro"><input  type="submit" value="Actualizar venue" ng-click="putVenue()"></div>
+</div>
