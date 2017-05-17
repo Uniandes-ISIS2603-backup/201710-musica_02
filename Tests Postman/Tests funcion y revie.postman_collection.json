@@ -1,0 +1,210 @@
+{
+	"variables": [],
+	"info": {
+		"name": "Tests funcion y revie",
+		"_postman_id": "d33dae9e-5583-5c1e-c8cd-3186dd9c7711",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "get funciones",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/musica-02-web/api/funciones/",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "[\r\n{\r\n    \"idFuncion\":2,\r\n    \"idEspectaculo\":1,\r\n    \"idSilla\":4,\r\n    \"idSitio\":2\r\n    \r\n},\r\n{\r\n    \"idFuncion\":1,\r\n    \"idEspectaculo\":1,\r\n    \"idSilla\":14,\r\n    \"idSitio\":1\r\n}\r\n]"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "get reviews una funcion",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/musica-02-web/api/funciones/1001/reviews",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "post funcion",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/musica-02-web/api/funciones/",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "  {\n    \"type\": \"funcionDetailDTO\",\n    \"duracion\": 110,\n    \"entradasDisponibles\": 201,\n    \"esPaga\": true,\n    \"fecha\": \"2017-04-21T00:00:00-05:00\",\n    \"id\": 76,\n    \"imagen\": \"http://thisnewband.com/wp-content/uploads/2015/09/IMG_7540.jpg\",\n    \"artistasDTOs\": [\n      {\n        \"genero\": \"ROCK\",\n        \"id\": 1001,\n        \"imagen\": \"http://img.wennermedia.com/social/led-zeppelin-bbc-album-review-fb72cd94-408c-4600-a911-f5a4f5d4730c.jpg\",\n        \"nombre\": \"Led zepellin\",\n        \"trayectoria\": \"monetize magnetic relationships\"\n      }\n    ],\n    \"entradaDTOs\": [\n      {\n        \"id\": 1,\n        \"libre\": false,\n        \"noEntrada\": 1,\n        \"precio\": 1000,\n        \"silla\": \"3A\"\n      },\n      {\n        \"id\": 5,\n        \"libre\": false,\n        \"noEntrada\": 5,\n        \"precio\": 1000,\n        \"silla\": \"3A\"\n      }\n    ],\n    \"festivalDTO\": {\n      \"fechaFin\": \"2017-12-01T00:00:00-05:00\",\n      \"fechaInicio\": \"2017-01-01T00:00:00-05:00\",\n      \"id\": 1001,\n      \"imagen\": \"https://consequenceofsound.files.wordpress.com/2016/01/lollapalooza-2015.png\",\n      \"nombre\": \"Lollapalooza\"\n    },\n    \"reviewsDTOs\": [\n      {\n        \"calificacion\": 1,\n        \"descripcion\": \"Nunc purus. Phasellus in felis. Donec semper sapien a libero. Nam dui. Proin leo odio, porttitor id, consequat in, consequat ut, nulla.\",\n        \"fecha\": \"2017-04-01T00:00:00-05:00\",\n        \"id\": 1001\n      }\n    ],\n    \"venueDTO\": {\n      \"capacidadMax\": 201,\n      \"direccion\": \"309 Claremont Court\",\n      \"id\": 1001,\n      \"imagen\": \"https://s-media-cache-ak0.pinimg.com/736x/bd/ce/8e/bdce8e9a495c2e7548c13c39af9d1d62.jpg\",\n      \"nombre\": \"Elmside\",\n      \"tipo\": \"ABIERTO\"\n    }\n  }"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "get una funcion",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/musica-02-web/api/funciones/11",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Post reviews",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/musica-02-web/api/funciones/1001/reviews",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "  {\n    \"type\": \"reviewDetailDTO\",\n    \"calificacion\": 5,\n    \"descripcion\": \"Nunc purus. Phasellus in felis. Donec semper sapien a libero. Nam dui. Proin leo odio, porttitor id, consequat in, consequat ut, nulla.\",\n    \"fecha\": \"2017-04-01T00:00:00-05:00\",\n    \"id\": 333,\n    \"funcionDTO\": {\n      \"duracion\": 110,\n      \"entradasDisponibles\": 201,\n      \"esPaga\": true,\n      \"fecha\": \"2017-04-21T00:00:00-05:00\",\n      \"id\": 1001,\n      \"imagen\": \"http://thisnewband.com/wp-content/uploads/2015/09/IMG_7540.jpg\"\n    }\n  }"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Funcion",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 204\"] = responseCode.code === 204;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/musica-02-web/api/funciones/1001",
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "put funcion",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/musica-02-web/api/funciones/11",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "    {\n    \"type\": \"funcionDetailDTO\",\n    \"duracion\": 110,\n    \"entradasDisponibles\": 15,\n    \"esPaga\": true,\n    \"fecha\": \"2017-04-21T00:00:00-05:00\",\n    \"id\": 11,\n    \"imagen\": \"http://thisnewband.com/wp-content/uploads/2015/09/IMG_7540.jpg\",\n    \"artistasDTOs\": [\n      {\n        \"genero\": \"ROCK\",\n        \"id\": 3,\n        \"imagen\": \"http://img.wennermedia.com/social/led-zeppelin-bbc-album-review-fb72cd94-408c-4600-a911-f5a4f5d4730c.jpg\",\n        \"nombre\": \"Led zepellin\",\n        \"trayectoria\": \"monetize magnetic relationships\"\n      }\n    ],\n    \"entradaDTOs\": [],\n    \"festivalDTO\": {\n      \"fechaFin\": \"2017-12-01T00:00:00-05:00\",\n      \"fechaInicio\": \"2017-01-01T00:00:00-05:00\",\n      \"id\": 1001,\n      \"imagen\": \"https://consequenceofsound.files.wordpress.com/2016/01/lollapalooza-2015.png\",\n      \"nombre\": \"Lollapalooza\"\n    },\n    \"reviewsDTOs\": [],\n    \"venueDTO\": {\n      \"capacidadMax\": 201,\n      \"direccion\": \"309 Claremont Court\",\n      \"id\": 1001,\n      \"imagen\": \"https://s-media-cache-ak0.pinimg.com/736x/bd/ce/8e/bdce8e9a495c2e7548c13c39af9d1d62.jpg\",\n      \"nombre\": \"Elmside\",\n      \"tipo\": \"ABIERTO\"\n    }\n  }"
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
