@@ -40,9 +40,10 @@ THE SOFTWARE.
     <div class="row">
         <div class="col-sm-6 col-md-6 derecha"><b><font> Genero:</font> </b></div>
         <div class="col-sm-6 col-md-6">
-            <select ng-model="artista.generoDTO.nombre">
-                <option ng-repeat="genero in generosRecords">{{genero.nombre}}</option>
-            </select>   
+            <select name="selectGeneroArtista" id="selectGeneroArtista"
+                    ng-options="genero.nombre for genero in generosRecords"
+                    ng-model="artista.generoDTO">
+            </select>  
         </div>
     </div> 
     <br>

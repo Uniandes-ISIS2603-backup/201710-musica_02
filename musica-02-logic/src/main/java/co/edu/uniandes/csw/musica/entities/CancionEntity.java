@@ -29,6 +29,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import uk.co.jemos.podam.common.PodamExclude;
 
 /**
  *
@@ -43,6 +44,7 @@ public class CancionEntity implements Serializable {
     private String nombre;
     private Integer duracion;   
     
+    @PodamExclude
     @ManyToOne
     private DiscoEntity discoEntity;
     

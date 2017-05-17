@@ -48,6 +48,7 @@ public class DiscoEntity implements Serializable
     private String nombre;
     private String imagen;
     
+    @PodamExclude
     @ManyToOne
     private ArtistaEntity artistaEntity;
     
