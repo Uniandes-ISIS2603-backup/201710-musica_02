@@ -196,6 +196,7 @@ public class FestivalPersistenceTest {
         Assert.assertEquals(resp.getFechaFin().getDay(), newEntity.getFechaFin().getDay());
         Assert.assertEquals(resp.getFechaFin().getMonth(), newEntity.getFechaFin().getMonth());
         Assert.assertEquals(resp.getFechaFin().getYear(), newEntity.getFechaFin().getYear());
-        Assert.assertEquals(resp.getImagen(), newEntity.getImagen());    }
+        Assert.assertEquals(resp.getImagen(), newEntity.getImagen());
+    }
 
 }

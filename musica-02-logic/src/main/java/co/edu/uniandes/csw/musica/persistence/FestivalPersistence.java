@@ -30,6 +30,7 @@ import co.edu.uniandes.csw.musica.entities.FestivalEntity;
 import co.edu.uniandes.csw.musica.exceptions.BusinessLogicException;
 import java.util.List;
 import javax.persistence.TypedQuery;
+import javax.ws.rs.WebApplicationException;
 
 /**
  *
@@ -79,6 +80,13 @@ public class FestivalPersistence {
     public FestivalEntity update(FestivalEntity entity) {
         em.merge(entity);
         return entity;
+    }
+    public FestivalEntity delete(Long id)
+    {
+        FestivalEntity fest = em.find(FestivalEntity.class, id);
+
+        em.remove(fest);
+        return fest;
     }
 
 }

@@ -48,11 +48,6 @@ public class CiudadLogic
     {
         return persistence.find(id);
     }
-    
-    public CiudadEntity getCityByName(String nameOfCity)
-    {
-        return persistence.findByName(nameOfCity);
-    }
 
     public CiudadEntity createCity(CiudadEntity ciudadEntity) throws BusinessLogicException 
     {
@@ -66,9 +61,9 @@ public class CiudadLogic
         return persistence.update(ciudadEntity);
     }
 
-    public void deleteCity(String name) 
+    public void deleteCity(Long id) 
     {
-        persistence.delete(name);
+        persistence.delete(id);
     }
     
 }

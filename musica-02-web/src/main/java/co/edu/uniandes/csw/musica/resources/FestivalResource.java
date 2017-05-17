@@ -36,6 +36,7 @@ import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -66,38 +67,49 @@ public class FestivalResource {
         }
         return listDTO;
     }
-    
+
     @GET
-    public  List<FestivalDetailDTO> getFestivales()
-    {
+    public List<FestivalDetailDTO> getFestivales() {
         return listEntity2DTODETAIL(logic.getFestivales());
     }
-    
+
     @GET
     @Path("{id: \\d+}")
-    public FestivalDetailDTO getFestival (@PathParam("id") Long id) throws WebApplicationException
-    {
+    public FestivalDetailDTO getFestival(@PathParam("id") Long id) throws WebApplicationException {
         FestivalEntity fest = logic.getFestival(id);
-        if (fest != null)
-        return new FestivalDetailDTO(fest);
+        if (fest != null) {
+            return new FestivalDetailDTO(fest);
+        }
         throw new WebApplicationException("No se encontró un festival con ese id", 404);
     }
+
     @GET
     @Path("genero/{genero}")
-    public List<FestivalDetailDTO> getFestivalesPorGenero (@PathParam("genero") Long genero) throws WebApplicationException
-    {
+    public List<FestivalDetailDTO> getFestivalesPorGenero(@PathParam("genero") Long genero) throws WebApplicationException {
         return listEntity2DTODETAIL(logic.getFestivalesPorGenero(genero));
 
     }
+
     @POST
-    public FestivalDetailDTO createFestival (FestivalDetailDTO festival) 
-    {
+    public FestivalDetailDTO createFestival(FestivalDetailDTO festival) {
         return new FestivalDetailDTO(logic.createFestival(festival.toEntity()));
     }
+
     @PUT
-    public FestivalDetailDTO updateFestival (FestivalDetailDTO festival)
-    {
+    public FestivalDetailDTO updateFestival(FestivalDetailDTO festival) {
         return new FestivalDetailDTO(logic.updateFestival(festival.toEntity()));
+    }
+
+    @DELETE
+    @Path("{id: \\d+}")
+    public FestivalDetailDTO deleteFestiva(@PathParam("id") Long id) throws WebApplicationException {
+        FestivalEntity fest;
+        if ((fest = logic.deleteFestival(id)) != null) {
+            return new FestivalDetailDTO(fest);
+        } else {
+            throw new WebApplicationException("No hay un festival con ese ID.");
+        }
+
     }
 
 }

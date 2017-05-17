@@ -48,11 +48,6 @@ public class CiudadPersistence
         return em.find(CiudadEntity.class, id);
     }
 
-    public CiudadEntity findByName(String nameOfCity) 
-    {
-        return em.find(CiudadEntity.class, nameOfCity);
-    }
-
     public CiudadEntity create(CiudadEntity ciudadEntity) 
     {
         em.persist(ciudadEntity);
@@ -64,10 +59,10 @@ public class CiudadPersistence
         return em.merge(ciudadEntity);
     }
 
-    public void delete(String name) 
+    public void delete(Long id) 
     {
-        System.out.println(name);
-        CiudadEntity buscada = em.find(CiudadEntity.class, name);
+        System.out.println(id);
+        CiudadEntity buscada = em.find(CiudadEntity.class, id);
         if(buscada != null)
         {
             em.remove(buscada);

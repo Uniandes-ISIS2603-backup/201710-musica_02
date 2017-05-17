@@ -17,6 +17,11 @@
                     <dt><b>Género</b></dt>
                     <dd>{{currentFestival.generoDTO.nombre}}</dd>
                 </dl>
+                    <div row>
+
+                <button class="botonAgregar botonAgregar1" style="float: left;"ui-sref="festivalUpdate({festivalId: currentFestival.id})">Actualizar festival</button>
+                <button class="botonAgregar botonAgregar1" style="float: left;"ng-click="deleteFestival()">Borrar Festival</button>
+                    </div>
             </div>
         </div>
         <div class ="thumb col-md-4  " >

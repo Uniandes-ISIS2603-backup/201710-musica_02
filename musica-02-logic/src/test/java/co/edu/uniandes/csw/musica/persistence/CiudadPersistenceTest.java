@@ -171,24 +171,14 @@ public class CiudadPersistenceTest
         Assert.assertEquals(newEntity.getId(), entity.getId());
     }
     
-//    @Test
-//    public void deleteCiudadTest() 
-//    {
-//        CiudadEntity entity = data.get(0);
-//        ciudadPersistance.delete(entity.getName());
-//        CiudadEntity deleted = em.find(CiudadEntity.class, entity.getId());
-//        Assert.assertNull(deleted);
-//    }
-//    
-//    @Test
-//    public void getCiudadByNameTest() 
-//    {
-//        CiudadEntity entity = data.get(0);
-//        CiudadEntity newEntity = ciudadPersistance.findByName(entity.getName());
-//        Assert.assertNotNull(newEntity);
-//        Assert.assertEquals(entity.getName(), newEntity.getName());
-//        Assert.assertEquals(newEntity.getId(), entity.getId());
-//    }
+    @Test
+    public void deleteCiudadTest() 
+    {
+        CiudadEntity entity = data.get(0);
+        ciudadPersistance.delete(entity.getId());
+        CiudadEntity deleted = em.find(CiudadEntity.class, entity.getId());
+        Assert.assertNull(deleted);
+    }
     
     public CiudadPersistenceTest() 
     {
