@@ -43,6 +43,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 
 /**
  *
@@ -92,6 +93,8 @@ public class FestivalResource {
 
     @POST
     public FestivalDetailDTO createFestival(FestivalDetailDTO festival) {
+        if(festival.getFechaInicio().compareTo(festival.getFechaFin())>0)
+            throw new WebApplicationException("La fecha de inicio debe ser anterior a la del fin.", Response.Status.CREATED);
         return new FestivalDetailDTO(logic.createFestival(festival.toEntity()));
     }
 
