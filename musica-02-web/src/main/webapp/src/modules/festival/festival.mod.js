@@ -27,7 +27,6 @@
                 },
                 views: {
                     mainView: {
-
                         templateUrl: basePath + 'festival.html',
                         controller: ['$scope', 'festivales', 'generos', 'ciudades', function ($scope, festivales, generos, ciudades) {
                                 $scope.festivalesRecords = festivales.data;
@@ -93,9 +92,15 @@
                                 }]
                         },
                         templateUrl: basePath + 'festival.detail.html',
-                        controller: ['$scope', 'funciones', 'currentFestival', function ($scope, funciones, currentFestival) {
+                        controller: ['$scope', 'funciones', 'currentFestival', '$http', '$state', function ($scope, funciones, currentFestival, $http, $state) {
                                 $scope.funcionesRecords = funciones.data;
                                 $scope.currentFestival = currentFestival.data;
+                                $scope.deleteFestival = function ()
+                                {
+                                    $http.delete("api/festivales/" + currentFestival.data.id);
+                                    $state.go('festivalesList');
+
+                                };
                             }]
                     }
                 }
@@ -105,22 +110,45 @@
                 views: {
                     insertarView: {
                         templateUrl: basePath + 'festival.insertar.html',
+                        controller: ['$scope', '$http', '$state', function ($scope, $http, $state) {
+                                $scope.festival = {};
+                                $scope.postFestival = function ()
+                                {
+                                    $http.post("api/festivales/", $scope.festival);
+                                    $state.reload();
+                                };
+                            }]
+                    }
+                }
+
+            }).state('festivalUpdate', {
+
+                url: '/{festivalId:int}/actualizar',
+                param: {
+                    festivalId: null
+                },
+                parent: 'festivales',
+                views: {
+                    updateView: {
+                        templateUrl: basePath + 'festival.update.html',
                         resolve: {
-                            agregarFestival: ["$http", function ($http) {
-                                    var a=       
-                                    function (festival) {
-                                                $http.post("api/festivales/", festival);
-                                                }
-                                 return a;           
+
+                            currentFestival: ['$http', 'festivalesContext', '$stateParams', function ($http, festivalesContext, $params) {
+                                    return $http.get(festivalesContext + '/' + $params.festivalId);
                                 }]
                         },
-                        controller: ['$scope', 'agregarFestival','$state', function ($scope, agregarFestival,$state) {
+                        controller: ['$scope', '$http', 'currentFestival', '$state', function ($scope, $http, currentFestival, $state) {
                                 $scope.festival = {};
-                                $scope.postFestival = function()
+                                $scope.festival.id = currentFestival.data.id;
+                                $scope.putFestival = function ()
                                 {
-                                    agregarFestival($scope.festival);
+                                    $http.put("api/festivales/", $scope.festival);
                                     $state.reload();
-                                }
+                                    $state.go('festivalesList');
+
+                                };
+                                $scope.currentFestival = currentFestival.data;
+
                             }]
                     }
                 }

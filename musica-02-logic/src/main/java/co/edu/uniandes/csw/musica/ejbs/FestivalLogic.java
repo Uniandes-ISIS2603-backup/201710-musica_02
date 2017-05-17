@@ -59,5 +59,9 @@ public class FestivalLogic {
     {
         return persistence.update(festival);
     }
+    public FestivalEntity deleteFestival (Long id)
+    {
+        return persistence.delete(id);
+    }
     
 }
