@@ -29,6 +29,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import uk.co.jemos.podam.common.PodamExclude;
 
 /**
  *
@@ -44,10 +45,28 @@ public class EntradaEntity implements Serializable {
     private String silla;
     private Double precio;
     private Boolean libre;
+    @PodamExclude
     @ManyToOne
     private FuncionEntity funcionEntity;
+    @PodamExclude
     @ManyToOne
     private ClienteEntity clienteEntity;
+    
+    @Override
+    public boolean equals(Object obj) {
+        if (this.getId() != null) {
+            return this.getId().equals(((EntradaEntity) obj).getId());
+        }
+        return super.equals(obj);
+    }
+
+    @Override
+    public int hashCode() {
+        if (this.getId() != null) {
+            return this.getId().hashCode();
+        }
+        return super.hashCode();
+    }
 
     /**
      * @return the id

@@ -119,6 +119,20 @@ public class ArtistaResource {
         }
 
     }
+     @GET
+    @Path("funcion/String/{id:\\d+}")
+    public ArtistasStringDTO getArtistasPorFuncionString(@PathParam("id") Long id)throws BusinessLogicException{
+        ArrayList<ArtistaEntity> artistas = (ArrayList<ArtistaEntity>) logic.getArtistasPorFuncion(id);
+        String val = artistas.get(0).getNombre();
+        for(int i =1; i<artistas.size();i++){
+            val += ", ";
+            val += artistas.get(i).getNombre();
+        }
+        ArtistasStringDTO artista = new ArtistasStringDTO();
+        artista.setValue(val);
+        return artista;
+    }
+
 
     // TODO implementar get /artistas/:id/funciones funciones en las que actuará el artista
 }

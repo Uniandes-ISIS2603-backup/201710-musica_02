@@ -34,6 +34,50 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 public class ClienteDTO implements Serializable {
 
+    private Long id;
+    private String nombre;
+    private Integer abono;
+    private String documento;
+    private String tipoDocumento;
+    private Boolean registradoBlog;
+    private String usuario;
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!--  end-user-doc  --> @generated
+     */
+    public ClienteDTO() {
+    }
+
+    public ClienteDTO(ClienteEntity entity) {
+        if (entity != null) {
+            this.id = entity.getId();
+            this.nombre = entity.getNombre();
+            this.abono = entity.getAbono();
+            this.documento = entity.getDocumento();
+            this.tipoDocumento = entity.getTipoDocumento();
+            this.registradoBlog = entity.isRegistradoBlog();
+            this.usuario = entity.getUsuario();
+        }
+    }
+    public ClienteEntity toEntity() {
+        ClienteEntity e = new ClienteEntity();
+        e.setId(getId());
+        e.setAbono(getAbono());
+        e.setDocumento(getDocumento());
+        e.setNombre(getNombre());
+        e.setRegistradoBlog(isRegistradoBlog());
+        e.setTipoDocumento(getTipoDocumento());
+        e.setUsuario(getUsuario());
+        return e;
+    }
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
     /**
      * @param abono the abono to set
      */
@@ -55,41 +99,6 @@ public class ClienteDTO implements Serializable {
         this.registradoBlog = registradoBlog;
     }
 
-    private String nombre;
-    private Integer abono;
-    private String documento;
-    private String tipoDocumento;
-    private Boolean registradoBlog;
-    private String usuario;
-
-    /**
-     * <!-- begin-user-doc -->
-     * <!--  end-user-doc  --> @generated
-     */
-    public ClienteDTO() {
-    }
-
-    public ClienteDTO(ClienteEntity entity) {
-        if (entity != null) {
-            this.nombre = entity.getNombre();
-            this.abono = entity.getAbono();
-            this.documento = entity.getDocumento();
-            this.tipoDocumento = entity.getTipoDocumento();
-            this.registradoBlog = entity.isRegistradoBlog();
-            this.usuario = entity.getUsuario();
-        }
-    }
-
-    public ClienteEntity toEntity() {
-        ClienteEntity e = new ClienteEntity();
-        e.setAbono(getAbono());
-        e.setDocumento(getDocumento());
-        e.setNombre(getNombre());
-        e.setRegistradoBlog(isRegistradoBlog());
-        e.setTipoDocumento(getTipoDocumento());
-        e.setUsuario(getUsuario());
-        return e;
-    }
 
     /**
      * @return the nombre

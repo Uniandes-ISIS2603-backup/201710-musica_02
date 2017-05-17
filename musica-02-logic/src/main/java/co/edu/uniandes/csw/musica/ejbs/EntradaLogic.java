@@ -64,14 +64,18 @@ public class EntradaLogic {
 
     }
 
-    public List<EntradaEntity> getByCliente(String usuario) {
-        return entradaPersistence.findByCliente(usuario);
+    public List<EntradaEntity> getByCliente(Long id) {
+        return entradaPersistence.findByCliente(id);
     }
 
     public List<EntradaEntity> getByFuncion(Long id) throws Exception{
          List<EntradaEntity> e = entradaPersistence.findByFuncion(id);
          if(e == null) throw new WebApplicationException(404);
         return e;
+    }
+    
+    public List<EntradaEntity> getAll() {
+        return entradaPersistence.findAll();
     }
 
     public ClienteEntity getCliente(Long id) {

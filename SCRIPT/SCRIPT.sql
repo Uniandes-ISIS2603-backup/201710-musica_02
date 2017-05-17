@@ -62,18 +62,18 @@ insert into ARTISTAENTITY (ID, GENERO, NOMBRE,   TRAYECTORIA, IMAGEN) values (10
 insert into ARTISTAENTITY (ID, GENERO, NOMBRE,   TRAYECTORIA, IMAGEN) values (1004, 'REGGAE', 'Dread Mar I',   'enhance e-business bandwidth', 'https://pbs.twimg.com/profile_images/800565248650571776/BhndJ8Rr.jpg');
 insert into ARTISTAENTITY (ID, GENERO, NOMBRE,   TRAYECTORIA, IMAGEN) values (1005, 'ELECTRONICA', 'Knife Party',   'whiteboard interactive infomediaries', 'https://lh3.googleusercontent.com/-BhJrGzQLCa8/AAAAAAAAAAI/AAAAAAAAAA0/2Gn2_MDL1HM/photo.jpg');
 
-insert into CLIENTEENTITY (USUARIO, ABONO, DOCUMENTO, NOMBRE, REGISTRADOBLOG, TIPODOCUMENTO) values ('1001', 1, '1001', 'Carlos', 0, 'TI');
-insert into CLIENTEENTITY (USUARIO, ABONO, DOCUMENTO, NOMBRE, REGISTRADOBLOG, TIPODOCUMENTO) values ('1002', 2, '1002', 'Richard', 0, 'CC');
-insert into CLIENTEENTITY (USUARIO, ABONO, DOCUMENTO, NOMBRE, REGISTRADOBLOG, TIPODOCUMENTO) values ('1003', 3, '1003', 'Thomas', 0, 'CC');
-insert into CLIENTEENTITY (USUARIO, ABONO, DOCUMENTO, NOMBRE, REGISTRADOBLOG, TIPODOCUMENTO) values ('1004', 4, '1004', 'Angela', 0, 'TI');
-insert into CLIENTEENTITY (USUARIO, ABONO, DOCUMENTO, NOMBRE, REGISTRADOBLOG, TIPODOCUMENTO) values ('1005', 5, '1005', 'Julie', 1, 'TI');
+insert into CLIENTEENTITY (ID,USUARIO, ABONO, DOCUMENTO, NOMBRE, REGISTRADOBLOG, TIPODOCUMENTO) values (1,'1001', 1, '1001', 'Carlos', 0, 'TI');
+insert into CLIENTEENTITY (ID,USUARIO, ABONO, DOCUMENTO, NOMBRE, REGISTRADOBLOG, TIPODOCUMENTO) values (2,'1002', 2, '1002', 'Richard', 0, 'CC');
+insert into CLIENTEENTITY (ID,USUARIO, ABONO, DOCUMENTO, NOMBRE, REGISTRADOBLOG, TIPODOCUMENTO) values (3,'1003', 3, '1003', 'Thomas', 0, 'CC');
+insert into CLIENTEENTITY (ID,USUARIO, ABONO, DOCUMENTO, NOMBRE, REGISTRADOBLOG, TIPODOCUMENTO) values (4,'1004', 4, '1004', 'Angela', 0, 'TI');
+insert into CLIENTEENTITY (ID,USUARIO, ABONO, DOCUMENTO, NOMBRE, REGISTRADOBLOG, TIPODOCUMENTO) values (5,'1005', 5, '1005', 'Julie', 1, 'TI');
 
-insert into REVIEWENTITY (ID, DESCRIPCION, CALIFICACION, FECHA, CLIENTE_USUARIO, FUNCION_ID) values (1001, 'Nunc purus. Phasellus in felis. Donec semper sapien a libero. Nam dui. Proin leo odio, porttitor id, consequat in, consequat ut, nulla.', 1, '2017-04-01', '1001', 1001);
-insert into REVIEWENTITY (ID, DESCRIPCION, CALIFICACION, FECHA, CLIENTE_USUARIO, FUNCION_ID) values (1002, 'Mauris lacinia sapien quis libero.', 2, '2017-04-01', '1002', 1002);
-insert into REVIEWENTITY (ID, DESCRIPCION, CALIFICACION, FECHA, CLIENTE_USUARIO, FUNCION_ID) values (1003, 'Nullam varius.', 3, '2017-04-01', '1003', 1003);
-insert into REVIEWENTITY (ID, DESCRIPCION, CALIFICACION, FECHA, CLIENTE_USUARIO, FUNCION_ID) values (1004, 'Proin eu mi.', 4, '2017-04-01', '1004', 1004);
-insert into REVIEWENTITY (ID, DESCRIPCION, CALIFICACION, FECHA, CLIENTE_USUARIO, FUNCION_ID) values (1005, 'Pellentesque ultrices mattis odio. Donec vitae nisi. Nam ultrices, libero non mattis pulvinar, nulla pede ullamcorper augue, a suscipit nulla elit ac nulla. Sed vel enim sit amet nunc viverra dapibus. Nulla suscipit ligula in lacus.', 5, '2017-04-01', '1005', 1005);
-insert into REVIEWENTITY (ID, DESCRIPCION, CALIFICACION, FECHA, CLIENTE_USUARIO, FUNCION_ID) values (1006, 'Pellentesque ultrices mattis odio. Donec vitae nisi. Nam ultrices, libero non mattis pulvinar, nulla pede ullamcorper augue, a suscipit nulla elit ac nulla. Sed vel enim sit amet nunc viverra dapibus. Nulla suscipit ligula in lacus.', 5, '2017-04-01', '1005', 1006);
+insert into REVIEWENTITY (ID, DESCRIPCION, CALIFICACION, FECHA, CLIENTE_ID, FUNCION_ID) values (1001, 'Nunc purus. Phasellus in felis. Donec semper sapien a libero. Nam dui. Proin leo odio, porttitor id, consequat in, consequat ut, nulla.', 1, '2017-04-01', 1, 1001);
+insert into REVIEWENTITY (ID, DESCRIPCION, CALIFICACION, FECHA, CLIENTE_ID, FUNCION_ID) values (1002, 'Mauris lacinia sapien quis libero.', 2, '2017-04-01', 2, 1002);
+insert into REVIEWENTITY (ID, DESCRIPCION, CALIFICACION, FECHA, CLIENTE_ID, FUNCION_ID) values (1003, 'Nullam varius.', 3, '2017-04-01', 3, 1003);
+insert into REVIEWENTITY (ID, DESCRIPCION, CALIFICACION, FECHA, CLIENTE_ID, FUNCION_ID) values (1004, 'Proin eu mi.', 4, '2017-04-01', 4, 1004);
+insert into REVIEWENTITY (ID, DESCRIPCION, CALIFICACION, FECHA, CLIENTE_ID, FUNCION_ID) values (1005, 'Pellentesque ultrices mattis odio. Donec vitae nisi. Nam ultrices, libero non mattis pulvinar, nulla pede ullamcorper augue, a suscipit nulla elit ac nulla. Sed vel enim sit amet nunc viverra dapibus. Nulla suscipit ligula in lacus.', 5, '2017-04-01', 5, 1005);
+insert into REVIEWENTITY (ID, DESCRIPCION, CALIFICACION, FECHA, CLIENTE_ID, FUNCION_ID) values (1006, 'Pellentesque ultrices mattis odio. Donec vitae nisi. Nam ultrices, libero non mattis pulvinar, nulla pede ullamcorper augue, a suscipit nulla elit ac nulla. Sed vel enim sit amet nunc viverra dapibus. Nulla suscipit ligula in lacus.', 5, '2017-04-01', 5, 1006);
 
 
 
@@ -102,11 +102,11 @@ insert into CANCIONENTITY (ID, DURACION, NOMBRE, DISCOENTITY_ID) values (1005, 7
 insert into CANCIONENTITY (ID, DURACION, NOMBRE, DISCOENTITY_ID) values (1006, 300, 'The Rain Song', 1006);
 insert into CANCIONENTITY (ID, DURACION, NOMBRE, DISCOENTITY_ID) values (1007, 300, 'Over the Hills and Far Away', 1006);
 
-insert into ENTRADAENTITY (ID,LIBRE,NOENTRADA,PRECIO,SILLA,CLIENTEENTITY_USUARIO,FUNCIONENTITY_ID) values (1,0,1,1000,'3A','1001',1001);
-insert into ENTRADAENTITY (ID,LIBRE,NOENTRADA,PRECIO,SILLA,CLIENTEENTITY_USUARIO,FUNCIONENTITY_ID) values (2,0,2,1000,'3A','1001',1003);
-insert into ENTRADAENTITY (ID,LIBRE,NOENTRADA,PRECIO,SILLA,CLIENTEENTITY_USUARIO,FUNCIONENTITY_ID) values (3,0,3,1000,'3A','1003',1004);
-insert into ENTRADAENTITY (ID,LIBRE,NOENTRADA,PRECIO,SILLA,CLIENTEENTITY_USUARIO,FUNCIONENTITY_ID) values (4,0,4,1000,'3A','1004',1002);
-insert into ENTRADAENTITY (ID,LIBRE,NOENTRADA,PRECIO,SILLA,CLIENTEENTITY_USUARIO,FUNCIONENTITY_ID) values (5,0,5,1000,'3A','1002',1001);
+insert into ENTRADAENTITY (ID,LIBRE,NOENTRADA,PRECIO,SILLA,CLIENTEENTITY_ID,FUNCIONENTITY_ID) values (1,0,1,1000,'3A',1,1001);
+insert into ENTRADAENTITY (ID,LIBRE,NOENTRADA,PRECIO,SILLA,CLIENTEENTITY_ID,FUNCIONENTITY_ID) values (2,0,2,1000,'3A',2,1003);
+insert into ENTRADAENTITY (ID,LIBRE,NOENTRADA,PRECIO,SILLA,CLIENTEENTITY_ID,FUNCIONENTITY_ID) values (3,0,3,1000,'3A',3,1004);
+insert into ENTRADAENTITY (ID,LIBRE,NOENTRADA,PRECIO,SILLA,CLIENTEENTITY_ID,FUNCIONENTITY_ID) values (4,0,4,1000,'3A',4,1002);
+insert into ENTRADAENTITY (ID,LIBRE,NOENTRADA,PRECIO,SILLA,CLIENTEENTITY_ID,FUNCIONENTITY_ID) values (5,0,5,1000,'3A',4,1001);
 
 
 

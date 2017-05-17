@@ -1,0 +1,30 @@
+<div class="container-fluid "  >
+    <br>
+    <h1 class="centro"><font color="#ADD8E6"> Registrar un cliente</font> </h1>
+    <br>
+    <div class="row">
+        <div class="col-sm-6 col-md-6 derecha"><b><font> Usuario: </font> </b></div>
+        <div class="col-sm-6 col-md-6"> <input type="text" name="usuario" id="usuario" ng-model="cliente.usuario"></div>
+    </div>  
+    <br>
+    <div class="row">
+        <div class="col-sm-6 col-md-6 derecha"><b><font>Tipo de documento:</font> </b></div> 
+        <div class="col-sm-6 col-md-6"> <input type="text" name="tipoDoc" id="tipoDoc" ng-model="cliente.tipoDocumento"></div>
+    </div>  
+    <br>
+    <div class="row">
+        <div class="col-sm-6 col-md-6 derecha"><b><font>Documento:</font> </b></div> 
+        <div class="col-sm-6 col-md-6"> <input type="text" name="doc" id="doc" ng-model="cliente.documento" ></div>
+    </div>  
+    <br>
+    <div class="row">
+        <div class="col-sm-6 col-md-6 derecha"><b><font> Nombre:</font> </b></div>
+        <div class="col-sm-6 col-md-6"> <input type="text" name="nombre" id="nombre" ng-model="cliente.nombre"></div>
+
+    </div>  
+    <br> 
+    <br>
+    <div class="centro"><input  type="submit" value="Registrar" ng-click="postCliente()"></div>
+    <br>
+    <br>
+</div>

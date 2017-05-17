@@ -31,6 +31,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
@@ -39,6 +40,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.QueryParam;
+import javax.ws.rs.WebApplicationException;
 
 /**
  *
@@ -75,26 +77,32 @@ public class ClienteResource {
     }
 
     @GET
-    @Path("/{usuario}")
+    @Path("{id: \\d+}")
      // TODO si el recurso no existe se debe disparar WebApplication Exception 404
     // TODO si es un strig usuario entonces el pattern matching no estaá bien
-    public ClienteDetailDTO getClienteByUser(@PathParam("usuario") String usuario) throws BusinessLogicException {
-        return new ClienteDetailDTO(logic.getByUsuario(usuario));
+    public ClienteDetailDTO getClienteByUser(@PathParam("id") Long id) throws BusinessLogicException {
+        return new ClienteDetailDTO(logic.getById(id));
     }
 
     @POST
     public ClienteDetailDTO create(ClienteDetailDTO dto) throws BusinessLogicException {
         return new ClienteDetailDTO(logic.createCliente(dto.toEntity()));
     }
-
+    
     @PUT
-    @Path("/abonos/{usuario}")
-    // TODO si el recurso no existe se debe disparar WebApplication Exception 404
-    // TODO si es un strig usuario entonces el pattern matching no estaá bien
-    // TODO es abonos o abonados?
-    // QUé hace el método? Qué le altera al abono?
-    public ClienteDetailDTO alterarAbono(@PathParam("usuario") String usuario, @QueryParam("abono") Integer abono, ClienteDetailDTO dto) {
-        dto.setAbono(abono);
-        return new ClienteDetailDTO(logic.updateCliente(dto.toEntity()));
+    public ClienteDetailDTO updateCliente(ClienteDetailDTO cliente) {
+        return new ClienteDetailDTO(logic.updateCliente(cliente.toEntity()));
+    }
+    
+    @DELETE
+    @Path("{id: \\d+}")
+    public ClienteDetailDTO deleteCliente(@PathParam("id") Long id) throws WebApplicationException {
+        ClienteEntity cliente;
+        if((cliente = logic.deleteCliente(id))!= null) {
+            return new ClienteDetailDTO(cliente);
+        }
+        else {
+            throw new WebApplicationException("No hay un cliente con ese id");
+        }
     }
 }

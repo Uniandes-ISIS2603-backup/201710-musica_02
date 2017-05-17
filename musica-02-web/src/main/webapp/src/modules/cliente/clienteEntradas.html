@@ -6,19 +6,19 @@
                     <th>Numero</th>    
                     <th>Silla</th>  
                     <th>Precio</th>
-                    <!--                    <th>Funcion</th>-->
+                    <th>Funcion</th>
                 </tr>
             </thead>
             <tbody>
-            <td id="{{$index}}-Numero">1</td>
-            <td id="{{$index}}-Numero">4A</td>
-            <td id="{{$index}}-Numero">1000</td>
-            <!--<tr ng-repeat="entrada in entradaRecords">-->
-            <!--<td id="{{$index}}-Numero">{{entrada.noEntrada}}</td>-->
-            <!--<td id="{{$index}}-Silla">{{entrada.silla}}</td>-->
-            <!--<td id="{{$index}}-Precio">{{entrada.precio}}</td>-->
-            <!--                    <td id="{{$index}}-Funcion"><a ui-sref="clienteEntradas({usuario: cliente.usuario})">{{cliente.usuario}}</a></td>-->
-            </tr>
+                <!--<td id="{{$index}}-Numero">1</td>-->
+                <!--<td id="{{$index}}-Numero">4A</td>-->
+                <!--<td id="{{$index}}-Numero">1000</td>-->
+                <tr ng-repeat="entrada in entradaRecords">
+                    <td id="{{$index}}-Numero">{{entrada.noEntrada}}</td>
+                    <td id="{{$index}}-Silla">{{entrada.silla}}</td>
+                    <td id="{{$index}}-Precio">{{entrada.precio}}</td>
+                    <td id="{{$index}}-Funcion"><a ui-sref="funcionDetail{{funcionId = entrada.funcionEntity.id}}">Ver funcion</a></td>
+                </tr>
             </tbody>
         </table>
     </div>
