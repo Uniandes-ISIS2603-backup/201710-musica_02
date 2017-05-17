@@ -8,7 +8,7 @@
             </div>
             <div class ="thumb col-md-6" >
                 <dl>
-                    <dt> <b>mira </b></dt>
+                    <dt> <b>Nombre festival</b></dt>
                     <dd>{{currentFestival.nombre}}</dd>
                     <dt> <b>Fecha inicio</b></dt>
                     <dd>{{currentFestival.fechaInicio|date:'yyyy-MM-dd'}}</dd>
@@ -17,11 +17,11 @@
                     <dt><b>Género</b></dt>
                     <dd>{{currentFestival.generoDTO.nombre}}</dd>
                 </dl>
-                    <div row>
+                <div row>
 
-                <button class="botonAgregar botonAgregar1" style="float: left;"ui-sref="festivalUpdate({festivalId: currentFestival.id})">Actualizar festival</button>
-                <button class="botonAgregar botonAgregar1" style="float: left;"ng-click="deleteFestival()">Borrar Festival</button>
-                    </div>
+                    <button class="botonAgregar botonAgregar1" style="float: left;"ui-sref="festivalUpdate({festivalId: currentFestival.id})">Actualizar festival</button>
+                    <button class="botonAgregar botonAgregar1" style="float: left;"ng-click="deleteFestival()">Borrar Festival</button>
+                </div>
             </div>
         </div>
         <div class ="thumb col-md-4  " >
@@ -31,13 +31,14 @@
                     <tr>
                         <th>Fecha</th>
                         <th>Venue</th>
+                        <th>Artistas</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr ng-repeat="funcion in funcionesRecords|filter: currentFestival.nombre">
                         <td id="fechaFun"><a ui-sref="funcionDetail({funcionId: funcion.id})">{{funcion.fecha|date:'yyyy-MM-dd'}}</a></td>
                         <td id="{{$index}}-name"><a ui-sref="venueDetail({venueId:funcion.venueDTO.id})">{{funcion.venueDTO.nombre}}</a></td>
-                        <td id="artistasFun"><a ui-sref="venueDetail({venueId:funcion.venueDTO.id})">{{funcion.venueDTO.nombre}}</a></td>
+                            <td id="artistasFun">{{nombresArtistas.value}}</td>
 
                     </tr>
                 </tbody>
