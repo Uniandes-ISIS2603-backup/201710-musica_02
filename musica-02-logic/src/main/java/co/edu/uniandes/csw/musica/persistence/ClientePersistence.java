@@ -56,7 +56,7 @@ public class ClientePersistence {
         return em.merge(entity);
     }
 
-    public void delete(String id) {
+    public void delete(Long id) {
         ClienteEntity entity = em.find(ClienteEntity.class, id);
         em.remove(entity);
     }
@@ -73,6 +73,21 @@ public class ClientePersistence {
             return sameUsuario.get(0);
         }
     }
+    
+    public ClienteEntity findById(Long id){
+        TypedQuery<ClienteEntity> q
+                = em.createQuery("select u from ClienteEntity u where u.id = :id", ClienteEntity.class);
+        q = q.setParameter("id", id);
+        
+       List<ClienteEntity> sameId = q.getResultList();
+        if (sameId.isEmpty() ) {
+            return null; 
+        } else {
+            return sameId.get(0);
+        }
+    }
+    
+    
     
     public List<ClienteEntity> findAllAbonados() {
         TypedQuery<ClienteEntity> q = em.createQuery("SELECT u FROM ClienteEntity u WHERE u.abono > 0 ", ClienteEntity.class);

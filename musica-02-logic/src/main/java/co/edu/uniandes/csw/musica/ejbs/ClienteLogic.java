@@ -49,8 +49,8 @@ public class ClienteLogic {
         return persistence.update(entity);
     }
 
-    public void deleteCliente(String usuario) {
-        persistence.delete(usuario);
+    public void deleteCliente(Long id) {
+        persistence.delete(id);
     }
 
     public ClienteEntity createCliente(ClienteEntity entity) throws BusinessLogicException {
@@ -67,6 +67,17 @@ public class ClienteLogic {
         return persistence.findAllAbonados();
     }
 
+    public ClienteEntity getById(Long id) throws BusinessLogicException {
+        
+        ClienteEntity e = persistence.findById(id);
+
+        if (e == null) {
+            throw new WebApplicationException(404);
+        } else {
+            return e;
+        }
+        
+    }
     public ClienteEntity getByUsuario(String usuario) throws BusinessLogicException {
         if (persistence.findByUsuario(usuario) == null) {
             throw new WebApplicationException(404);

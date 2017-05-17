@@ -75,17 +75,18 @@ public class ClienteResource {
     }
 
     @GET
-    @Path("/{usuario}")
+    @Path("{id: \\d+}")
      // TODO si el recurso no existe se debe disparar WebApplication Exception 404
     // TODO si es un strig usuario entonces el pattern matching no estaá bien
-    public ClienteDetailDTO getClienteByUser(@PathParam("usuario") String usuario) throws BusinessLogicException {
-        return new ClienteDetailDTO(logic.getByUsuario(usuario));
+    public ClienteDetailDTO getClienteByUser(@PathParam("id") Long id) throws BusinessLogicException {
+        return new ClienteDetailDTO(logic.getById(id));
     }
 
     @POST
     public ClienteDetailDTO create(ClienteDetailDTO dto) throws BusinessLogicException {
         return new ClienteDetailDTO(logic.createCliente(dto.toEntity()));
     }
+    
 
     @PUT
     @Path("/abonos/{usuario}")

@@ -52,9 +52,11 @@ public class EntradaPersistence {
         return allEntradas;
     }
     
-    public List<EntradaEntity> findByCliente(String usuario) {
-         TypedQuery<EntradaEntity> q = em.createQuery("select u from EntradaEntity u where u.clienteEntity_usuario = usuario", EntradaEntity.class);
-        q = q.setParameter("usuario", usuario);
+    public List<EntradaEntity> findByCliente(Long cliente) {
+        //select fu from FestivalEntity fe join fe.funcionesEntities fu where fe.id = :id
+        //select u from EntradaEntity u where u.CLIENTEENTITY_ID = :ids
+         TypedQuery<EntradaEntity> q = em.createQuery("select fu from ClienteEntity fe join fe.entradas fu where fe.id = :id", EntradaEntity.class);
+        q = q.setParameter("id", cliente);
         List<EntradaEntity> entradas = q.getResultList();
         if (entradas.isEmpty() ) {
             return null; 
@@ -64,9 +66,9 @@ public class EntradaPersistence {
         }
     }
     
-    public List<EntradaEntity> findByFuncion(Long id) {
-         TypedQuery<EntradaEntity> q = em.createQuery("select u from EntradaEntity u where u.funcionEntity_id = :id", EntradaEntity.class);
-        q = q.setParameter("id", id);
+    public List<EntradaEntity> findByFuncion(Long ids) {
+         TypedQuery<EntradaEntity> q = em.createQuery("select u from EntradaEntity u where u.funcionEntity_id = :ids", EntradaEntity.class);
+        q = q.setParameter("ids", ids);
         List<EntradaEntity> entradas = q.getResultList();
         if (entradas.isEmpty() ) {
             return null; 
@@ -76,8 +78,8 @@ public class EntradaPersistence {
         }
     }
     
-    public ClienteEntity getCliente(Long id) {
-         TypedQuery<EntradaEntity> q = em.createQuery("select u from EntradaEntity u where u.id = :id", EntradaEntity.class);
+    public ClienteEntity getCliente(Long ids) {
+         TypedQuery<EntradaEntity> q = em.createQuery("select u from EntradaEntity u where u.ids = :ids", EntradaEntity.class);
        return (ClienteEntity) q.getParameter("cliente");
     }
     

@@ -64,8 +64,8 @@ public class EntradaLogic {
 
     }
 
-    public List<EntradaEntity> getByCliente(String usuario) {
-        return entradaPersistence.findByCliente(usuario);
+    public List<EntradaEntity> getByCliente(Long id) {
+        return entradaPersistence.findByCliente(id);
     }
 
     public List<EntradaEntity> getByFuncion(Long id) throws Exception{

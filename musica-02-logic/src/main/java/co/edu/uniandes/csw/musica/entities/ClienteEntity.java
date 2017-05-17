@@ -27,8 +27,11 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import uk.co.jemos.podam.common.PodamExclude;
 
 /**
  *
@@ -37,6 +40,49 @@ import javax.persistence.OneToMany;
 @Entity
 public class ClienteEntity implements Serializable {
 
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    private String Usuario;
+    private Integer abono;
+    private String documento;
+    private String tipoDocumento;
+    private Boolean registradoBlog;
+    private String nombre;
+    @PodamExclude
+    @OneToMany(mappedBy = "clienteEntity")
+    private List<EntradaEntity> entradas = new ArrayList<>();
+    @PodamExclude
+    @OneToMany(mappedBy = "cliente")
+    private List<ReviewEntity> reviews = new ArrayList <> ();
+    
+    @Override
+    public boolean equals(Object obj) {
+        if (this.getId() != null) {
+            return this.getId().equals(((ClienteEntity) obj).getId());
+        }
+        return super.equals(obj);
+    }
+
+    @Override
+    public int hashCode() {
+        if (this.getId() != null) {
+            return this.getId().hashCode();
+        }
+        return super.hashCode();
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+    public String getUsuario() {
+        return Usuario;
+    }
     /**
      * @param abono the abono to set
      */
@@ -56,22 +102,6 @@ public class ClienteEntity implements Serializable {
      */
     public void setRegistradoBlog(Boolean registradoBlog) {
         this.registradoBlog = registradoBlog;
-    }
-
-    @Id
-    private String Usuario;
-    private Integer abono;
-    private String documento;
-    private String tipoDocumento;
-    private Boolean registradoBlog;
-    private String nombre;
-    @OneToMany(mappedBy = "clienteEntity")
-    private List<EntradaEntity> entradas = new ArrayList<>();
-    @OneToMany(mappedBy = "cliente")
-    private List<ReviewEntity> reviews = new ArrayList <> ();
-
-    public String getUsuario() {
-        return Usuario;
     }
 
     public void setUsuario(String Usuario) {
