@@ -70,13 +70,28 @@
                 param: {
                     festivalId: null
                 },
+                resolve: {
+                    currentArtistas: ['$http', 'artistasContext', '$stateParams', function ($http, artistasContext, $params) {
+                            return $http.get(artistasContext + '/festival/' + $params.festivalId);
+                        }],
+                    nombresArtistas: ['$http','artistasContext','$params', function ($http,artistasContext,$params) {
+                            var artString = "";
+                            var artistas = $http.get(artistasContext + '/festival/' + $params.festivalId).data;
+                            function my(s) {
+                                for (var k =0; k<artistas.length;k++)
+                                {
+                                    s.concat(artistas[k].nombre);
+                                    s.concat(",");
+                                    return s;
+                                }
+                            }
+                            ;
+                            return my(artString);
+                        }]
+                },
                 views: {
                     childrenView: {
-                        resolve: {
-                            currentArtistas: ['$http', 'artistasContext', '$stateParams', function ($http, artistasContext, $params) {
-                                    return $http.get(artistasContext + '/festival/' + $params.festivalId);
-                                }]
-                        },
+
                         templateUrl: 'src/modules/artistas/artistas.list.html',
                         controller: ['$scope', 'currentArtistas', function ($scope, currentArtistas) {
                                 $scope.artistasRecords = currentArtistas.data;
@@ -92,8 +107,10 @@
                                 }]
                         },
                         templateUrl: basePath + 'festival.detail.html',
-                        controller: ['$scope', 'funciones', 'currentFestival', '$http', '$state', function ($scope, funciones, currentFestival, $http, $state) {
+                        controller: ['$scope', 'funciones', 'currentFestival','nombresArtistas', '$http', '$state', function ($scope, funciones, currentFestival,nombresArtistas, $http, $state) {
                                 $scope.funcionesRecords = funciones.data;
+                                $scope.nombresArtistas = nombresArtistas;
+
                                 $scope.currentFestival = currentFestival.data;
                                 $scope.deleteFestival = function ()
                                 {
@@ -116,6 +133,7 @@
                                 {
                                     $http.post("api/festivales/", $scope.festival);
                                     $state.reload();
+
                                 };
                             }]
                     }
@@ -143,9 +161,6 @@
                                 $scope.putFestival = function ()
                                 {
                                     $http.put("api/festivales/", $scope.festival);
-                                    $state.reload();
-                                    $state.go('festivalesList');
-
                                 };
                                 $scope.currentFestival = currentFestival.data;
 
