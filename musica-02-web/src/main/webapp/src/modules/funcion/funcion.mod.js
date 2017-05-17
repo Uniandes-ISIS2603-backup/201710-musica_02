@@ -93,13 +93,13 @@
                                 }]
                         },
                         templateUrl: basePath + 'funcion.detail.html',
-                        controller: ['$scope', 'currentFuncion', '$stateParams', 'funcionContext', '$http', function ($scope, currentFuncion, $http, $params) {
+                        controller: ['$scope','$state', 'currentFuncion', '$http', function ($scope,$state, currentFuncion,$http ) {
 
                                 $scope.currentFuncion = currentFuncion.data;
                                 $scope.artistasRecords = currentFuncion.data.artistasDTOs;
                                 $scope.deleteFunciones = function () {
-                                    $http.delete("api/funciones/" + currentFuncion.data.id);
-                                    $params.go('funcionList');
+                                                $http.delete("api/funciones/" + currentFuncion.data.id);
+                                    $state.go('funcionList');
                                 };
                             }]
                     },
@@ -108,33 +108,33 @@
 
                     }
                 }
-            }).state('funcionUpdate',{
-                url:'/{funcionId:int}/actualizar',
-                param:{
-                    funcionId:null
+            }).state('funcionUpdate', {
+                url: '/{funcionId:int}/actualizar',
+                param: {
+                    funcionId: null
                 },
-                parent:'funciones',
-                views:{
-                    updateView:{
-                        templateUrl: basePath +'funcion.update.html',
-                        resolve:{
-                            currentFuncion:['$http','funcionContext','$stateParams',function($http,funcionContext,$params){
-                                    return $http.get(funcionContext + '/'+ $params.funcionId);
-                            }]
+                parent: 'funciones',
+                views: {
+                    updateView: {
+                        templateUrl: basePath + 'funcion.update.html',
+                        resolve: {
+                            currentFuncion: ['$http', 'funcionContext', '$stateParams', function ($http, funcionContext, $params) {
+                                    return $http.get(funcionContext + '/' + $params.funcionId);
+                                }]
                         },
-                        controller:['scope','$http','currentFuncion','$state',function($scope,$http,currentFuncion,$state){
-                                $scope.funcion={};
+                        controller: ['scope', '$http', 'currentFuncion', '$state', function ($scope, $http, currentFuncion, $state) {
+                                $scope.funcion = {};
                                 $scope.funcion.id = currentFuncion.data.id;
-                                $scope.putFuncion =function(){
+                                $scope.putFuncion = function () {
                                     $http.put("api/funciones/", $scope.funcion);
                                     $state.reload();
                                     $state.go('funcionList');
                                 };
                                 $scope.currentFuncion = currentFuncion.data;
-                        }]
+                            }]
                     }
                 }
-                        
+
             });
         }
     ]);

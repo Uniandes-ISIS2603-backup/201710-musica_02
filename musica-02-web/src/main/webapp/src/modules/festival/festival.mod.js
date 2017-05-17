@@ -73,21 +73,8 @@
                 resolve: {
                     currentArtistas: ['$http', 'artistasContext', '$stateParams', function ($http, artistasContext, $params) {
                             return $http.get(artistasContext + '/festival/' + $params.festivalId);
-                        }],
-                    nombresArtistas: ['$http','artistasContext','$params', function ($http,artistasContext,$params) {
-                            var artString = "";
-                            var artistas = $http.get(artistasContext + '/festival/' + $params.festivalId).data;
-                            function my(s) {
-                                for (var k =0; k<artistas.length;k++)
-                                {
-                                    s.concat(artistas[k].nombre);
-                                    s.concat(",");
-                                    return s;
-                                }
-                            }
-                            ;
-                            return my(artString);
                         }]
+
                 },
                 views: {
                     childrenView: {
@@ -107,9 +94,8 @@
                                 }]
                         },
                         templateUrl: basePath + 'festival.detail.html',
-                        controller: ['$scope', 'funciones', 'currentFestival','nombresArtistas', '$http', '$state', function ($scope, funciones, currentFestival,nombresArtistas, $http, $state) {
+                        controller: ['$scope','$state', 'funciones', 'currentFestival', '$http', function ($scope,$state, funciones, currentFestival, $http) {
                                 $scope.funcionesRecords = funciones.data;
-                                $scope.nombresArtistas = nombresArtistas;
 
                                 $scope.currentFestival = currentFestival.data;
                                 $scope.deleteFestival = function ()
