@@ -14,12 +14,20 @@
                 resolve: {
                     venues: ['$http', 'venuesContext', function ($http, venuesContext) {
                             return $http.get(venuesContext);
+                        }],
+                    ciudades: ['$http', function ($http) {
+                            return $http.get('api/ciudades');
+                        }],
+                    festivales: ['$http', function ($http) {
+                            return $http.get('api/festivales');
                         }]
                 },
                 views: {
                     mainView: {templateUrl: basePath + 'venues.html',
-                        controller: ['$scope', 'venues', function ($scope, venues) {
+                        controller: ['$scope', 'venues', 'ciudades', 'festivales', function ($scope, venues, ciudades, festivales) {
                                 $scope.venuesRecords = venues.data;
+                                $scope.ciudadesRecords = ciudades.data;
+                                $scope.festivalesRecords = festivales.data;
                             }]
                     }
                 }
@@ -60,6 +68,32 @@
                     }]
                  }
                }
+            }).state('venueInsert', {
+                url: '/agregar',
+                parent: 'venues',
+                views: {
+                    insertarView: {
+                        templateUrl: basePath + 'venue.insertar.html',
+                        resolve: {
+                            agregarVenue: ["$http", function ($http) {
+                                    var a=       
+                                    function (venue) {
+                                                $http.post("api/venues/", venue);
+                                                }
+                                 return a;           
+                                }]
+                        },
+                        controller: ['$scope', 'agregarVenue','$state', function ($scope, agregarVenue,$state) {
+                                $scope.venue = {};
+                                $scope.postVenue = function()
+                                {
+                                    agregarVenue($scope.venue);
+                                    $state.reload();
+                                }
+                            }]
+                    }
+                }
+
             });
         }
     ]);

@@ -1,10 +1,10 @@
 <div class="panel panel-default"> 
     <b class="col-md-6">Venue</b>
-    <b class="col-md-6" >Fechas de próximas funciones</b>
+    <b class="col-md-6" > Ubicación </b>
     <div class="panel-body">
         <div class="row">
             
-            <div class="col-md-3">
+            <div class="col-md-4">
                 <div class="thumb">
                     <img class="img-responsive" ng-src="{{currentVenue.imagen}}"/>
                 </div>
@@ -17,6 +17,7 @@
                     <dd>{{currentVenue.tipo}}</dd>
                     
                     <dt>Capacidad</dt>
+                    
                     <dd>{{currentVenue.capacidadMax}}</dd>
                     
                     <dt class="bold">Dirección</dt>
@@ -31,22 +32,35 @@
                     </dl>
                 </div>
             
-            <div class ="thumb col-md-3" >
-                
+            <div class ="thumb col-md-5" >
+                 <div class="thumb">
+                    <img class="img-responsive" ng-src="{{currentVenue.mapa}}"/>
+                </div>
+            </div>
+            
+            <div class ="thumb col-md-12" >
+                 <div class="thumb">
+                   <b class="col-md-6"> PRÓXIMAS FUNCIONES QUE SE REALIZARÁN ACÁ:</b>
+                </div>
+            </div>
+            
+            <div class="col-md-4">
             <table class="table table-hover ">
                 <thead>
                     <tr>
-                        <th>Próximas funciones</th>
+                        <th>Fecha</th>
+                        <th>Entradas disponibles</th>
+                        <th>Duración</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr ng-repeat="funcion in funcionesRecords|filter: currentVenue.nombre">
                         <td id="{{$index}}-description"><a ui-sref="funcionDetail({funcionId: funcion.id})">{{funcion.fecha}}</a></td>
-                    </tr>
+                        <td id="{{$index}}-description"><a ui-sref="funcionDetail({funcionId: funcion.id})">{{funcion.entradasDisponibles}}</a></td>
+                        <td id="{{$index}}-description"><a ui-sref="funcionDetail({funcionId: funcion.id})">{{funcion.duracion + " minutos"}}</a></td>
                 </tbody>
-  
             </table>
-        </div>
+            </div>  
         </div>           
     </div>
 </div>
