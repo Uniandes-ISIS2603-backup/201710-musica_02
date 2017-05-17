@@ -9,14 +9,16 @@ and open the template in the editor.
         <table class="table table-hover">
             <thead>
                 <tr>
-                    <th>Venue</th>
                     <th>Fecha</th>
+                    <th>Venue</th>
+                    <th>Artistas </th>
                 </tr>
             </thead>
             <tbody>
                 <tr ng-repeat="funcion in funcionesRecords">
-                    <td id="{{$index}}-name"><a ui-sref="funcionDetail({funcionId: funcion.id})">{{funcion.venueDTO.nombre}}</a></td>
-                    <td id="{{$index}}-description">{{funcion.fecha}}</td>
+                    <td id="{{$index}}-name"><a ui-sref="funcionDetail({funcionId: funcion.id})">{{funcion.fecha}}</a></td>
+                    <td id="{{$index}}-description">{{funcion.venueDTO.nombre}}</td>
+                    <td id="{{$index}}-description2"><a ui-sref="artista.nombre for artista in artistasRecords track by artista.id">{{artista.nombre}} </a></td> 
                 </tr>
             </tbody>
         </table>

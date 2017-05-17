@@ -19,7 +19,15 @@ and open the template in the editor.
                       
                     </td>
                 </tr>
+                
             </tbody>
         </table>
+          <div class="col-sm-6 col-md-6 "><b><font>Nombre del cliente</font></b></div>
+          <div class="col-sm-6 col-md-6"> <input type="text" name="Nombre cliente" id="nombreCliente" ng-model="review.nombre"></div>
+          <div class="col-sm-6 col-md-6 "><b><font>Comentario</font></b></div>
+          <div class="col-sm-6 col-md-6"><textarea name="message" id="texto" rows="5" cols="30" ng-model="review.description"></textarea></div>
+           <div class="centro"> <input type="submit" value="Agregar Review" ng-click="postReview()"></div>
+          
+          
     </div>
 </div>
