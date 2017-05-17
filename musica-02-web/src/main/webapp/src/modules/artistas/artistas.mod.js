@@ -15,7 +15,7 @@
                 {
                     artistas: ['$http', 'artistasContext', function ($http, artistasContext) {
                             return $http.get(artistasContext);
-                        }]
+                        }],
                 }
                 ,
                 views: 
@@ -76,14 +76,26 @@
                 parent: 'artistas',
                 views: {
                     'createView': {
-                        //resolve{
-                        //generos: ['$http', 'generosContext', '$stateParams', function ($http, generosContext, $params) 
-                        //            {
-                        //            return $http.get(generosContext);
-                        //            }
-                        //            ]
-                        //       },
-                        templateUrl: basePath + 'artistas.create.html'
+                        resolve:
+                        {                          
+                            generos: ['$http', 'generosContext', function ($http, generosContext) 
+                            {
+                                    return $http.get(generosContext);
+                            }]
+                        },
+                        
+                        templateUrl: basePath + 'artistas.create.html',
+                        controller: ['$scope', '$http', '$state', 'generos', function ($scope, $http, $state, generos) {
+                                
+                                $scope.generosRecords = generos.data;
+                                
+                                $scope.artista = {};
+                                $scope.postArtista = function ()
+                                {
+                                    $http.post("api/artistas/", $scope.artista);
+                                    $state.reload();
+                                };
+                            }]
                     }
                 }
             });

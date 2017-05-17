@@ -25,6 +25,7 @@ package co.edu.uniandes.csw.musica.resources;
 
 import co.edu.uniandes.csw.musica.dtos.ArtistaDTO;
 import co.edu.uniandes.csw.musica.dtos.ArtistaDetailDTO;
+import co.edu.uniandes.csw.musica.dtos.ArtistasStringDTO;
 import co.edu.uniandes.csw.musica.ejbs.ArtistaLogic;
 import co.edu.uniandes.csw.musica.entities.ArtistaEntity;
 import co.edu.uniandes.csw.musica.exceptions.BusinessLogicException;
@@ -49,8 +50,8 @@ import javax.ws.rs.core.MediaType;
 @Path("/artistas")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
-public class ArtistaResource 
-{
+public class ArtistaResource {
+
     @Inject
     private ArtistaLogic logic;
     @Context
@@ -68,38 +69,50 @@ public class ArtistaResource
     @GET
     public List<ArtistaDetailDTO> getArtistas() {
         return listEntity2DTO(logic.getArtistas());
-          
+
     }
 
     @POST
-    public ArtistaDetailDTO createArtista(ArtistaDetailDTO dto) throws BusinessLogicException 
-    {
+    public ArtistaDetailDTO createArtista(ArtistaDetailDTO dto) throws BusinessLogicException {
         ArtistaEntity artista = logic.createArtista(dto.toEntity());
         return new ArtistaDetailDTO(artista);
     }
-    
+
     @PUT
     @Path("{id: \\d+}")
-    public ArtistaDetailDTO updateArtista(@PathParam("id") Long id, ArtistaDTO dto)
-    {
+    public ArtistaDetailDTO updateArtista(@PathParam("id") Long id, ArtistaDTO dto) {
         ArtistaEntity entity = dto.toEntity();
         entity.setId(id);
-        return new ArtistaDetailDTO(logic.updateArtista(entity)); 
+        return new ArtistaDetailDTO(logic.updateArtista(entity));
     }
-    @GET 
+
+    @GET
     @Path("{id: \\d+}")
-    public ArtistaDetailDTO getArtista(@PathParam("id") Long id) throws BusinessLogicException
-    {
+    public ArtistaDetailDTO getArtista(@PathParam("id") Long id) throws BusinessLogicException {
         return new ArtistaDetailDTO(logic.getArtista(id));
     }
-    @GET 
+
+    @GET
     @Path("festival/{id: \\d+}")
-    public List<ArtistaDetailDTO> getArtistasPorFestival(@PathParam("id") Long id) throws BusinessLogicException
-    {
-          return listEntity2DTO(logic.getArtistasPorFestival(id));
+    public List<ArtistaDetailDTO> getArtistasPorFestival(@PathParam("id") Long id) throws BusinessLogicException {
+        return listEntity2DTO(logic.getArtistasPorFestival(id));
 
     }
- 
-    // TODO implementar get /artistas/:id/funciones funciones en las que actuará el artista
 
+    @GET
+    @Path("festival/String/{id: \\d+}")
+    public ArtistasStringDTO getArtistasPorFestivalString(@PathParam("id") Long id) throws BusinessLogicException {
+        ArrayList<ArtistaEntity> artistas = (ArrayList) logic.getArtistasPorFestival(id);
+        String val = artistas.get(0).getNombre();
+        for (int i = 1; i < artistas.size(); i++) {
+            val += ", ";
+            val += artistas.get(i).getNombre();
+        }
+        ArtistasStringDTO artista = new ArtistasStringDTO();
+        artista.setValue(val);
+        return artista;
+
+    }
+
+    // TODO implementar get /artistas/:id/funciones funciones en las que actuará el artista
 }
