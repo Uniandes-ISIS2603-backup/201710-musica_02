@@ -61,10 +61,15 @@
                                     return $http.get(funcionesContext);
                                 }]},
                         templateUrl: basePath + 'venues.detail.html',
-                        controller: ['$scope','funciones','$stateParams', function ($scope, funciones, $params) {
+                        controller: ['$scope','funciones','$stateParams', function ($scope, funciones, $params, $http, $state) {
                                 
                                 $scope.currentVenue = $scope.venuesRecords[$params.venueId-1001];
                                 $scope.funcionesRecords = funciones.data;
+                                $scope.deleteVenue = function ()
+                                {
+                                    $http.delete("api/venues/" + currentVenue.data.id);
+                                    $state.go('venuesList');
+                                };
                     }]
                  }
                }
@@ -90,6 +95,37 @@
                                     agregarVenue($scope.venue);
                                     $state.reload();
                                 }
+                            }]
+                    }
+                }
+
+            }).state('venueUpdate', {
+                
+                url: '/{venueId:int}/actualizar',
+                param: {
+                    venueId: null
+                },
+                parent: 'venues',
+                views: {
+                    updateView: {
+                        templateUrl: basePath + 'venue.update.html',
+                        resolve: {
+
+                            currentVenue: ['$http', 'venuesContext', '$stateParams', function ($http, venuesContext, $params) {
+                                    return $http.get(venuesContext + '/' + $params.venueId);
+                                }]
+                        },
+                        controller: ['$scope', '$http', 'currentVenue', '$state', function ($scope, $http, currentVenue, $state) {
+                                $scope.venue = {};
+                                $scope.venue.id = currentVenue.data.id;
+                                $scope.putVenue = function ()
+                                {
+                                    $http.put("api/venues/", $scope.venue);
+                                    $state.reload();
+                                    $state.go('venuesList');
+                                };
+                                $scope.currentVenue = currentVenue.data;
+
                             }]
                     }
                 }

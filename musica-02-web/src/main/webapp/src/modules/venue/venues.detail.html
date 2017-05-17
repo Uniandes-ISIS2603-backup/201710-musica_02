@@ -30,13 +30,16 @@
                     <dt><b> Festival que se realiza aquí </b></dt>
                     <a ui-sref="festivalDetail({festivalId:currentVenue.festivalDTO.id})">{{currentVenue.festivalDTO.nombre}}</a>
                     </dl>
+             
                 </div>
             
             <div class ="thumb col-md-5" >
                  <div class="thumb">
                     <img class="img-responsive" ng-src="{{currentVenue.mapa}}"/>
                 </div>
+                
             </div>
+            
             
             <div class ="thumb col-md-12" >
                  <div class="thumb">
@@ -60,7 +63,12 @@
                         <td id="{{$index}}-description"><a ui-sref="funcionDetail({funcionId: funcion.id})">{{funcion.duracion + " minutos"}}</a></td>
                 </tbody>
             </table>
-            </div>  
-        </div>           
+            </div> 
+            <div row>
+                <button class="botonAgregar botonAgregar1" style="float: right;"ui-sref="venueUpdate({venueId: currentVenue.id})">Actualizar Venue</button>
+                <button class="botonAgregar botonAgregar1" style="float: right;"ng-click="deleteVenue()">Borrar Venue</button>
+            </div>
+        </div>   
     </div>
+    
 </div>
