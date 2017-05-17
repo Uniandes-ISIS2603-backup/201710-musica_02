@@ -24,6 +24,7 @@
 package co.edu.uniandes.csw.musica.persistence;
 
 import co.edu.uniandes.csw.musica.entities.FuncionEntity;
+import co.edu.uniandes.csw.musica.entities.ReviewEntity;
 import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Inject;
@@ -47,120 +48,120 @@ import uk.co.jemos.podam.api.PodamFactoryImpl;
  * @author jd.gonzaleza
  */
 @RunWith(Arquillian.class)
-public class FuncionPersistenceTest {
-
+public class ReviewPersistenceTest {
     
     @Deployment
-    public static JavaArchive createDevelopment() {
+    public static JavaArchive createDevelopment(){
         return ShrinkWrap.create(JavaArchive.class)
-                .addPackage(FuncionEntity.class.getPackage())
-                .addPackage(FuncionPersistence.class.getPackage())
+                .addPackage(ReviewEntity.class.getPackage())
+                .addPackage(ReviewPersistence.class.getPackage())
+                .addPackage(ReviewEntity.class.getPackage())
                 .addAsManifestResource("META-INF/persistence.xml", "persistence.xml")
                 .addAsManifestResource("META-INF/beans.xml", "beans.xml");
-
+        
     }
+    FuncionEntity fatherEntity;
+    
+    private List<ReviewEntity> reviewData = new ArrayList<>();
+    
     @Inject
-    private FuncionPersistence funcionPersistance;
-
-    @PersistenceContext(unitName = "musicaPU")
+    private ReviewPersistence reviewPersistence;
+    @PersistenceContext
     private EntityManager em;
-
     @Inject
     UserTransaction utx;
-
-    private List<FuncionEntity> data = new ArrayList<FuncionEntity>();
-
     @Before
-    public void setUp() {
-        try {
-            utx.begin();
-            em.joinTransaction();
-            clearData();
-            insertData();
-            utx.commit();
-        } catch (Exception e) {
-            e.printStackTrace();
-            try {
-                utx.rollback();
-            } catch (Exception e1) {
+    public void setUp(){
+        try{
+        utx.begin();
+        em.joinTransaction();
+        }catch(Exception e){
+            try{
+            utx.rollback();
+            }catch(Exception e1){
                 e1.printStackTrace();
             }
         }
     }
-
-    private void clearData() {
-        em.createQuery("delete from funcionEntity").executeUpdate();
-    }
-
+    
     private void insertData() {
         PodamFactory factory = new PodamFactoryImpl();
+        fatherEntity = factory.manufacturePojo(FuncionEntity.class);
+        fatherEntity.setId(1L);
+        em.persist(fatherEntity);
         for (int i = 0; i < 3; i++) {
-            FuncionEntity entity = factory.manufacturePojo(FuncionEntity.class);
+            ReviewEntity entity = factory.manufacturePojo(ReviewEntity.class);
+            entity.setFuncion(fatherEntity);
+            reviewData.add(entity);
             em.persist(entity);
-            data.add(entity);
         }
-    }
 
-    @Test
-    public void createFuncionTest(){
-        PodamFactory factory = new PodamFactoryImpl();
-        FuncionEntity newEntity = factory.manufacturePojo(FuncionEntity.class);
-        
-        FuncionEntity result = funcionPersistance.create(newEntity);
-        Assert.assertNotNull(result);
-        FuncionEntity entity = em.find(FuncionEntity.class, result.getId());
-        Assert.assertNotNull(entity);
-        Assert.assertEquals(newEntity.getId(), entity.getId());
     }
     
-    @Test
-    public void getFuncionesTest(){
-        List<FuncionEntity> list = funcionPersistance.findAll();
-        Assert.assertEquals(data.size(), list.size());
-        for(FuncionEntity ent : list){
-            boolean found = false;
-            for(FuncionEntity entity : data){
-                if(ent.getId().equals(entity.getId())){
-                    found = true;
-                }
-            }
-              Assert.assertTrue(found);
-        }
-      
+    private void clearData() {
+        em.createQuery("delete  from ReviewEntity").executeUpdate();
+        em.createQuery("delete  from FuncionEntity").executeUpdate();
     }
     @Test
-    public void getFuncionTest()throws Exception{
-        FuncionEntity entity = data.get(0);
-        FuncionEntity newEntity = funcionPersistance.find(entity.getId());
+    public void createReviewTest(){
+        PodamFactory factory = new PodamFactoryImpl();
+        ReviewEntity newEntity = factory.manufacturePojo(ReviewEntity.class);
+        newEntity.setFuncion(fatherEntity);
+        ReviewEntity result = reviewPersistence.create(newEntity);
+        
+        Assert.assertNotNull(result);
+        
+        ReviewEntity entity = em.find(ReviewEntity.class, result.getId());
+        
+        Assert.assertEquals(newEntity.getId(), entity.getId());
+    }
+    @Test
+    public void findTest(){
+        ReviewEntity entity = reviewData.get(0);
+        ReviewEntity newEntity = reviewPersistence.find(entity.getId());
         Assert.assertNotNull(newEntity);
         Assert.assertEquals(entity.getId(), newEntity.getId());
     }
     @Test
-    public void updateTest(){
-        FuncionEntity entity = data.get(0);
+    public void deleteTest(){
+        ReviewEntity entity = reviewData.get(0);
+        reviewPersistence.delete(entity.getId());
+        ReviewEntity deleted = em.find(ReviewEntity.class, entity.getId());
+        Assert.assertNull(deleted);
+    }
+    @Test
+    public void update(){
+        ReviewEntity entity = reviewData.get(0);
         PodamFactory factory = new PodamFactoryImpl();
-        FuncionEntity newEntity = factory.manufacturePojo(FuncionEntity.class);
+        ReviewEntity newEntity = factory.manufacturePojo(ReviewEntity.class);
         
         newEntity.setId(entity.getId());
         
-        funcionPersistance.update(newEntity);
+        reviewPersistence.update(newEntity);
         
-        FuncionEntity resp = em.find(FuncionEntity.class, entity.getId());
+        ReviewEntity resp = em.find(ReviewEntity.class, entity.getId());
         
         Assert.assertEquals(newEntity.getId(), resp.getId());
     }
     @Test
-    public void deleteTest(){
-        FuncionEntity entity = data.get(0);
-        funcionPersistance.delete(entity.getId());
-        FuncionEntity deleted = em.find(FuncionEntity.class, entity.getId());
-        Assert.assertNull(deleted);
+    public void findAllparaFuncion(){
+        List<ReviewEntity> list = reviewPersistence.findAllparaFuncion(fatherEntity.getId());
+        Assert.assertEquals(reviewData.size(), list.size());
+        for(ReviewEntity ent : list){
+            boolean found = false;
+            for(ReviewEntity entity: reviewData){
+                if(ent.getId().equals(entity.getId())){
+                    found = true;
+                }
+            }
+            Assert.assertTrue(found);
+        }
     }
-    public FuncionPersistenceTest() {
+    public ReviewPersistenceTest() {
     }
 
     @Test
     public void testSomeMethod() {
     }
-
+    
 }
