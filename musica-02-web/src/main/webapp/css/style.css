@@ -17,10 +17,36 @@
         border-radius: 0px;
 
 }
+.fixed
+{
+    top: 0;
+    z-index: 100;
+  position: fixed;
+    width: 100%;
+}
+.fixed-nav
+{
+    top: 30;
+    z-index: 100;
+  position: fixed;
+    width: 100%;
+}
+.fixed-bottom
+{
+    bottom: 0;
+    z-index: 100;
+  position: fixed;
+    width: 10%;
+    
+}
 .fondoAzul{
     background-color:#073763;
     color:white;
     font-weight: bold;
+
+}
+.txtArea{
+    min-width: 100%;
 
 }
 .fondoAzulRayado{
@@ -61,6 +87,10 @@
     padding: 30px;
     text-align: center;
 }
+.imgagencita{
+    width: 30%;
+    padding: 5px;
+}
 table {
     border-collapse: collapse;
     width: 100%;
@@ -92,14 +122,9 @@ th {
 }
 .dropbtn {
     text-align: center;
-      color: rgba(255,255,255,1);
-    font-size: 16px;
-  -o-text-overflow: clip;
-  text-overflow: clip;
-  background: -webkit-linear-gradient(45deg, rgba(255,255,255,0.2) 25%, rgba(0,0,0,0) 25%, rgba(0,0,0,0) 50%, rgba(255,255,255,0.2) 50%, rgba(255,255,255,0.2) 75%, rgba(0,0,0,0) 75%, rgba(0,0,0,0) 0), #073763;
-  background: -moz-linear-gradient(45deg, rgba(255,255,255,0.2) 25%, rgba(0,0,0,0) 25%, rgba(0,0,0,0) 50%, rgba(255,255,255,0.2) 50%, rgba(255,255,255,0.2) 75%, rgba(0,0,0,0) 75%, rgba(0,0,0,0) 0),#073763;
-  background: linear-gradient(45deg, rgba(255,255,255,0.2) 25%, rgba(0,0,0,0) 25%, rgba(0,0,0,0) 50%, rgba(255,255,255,0.2) 50%, rgba(255,255,255,0.2) 75%, rgba(0,0,0,0) 75%, rgba(0,0,0,0) 0), #073763;
-  background-position: auto ;    color: black;
+    background-color:#073763;
+    color:white;
+    font-weight: bold;
     padding: 5px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     font-weight: bold;
