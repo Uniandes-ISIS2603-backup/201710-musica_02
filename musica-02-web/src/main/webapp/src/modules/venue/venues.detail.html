@@ -51,6 +51,7 @@
             <table class="table table-hover ">
                 <thead>
                     <tr>
+                        <th>Función</th>
                         <th>Fecha</th>
                         <th>Entradas disponibles</th>
                         <th>Duración</th>
@@ -58,7 +59,11 @@
                 </thead>
                 <tbody>
                     <tr ng-repeat="funcion in funcionesRecords|filter: currentVenue.nombre">
-                        <td id="{{$index}}-description"><a ui-sref="funcionDetail({funcionId: funcion.id})">{{funcion.fecha}}</a></td>
+                        <a ui-sref="funcionDetail({funcionId: funcion.id})"> 
+                            <img class="img-responsive" ng-src ='{{funcion.imagen}}' alt = "{{funcion.id}}"/>
+                        </a>
+                <td id="{{$index}}-description"><a ui-sref="funcionDetail({funcionId: funcion.id})"><img class="imgagencita" ng-src ='{{funcion.imagen}}' alt = "{{funcion.id}}"/></a></td>
+                        <td id="{{$index}}-description"><a ui-sref="funcionDetail({funcionId: funcion.id})">{{funcion.fecha|date:'yyyy-MM-dd'}}</a></td>
                         <td id="{{$index}}-description"><a ui-sref="funcionDetail({funcionId: funcion.id})">{{funcion.entradasDisponibles}}</a></td>
                         <td id="{{$index}}-description"><a ui-sref="funcionDetail({funcionId: funcion.id})">{{funcion.duracion + " minutos"}}</a></td>
                 </tbody>
