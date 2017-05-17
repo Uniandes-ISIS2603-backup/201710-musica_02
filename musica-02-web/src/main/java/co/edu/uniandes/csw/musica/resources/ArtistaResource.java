@@ -103,14 +103,20 @@ public class ArtistaResource {
     @Path("festival/String/{id: \\d+}")
     public ArtistasStringDTO getArtistasPorFestivalString(@PathParam("id") Long id) throws BusinessLogicException {
         ArrayList<ArtistaEntity> artistas = (ArrayList) logic.getArtistasPorFestival(id);
-        String val = artistas.get(0).getNombre();
-        for (int i = 1; i < artistas.size(); i++) {
-            val += ", ";
-            val += artistas.get(i).getNombre();
+        if (artistas.size() >= 1) {
+            String val = artistas.get(0).getNombre();
+            for (int i = 1; i < artistas.size(); i++) {
+                val += ", ";
+                val += artistas.get(i).getNombre();
+            }
+            ArtistasStringDTO artista = new ArtistasStringDTO();
+            artista.setValue(val);
+            return artista;
+        } else {
+            ArtistasStringDTO artista = new ArtistasStringDTO();
+            artista.setValue("");
+            return artista;
         }
-        ArtistasStringDTO artista = new ArtistasStringDTO();
-        artista.setValue(val);
-        return artista;
 
     }
 

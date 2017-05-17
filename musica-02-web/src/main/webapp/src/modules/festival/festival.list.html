@@ -8,21 +8,25 @@ and open the template in the editor.
 
 <div class="container-fluid">
     <br/>
-    <b>Filtrar búsqueda</b>
-    <div class =" row">
-        <div class="dropdown">
-            <button onclick="mostrarGeneros()" class="dropbtn">Género</button>
-            <div id="dropGenero" class="dropdown-content">
-                <a ng-repeat="generoa in generosRecords" ui-sref ="festivalGenList({genero: generoa.id})">{{generoa.nombre}}</a>
-                <a ui-sref ="festivalesList">Todos</a>
+
+
+    <div class =" rowizquierda">
+        <div class="col-md-4">
+            <div class="dropdown">
+                <button onclick="mostrarGeneros()" class="dropbtn ">Género</button>
+                <div id="dropGenero" class="dropdown-content">
+                    <a ng-repeat="generoa in generosRecords" ui-sref ="festivalGenList({genero: generoa.id})">{{generoa.nombre}}</a>
+                    <a ui-sref ="festivalesList">Todos</a>
+                </div>
             </div>
-
         </div>
-    </div>
-    <div class="row ">
-        <br/>
-        <b>&nbsp;&nbsp;&nbsp;&nbsp; Resultados</b>
 
+    </div>
+    <br>    <br>
+    <br>
+
+    <div class="row ">
+        <br>
         <table class="table table-hover ">
             <thead>
                 <tr>
@@ -44,7 +48,6 @@ and open the template in the editor.
                         </a>
 
                     </td>
-
                     <td id="festFecha"class="col-sm-4 col-md-4"><b>{{festival.fechaInicio|date:'yyyy-MM-dd'}}</b></td>
 
                 </tr>
@@ -56,4 +59,5 @@ and open the template in the editor.
         <button class="botonAgregar botonAgregar1" style="float: right;"ui-sref="festivalInsert">Agregar festival +</button>
     </div>
 </div>
+
 

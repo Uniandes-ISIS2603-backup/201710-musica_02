@@ -1,29 +1,44 @@
 <div class ="panel panel-default panel-body " row>
     <b class="col-md-6">Festival</b>
-    <b class="col-md-6" >Funciones</b>
+    <b class="col-md-2" ></b>
+    <b class="col-md-4" >Funciones</b>
+
     <div row>
         <div class="col-md-6 bordeAzul">
             <div class="thumb col-md-6">
                 <img class="img-circle img-responsive"   ng-src ="{{currentFestival.imagen}}"/>
             </div>
             <div class ="thumb col-md-6" >
-                <dl>
-                    <dt> <b>Nombre festival</b></dt>
-                    <dd>{{currentFestival.nombre}}</dd>
-                    <dt> <b>Fecha inicio</b></dt>
-                    <dd>{{currentFestival.fechaInicio|date:'yyyy-MM-dd'}}</dd>
-                    <dt><b>Fecha Fin</b></dt>
-                    <dd>{{currentFestival.fechaFin|date:'yyyy-MM-dd'}}</dd>
-                    <dt><b>Género</b></dt>
-                    <dd>{{currentFestival.generoDTO.nombre}}</dd>
-                </dl>
                 <div row>
 
-                    <button class="botonAgregar botonAgregar1" style="float: left;"ui-sref="festivalUpdate({festivalId: currentFestival.id})">Actualizar festival</button>
-                    <button class="botonAgregar botonAgregar1" style="float: left;"ng-click="deleteFestival()">Borrar Festival</button>
+                    <dl>
+                        <dt> <b>Nombre festival</b></dt>
+                        <dd>{{currentFestival.nombre}}</dd>
+                        <dt> <b>Fecha inicio</b></dt>
+                        <dd>{{currentFestival.fechaInicio|date:'yyyy-MM-dd'}}</dd>
+                        <dt><b>Fecha Fin</b></dt>
+                        <dd>{{currentFestival.fechaFin|date:'yyyy-MM-dd'}}</dd>
+                        <dt><b>Género</b></dt>
+                        <dd>{{currentFestival.generoDTO.nombre}}</dd>
+                    </dl>
                 </div>
+
             </div>
+
         </div>
+
+
+        <div class ="thumb col-md-2  " >
+
+            <div row>
+                <button class="botonAgregar" style="float: left;"ui-sref="festivalUpdate({festivalId: currentFestival.id})">Actualizar festival</button>
+            </div>
+            <br>    
+            <div row>
+
+                <button class="botonAgregar" style="float: left;"ng-click="deleteFestival()">Borrar el festival</button>
+            </div>  
+        </div> 
         <div class ="thumb col-md-4  " >
 
             <table class="table table-hover ">
@@ -38,13 +53,11 @@
                     <tr ng-repeat="funcion in funcionesRecords|filter: currentFestival.nombre">
                         <td id="fechaFun"><a ui-sref="funcionDetail({funcionId: funcion.id})">{{funcion.fecha|date:'yyyy-MM-dd'}}</a></td>
                         <td id="{{$index}}-name"><a ui-sref="venueDetail({venueId:funcion.venueDTO.id})">{{funcion.venueDTO.nombre}}</a></td>
-                            <td id="artistasFun">{{nombresArtistas.value}}</td>
+                        <td id="artistasFun">{{nombresArtistas.value}}</td>
 
                     </tr>
                 </tbody>
             </table>
-        </div>             
-
-
+        </div>
     </div>
 </div>

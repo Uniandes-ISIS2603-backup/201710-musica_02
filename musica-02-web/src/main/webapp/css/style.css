@@ -3,10 +3,18 @@
     border-radius: 12px;
     border-color: #082A8F;
 }
+
 .bordeNaranja {
     border-style: groove ;
     border-radius: 12px;
     border-color:#e69138;
+
+}
+.jumbotron{
+    margin-bottom: 0px;
+}
+.container .jumbotron, .container-fluid .jumbotron{
+        border-radius: 0px;
 
 }
 .fondoAzul{
@@ -14,6 +22,37 @@
     color:white;
     font-weight: bold;
 
+}
+.fondoAzulRayado{
+      color: rgba(255,255,255,1);
+  -o-text-overflow: clip;
+  text-overflow: clip;
+  background: -webkit-linear-gradient(45deg, rgba(255,255,255,0.2) 25%, rgba(0,0,0,0) 25%, rgba(0,0,0,0) 50%, rgba(255,255,255,0.2) 50%, rgba(255,255,255,0.2) 75%, rgba(0,0,0,0) 75%, rgba(0,0,0,0) 0), #073763;
+  background: -moz-linear-gradient(45deg, rgba(255,255,255,0.2) 25%, rgba(0,0,0,0) 25%, rgba(0,0,0,0) 50%, rgba(255,255,255,0.2) 50%, rgba(255,255,255,0.2) 75%, rgba(0,0,0,0) 75%, rgba(0,0,0,0) 0),#073763;
+  background: linear-gradient(45deg, rgba(255,255,255,0.2) 25%, rgba(0,0,0,0) 25%, rgba(0,0,0,0) 50%, rgba(255,255,255,0.2) 50%, rgba(255,255,255,0.2) 75%, rgba(0,0,0,0) 75%, rgba(0,0,0,0) 0), #073763;   
+}
+.gradient-pattern {
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  border: none;
+  font: normal 1.5px/normal Arial, Helvetica, sans-serif;
+  color: rgba(255,255,255,1);
+  -o-text-overflow: clip;
+  text-overflow: clip;
+  background: -webkit-radial-gradient(circle, rgb(35,29,24) 25%, rgba(0,0,0,0) 25%), -webkit-radial-gradient(circle, rgb(63,57,50) 25%, rgba(0,0,0,0) 25%), -webkit-radial-gradient(circle, rgb(35,29,24) 25%, rgba(0,0,0,0) 25%), -webkit-radial-gradient(circle, rgb(63,57,50) 25%, rgba(0,0,0,0) 25%), rgba(0,57,84,1);
+  background: -moz-radial-gradient(circle, rgb(35,29,24) 25%, rgba(0,0,0,0) 25%), -moz-radial-gradient(circle, rgb(63,57,50) 25%, rgba(0,0,0,0) 25%), -moz-radial-gradient(circle, rgb(35,29,24) 25%, rgba(0,0,0,0) 25%), -moz-radial-gradient(circle, rgb(63,57,50) 25%, rgba(0,0,0,0) 25%), rgba(0,57,84,1);
+  background: radial-gradient(circle, rgb(35,29,24) 25%, rgba(0,0,0,0) 25%), radial-gradient(circle, rgb(63,57,50) 25%, rgba(0,0,0,0) 25%), radial-gradient(circle, rgb(35,29,24) 25%, rgba(0,0,0,0) 25%), radial-gradient(circle, rgb(63,57,50) 25%, rgba(0,0,0,0) 25%), rgba(0,57,84,1);
+  background-position: 3em 3em, 3em 4em, auto auto, 0 1em;
+  -webkit-background-origin: padding-box;
+  background-origin: padding-box;
+  -webkit-background-clip: border-box;
+  background-clip: border-box;
+  -webkit-background-size: 6em 6em;
+  background-size: 6em 6em;
+}   
+.fondoNegro{
+    background-color:#000;
 }
 .fondoNaranja{
     background-color:#e69138;
@@ -35,25 +74,44 @@ th, td {
 tr:nth-child(even){background-color: #f2f2f2}
 
 th {
-    background-color: lightblue;
     color: white;
     font-size: 16px;
+  color: rgba(255,255,255,1);
+  -o-text-overflow: clip;
+  text-overflow: clip;
+  background: -webkit-linear-gradient(45deg, rgba(255,255,255,0.2) 25%, rgba(0,0,0,0) 25%, rgba(0,0,0,0) 50%, rgba(255,255,255,0.2) 50%, rgba(255,255,255,0.2) 75%, rgba(0,0,0,0) 75%, rgba(0,0,0,0) 0), rgb(170, 204, 0);
+  background: -moz-linear-gradient(45deg, rgba(255,255,255,0.2) 25%, rgba(0,0,0,0) 25%, rgba(0,0,0,0) 50%, rgba(255,255,255,0.2) 50%, rgba(255,255,255,0.2) 75%, rgba(0,0,0,0) 75%, rgba(0,0,0,0) 0), rgb(170, 204, 0);
+  background: linear-gradient(45deg, rgba(255,255,255,0.2) 25%, rgba(0,0,0,0) 25%, rgba(0,0,0,0) 50%, rgba(255,255,255,0.2) 50%, rgba(255,255,255,0.2) 75%, rgba(0,0,0,0) 75%, rgba(0,0,0,0) 0), rgb(170, 204, 0);
+  background-position: auto ;
+  -webkit-background-origin: padding-box;
+  background-origin: padding-box;
+  -webkit-background-clip: border-box;
+  background-clip: border-box;
+  -webkit-background-size: 50px 50px;
 
 }
 .dropbtn {
-    background-color: lightblue;
-    color: black;
+    text-align: center;
+      color: rgba(255,255,255,1);
+    font-size: 16px;
+  -o-text-overflow: clip;
+  text-overflow: clip;
+  background: -webkit-linear-gradient(45deg, rgba(255,255,255,0.2) 25%, rgba(0,0,0,0) 25%, rgba(0,0,0,0) 50%, rgba(255,255,255,0.2) 50%, rgba(255,255,255,0.2) 75%, rgba(0,0,0,0) 75%, rgba(0,0,0,0) 0), #073763;
+  background: -moz-linear-gradient(45deg, rgba(255,255,255,0.2) 25%, rgba(0,0,0,0) 25%, rgba(0,0,0,0) 50%, rgba(255,255,255,0.2) 50%, rgba(255,255,255,0.2) 75%, rgba(0,0,0,0) 75%, rgba(0,0,0,0) 0),#073763;
+  background: linear-gradient(45deg, rgba(255,255,255,0.2) 25%, rgba(0,0,0,0) 25%, rgba(0,0,0,0) 50%, rgba(255,255,255,0.2) 50%, rgba(255,255,255,0.2) 75%, rgba(0,0,0,0) 75%, rgba(0,0,0,0) 0), #073763;
+  background-position: auto ;    color: black;
     padding: 5px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     font-weight: bold;
     font-size: 16px;
     cursor: pointer;
-    width: 1000%;
+    width: 500%;
 
 }
 
 
 .dropdown {
+    color: white;
     position: relative;
     display: inline-block;
 }
@@ -62,10 +120,11 @@ th {
     display: none;
     position: absolute;
     background-color: #f9f9f9;
-    min-width: 900px;
+    width: 500%;
     overflow: auto;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
+    text-align: center;
 }
 
 .dropdown-content a {
@@ -79,31 +138,40 @@ th {
 
 .show {display:block;}
 
-.botonAgregar {
-    background-color: #082A8F; 
-    border: none;
-    color: white;
-    padding: 16px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
-    -webkit-transition-duration: 0.4s; /* Safari */
-    transition-duration: 0.4s;
-    cursor: pointer;
-    font-weight: bold;
 
+.botonAgregar {
+  display: inline-block;
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  cursor: pointer;
+  padding: 0 20px;
+  border: none;
+  -webkit-border-radius: 20px;
+  border-radius: 20px;
+  font: normal normal bold 15px/30px "Baumans", Helvetica, sans-serif;
+  color: black;
+  -o-text-overflow: clip;
+  text-overflow: clip;
+  background: rgb(221, 221, 221);
+  -webkit-box-shadow: 0 1px 0 0 rgb(119,119,119) , 0 2px 0 0 rgb(119,119,119) , 0 3px 0 0 rgb(119,119,119) , 0 4px 0 0 rgb(119,119,119) , 0 5px 0 0 rgb(119,119,119) , 0 6px 0 0 rgb(119,119,119) , 0 0 5px 0 rgba(0,0,0,0.0980392) , 0 1px 3px 0 rgba(0,0,0,0.298039) , 0 3px 5px 0 rgba(0,0,0,0.2) , 0 5px 10px 0 rgba(0,0,0,0.247059) , 0 10px 10px 0 rgba(0,0,0,0.2) , 0 20px 20px 0 rgba(0,0,0,0.14902) ;
+  box-shadow: 0 1px 0 0 rgb(119,119,119) , 0 2px 0 0 rgb(119,119,119) , 0 3px 0 0 rgb(119,119,119) , 0 4px 0 0 rgb(119,119,119) , 0 5px 0 0 rgb(119,119,119) , 0 6px 0 0 rgb(119,119,119) , 0 0 5px 0 rgba(0,0,0,0.0980392) , 0 1px 3px 0 rgba(0,0,0,0.298039) , 0 3px 5px 0 rgba(0,0,0,0.2) , 0 5px 10px 0 rgba(0,0,0,0.247059) , 0 10px 10px 0 rgba(0,0,0,0.2) , 0 20px 20px 0 rgba(0,0,0,0.14902) ;
+  text-shadow: 0 1px 0 #FFFFFF ;
 }
-.botonAgregar1 {
-    background-color: lightblue; 
-    color: black; 
-    font-weight: bold;
-    border: 2px solid #082A8F;
+
+.botonAgregar:hover {
+  background: #FFFFFF;
 }
-.botonAgregar1:hover {
-    background-color: #082A8F;
-    color: white;
+
+.botonAgregar:active {
+  margin: 6px 0 0;
+  background: rgb(221, 221, 221);
+  -webkit-box-shadow: 0 -1px 10px 0 rgba(0,0,0,0.247059) , 0 4px 10px 0 rgba(0,0,0,0.2) , 0 14px 20px 0 rgba(0,0,0,0.14902) ;
+  box-shadow: 0 -1px 10px 0 rgba(0,0,0,0.247059) , 0 4px 10px 0 rgba(0,0,0,0.2) , 0 14px 20px 0 rgba(0,0,0,0.14902) ;
+}
+
+.botonAgregar:focus {
+  background: rgb(221, 221, 221);
 }
 
 body {
@@ -112,15 +180,20 @@ body {
 .derecha {
     text-align: right;
 }
+
+.rowizquierda {
+    margin-right: -15px;
+    margin-left: -30px;
+}
 .centro {
     text-align: center;
 }
 [type="date"] {
-  background:#fff url(https://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/calendar_2.png)  97% 50% no-repeat ;
+    background:#fff url(https://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/calendar_2.png)  97% 50% no-repeat ;
 }
 [type="date"]::-webkit-inner-spin-button {
-  display: none;
+    display: none;
 }
 [type="date"]::-webkit-calendar-picker-indicator {
-  opacity: 0;
+    opacity: 0;
 }

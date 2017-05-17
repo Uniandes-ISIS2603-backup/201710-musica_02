@@ -74,31 +74,39 @@ SOFTWARE.
 
     <body class="span4">
         <div class="container-fluid">
-            <div class ="row">
-               
-                    <h2 class="mainTitle caption text-center fondoAzul">  M O O S I C  F E S T </h2>
-            </div>
-            <div class ="row ">
-                <div class = " mainHeader">
-                <img src="./css/ss.png">
-            </div>
-            </div>    
             <div class="row">
-                <div class="col-sm-12">
-                    <ul class="nav nav-tabs">
+
+                <div class="jumbotron text-center gradient-pattern">
+                    <h1>M O O S I C  F E S T </h1>
+                </div>
+            </div>
+
+            <div class="rowizquierda">
+                <div class="col-sm-6 ">
+                    <ul class="nav navbar-nav navbar-left">
                         <li><a ui-sref="festivalesList"class="fondoAzul">Festivales</a></li>
                         <li><a ui-sref="funcionList"class="fondoAzul">Funciones</a></li>
                         <li><a ui-sref="artistasList" class="fondoAzul">Artistas</a></li>
                         <li ><a ui-sref="venuesList" class="fondoAzul">Venues</a></li>
-                        <ul class="nav nav-tabs navbar-right">
-                            <li><a ui-sref="artistaCreate"class="fondoAzul">Registrar Artista</a></li>
-                            <li><a ui-sref="clientesList"class="fondoAzul">Clientes</a></li>
-                        </ul>
-                    </ul>                   
+
+                    </ul>
+                </div>
+                <div class="col-sm-6 derecha">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a ui-sref="artistaCreate"class="fondoAzul">Registrar Artista</a></li>
+                        <li><a ui-sref="clientesList"class="fondoAzul">Clientes</a></li>
+                    </ul>
                 </div>
             </div>
-            <div class="span4" ui-view="mainView"></div>
-            </div>  
-        </div> 
-    </body>
+            <br>
+            <br>
+            <div class ="row ">
+                <div class = " mainHeader">
+                    <a  ui-sref="festivalesList"><img src="./css/ss.png"></a>
+                </div>
+            </div> 
+            <div class="span4 " ui-view="mainView"></div>
+        </div>  
+    </div> 
+</body>
 </html>
