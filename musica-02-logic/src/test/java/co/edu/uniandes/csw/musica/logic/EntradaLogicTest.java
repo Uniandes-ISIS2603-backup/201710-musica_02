@@ -23,9 +23,9 @@
  */
 package co.edu.uniandes.csw.musica.logic;
 
-import co.edu.uniandes.csw.musica.ejbs.ClienteLogic;
-import co.edu.uniandes.csw.musica.entities.ClienteEntity;
-import co.edu.uniandes.csw.musica.persistence.ClientePersistence;
+import co.edu.uniandes.csw.musica.ejbs.EntradaLogic;
+import co.edu.uniandes.csw.musica.entities.EntradaEntity;
+import co.edu.uniandes.csw.musica.persistence.EntradaPersistence;
 import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Inject;
@@ -44,74 +44,61 @@ import org.junit.runner.RunWith;
  * @author p.salazar12
  */
 @RunWith(Arquillian.class)
-public class ClienteLogicTest {
+public class EntradaLogicTest {
     @Deployment
     public static JavaArchive createDeployment() {
         return ShrinkWrap.create(JavaArchive.class)
-                .addPackage(ClienteEntity.class.getPackage())
-                .addPackage(ClienteLogic.class.getPackage())
-                .addPackage(ClientePersistence.class.getPackage())
+                .addPackage(EntradaEntity.class.getPackage())
+                .addPackage(EntradaLogic.class.getPackage())
+                .addPackage(EntradaPersistence.class.getPackage())
                 .addAsManifestResource("META-INF/persistence.xml", "persistence.xml")
                 .addAsManifestResource("META-INF/beans.xml", "beans.xml");
     }
     @Inject
-    private ClienteLogic clienteLogic;
+    private EntradaLogic entradaLogic;
     @PersistenceContext(unitName = "musicaPU")
     private EntityManager em;
     @Inject
     private UserTransaction utx;
-    private List<ClienteEntity> data = new ArrayList<>();
+    private List<EntradaEntity> data = new ArrayList<>();
 
-    public ClienteLogicTest() {
+    
+    public EntradaLogicTest() {
     }
 
     /**
-     * Test of getClientes method, of class ClienteLogic.
+     * Test of getEntradas method, of class EntradaLogic.
      */
     @Test
-    public void testGetClientes() throws Exception {
+    public void testGetEntradas() throws Exception {
     }
 
     /**
-     * Test of updateCliente method, of class ClienteLogic.
+     * Test of createEntrada method, of class EntradaLogic.
      */
     @Test
-    public void testUpdateCliente() throws Exception {
+    public void testCreateEntrada() throws Exception {
     }
 
     /**
-     * Test of deleteCliente method, of class ClienteLogic.
+     * Test of getByCliente method, of class EntradaLogic.
      */
     @Test
-    public void testDeleteCliente() throws Exception {
+    public void testGetByCliente() throws Exception {
     }
 
     /**
-     * Test of createCliente method, of class ClienteLogic.
+     * Test of getByFuncion method, of class EntradaLogic.
      */
     @Test
-    public void testCreateCliente() throws Exception {
+    public void testGetByFuncion() throws Exception {
     }
 
     /**
-     * Test of getAbonados method, of class ClienteLogic.
+     * Test of getCliente method, of class EntradaLogic.
      */
     @Test
-    public void testGetAbonados() throws Exception {
-    }
-
-    /**
-     * Test of getById method, of class ClienteLogic.
-     */
-    @Test
-    public void testGetById() throws Exception {
-    }
-
-    /**
-     * Test of getByUsuario method, of class ClienteLogic.
-     */
-    @Test
-    public void testGetByUsuario() throws Exception {
+    public void testGetCliente() throws Exception {
     }
     
 }

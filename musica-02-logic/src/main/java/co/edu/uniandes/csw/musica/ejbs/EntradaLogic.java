@@ -73,6 +73,10 @@ public class EntradaLogic {
          if(e == null) throw new WebApplicationException(404);
         return e;
     }
+    
+    public List<EntradaEntity> getAll() {
+        return entradaPersistence.findAll();
+    }
 
     public ClienteEntity getCliente(Long id) {
         return entradaPersistence.getCliente(id);

@@ -7,7 +7,7 @@
     var mod = ng.module("clienteModule", ['ui.router']);
 
     mod.constant("clientesContext", "api/clientes");
-    mod.constant 
+    mod.constant
 
     mod.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
             var basePath = 'src/modules/cliente/';
@@ -17,7 +17,7 @@
                 url: '/clientes',
                 abstract: true,
                 resolve: {
-                    clientes: ['$http', 'clientesContext',function ($http,clientesContext) {
+                    clientes: ['$http', 'clientesContext', function ($http, clientesContext) {
                             return $http.get(clientesContext);
                         }]
                 },
@@ -32,7 +32,7 @@
 
             }).state('clientesList', {
                 url: '/list',
-                parent:'clientes',
+                parent: 'clientes',
                 views: {
                     'listView': {
                         templateUrl: basePath + 'cliente.list.html'
@@ -40,30 +40,39 @@
                     }
                 }
             }).state('clienteEntradas', {
-                url: '{usuario}/entradas',
+                url: '/{hola:int}/entradas',
                 parent: 'clientes',
                 param: {
-                    usuario: null
+                    clienteId: null
                 },
                 views: {
                     'listView': {
                         resolve: {
-                            entradas: ['$http','$stateParams', function($http,$params) {
-                                    return $http.get('api/clientes/'+$params.usuario+'/entradas');
+                            entradas: ['$http', '$stateParams', function ($http, $params) {
+                                    return $http.get('api/clientes/'+$params.hola+'/entradas'); 
+                             
+//                                    return $http.get('api/clientes/' + '1' + '/entradas');
                                 }]
                         },
                         templateUrl: basePath + 'clienteEntradas.html',
-                        controller: ['$scope', 'entradas', '$stateParams', function($scope,entradas,$params) {
+                        controller: ['$scope', 'entradas', '$stateParams', function ($scope, entradas, $params) {
                                 $scope.entradaRecords = entradas.data;
-                        }]
+                            }]
                     }
                 }
-            }).state('test' , {
-                url:'/entradas',
-                parent:'clientes',
+            }).state('clientesRegister', {
+                url: '/registerClient',
+                parent: 'clientes',
                 views: {
-                    'listView': {
-                        templateUrl:basePath+'clienteEntradas.html'
+                    'registerView': {
+                        templateUrl: basePath + 'cliente.register.html',
+                        controller: ['$scope','$http', '$state', function($scope,$http,$state) {
+                                $scope.cliente = {};
+                                $scope.postCliente = function() {
+                                    $http.post("api/clientes",$scope.cliente);
+                                    $state.reload();
+                                };
+                        }]
                     }
                 }
             });

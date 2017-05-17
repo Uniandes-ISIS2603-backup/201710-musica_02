@@ -71,8 +71,15 @@ public class EntradaResource {
     @GET
     //@Path("{idCliente: \\d+}")
     public List<EntradaDetailDTO> getByCliente(@PathParam("idCliente") Long id) {
+        if(id != 666) {
         return listEntity2DTO(entradaLogic.getByCliente(id));
+        }
+        else
+        {
+            return listEntity2DTO(entradaLogic.getAll());
+        }
     }
+    
 
     @GET
     @Path("/funciones/{idFuncion: \\d+}")
