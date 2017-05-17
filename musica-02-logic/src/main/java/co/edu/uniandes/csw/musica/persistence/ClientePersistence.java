@@ -56,23 +56,13 @@ public class ClientePersistence {
         return em.merge(entity);
     }
 
-    public void delete(Long id) {
+    public ClienteEntity delete(Long id) {
         ClienteEntity entity = em.find(ClienteEntity.class, id);
         em.remove(entity);
+        return entity;
     }
     
-    public ClienteEntity findByUsuario(String usuario){
-        TypedQuery<ClienteEntity> q
-                = em.createQuery("select u from ClienteEntity u where u.usaurio = :usuario", ClienteEntity.class);
-        q = q.setParameter("usuario", usuario);
-        
-       List<ClienteEntity> sameUsuario = q.getResultList();
-        if (sameUsuario.isEmpty() ) {
-            return null; 
-        } else {
-            return sameUsuario.get(0);
-        }
-    }
+    
     
     public ClienteEntity findById(Long id){
         TypedQuery<ClienteEntity> q

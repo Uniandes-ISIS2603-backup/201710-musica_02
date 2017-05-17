@@ -25,13 +25,23 @@ package co.edu.uniandes.csw.musica.persistence;
 
 import co.edu.uniandes.csw.musica.entities.ClienteEntity;
 import co.edu.uniandes.csw.musica.entities.FuncionEntity;
+import java.util.ArrayList;
+import java.util.List;
+import javax.inject.Inject;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.transaction.UserTransaction;
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
+import org.junit.Assert;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import org.junit.Before;
 import org.junit.runner.RunWith;
+import uk.co.jemos.podam.api.PodamFactory;
+import uk.co.jemos.podam.api.PodamFactoryImpl;
 
 /**
  *
@@ -39,7 +49,7 @@ import org.junit.runner.RunWith;
  */
 @RunWith(Arquillian.class)
 public class ClientePersistenceTest {
-    
+
     @Deployment
     public static JavaArchive createDevelopment() {
         return ShrinkWrap.create(JavaArchive.class)
@@ -48,8 +58,49 @@ public class ClientePersistenceTest {
                 .addAsManifestResource("META-INF/persistence.xml", "persistence.xml")
                 .addAsManifestResource("META-INF/beans.xml", "beans.xml");
     }
-    
-    
+
+    @Inject
+    private ClientePersistence clientePersistence;
+
+    @PersistenceContext
+    private EntityManager em;
+
+    //en el ejemplo esto no es privado, como raro pero no me quiero arriesgar
+    @Inject
+    UserTransaction utx;
+
+    private List<ClienteEntity> data = new ArrayList<>();
+
+    @Before
+    public void setUp() {
+        try {
+            utx.begin();
+            em.joinTransaction();
+            clearData();
+            insertData();
+            utx.commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+            try {
+                utx.rollback();
+            } catch (Exception e1) {
+                e1.printStackTrace();
+            }
+        }
+    }
+
+    private void clearData() {
+        em.createQuery("delete from ClienteEntity").executeUpdate();
+    }
+
+    private void insertData() {
+        PodamFactory factory = new PodamFactoryImpl();
+        for (int i = 0; i < 3; i++) {
+            ClienteEntity entity = factory.manufacturePojo(ClienteEntity.class);
+            data.add(entity);
+        }
+    }
+
     public ClientePersistenceTest() {
     }
 
@@ -58,6 +109,19 @@ public class ClientePersistenceTest {
      */
     @Test
     public void testFindAll() throws Exception {
+        List<ClienteEntity> list = clientePersistence.findAll();
+        System.out.println(list.toString());
+        System.out.println(data.toString());
+        Assert.assertEquals(data.size(), list.size());
+        for (ClienteEntity ent : list) {
+            boolean found = false;
+            for (ClienteEntity entity : data) {
+                if (ent.getId().equals(entity.getId())) {
+                    found = true;
+                }
+            }
+            Assert.assertTrue(found);
+        }
     }
 
     /**
@@ -65,41 +129,54 @@ public class ClientePersistenceTest {
      */
     @Test
     public void testCreate() throws Exception {
-    }
+        PodamFactory factory = new PodamFactoryImpl();
+        ClienteEntity newEntity = factory.manufacturePojo(ClienteEntity.class);
 
-    /**
-     * Test of update method, of class ClientePersistence.
-     */
-    @Test
-    public void testUpdate() throws Exception {
-    }
+        ClienteEntity result = clientePersistence.create(newEntity);
 
-    /**
-     * Test of delete method, of class ClientePersistence.
-     */
-    @Test
-    public void testDelete() throws Exception {
+        Assert.assertNotNull(result);
+        ClienteEntity entity = em.find(ClienteEntity.class, result.getId());
+        Assert.assertNotNull(entity);
+        Assert.assertEquals(newEntity.getNombre(), entity.getNombre());
     }
 
     /**
      * Test of findByUsuario method, of class ClientePersistence.
      */
-    @Test
-    public void testFindByUsuario() throws Exception {
-    }
+    
 
     /**
      * Test of findById method, of class ClientePersistence.
      */
     @Test
     public void testFindById() throws Exception {
+        ClienteEntity entity = data.get(0);
+        ClienteEntity newEntity = clientePersistence.findById(entity.getId());
+        Assert.assertNotNull(newEntity);
+        Assert.assertEquals(entity.getId(), newEntity.getId());
     }
 
-    /**
-     * Test of findAllAbonados method, of class ClientePersistence.
-     */
     @Test
-    public void testFindAllAbonados() throws Exception {
+    public void testUpdateCliente() throws Exception {
+        ClienteEntity entity = data.get(0);
+        PodamFactory factory = new PodamFactoryImpl();
+        ClienteEntity newEntity = factory.manufacturePojo(ClienteEntity.class);
+
+        newEntity.setId(entity.getId());
+
+        clientePersistence.update(newEntity);
+
+        ClienteEntity resp = em.find(ClienteEntity.class, entity.getId());
+
+        Assert.assertEquals(newEntity.getNombre(), resp.getNombre());
     }
-    
+
+    @Test
+    public void deleteClienteTest() {
+        ClienteEntity entity = data.get(0);
+        clientePersistence.delete(entity.getId());
+        ClienteEntity deleted = em.find(ClienteEntity.class, entity.getId());
+        Assert.assertNull(deleted);
+    }
+
 }

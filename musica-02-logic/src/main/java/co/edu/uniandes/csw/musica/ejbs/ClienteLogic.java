@@ -49,13 +49,13 @@ public class ClienteLogic {
         return persistence.update(entity);
     }
 
-    public void deleteCliente(Long id) {
-        persistence.delete(id);
+    public ClienteEntity deleteCliente(Long id) {
+        return persistence.delete(id);
     }
 
     public ClienteEntity createCliente(ClienteEntity entity) throws BusinessLogicException {
 
-           if(persistence.findByUsuario(entity.getUsuario()) != null){
+           if(persistence.findById(entity.getId()) != null){
                throw new BusinessLogicException("Ya hay un cliente con ese usuario");
            }
            else{
@@ -78,12 +78,6 @@ public class ClienteLogic {
         }
         
     }
-    public ClienteEntity getByUsuario(String usuario) throws BusinessLogicException {
-        if (persistence.findByUsuario(usuario) == null) {
-            throw new WebApplicationException(404);
-        } else {
-            return persistence.findByUsuario(usuario);
-        }
-    }
+    
 
 }
