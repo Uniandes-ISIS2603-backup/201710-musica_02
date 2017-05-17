@@ -37,6 +37,32 @@
                      }]
                  }
              }
+         }).state('reviewInsert',{
+            url:'/agregar',
+            parent:'reviews',
+            views:{
+                insertView:{
+                    templateUrl: basePath + 'review.list.html',
+                    resolve:{
+                        agregarReview:['$http','funcionesContext','reviewsContext','$stateParams', function($http,$params,funcionesContext,reviewsContext){
+                                var a = 
+                                        function(review){
+                                            $http.post(funcionesContext +'/'+ $params.funcionId+'/'+reviewsContext,review);
+                                            console.log(review);
+                                }
+                                return a;
+                        }]
+                    },
+                    controller:['$scope','agregarReview','$state',function($scope,agregarReview,$state){
+                           $scope.review ={};
+                           $scope.postReview= function(){
+                               agregarReview($scope.review);
+                               console.log($scope.review);
+                               $state.reload();
+                           }
+                    }]
+                }
+            }
          });
     }]);
 })(window.angular);

@@ -70,13 +70,15 @@
                 param: {
                     festivalId: null
                 },
+                resolve: {
+                    currentArtistas: ['$http', 'artistasContext', '$stateParams', function ($http, artistasContext, $params) {
+                            return $http.get(artistasContext + '/festival/' + $params.festivalId);
+                        }]
+
+                },
                 views: {
                     childrenView: {
-                        resolve: {
-                            currentArtistas: ['$http', 'artistasContext', '$stateParams', function ($http, artistasContext, $params) {
-                                    return $http.get(artistasContext + '/festival/' + $params.festivalId);
-                                }]
-                        },
+
                         templateUrl: 'src/modules/artistas/artistas.list.html',
                         controller: ['$scope', 'currentArtistas', function ($scope, currentArtistas) {
                                 $scope.artistasRecords = currentArtistas.data;
@@ -92,8 +94,9 @@
                                 }]
                         },
                         templateUrl: basePath + 'festival.detail.html',
-                        controller: ['$scope', 'funciones', 'currentFestival', '$http', '$state', function ($scope, funciones, currentFestival, $http, $state) {
+                        controller: ['$scope','$state', 'funciones', 'currentFestival', '$http', function ($scope,$state, funciones, currentFestival, $http) {
                                 $scope.funcionesRecords = funciones.data;
+
                                 $scope.currentFestival = currentFestival.data;
                                 $scope.deleteFestival = function ()
                                 {
@@ -116,6 +119,7 @@
                                 {
                                     $http.post("api/festivales/", $scope.festival);
                                     $state.reload();
+
                                 };
                             }]
                     }
@@ -143,9 +147,6 @@
                                 $scope.putFestival = function ()
                                 {
                                     $http.put("api/festivales/", $scope.festival);
-                                    $state.reload();
-                                    $state.go('festivalesList');
-
                                 };
                                 $scope.currentFestival = currentFestival.data;
 
