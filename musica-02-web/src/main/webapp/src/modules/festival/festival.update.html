@@ -1,0 +1,47 @@
+<div class="container-fluid "  >
+    <br>
+    <h1 class="centro"><font color="#ADD8E6"> Actualizar el festival {{currentFestival.nombre}}</font> </h1>
+    <br>
+    <div class="row">
+        <div class="col-sm-6 col-md-6 derecha"><b><font> Nombre del festival:</font> </b></div>
+        <div class="col-sm-6 col-md-6"> <input type="text" name="nombreFestival" id="nombreFestival" ng-model="festival.nombre"></div>
+    </div>  
+    <br>
+    <div class="row">
+        <div class="col-sm-6 col-md-6 derecha"><b><font>Fecha inicio:</font> </b></div> 
+        <div class="col-sm-6 col-md-6"> <input type="date" name="fechaInicioFest" id="fechaInicioFest" ng-model="festival.fechaInicio"></div>
+    </div>  
+    <br>
+    <div class="row">
+        <div class="col-sm-6 col-md-6 derecha"><b><font>Fecha fin:</font> </b></div> 
+        <div class="col-sm-6 col-md-6"> <input type="date" name="fechaFinFest" id="fechaFinFest" ng-model="festival.fechaFin" ></div>
+    </div>  
+    <br>
+    <div class="row">
+        <div class="col-sm-6 col-md-6 derecha"><b><font> Vìnculo a la imagen:</font> </b></div>
+        <div class="col-sm-6 col-md-6"> <input type="text" name="imagenFestival" id="imagenFestival" ng-model="festival.imagen"></div>
+
+    </div> 
+    <br>
+    <div class="row">
+        <div class="col-sm-6 col-md-6 derecha"><b><font> Género:</font> </b></div>
+        <div class="col-sm-6 col-md-6">
+            <select name="selectGeneroFestival" id="selectGeneroFestival"
+                    ng-options="genero.nombre for genero in generosRecords"
+                    ng-model="festival.generoDTO">
+            </select>
+        </div>
+    </div> 
+    <br>
+    <div class="row">
+        <div class="col-sm-6 col-md-6 derecha"><b><font> Ciudad:</font> </b></div>
+        <div class="col-sm-6 col-md-6">
+            <select ng-model="festival.ciudadFestival" >
+                <option ng-repeat="ciudad in ciudadesRecords">{{ciudad.nombre}}</option>
+            </select>   
+        </div>
+    </div> 
+    <br>
+    <div class="centro"><input  type="submit" value="Agregar festival" ng-click="putFestival()"></div>
+</div>
+</div>
