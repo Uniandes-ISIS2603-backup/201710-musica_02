@@ -26,6 +26,7 @@ package co.edu.uniandes.csw.musica.persistence;
 
 import org.junit.Test;
 import co.edu.uniandes.csw.musica.entities.CancionEntity;
+import co.edu.uniandes.csw.musica.entities.DiscoEntity;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -53,127 +54,124 @@ import static org.junit.Assert.*;
  */
 @RunWith(Arquillian.class)
 public class CancionPersistenceTest {
-//    
-//    
-//    
-//    @Deployment
-//    public static JavaArchive createDeployment()
-//    {
-//        return ShrinkWrap.create(JavaArchive.class)
-//                .addPackage(CancionEntity.class.getPackage())
-//                .addPackage(CancionPersistence.class.getPackage())
-//                .addAsManifestResource("META-INF/persistence.xml", "persistence.xml")
-//                .addAsManifestResource("META-INF/beans.xml", "beans.xml");
-//    }
-//    
-//    
-//    @Inject
-//    private CancionPersistence cancionPersistence;
-//    
-//    @PersistenceContext
-//    private EntityManager em;
-//    
-//    @Inject
-//    UserTransaction utx;
-//
-//    private List<CancionEntity> data = new ArrayList<CancionEntity>();
-//
-//    @Before
-//    public void setUp()
-//    {
-//        try 
-//        {
-//            utx.begin();
-//            em.joinTransaction();
-//            clearData();
-//            insertData();
-//            utx.commit();
-//        }
-//        catch (Exception e)
-//        {
-//            e.printStackTrace();
-//            try 
-//            {
-//                utx.rollback();
-//            } 
-//            catch (Exception e1) 
-//            {
-//                e1.printStackTrace();
-//            }
-//        }
-//    }
-//    
-//    
-//     /**
-//     * Limpia las tablas que están implicadas en la prueba.
-//     */
-//    private void clearData() {
-//        em.createQuery("delete from ArtistaEntity").executeUpdate();
-//        em.createQuery("delete from DiscoEntity").executeUpdate();
-//        em.createQuery("delete from CancionEntity").executeUpdate();
-//    }
-//
-//    /**
-//     * Inserta los datos iniciales para el correcto funcionamiento de las
-//     * pruebas.
-//     *
-//     */
-//    private void insertData() {
-//        PodamFactory factory = new PodamFactoryImpl();
-//        for (int i = 0; i < 3; i++) {
-//            CancionEntity entity = factory.manufacturePojo(CancionEntity.class);
-//            em.persist(entity);
-//            data.add(entity);
-//        }
-//    }
-//    
-//    /**
-//     * Prueba para crear una Cancion.
-//     */
-//    @Test
-//    public void createCancionTest() {
-//        PodamFactory factory = new PodamFactoryImpl();
-//        CancionEntity newEntity = factory.manufacturePojo(CancionEntity.class);
-//
-//        CancionEntity result = cancionPersistence.create(newEntity);
-//
-//        Assert.assertNotNull(result);
-//        CancionEntity entity = em.find(CancionEntity.class, result.getId());
-//        Assert.assertNotNull(entity);
-//        Assert.assertEquals(newEntity.getNombre(), entity.getNombre());
-//    }
-//    
-//    /**
-//     * Prueba para consultar la lista de Discos.
-//     *
-//     */
-//    @Test
-//    public void getCancionesTest() {
-//        List<CancionEntity> list = cancionPersistence.findAll();
-//        Assert.assertEquals(data.size(), list.size());
-//        for (CancionEntity ent : list) {
-//            boolean found = false;
-//            for (CancionEntity entity : data) {
-//                if (ent.getId().equals(entity.getId())) {
-//                    found = true;
-//                }
-//            }
-//            Assert.assertTrue(found);
-//        }
-//    }
-//    
-//    /**
-//     * Prueba para consultar un Disco.
-//     */
-//    @Test
-//    public void getDiscoTest() {
-//        CancionEntity entity = data.get(0);
-//        CancionEntity newEntity = cancionPersistence.find(entity.getId());
-//        Assert.assertNotNull(newEntity);
-//        Assert.assertEquals(entity.getNombre(), newEntity.getNombre());
-//    }
-//    
-//    
     
+    
+    
+    @Deployment
+    public static JavaArchive createDeployment()
+    {
+        return ShrinkWrap.create(JavaArchive.class)
+                .addPackage(CancionEntity.class.getPackage())
+                .addPackage(CancionPersistence.class.getPackage())
+                .addPackage(DiscoEntity.class.getPackage())
+                .addAsManifestResource("META-INF/persistence.xml", "persistence.xml")
+                .addAsManifestResource("META-INF/beans.xml", "beans.xml");
+    }
+    
+    
+    DiscoEntity fatherEntity;
+    
+    private List<CancionEntity> cancionData = new ArrayList<CancionEntity>();
+    
+    @Inject
+    private CancionPersistence cancionPersistence;
+    
+    @PersistenceContext
+    private EntityManager em;
+    
+    @Inject
+    UserTransaction utx;
+
+    
+
+    @Before
+    public void setUp()
+    {
+        try 
+        {
+            utx.begin();
+            em.joinTransaction();
+            clearData();
+            insertData();
+            utx.commit();
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+            try 
+            {
+                utx.rollback();
+            } 
+            catch (Exception e1) 
+            {
+                e1.printStackTrace();
+            }
+        }
+    }
+    
+    
+     /**
+     * Limpia las tablas que están implicadas en la prueba.
+     */
+    private void clearData() {
+        em.createQuery("delete from ArtistaEntity").executeUpdate();
+        em.createQuery("delete from DiscoEntity").executeUpdate();
+        em.createQuery("delete from CancionEntity").executeUpdate();
+    }
+
+    /**
+     * Inserta los datos iniciales para el correcto funcionamiento de las
+     * pruebas.
+     *
+     */
+    private void insertData() {
+        PodamFactory factory = new PodamFactoryImpl();
+        fatherEntity = factory.manufacturePojo(DiscoEntity.class);
+        fatherEntity.setId(1L);
+        em.persist(fatherEntity);
+        for (int i = 0; i < 3; i++) {
+            CancionEntity entity = factory.manufacturePojo(CancionEntity.class);
+            entity.setDiscoEntity(fatherEntity);
+            cancionData.add(entity);
+            em.persist(entity);
+            
+        }
+    }
+    
+    /**
+     * Prueba para crear una Cancion.
+     */
+    @Test
+    public void createCancionTest() {
+        PodamFactory factory = new PodamFactoryImpl();
+        CancionEntity newEntity = factory.manufacturePojo(CancionEntity.class);
+        newEntity.setDiscoEntity(fatherEntity);
+        CancionEntity result = cancionPersistence.create(newEntity);
+
+        Assert.assertNotNull(result);
+        CancionEntity entity = em.find(CancionEntity.class, result.getId());
+        
+        Assert.assertNotNull(entity);
+        Assert.assertEquals(newEntity.getNombre(), entity.getNombre());
+    }
+    
+    /**
+     * Prueba para consultar la lista de Discos.
+     *
+     */
+    @Test
+    public void getCancionesTest() {
+        List<CancionEntity> list = cancionPersistence.findAll(fatherEntity.getId());
+        Assert.assertEquals(cancionData.size(), list.size());
+        for (CancionEntity ent : list) {
+            boolean found = false;
+            for (CancionEntity entity : cancionData) {
+                if (ent.getId().equals(entity.getId())) {
+                    found = true;
+                }
+            }
+            Assert.assertTrue(found);
+        }
+    }
     
 }

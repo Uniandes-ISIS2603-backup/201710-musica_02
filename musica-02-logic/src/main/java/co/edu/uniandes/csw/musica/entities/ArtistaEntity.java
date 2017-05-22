@@ -33,6 +33,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import uk.co.jemos.podam.common.PodamExclude;
 
 /**
@@ -51,8 +52,9 @@ public class ArtistaEntity implements Serializable
     private String trayectoria;
     private String imagen;
     
-    //viene de las constantes
-    private String genero;
+    @PodamExclude
+    @ManyToOne
+    private GeneroEntity genero;
     
     @PodamExclude
     @ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY,mappedBy = "artistas")
@@ -121,21 +123,19 @@ public class ArtistaEntity implements Serializable
     public void setTrayectoria(String trayectoria) {
         this.trayectoria = trayectoria;
     }
-
     /**
-     * @return the Genero
+     * @return the genero
      */
-    public String getGenero() {
+    public GeneroEntity getGenero() {
         return genero;
     }
 
     /**
-     * @param Genero the Genero to set
+     * @param genero the genero to set
      */
-    public void setGenero(String Genero) {
-        this.genero = Genero;
+    public void setGenero(GeneroEntity genero) {
+        this.genero = genero;
     }
-
     /**
      * @return the funciones
      */

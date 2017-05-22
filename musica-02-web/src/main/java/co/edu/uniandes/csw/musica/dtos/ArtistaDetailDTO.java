@@ -38,6 +38,7 @@ public class ArtistaDetailDTO extends ArtistaDTO
 {
     
     private List<FuncionDTO> funcionesDTOs;
+    private GeneroDTO generoDTO;
     
 	
     public ArtistaDetailDTO()
@@ -48,13 +49,18 @@ public class ArtistaDetailDTO extends ArtistaDTO
     public ArtistaDetailDTO(ArtistaEntity entity) 
     {
         super(entity);
+        
         funcionesDTOs = new ArrayList<FuncionDTO>();
         
          for (FuncionEntity c : entity.getFunciones())
         {
             funcionesDTOs.add(new FuncionDTO(c));
         }
-         
+        
+         if (entity.getGenero() != null) 
+         {
+                generoDTO = new GeneroDTO(entity.getGenero());
+         }
         
     }
 
@@ -71,6 +77,10 @@ public class ArtistaDetailDTO extends ArtistaDTO
             funciones.add(c.toEntity());
            }
            entity.setFunciones(funciones);
+        }
+        if (generoDTO!= null)
+        {
+            entity.setGenero(generoDTO.toEntity());
         }
         
         return entity;
@@ -89,6 +99,20 @@ public class ArtistaDetailDTO extends ArtistaDTO
      */
     public void setFuncionesDTOs(List<FuncionDTO> funcionesDTOs) {
         this.funcionesDTOs = funcionesDTOs;
+    }
+    
+    /**
+     * @return the generoDTO
+     */
+    public GeneroDTO getGeneroDTO() {
+        return generoDTO;
+    }
+
+    /**
+     * @param generoDTO the generoDTO to set
+     */
+    public void setGeneroDTO(GeneroDTO generoDTO) {
+        this.generoDTO = generoDTO;
     }
     
     

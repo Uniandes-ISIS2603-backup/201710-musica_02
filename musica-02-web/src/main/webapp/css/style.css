@@ -45,6 +45,10 @@
     font-weight: bold;
 
 }
+.txtArea{
+    min-width: 100%;
+
+}
 .fondoAzulRayado{
       color: rgba(255,255,255,1);
   -o-text-overflow: clip;

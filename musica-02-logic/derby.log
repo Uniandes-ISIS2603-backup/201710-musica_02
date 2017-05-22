@@ -1,11 +1,11 @@
 ----------------------------------------------------------------
-Tue May 16 21:37:03 COT 2017:
- Iniciando instancia a816c00e-015c-1444-0eaa-00000f1aba50 de Derby, versi�n The Apache Software Foundation - Apache Derby - 10.10.2.0 - (1582446): 
-en el directorio de base de datos C:\Users\ca.anzola\AppData\Local\Temp\gfembed1170536465741122413tmp\lib\databases\embedded_default con el cargador de clases sun.misc.Launcher$AppClassLoader@4aa298b7
-Cargado desde file:/C:/Users/ca.anzola/.m2/repository/org/glassfish/main/extras/glassfish-embedded-all/4.1/glassfish-embedded-all-4.1.jar
+Wed May 17 10:31:58 COT 2017:
+ Iniciando instancia a816c00e-015c-1709-8370-00000eaae698 de Derby, versi�n The Apache Software Foundation - Apache Derby - 10.10.2.0 - (1582446): 
+en el directorio de base de datos C:\Users\a.echeverrir\AppData\Local\Temp\gfembed7503975518853934480tmp\lib\databases\embedded_default con el cargador de clases sun.misc.Launcher$AppClassLoader@4aa298b7
+Cargado desde file:/C:/Users/a.echeverrir/.m2/repository/org/glassfish/main/extras/glassfish-embedded-all/4.1/glassfish-embedded-all-4.1.jar
 java.vendor=Oracle Corporation
 java.runtime.version=1.8.0_111-b14
-user.dir=C:\Users\ca.anzola\Desktop\musica_02\musica_02\musica-02-logic
+user.dir=C:\Users\a.echeverrir\Documents\NetBeansProjects\musica_02\musica-02-logic
 os.name=Windows 7
 os.arch=amd64
 os.version=6.1

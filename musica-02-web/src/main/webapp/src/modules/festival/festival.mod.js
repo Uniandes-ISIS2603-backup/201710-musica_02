@@ -107,6 +107,7 @@
                                 {
                                     $http.delete("api/festivales/" + currentFestival.data.id);
                                     $state.go('festivalesList');
+                                    $state.reload();
 
                                 };
                             }]
@@ -123,6 +124,8 @@
                                 $scope.postFestival = function ()
                                 {
                                     $http.post("api/festivales/", $scope.festival);
+                                    $state.go('festivalesList');
+
                                     $state.reload();
 
                                 };
@@ -152,6 +155,9 @@
                                 $scope.putFestival = function ()
                                 {
                                     $http.put("api/festivales/", $scope.festival);
+                                    $state.go('festivalesList');
+                                    $state.reload();
+
                                 };
                                 $scope.currentFestival = currentFestival.data;
 

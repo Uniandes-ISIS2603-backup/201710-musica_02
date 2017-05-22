@@ -21,158 +21,132 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+package co.edu.uniandes.csw.musica.logic;
 
-
-package co.edu.uniandes.csw.musica.persistence;
-
-import org.junit.Test;
-import co.edu.uniandes.csw.musica.entities.DiscoEntity;
+import co.edu.uniandes.csw.musica.ejbs.ArtistaLogic;
 import co.edu.uniandes.csw.musica.entities.ArtistaEntity;
+import co.edu.uniandes.csw.musica.persistence.ArtistaPersistence;
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.UserTransaction;
-import org.junit.Assert;
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
+import org.junit.After;
+import org.junit.AfterClass;
+import org.junit.Assert;
+import static org.junit.Assert.fail;
 import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import uk.co.jemos.podam.api.PodamFactory;
 import uk.co.jemos.podam.api.PodamFactoryImpl;
-
-
-import static org.junit.Assert.*;
 
 /**
  *
  * @author a.echeverrir
  */
 @RunWith(Arquillian.class)
-public class DiscoPersistenceTest {
+public class ArtistaLogicTest 
+{
     
-    
-    
-    @Deployment
-    public static JavaArchive createDeployment()
-    {
+   @Deployment
+    public static JavaArchive createDeployment() {
         return ShrinkWrap.create(JavaArchive.class)
-                
-                .addPackage(DiscoEntity.class.getPackage())
-                .addPackage(DiscoPersistence.class.getPackage())
                 .addPackage(ArtistaEntity.class.getPackage())
+                .addPackage(ArtistaLogic.class.getPackage())
+                .addPackage(ArtistaPersistence.class.getPackage())
                 .addAsManifestResource("META-INF/persistence.xml", "persistence.xml")
                 .addAsManifestResource("META-INF/beans.xml", "beans.xml");
     }
     
-    /**
-     * Artista que contiene los discos. La relación entre Artista y
-     * disco es "composite"
-     */
-    ArtistaEntity fatherEntity;
-    
-    /**
-     * Lista de los discos que serán utilizados en las pruebas. La
-     * relación entre Artista y Disco es "composite"
-     */
-    private List<DiscoEntity> discoData = new ArrayList<>();
-    
     @Inject
-    private DiscoPersistence discoPersistence;
+    private ArtistaLogic artistaLogic;
     
-    @PersistenceContext
+    @PersistenceContext(unitName = "musicaPU")
     private EntityManager em;
     
     @Inject
     UserTransaction utx;
 
+    private List<ArtistaEntity> data = new ArrayList<>();
+
+    @BeforeClass
+    public static void setUpClass() throws Exception {
+    }
+
+    @AfterClass
+    public static void tearDownClass() throws Exception {
+    }
 
     @Before
-    public void setUp()
-    {
-        try 
-        {
+    public void setUp() throws Exception {
+        try {
             utx.begin();
             em.joinTransaction();
             clearData();
             insertData();
             utx.commit();
-        }
-        catch (Exception e)
-        {
-            e.printStackTrace();
-            try 
-            {
+        } catch (Exception e) {
+            try {
                 utx.rollback();
-            } 
-            catch (Exception e1) 
-            {
-                e1.printStackTrace();
+
+            } catch (Exception e1) {
+                e.printStackTrace();
+                fail("Configuration database fail");
             }
+
         }
     }
-    
-    
-     /**
-     * Limpia las tablas que están implicadas en la prueba.
-     */
+
     private void clearData() {
         em.createQuery("delete from ArtistaEntity").executeUpdate();
-        em.createQuery("delete from DiscoEntity").executeUpdate();
-        em.createQuery("delete from CancionEntity").executeUpdate();
     }
 
-    /**
-     * Inserta los datos iniciales para el correcto funcionamiento de las
-     * pruebas.
-     *
-     */
     private void insertData() {
         PodamFactory factory = new PodamFactoryImpl();
-        fatherEntity = factory.manufacturePojo(ArtistaEntity.class);
-        fatherEntity.setId(1L);
-        em.persist(fatherEntity);
-        
         for (int i = 0; i < 3; i++) {
-            DiscoEntity entity = factory.manufacturePojo(DiscoEntity.class);
-            entity.setArtistaEntity(fatherEntity);
-            discoData.add(entity);
-            em.persist(entity);
+            ArtistaEntity fest = factory.manufacturePojo(ArtistaEntity.class);
+            em.persist(fest);
+            data.add(fest);
         }
     }
-    
-    /**
-     * Prueba para crear un Disco.
-     */
-    @Test
-    public void createDiscoTest() {
-        PodamFactory factory = new PodamFactoryImpl();
-        DiscoEntity newEntity = factory.manufacturePojo(DiscoEntity.class);
-        newEntity.setArtistaEntity(fatherEntity);
 
-        DiscoEntity result = discoPersistence.create(newEntity);
-
-        Assert.assertNotNull(result);
-        DiscoEntity entity = em.find(DiscoEntity.class, result.getId());
-        Assert.assertEquals(newEntity.getNombre(), entity.getNombre());
+    @After
+    public void tearDown() throws Exception {
     }
     
+    
     /**
-     * Prueba para consultar la lista de Discos.
-     *
+     * Test of find method, of class ArtistaPersistence.
      */
     @Test
-    public void getDiscosInArtistaTest() {
-        List<DiscoEntity> list = discoPersistence.findAll(fatherEntity.getId());
-        Assert.assertEquals(discoData.size(), list.size());
-        for (DiscoEntity ent : list) {
+    public void testGetArtista() throws Exception {
+        ArtistaEntity entity = data.get(0);
+        ArtistaEntity newEntity = artistaLogic.getArtista(entity.getId());
+        Assert.assertNotNull(newEntity);
+        Assert.assertEquals(entity.getNombre(), newEntity.getNombre());
+        Assert.assertEquals(entity.getTrayectoria(), newEntity.getTrayectoria());
+        Assert.assertEquals(entity.getImagen(), newEntity.getImagen());
+
+        
+    }
+
+    /**
+     * Test of findAll method, of class ArtistaPersistence.
+     */
+    @Test
+    public void testGetArtistas() throws Exception {
+        List<ArtistaEntity> list = artistaLogic.getArtistas();
+        Assert.assertEquals(data.size(), list.size());
+        for (ArtistaEntity ent : list) {
             boolean found = false;
-            for (DiscoEntity entity : discoData) {
+            for (ArtistaEntity entity : data) {
                 if (ent.getId().equals(entity.getId())) {
                     found = true;
                 }
@@ -180,17 +154,26 @@ public class DiscoPersistenceTest {
             Assert.assertTrue(found);
         }
     }
-    
+
     /**
-     * Prueba para consultar un Disco.
+     * Test of create method, of class ArtistaPersistence.
      */
     @Test
-    public void getDiscoTest() {
-        DiscoEntity entity = discoData.get(0);
-        DiscoEntity newEntity = discoPersistence.find(entity.getId());
+    public void testCreateArtista() throws Exception {
+        PodamFactory factory = new PodamFactoryImpl();
+        ArtistaEntity newEntity = factory.manufacturePojo(ArtistaEntity.class);
+
+        ArtistaEntity result = artistaLogic.createArtista(newEntity);
+
+        Assert.assertNotNull(result);
+        ArtistaEntity entity = em.find(ArtistaEntity.class, result.getId());
+        Assert.assertNotNull(entity);
         Assert.assertNotNull(newEntity);
         Assert.assertEquals(entity.getNombre(), newEntity.getNombre());
+        Assert.assertEquals(entity.getTrayectoria(), newEntity.getTrayectoria());
+        Assert.assertEquals(entity.getImagen(), newEntity.getImagen());
     }
+    
     
     
     

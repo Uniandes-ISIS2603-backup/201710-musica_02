@@ -56,11 +56,11 @@ insert into FUNCIONENTITY (ID, DURACION, ENTRADASDISPONIBLES, ESPAGA, FECHA, FES
 insert into FUNCIONENTITY (ID, DURACION, ENTRADASDISPONIBLES, ESPAGA, FECHA, FESTIVALENTITY_ID, VENUEENTITY_ID, IMAGEN) values (1005, 150, 205, 0, '2017-04-21', 1005, 1005, 'https://s-media-cache-ak0.pinimg.com/564x/0b/1b/3f/0b1b3f8c262603c0ed91073356963fa6.jpg');
 insert into FUNCIONENTITY (ID, DURACION, ENTRADASDISPONIBLES, ESPAGA, FECHA, FESTIVALENTITY_ID, VENUEENTITY_ID, IMAGEN) values (1006, 110, 201, 1, '2017-05-21', 1001, 1001, 'http://edmchicago.com/wp-content/uploads/2016/03/TC-Lollapalooza-1366x800.jpg');
 
-insert into ARTISTAENTITY (ID, GENERO, NOMBRE, TRAYECTORIA, IMAGEN) values (1001, 'ROCK', 'Led zepellin', 'monetize magnetic relationships', 'http://img.wennermedia.com/social/led-zeppelin-bbc-album-review-fb72cd94-408c-4600-a911-f5a4f5d4730c.jpg');
-insert into ARTISTAENTITY (ID, GENERO, NOMBRE,  TRAYECTORIA, IMAGEN) values (1002, 'ELECTRONICA', 'Skrillex',  'expedite granular technologies', 'http://www.revolution935.com//wp-content/uploads/2016/01/skrillex-headshot.jpg');
-insert into ARTISTAENTITY (ID, GENERO, NOMBRE,   TRAYECTORIA, IMAGEN) values (1003, 'ELECTRONICA', 'DeadMau5',   'mesh enterprise networks', 'http://www.billboard.com/files/media/deadmau5-press-photo-2016-billboard-1548.jpg');
-insert into ARTISTAENTITY (ID, GENERO, NOMBRE,   TRAYECTORIA, IMAGEN) values (1004, 'REGGAE', 'Dread Mar I',   'enhance e-business bandwidth', 'https://pbs.twimg.com/profile_images/800565248650571776/BhndJ8Rr.jpg');
-insert into ARTISTAENTITY (ID, GENERO, NOMBRE,   TRAYECTORIA, IMAGEN) values (1005, 'ELECTRONICA', 'Knife Party',   'whiteboard interactive infomediaries', 'https://lh3.googleusercontent.com/-BhJrGzQLCa8/AAAAAAAAAAI/AAAAAAAAAA0/2Gn2_MDL1HM/photo.jpg');
+insert into ARTISTAENTITY (ID, GENERO_ID, NOMBRE, TRAYECTORIA, IMAGEN) values (1001, 1001, 'Led zepellin', 'monetize magnetic relationships', 'http://img.wennermedia.com/social/led-zeppelin-bbc-album-review-fb72cd94-408c-4600-a911-f5a4f5d4730c.jpg');
+insert into ARTISTAENTITY (ID, GENERO_ID, NOMBRE, TRAYECTORIA, IMAGEN) values (1002, 1002, 'Skrillex',  'expedite granular technologies', 'http://www.revolution935.com//wp-content/uploads/2016/01/skrillex-headshot.jpg');
+insert into ARTISTAENTITY (ID, GENERO_ID, NOMBRE, TRAYECTORIA, IMAGEN) values (1003, 1003, 'DeadMau5',   'mesh enterprise networks', 'http://www.billboard.com/files/media/deadmau5-press-photo-2016-billboard-1548.jpg');
+insert into ARTISTAENTITY (ID, GENERO_ID, NOMBRE, TRAYECTORIA, IMAGEN) values (1004, 1004, 'Dread Mar I',   'enhance e-business bandwidth', 'https://pbs.twimg.com/profile_images/800565248650571776/BhndJ8Rr.jpg');
+insert into ARTISTAENTITY (ID, GENERO_ID, NOMBRE, TRAYECTORIA, IMAGEN) values (1005, 1005, 'Knife Party',   'whiteboard interactive infomediaries', 'https://lh3.googleusercontent.com/-BhJrGzQLCa8/AAAAAAAAAAI/AAAAAAAAAA0/2Gn2_MDL1HM/photo.jpg');
 
 insert into CLIENTEENTITY (ID,USUARIO, ABONO, DOCUMENTO, NOMBRE, REGISTRADOBLOG, TIPODOCUMENTO) values (1,'1001', 1, '1001', 'Carlos', 0, 'TI');
 insert into CLIENTEENTITY (ID,USUARIO, ABONO, DOCUMENTO, NOMBRE, REGISTRADOBLOG, TIPODOCUMENTO) values (2,'1002', 2, '1002', 'Richard', 0, 'CC');
