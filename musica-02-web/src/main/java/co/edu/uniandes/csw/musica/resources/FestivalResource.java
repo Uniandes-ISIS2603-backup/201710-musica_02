@@ -93,8 +93,9 @@ public class FestivalResource {
 
     @POST
     public FestivalDetailDTO createFestival(FestivalDetailDTO festival) {
-        if(festival.getFechaInicio().compareTo(festival.getFechaFin())>0)
+        if (festival.getFechaInicio().compareTo(festival.getFechaFin()) > 0) {
             throw new WebApplicationException("La fecha de inicio debe ser anterior a la del fin.", Response.Status.CREATED);
+        }
         return new FestivalDetailDTO(logic.createFestival(festival.toEntity()));
     }
 
@@ -112,6 +113,30 @@ public class FestivalResource {
         } else {
             throw new WebApplicationException("No hay un festival con ese ID.");
         }
+
+    }
+
+    @GET
+    @Path("darSiguiente/{id: \\d+}")
+    public FestivalDetailDTO darSiguiente(@PathParam("id") Long id) throws WebApplicationException {
+
+        FestivalEntity entity = logic.getSiguiente(id);
+        if (entity == null) {
+            throw new WebApplicationException("No hay un festival con ese ID.");
+        }
+        return new FestivalDetailDTO(entity);
+
+    }
+
+    @GET
+    @Path("darAnterior/{id: \\d+}")
+    public FestivalDetailDTO darAnterior(@PathParam("id") Long id) throws WebApplicationException {
+
+        FestivalEntity entity = logic.getAnterior(id);
+        if (entity == null) {
+            throw new WebApplicationException("No hay un festival con ese ID.");
+        }
+        return new FestivalDetailDTO(entity);
 
     }
 
