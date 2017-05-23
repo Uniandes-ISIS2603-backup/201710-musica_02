@@ -95,19 +95,36 @@
                                 }],
                             nombresArtistas: ['$http', 'artistasContext', '$stateParams', function ($http, artistasContext, $params) {
                                     return $http.get(artistasContext + '/festival/String/' + $params.festivalId);
+                                }],
+                            anteriorFestival: ['$http', 'festivalesContext', '$stateParams', function ($http, festivalesContext, $params) {
+                                    return $http.get(festivalesContext + '/darAnterior/' + $params.festivalId);
+                                }],
+                            siguienteFestival: ['$http', 'festivalesContext', '$stateParams', function ($http, festivalesContext, $params) {
+                                    return $http.get(festivalesContext + '/darSiguiente/' + $params.festivalId);
                                 }]
+
                         },
                         templateUrl: basePath + 'festival.detail.html',
-                        controller: ['$scope', 'funciones', 'currentFestival', 'nombresArtistas', '$http', '$state', function ($scope, funciones, currentFestival, nombresArtistas, $http, $state) {
+                        controller: ['$scope', 'funciones', 'currentFestival', 'nombresArtistas', '$http', '$state', 'anteriorFestival', 'siguienteFestival', function ($scope, funciones, currentFestival, nombresArtistas, $http, $state, anteriorFestival, siguienteFestival) {
                                 $scope.funcionesRecords = funciones.data;
                                 $scope.nombresArtistas = nombresArtistas.data;
 
                                 $scope.currentFestival = currentFestival.data;
                                 $scope.deleteFestival = function ()
                                 {
-                                    $http.delete("api/festivales/" + currentFestival.data.id);
-                                    $state.go('festivalesList');
-                                    $state.reload();
+                                    $http.delete("api/festivales/" + currentFestival.data.id).then(function () {
+                                        $state.go('festivalesList', {}, {reload: true});
+                                    });
+
+                                };
+                                $scope.irAnteriorFestival = function ()
+                                {
+                                    $state.go('festivalDetail', {festivalId: anteriorFestival.data.id}, {reload: true});
+
+                                };
+                                $scope.irSiguienteFestival = function ()
+                                {
+                                    $state.go('festivalDetail', {festivalId: siguienteFestival.data.id}, {reload: true});
 
                                 };
                             }]
@@ -123,11 +140,9 @@
                                 $scope.festival = {};
                                 $scope.postFestival = function ()
                                 {
-                                    $http.post("api/festivales/", $scope.festival);
-                                    $state.go('festivalesList');
-
-                                    $state.reload();
-
+                                    $http.post("api/festivales/", $scope.festival).then(function () {
+                                        $state.go('festivalesList', {}, {reload: true});
+                                    });
                                 };
                             }]
                     }
@@ -154,9 +169,11 @@
                                 $scope.festival.id = currentFestival.data.id;
                                 $scope.putFestival = function ()
                                 {
-                                    $http.put("api/festivales/", $scope.festival);
-                                    $state.go('festivalesList');
-                                    $state.reload();
+                                    $http.put("api/festivales/", $scope.festival).then(function () {
+                                        $state.go('festivalesList', {}, {reload: true});
+
+
+                                    });
 
                                 };
                                 $scope.currentFestival = currentFestival.data;

@@ -30,38 +30,96 @@ package co.edu.uniandes.csw.musica.ejbs;
 import co.edu.uniandes.csw.musica.entities.FestivalEntity;
 import co.edu.uniandes.csw.musica.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.musica.persistence.FestivalPersistence;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Objects;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 
 @Stateless
 public class FestivalLogic {
-    
-    @Inject FestivalPersistence persistence;
-    
-    public List<FestivalEntity> getFestivales()
-    {
+
+    @Inject
+    FestivalPersistence persistence;
+
+    public List<FestivalEntity> getFestivales() {
         return persistence.findAll();
     }
-     public FestivalEntity getFestival (Long id)  
-    {
+
+    public FestivalEntity getSiguiente(Long id) {
+        List<FestivalEntity> lista = persistence.findAll();
+        Iterator<FestivalEntity> it = lista.iterator();
+        if (it.hasNext()) {
+            FestivalEntity first = it.next();
+            if (Objects.equals(first.getId(), id)) {
+                if (it.hasNext()) {
+                    return it.next();
+                }
+                return first;
+            }
+
+            while (it.hasNext()) {
+                if (Objects.equals(it.next().getId(), id)) {
+                    if (it.hasNext()) {
+                        return it.next();
+                    } else {
+                        return first;
+
+                    }
+                }
+            }
+        }
+        return null;
+
+    }
+
+    public FestivalEntity getAnterior(Long id) {
+        List<FestivalEntity> lista = persistence.findAll();
+        Iterator<FestivalEntity> it = lista.iterator();
+        FestivalEntity anterior = it.next();
+        FestivalEntity actual;
+        while (it.hasNext()) {
+            actual = it.next();
+            if (Objects.equals(anterior.getId(), id)) {
+                return getLast(it);
+            }
+            if (Objects.equals(actual.getId(), id)) {
+                return anterior;
+            }
+            anterior = actual;
+        }
+        return null;
+    }
+
+    public FestivalEntity getLast(Iterator<FestivalEntity> it) {
+        FestivalEntity fest;
+        while (it.hasNext()) {
+            fest = it.next();
+            if (!it.hasNext()) {
+                return fest;
+            }
+        }
+        return it.next();
+    }
+
+    public FestivalEntity getFestival(Long id) {
         return persistence.find(id);
     }
-    public List getFestivalesPorGenero (Long genero)  
-    {
+
+    public List getFestivalesPorGenero(Long genero) {
         return persistence.findPorGenero(genero);
     }
-    public FestivalEntity createFestival (FestivalEntity festival) 
-    {
+
+    public FestivalEntity createFestival(FestivalEntity festival) {
         return persistence.create(festival);
     }
-    public FestivalEntity updateFestival (FestivalEntity festival)
-    {
+
+    public FestivalEntity updateFestival(FestivalEntity festival) {
         return persistence.update(festival);
     }
-    public FestivalEntity deleteFestival (Long id)
-    {
+
+    public FestivalEntity deleteFestival(Long id) {
         return persistence.delete(id);
     }
-    
+
 }
