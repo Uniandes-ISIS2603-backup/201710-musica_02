@@ -77,6 +77,7 @@ public class DiscoResource
         DiscoEntity disco = logic.createDisco(dto.toEntity());
         return new DiscoDetailDTO(disco);
     }
+    
     @GET 
     @Path("{id}")
     public DiscoDetailDTO getDisco(@PathParam("id") Long id) throws BusinessLogicException

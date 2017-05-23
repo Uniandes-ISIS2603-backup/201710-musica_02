@@ -23,9 +23,10 @@
  */
 package co.edu.uniandes.csw.musica.logic;
 
-import co.edu.uniandes.csw.musica.ejbs.ArtistaLogic;
+import co.edu.uniandes.csw.musica.ejbs.DiscoLogic;
+import co.edu.uniandes.csw.musica.entities.DiscoEntity;
 import co.edu.uniandes.csw.musica.entities.ArtistaEntity;
-import co.edu.uniandes.csw.musica.persistence.ArtistaPersistence;
+import co.edu.uniandes.csw.musica.persistence.DiscoPersistence;
 import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Inject;
@@ -52,21 +53,22 @@ import uk.co.jemos.podam.api.PodamFactoryImpl;
  * @author a.echeverrir
  */
 @RunWith(Arquillian.class)
-public class ArtistaLogicTest 
-{
+public class DiscoLogicTest {
     
-   @Deployment
+    @Deployment
     public static JavaArchive createDeployment() {
         return ShrinkWrap.create(JavaArchive.class)
+                .addPackage(DiscoEntity.class.getPackage())
+                .addPackage(DiscoLogic.class.getPackage())
+                .addPackage(DiscoPersistence.class.getPackage())
                 .addPackage(ArtistaEntity.class.getPackage())
-                .addPackage(ArtistaLogic.class.getPackage())
-                .addPackage(ArtistaPersistence.class.getPackage())
                 .addAsManifestResource("META-INF/persistence.xml", "persistence.xml")
                 .addAsManifestResource("META-INF/beans.xml", "beans.xml");
     }
     
     @Inject
-    private ArtistaLogic artistaLogic;
+    private DiscoLogic discoLogic;
+    PodamFactory factory = new PodamFactoryImpl();
     
     @PersistenceContext(unitName = "musicaPU")
     private EntityManager em;
@@ -74,79 +76,58 @@ public class ArtistaLogicTest
     @Inject
     UserTransaction utx;
 
-    private List<ArtistaEntity> data = new ArrayList<>();
-
-    @BeforeClass
-    public static void setUpClass() throws Exception {
-    }
-
-    @AfterClass
-    public static void tearDownClass() throws Exception {
-    }
+    private List<DiscoEntity> data = new ArrayList<>();
+    private ArtistaEntity artistaData = new ArtistaEntity(); 
 
     @Before
-    public void setUp() throws Exception {
-        try {
+     public void setUp(){
+        try{
             utx.begin();
-            em.joinTransaction();
             clearData();
             insertData();
             utx.commit();
-        } catch (Exception e) {
-            try {
+        }catch(Exception e){
+            e.printStackTrace();
+            try{
                 utx.rollback();
-
-            } catch (Exception e1) {
-                e.printStackTrace();
-                fail("Configuration database fail");
+            }catch(Exception e1){
+                e1.printStackTrace();
             }
-
         }
     }
 
     private void clearData() {
+        em.createQuery("delete from DiscoEntity").executeUpdate();
         em.createQuery("delete from ArtistaEntity").executeUpdate();
     }
 
     private void insertData() {
-        PodamFactory factory = new PodamFactoryImpl();
+    
+        artistaData = factory.manufacturePojo(ArtistaEntity.class);
+        artistaData.setId(1L);
+        em.persist(artistaData);
+        
         for (int i = 0; i < 3; i++) {
-            ArtistaEntity artist = factory.manufacturePojo(ArtistaEntity.class);
-            em.persist(artist);
-            data.add(artist);
+            DiscoEntity disc = factory.manufacturePojo(DiscoEntity.class);
+            disc.setArtistaEntity(artistaData);
+            data.add(disc);
         }
     }
 
     @After
     public void tearDown() throws Exception {
     }
-    
-    
-    /**
-     * Test of find method, of class ArtistaPersistence.
-     */
-    @Test
-    public void testGetArtista() throws Exception {
-        ArtistaEntity entity = data.get(0);
-        ArtistaEntity newEntity = artistaLogic.getArtista(entity.getId());
-        Assert.assertNotNull(newEntity);
-        Assert.assertEquals(entity.getNombre(), newEntity.getNombre());
-        Assert.assertEquals(entity.getTrayectoria(), newEntity.getTrayectoria());
-        Assert.assertEquals(entity.getImagen(), newEntity.getImagen());
-
-        
-    }
 
     /**
-     * Test of findAll method, of class ArtistaPersistence.
+     * Test of findAll method, of class DiscoPersistence.
      */
     @Test
-    public void testGetArtistas() throws Exception {
-        List<ArtistaEntity> list = artistaLogic.getArtistas();
+    public void testGetDiscos() throws Exception {
+        List<DiscoEntity> list = discoLogic.getDiscos(artistaEntity.getId());
         Assert.assertEquals(data.size(), list.size());
-        for (ArtistaEntity ent : list) {
+        for (DiscoEntity ent : list) {
             boolean found = false;
-            for (ArtistaEntity entity : data) {
+            for (DiscoEntity entity : data) {
                 if (ent.getId().equals(entity.getId())) {
                     found = true;
                 }
@@ -156,21 +137,20 @@ public class ArtistaLogicTest
     }
 
     /**
-     * Test of create method, of class ArtistaPersistence.
+     * Test of create method, of class DiscoPersistence.
      */
     @Test
-    public void testCreateArtista() throws Exception {
+    public void testCreateDisco() throws Exception {
         PodamFactory factory = new PodamFactoryImpl();
-        ArtistaEntity newEntity = factory.manufacturePojo(ArtistaEntity.class);
+        DiscoEntity newEntity = factory.manufacturePojo(DiscoEntity.class);
 
-        ArtistaEntity result = artistaLogic.createArtista(newEntity);
+        DiscoEntity result = discoLogic.createDisco(newEntity);
 
         Assert.assertNotNull(result);
-        ArtistaEntity entity = em.find(ArtistaEntity.class, result.getId());
+        DiscoEntity entity = em.find(DiscoEntity.class, result.getId());
         Assert.assertNotNull(entity);
         Assert.assertNotNull(newEntity);
         Assert.assertEquals(entity.getNombre(), newEntity.getNombre());
-        Assert.assertEquals(entity.getTrayectoria(), newEntity.getTrayectoria());
         Assert.assertEquals(entity.getImagen(), newEntity.getImagen());
     }
     
@@ -179,3 +159,4 @@ public class ArtistaLogicTest
     
     
 }
+

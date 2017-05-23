@@ -63,8 +63,7 @@ public class DiscoDetailDTO extends DiscoDTO
                
             for (CancionEntity c : entity.getCanciones()) {
                 cancionesDTOs.add(new CancionDTO(c));
-            }     
-            
+            }       
         
         }
     }

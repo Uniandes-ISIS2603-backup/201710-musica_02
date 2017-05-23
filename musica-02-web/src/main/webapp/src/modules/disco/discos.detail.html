@@ -5,21 +5,28 @@
                 <p><b>Disco</b></p>  
                 <hr>
                 <div class="thumb">
-                    <img class="img-responsive" ng-src="{{currentDisco.imagen}}"/>
-                  
-                </div> 
+                    <img class="img-responsive" ng-src="{{currentDisco.imagen}}"/>  
+                </div>
+                <button ui-sref="cancionInsert">Agregar Cancion +</button>
+               
             </div>
-            <div class="thumb">
+        </div>
+        
+        <div class="thumb">
                 <dl>
-                    
                     <dt><b>Nombre Artista</b></dt>
                     <dd>{{currentDisco.artistaDTO.nombre}}</dd>
                     
                     <dt><b>Nombre Disco</b></dt>
-                    <dd>{{currentDisco.nombre}}</dd>
-                    
+                    <dd>{{currentDisco.nombre}}</dd> 
                 </dl>
-            </div>
+        </div>
+    <div class="row">
+    <div class="col-md-2">
+        <div class="row">
+                <div ui-view="insertarView"></div>
+                </div>        
         </div>
     </div>
+    </div>    
 </div>

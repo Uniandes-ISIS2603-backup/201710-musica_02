@@ -67,6 +67,29 @@
 
                 }
 
-            });
-        }]);
+            }).state('cancionInsert', {
+                parent: 'discoDetail',
+                views: 
+                {
+                    'insertarView': 
+                    {
+                        templateUrl: 'src/modules/cancion/cancion.create.html',
+                        controller: ['$scope', '$http', '$state', '$stateParams', 'currentDisco', function ($scope, $http, $state, $params, currentDisco ) 
+                            {
+                                $scope.cancion = {};
+                                $scope.postCancion = function ()
+                                {
+                                    
+                                    $http.post("api/artistas/" + $params.artistaId + "/discos" + currentDisco.id + "canciones" , $scope.cancion);
+                                    $state.go('DiscoDetail');
+                                    $state.reload();
+
+                                };
+                            }]
+                    }
+                }
+            });   
+        }
+    ]);
+    
 })(window.angular);

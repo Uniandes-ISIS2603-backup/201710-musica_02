@@ -15,7 +15,7 @@
                 {
                     artistas: ['$http', 'artistasContext', function ($http, artistasContext) {
                             return $http.get(artistasContext);
-                        }],
+                        }]
                 }
                 ,
                 views: 
@@ -69,6 +69,29 @@
 
                 }
 
+            }).state('discoInsert', {
+                parent: 'artistaDetail',
+                views: 
+                {
+                    'insertarView': 
+                    {
+                        
+                        templateUrl: 'src/modules/disco/disco.create.html',
+                        controller: ['$scope', '$http', '$state', 'currentArtista',  function ($scope, $http, $state, currentArtista) 
+                            {
+                                $scope.disco = {};
+                                $scope.postDisco = function ()
+                                {
+                                    $scope.disco.nombre = $scope.disco.nombre + ' (' + $scope.disco.anio + ')' ;
+                                    
+                                    $http.post("api/artistas/" + currentArtista.id + "/discos", $scope.disco);
+                                    $state.go('artistaDetail');
+                                    $state.reload();
+
+                                };
+                            }]
+                    }
+                }
             });
             
             $stateProvider.state('artistaCreate', {
@@ -90,8 +113,9 @@
                                 $scope.generosRecords = generos.data;
                                 
                                 $scope.artista = {};
+
                                 $scope.postArtista = function ()
-                                {
+                                {   
                                     $http.post("api/artistas/", $scope.artista);
                                     $state.reload();
                                 };
